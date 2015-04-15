@@ -9,7 +9,7 @@
 import UIKit
 @UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
 
     let ShareAppKey     = "6bfabdd0c3f3"
     let ShareAppSecret  = "2b9631dc59bb449cfb475480410bd071"
@@ -23,13 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         //Share SDK
-        ShareSDK.registerApp(ShareAppKey)
+        //ShareSDK.registerApp(ShareAppKey)
         
         //微博SDK
         WeiboSDK.enableDebugMode(true)
         WeiboSDK.registerApp(SinaAppKey)
-        
-        
         
         return true
     }
@@ -56,6 +54,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        return WeiboSDK.handleOpenURL(url, delegate: self)
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return WeiboSDK.handleOpenURL(url, delegate: self)
+    }
+    
+    //MARK: 新浪微博代理方法
+    func didReceiveWeiboRequest(request: WBBaseRequest!) {
+        
+    }
+    
+    func didReceiveWeiboResponse(response: WBBaseResponse!) {
+        //response.userInfo["acesss_token"]
+    }
+    
 }
 
