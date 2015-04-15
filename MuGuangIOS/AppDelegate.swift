@@ -11,15 +11,25 @@ import UIKit
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    let SinaAppKey    = "3927488598"
-    let SinaAppSecret = "4935c913baa5146cf1cd1f5757e350e4"
+    let ShareAppKey     = "6bfabdd0c3f3"
+    let ShareAppSecret  = "2b9631dc59bb449cfb475480410bd071"
     
+    let SinaAppKey      = "3927488598"
+    let SinaAppSecret   = "4935c913baa5146cf1cd1f5757e350e4"
+    
+
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        //Share SDK
+        ShareSDK.registerApp(ShareAppKey)
+        
+        //微博SDK
+        WeiboSDK.enableDebugMode(true)
         WeiboSDK.registerApp(SinaAppKey)
+        
+        
         
         return true
     }
