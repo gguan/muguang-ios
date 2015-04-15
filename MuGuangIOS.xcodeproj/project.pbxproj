@@ -13,6 +13,7 @@
 		3DB389041ADE18AB003361A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DB389031ADE18AB003361A6 /* Images.xcassets */; };
 		3DB389071ADE18AB003361A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB389051ADE18AB003361A6 /* LaunchScreen.xib */; };
 		3DB389131ADE18AB003361A6 /* MuGuangIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB389121ADE18AB003361A6 /* MuGuangIOSTests.swift */; };
+		3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */; };
 		D9CC3AA9770E281BE598BCE3 /* libPods-MuGuangIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		3DB3890C1ADE18AB003361A6 /* MuGuangIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MuGuangIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB389111ADE18AB003361A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DB389121ADE18AB003361A6 /* MuGuangIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuGuangIOSTests.swift; sourceTree = "<group>"; };
+		3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGLogInViewController.swift; sourceTree = "<group>"; };
 		40C8118B762B513DB0757678 /* Pods-MuGuangIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.release.xcconfig"; sourceTree = "<group>"; };
 		71625E48BCC889AEA28BA88E /* Pods-MuGuangIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MuGuangIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,7 @@
 			children = (
 				3DB388FC1ADE18AB003361A6 /* AppDelegate.swift */,
 				3DB388FE1ADE18AB003361A6 /* ViewController.swift */,
+				3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */,
 				3DB389001ADE18AB003361A6 /* Main.storyboard */,
 				3DB389031ADE18AB003361A6 /* Images.xcassets */,
 				3DB389051ADE18AB003361A6 /* LaunchScreen.xib */,
@@ -182,8 +185,9 @@
 		3DB388EF1ADE18AB003361A6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = MG;
 				LastUpgradeCheck = 0620;
-				ORGANIZATIONNAME = "William Hu";
+				ORGANIZATIONNAME = "北京目光璀璨科技有限公司";
 				TargetAttributes = {
 					3DB388F61ADE18AB003361A6 = {
 						CreatedOnToolsVersion = 6.2;
@@ -272,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DB388FF1ADE18AB003361A6 /* ViewController.swift in Sources */,
+				3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */,
 				3DB388FD1ADE18AB003361A6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
