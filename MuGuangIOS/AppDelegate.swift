@@ -8,13 +8,19 @@
 
 import UIKit
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    let SinaAppKey    = "3927488598"
+    let SinaAppSecret = "4935c913baa5146cf1cd1f5757e350e4"
+    
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        WeiboSDK.registerApp(SinaAppKey)
+        
         return true
     }
 
