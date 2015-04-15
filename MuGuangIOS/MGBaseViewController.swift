@@ -23,10 +23,6 @@ class MGBaseViewController: UIViewController {
         self.init()
         self.paramArray = params
     }
-
-    deinit {
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

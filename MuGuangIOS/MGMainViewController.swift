@@ -8,6 +8,18 @@
 
 import UIKit
 
+/**
+ *  主页面
+ */
 class MGMainViewController: MGBaseViewController {
-   
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        var button: UIButton = UIButton(frame: CGRectZero);
+        self.view.addSubview(button)
+        button.mas_makeConstraints { make in
+            make.center.equalTo()(self.view)
+            return ()
+        }
+    }
 }

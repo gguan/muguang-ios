@@ -34,6 +34,7 @@
 		B0E520991ADE749700B8F451 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E520981ADE749700B8F451 /* libz.1.2.5.dylib */; };
 		B0E5209B1ADE74A100B8F451 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E5209A1ADE74A100B8F451 /* Security.framework */; };
 		B0E5209D1ADE74C600B8F451 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E5209C1ADE74C600B8F451 /* ImageIO.framework */; };
+		B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */; };
 		D9CC3AA9770E281BE598BCE3 /* libPods-MuGuangIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		B0E520981ADE749700B8F451 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		B0E5209A1ADE74A100B8F451 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B0E5209C1ADE74C600B8F451 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCameraView.swift; sourceTree = "<group>"; };
 		FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MuGuangIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -162,6 +164,7 @@
 				B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */,
 				B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */,
 				B063F3DB1ADE46F800E8A1AA /* MuGuangIOS-Bridging-Header.h */,
+				B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */,
 			);
 			path = MuGuangIOS;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */,
 				3DB388FD1ADE18AB003361A6 /* AppDelegate.swift in Sources */,
 				B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */,
+				B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
