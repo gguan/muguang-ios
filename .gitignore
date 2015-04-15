@@ -1,8 +1,11 @@
+# OS X
+.DS_Store
 # Xcode
 #
 build/
 *.pbxuser
 !default.pbxuser
+.DS_Store
 *.mode1v3
 !default.mode1v3
 *.mode2v3

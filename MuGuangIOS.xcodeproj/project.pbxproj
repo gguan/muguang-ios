@@ -31,6 +31,8 @@
 		3DB389581ADE3390003361A6 /* ShareSDKFlatShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3894D1ADE3390003361A6 /* ShareSDKFlatShareViewUI.bundle */; };
 		3DB389591ADE3390003361A6 /* ShareSDKFlatShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB3894E1ADE3390003361A6 /* ShareSDKFlatShareViewUI.framework */; };
 		3DB3895A1ADE3390003361A6 /* ShareSDKShareActionSheet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB3894F1ADE3390003361A6 /* ShareSDKShareActionSheet.framework */; };
+		B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */; };
+		B063F3D91ADE3C5200E8A1AA /* MGMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */; };
 		D9CC3AA9770E281BE598BCE3 /* libPods-MuGuangIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		3DB3895B1ADE3519003361A6 /* MuGuangIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MuGuangIOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		40C8118B762B513DB0757678 /* Pods-MuGuangIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.release.xcconfig"; sourceTree = "<group>"; };
 		71625E48BCC889AEA28BA88E /* Pods-MuGuangIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGBaseViewController.swift; sourceTree = "<group>"; };
+		B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGMainViewController.swift; sourceTree = "<group>"; };
 		FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MuGuangIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -153,6 +157,8 @@
 				3DB389031ADE18AB003361A6 /* Images.xcassets */,
 				3DB389051ADE18AB003361A6 /* LaunchScreen.xib */,
 				3DB388FA1ADE18AB003361A6 /* Supporting Files */,
+				B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */,
+				B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */,
 			);
 			path = MuGuangIOS;
 			sourceTree = "<group>";
@@ -400,8 +406,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B063F3D91ADE3C5200E8A1AA /* MGMainViewController.swift in Sources */,
 				3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */,
 				3DB388FD1ADE18AB003361A6 /* AppDelegate.swift in Sources */,
+				B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

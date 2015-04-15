@@ -20,11 +20,14 @@ PODS:
   - AFNetworking/UIKit (2.5.2):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Masonry (0.6.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - Masonry (~> 0.6.1)
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
+  Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
 
 COCOAPODS: 0.36.3
