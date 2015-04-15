@@ -18,9 +18,9 @@ class ViewController: UIViewController {
         self.view.addSubview(button)
 
         
-        button.mas_makeConstraints { (make: MASConstraintMaker!) -> Void in
-            make.center().equalTo(self.view)
-        }
+//        button.mas_makeConstraints { (make: MASConstraintMaker!) -> Void in
+//            make.center().equalTo(self.view)
+//        }
 
     }
 
