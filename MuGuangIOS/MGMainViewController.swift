@@ -12,14 +12,15 @@ import UIKit
  *  主页面
  */
 class MGMainViewController: MGBaseViewController {
+    lazy var cameraView: MGCameraView = {
+        var camera = MGCameraView(frame: CGRectZero)
+        return camera
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var button: UIButton = UIButton(frame: CGRectZero);
-        self.view.addSubview(button)
-        button.mas_makeConstraints { make in
-            make.center.equalTo()(self.view)
-            return ()
+        self.view.addSubview(self.cameraView)
+        self.cameraView.mas_makeConstraints { make in
+            make.edges.equalTo()(self.view)
         }
     }
 }

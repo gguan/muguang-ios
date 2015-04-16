@@ -161,9 +161,9 @@
 				3DB389031ADE18AB003361A6 /* Images.xcassets */,
 				3DB389051ADE18AB003361A6 /* LaunchScreen.xib */,
 				3DB388FA1ADE18AB003361A6 /* Supporting Files */,
+				B063F3DB1ADE46F800E8A1AA /* MuGuangIOS-Bridging-Header.h */,
 				B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */,
 				B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */,
-				B063F3DB1ADE46F800E8A1AA /* MuGuangIOS-Bridging-Header.h */,
 				B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */,
 			);
 			path = MuGuangIOS;
