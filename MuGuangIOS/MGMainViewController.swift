@@ -38,6 +38,8 @@ class MGMainViewController: MGBaseViewController {
         self.cameraView.mas_makeConstraints { make in
             make.edges.equalTo()(self.view)
         }
+        
+        UIVisualEffect
     }
     
     override func viewWillAppear(animated: Bool) {
