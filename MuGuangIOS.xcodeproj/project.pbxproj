@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3DB388FD1ADE18AB003361A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB388FC1ADE18AB003361A6 /* AppDelegate.swift */; };
-		3DB388FF1ADE18AB003361A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB388FE1ADE18AB003361A6 /* ViewController.swift */; };
 		3DB389021ADE18AB003361A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DB389001ADE18AB003361A6 /* Main.storyboard */; };
 		3DB389041ADE18AB003361A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DB389031ADE18AB003361A6 /* Images.xcassets */; };
 		3DB389071ADE18AB003361A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB389051ADE18AB003361A6 /* LaunchScreen.xib */; };
 		3DB389131ADE18AB003361A6 /* MuGuangIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB389121ADE18AB003361A6 /* MuGuangIOSTests.swift */; };
 		3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */; };
+		3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */; };
 		B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */; };
 		B063F3D91ADE3C5200E8A1AA /* MGMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */; };
 		B0E520851ADE732100B8F451 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E520731ADE732100B8F451 /* SinaWeiboConnection.framework */; };
@@ -52,7 +52,6 @@
 		3DB388F71ADE18AB003361A6 /* MuGuangIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuGuangIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB388FB1ADE18AB003361A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DB388FC1ADE18AB003361A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3DB388FE1ADE18AB003361A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3DB389011ADE18AB003361A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DB389031ADE18AB003361A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3DB389061ADE18AB003361A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -60,6 +59,7 @@
 		3DB389111ADE18AB003361A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DB389121ADE18AB003361A6 /* MuGuangIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuGuangIOSTests.swift; sourceTree = "<group>"; };
 		3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGLogInViewController.swift; sourceTree = "<group>"; };
+		3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishViewController.swift; sourceTree = "<group>"; };
 		40C8118B762B513DB0757678 /* Pods-MuGuangIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.release.xcconfig"; sourceTree = "<group>"; };
 		71625E48BCC889AEA28BA88E /* Pods-MuGuangIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGBaseViewController.swift; sourceTree = "<group>"; };
@@ -155,8 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				3DB388FC1ADE18AB003361A6 /* AppDelegate.swift */,
-				3DB388FE1ADE18AB003361A6 /* ViewController.swift */,
-				3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */,
+				3DFA1A6D1ADF879A003E3177 /* ViewController */,
 				3DB389001ADE18AB003361A6 /* Main.storyboard */,
 				3DB389031ADE18AB003361A6 /* Images.xcassets */,
 				3DB389051ADE18AB003361A6 /* LaunchScreen.xib */,
@@ -192,6 +191,15 @@
 				3DB389111ADE18AB003361A6 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3DFA1A6D1ADF879A003E3177 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */,
+				3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 		A78C8E108F51FB9B6328E8BA /* Frameworks */ = {
@@ -410,9 +418,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DB388FF1ADE18AB003361A6 /* ViewController.swift in Sources */,
 				B063F3D91ADE3C5200E8A1AA /* MGMainViewController.swift in Sources */,
 				3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */,
+				3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */,
 				3DB388FD1ADE18AB003361A6 /* AppDelegate.swift in Sources */,
 				B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */,
 				B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */,
