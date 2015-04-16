@@ -75,18 +75,62 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYP-Ap-uf1">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j68-Uq-3fm">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="j68-Uq-3fm" secondAttribute="height" multiplier="1:1" id="Jmd-gW-BXQ"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Jmd-gW-BXQ"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="Jmd-gW-BXQ"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mYP-Ap-uf1" secondAttribute="height" multiplier="80:80" id="79P-ex-uZ4"/>
+                                    <constraint firstItem="j68-Uq-3fm" firstAttribute="leading" secondItem="mYP-Ap-uf1" secondAttribute="leading" id="HgF-C5-oRD">
+                                        <variation key="widthClass=compact" constant="1"/>
+                                    </constraint>
+                                    <constraint firstAttribute="trailing" secondItem="j68-Uq-3fm" secondAttribute="trailing" id="aWx-eJ-nUX">
+                                        <variation key="widthClass=compact" constant="1"/>
+                                    </constraint>
+                                    <constraint firstItem="j68-Uq-3fm" firstAttribute="top" secondItem="mYP-Ap-uf1" secondAttribute="top" id="d8Z-wb-Sm2">
+                                        <variation key="widthClass=compact" constant="1"/>
+                                    </constraint>
+                                    <constraint firstAttribute="bottom" secondItem="j68-Uq-3fm" secondAttribute="bottom" id="sDC-MV-xit">
+                                        <variation key="widthClass=compact" constant="1"/>
+                                    </constraint>
                                 </constraints>
                                 <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="j68-Uq-3fm"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <exclude reference="79P-ex-uZ4"/>
+                                        <exclude reference="HgF-C5-oRD"/>
+                                        <exclude reference="aWx-eJ-nUX"/>
+                                        <exclude reference="d8Z-wb-Sm2"/>
+                                        <exclude reference="sDC-MV-xit"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="j68-Uq-3fm"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <include reference="79P-ex-uZ4"/>
+                                        <include reference="HgF-C5-oRD"/>
+                                        <include reference="aWx-eJ-nUX"/>
+                                        <include reference="d8Z-wb-Sm2"/>
+                                        <include reference="sDC-MV-xit"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -101,6 +145,21 @@
                                         <variation key="widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="183" y="17" width="46" height="30"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="capture:" destination="On7-VH-Znm" eventType="touchUpInside" id="Km4-v3-KkY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2h4-AB-fW0">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="Retake">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="305" y="17" width="48" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="retake:" destination="On7-VH-Znm" eventType="touchUpInside" id="OGf-mN-Uyh"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,6 +169,7 @@
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="T9G-TZ-k0s"/>
+                                        <exclude reference="2h4-AB-fW0"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="768-zT-zK4"/>
@@ -118,6 +178,7 @@
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="T9G-TZ-k0s"/>
+                                        <include reference="2h4-AB-fW0"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="768-zT-zK4"/>
@@ -126,23 +187,27 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AuL-CD-UhX">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fqr-re-ZIJ">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fqr-re-ZIJ">
+                                    <size key="itemSize" width="82" height="82"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Uag-8d-kDy">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MGPhotoCell" id="Uag-8d-kDy">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="82" height="82"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="On7-VH-Znm" id="s6Y-0h-Wts"/>
+                                    <outlet property="delegate" destination="On7-VH-Znm" id="mX3-ri-qCV"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -201,7 +266,9 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="preview" destination="mYP-Ap-uf1" id="Xcf-rl-Cfo"/>
+                        <outlet property="collectionView" destination="AuL-CD-UhX" id="mZh-Rx-b4b"/>
+                        <outlet property="preview" destination="mYP-Ap-uf1" id="hAB-5R-3Co"/>
+                        <outlet property="previewImage" destination="j68-Uq-3fm" id="gfj-2d-TBo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oM5-BY-OXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
