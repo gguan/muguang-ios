@@ -72,6 +72,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
         self.view.addSubview(self.pictureView)
         self.view.addSubview(self.blurView)
         self.makeAwesomeMenu()
+        self.makeVerticalSlider()
         /**
          *  添加布局
          */
@@ -128,7 +129,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
         
         var menu: AwesomeMenu = AwesomeMenu(frame: CGRectZero, startItem: startItem, menuItems: [item1, item2, item3])
         menu.delegate = self
-        menu.startPoint     = CGPointMake(30, self.view.frame.size.height - 30);
+        menu.startPoint     = CGPointMake(50, self.view.frame.size.height - 50);
         menu.rotateAngle    = 0.0
         menu.menuWholeAngle = CGFloat(M_PI_2)
         menu.timeOffset     = 0.036
@@ -137,12 +138,23 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
         menu.nearRadius     = 60.0
         self.view.addSubview(menu)
         
+        // 添加约束
         menu.mas_makeConstraints { make in
             make.edges.equalTo()(self.view)
         }
     }
+    
+    // 滑杆
+    func makeVerticalSlider() {
+        var slider = MGVerticalSlider(frame: CGRectMake(0, 0, 300, 30))
+        slider.center = CGPointMake(CGRectGetWidth(self.view.frame) - 50, CGRectGetHeight(self.view.frame) / 2)
+        slider.setThumbImage(UIImage(named: "bg-addbutton"), forState: .Normal)
+        self.view.addSubview(slider)
+    }
+    
     // MARK: AwesomeMenuDelegate
     func awesomeMenu(menu: AwesomeMenu!, didSelectIndex idx: Int) {
         println(idx)
     }
+    
 }

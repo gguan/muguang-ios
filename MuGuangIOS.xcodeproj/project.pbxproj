@@ -26,6 +26,7 @@
 		B04C9D821AE0A67600CD9405 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B04C9D7F1AE0A67600CD9405 /* AwesomeMenu.m */; };
 		B04C9D831AE0A67600CD9405 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B04C9D811AE0A67600CD9405 /* AwesomeMenuItem.m */; };
 		B04C9D871AE0AFAC00CD9405 /* bg-addbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B04C9D861AE0AFAC00CD9405 /* bg-addbutton@2x.png */; };
+		B04C9D891AE0BA9A00CD9405 /* MGVerticalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C9D881AE0BA9A00CD9405 /* MGVerticalSlider.swift */; };
 		B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */; };
 		B063F3D91ADE3C5200E8A1AA /* MGMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */; };
 		B0E520851ADE732100B8F451 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E520731ADE732100B8F451 /* SinaWeiboConnection.framework */; };
@@ -89,6 +90,7 @@
 		B04C9D801AE0A67600CD9405 /* AwesomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenuItem.h; sourceTree = "<group>"; };
 		B04C9D811AE0A67600CD9405 /* AwesomeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenuItem.m; sourceTree = "<group>"; };
 		B04C9D861AE0AFAC00CD9405 /* bg-addbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-addbutton@2x.png"; sourceTree = "<group>"; };
+		B04C9D881AE0BA9A00CD9405 /* MGVerticalSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MGVerticalSlider.swift; path = MuGuangIOS/MGVerticalSlider.swift; sourceTree = SOURCE_ROOT; };
 		B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGBaseViewController.swift; sourceTree = "<group>"; };
 		B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGMainViewController.swift; sourceTree = "<group>"; };
 		B063F3DB1ADE46F800E8A1AA /* MuGuangIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MuGuangIOS-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				B04C9D7D1AE0A67600CD9405 /* AwesomeMenu */,
+				B04C9D881AE0BA9A00CD9405 /* MGVerticalSlider.swift */,
 				B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */,
 				B04C9D7A1AE0A49400CD9405 /* FXBlurView.h */,
 				B04C9D7B1AE0A49400CD9405 /* FXBlurView.m */,
@@ -527,6 +530,7 @@
 				B04C9D821AE0A67600CD9405 /* AwesomeMenu.m in Sources */,
 				3DFA1A701ADFB1F5003E3177 /* PhotoFilterCollectionViewCell.swift in Sources */,
 				B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */,
+				B04C9D891AE0BA9A00CD9405 /* MGVerticalSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
