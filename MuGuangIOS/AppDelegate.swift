@@ -7,6 +7,8 @@
 //
 
 import UIKit
+
+let kSampleImageName = "duckling.jpg"
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
@@ -28,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
         //微博SDK
         WeiboSDK.enableDebugMode(true)
         WeiboSDK.registerApp(SinaAppKey)
+        
+        //程序主体颜色
+        //window?.tintColor = UIColor.redColor()
         
         return true
     }

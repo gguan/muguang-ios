@@ -8,15 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		3DB388FD1ADE18AB003361A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB388FC1ADE18AB003361A6 /* AppDelegate.swift */; };
-		3DB388FF1ADE18AB003361A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB388FE1ADE18AB003361A6 /* ViewController.swift */; };
 		3DB389021ADE18AB003361A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DB389001ADE18AB003361A6 /* Main.storyboard */; };
 		3DB389041ADE18AB003361A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DB389031ADE18AB003361A6 /* Images.xcassets */; };
 		3DB389071ADE18AB003361A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB389051ADE18AB003361A6 /* LaunchScreen.xib */; };
 		3DB389131ADE18AB003361A6 /* MuGuangIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB389121ADE18AB003361A6 /* MuGuangIOSTests.swift */; };
 		3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */; };
-		B04C9D791ADFFC9800CD9405 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B04C9D781ADFFC9800CD9405 /* FXBlurView.m */; };
+		3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */; };
+		3DFA1A701ADFB1F5003E3177 /* PhotoFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A6E1ADFB1F5003E3177 /* PhotoFilterCollectionViewCell.swift */; };
+		3DFA1A711ADFB1F5003E3177 /* PhotoFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A6F1ADFB1F5003E3177 /* PhotoFilterViewController.swift */; };
+		3DFA1A741ADFB246003E3177 /* FilteredImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A731ADFB246003E3177 /* FilteredImageView.swift */; };
+		3DFA1A761ADFB282003E3177 /* ParameterAdjustmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A751ADFB282003E3177 /* ParameterAdjustmentView.swift */; };
+		3DFA1A781ADFB2AC003E3177 /* ScalarFilterParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A771ADFB2AC003E3177 /* ScalarFilterParameter.swift */; };
+		3DFA1A7A1ADFB32A003E3177 /* LabeledSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A791ADFB32A003E3177 /* LabeledSliderView.swift */; };
+		3DFA1A7C1ADFB389003E3177 /* duckling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA1A7B1ADFB389003E3177 /* duckling.jpg */; };
+		3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */; };
 		B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */; };
 		B063F3D91ADE3C5200E8A1AA /* MGMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */; };
+		B0650A371ADF840400CBDC97 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B0650A361ADF840400CBDC97 /* UIImage+ImageEffects.m */; };
 		B0E520851ADE732100B8F451 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E520731ADE732100B8F451 /* SinaWeiboConnection.framework */; };
 		B0E520861ADE732100B8F451 /* AGCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E520751ADE732100B8F451 /* AGCommon.framework */; };
 		B0E520871ADE732100B8F451 /* ShareSDKLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0E520761ADE732100B8F451 /* ShareSDKLocalizable.strings */; };
@@ -53,7 +61,6 @@
 		3DB388F71ADE18AB003361A6 /* MuGuangIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuGuangIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB388FB1ADE18AB003361A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DB388FC1ADE18AB003361A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3DB388FE1ADE18AB003361A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3DB389011ADE18AB003361A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DB389031ADE18AB003361A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3DB389061ADE18AB003361A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -61,13 +68,22 @@
 		3DB389111ADE18AB003361A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DB389121ADE18AB003361A6 /* MuGuangIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuGuangIOSTests.swift; sourceTree = "<group>"; };
 		3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGLogInViewController.swift; sourceTree = "<group>"; };
+		3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishViewController.swift; sourceTree = "<group>"; };
+		3DFA1A6E1ADFB1F5003E3177 /* PhotoFilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		3DFA1A6F1ADFB1F5003E3177 /* PhotoFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFilterViewController.swift; sourceTree = "<group>"; };
+		3DFA1A731ADFB246003E3177 /* FilteredImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilteredImageView.swift; sourceTree = "<group>"; };
+		3DFA1A751ADFB282003E3177 /* ParameterAdjustmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterAdjustmentView.swift; sourceTree = "<group>"; };
+		3DFA1A771ADFB2AC003E3177 /* ScalarFilterParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalarFilterParameter.swift; sourceTree = "<group>"; };
+		3DFA1A791ADFB32A003E3177 /* LabeledSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledSliderView.swift; sourceTree = "<group>"; };
+		3DFA1A7B1ADFB389003E3177 /* duckling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = duckling.jpg; sourceTree = "<group>"; };
+		3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotosViewControllerExtensions.swift; sourceTree = "<group>"; };
 		40C8118B762B513DB0757678 /* Pods-MuGuangIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.release.xcconfig"; sourceTree = "<group>"; };
 		71625E48BCC889AEA28BA88E /* Pods-MuGuangIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.debug.xcconfig"; sourceTree = "<group>"; };
-		B04C9D771ADFFC9800CD9405 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
-		B04C9D781ADFFC9800CD9405 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGBaseViewController.swift; sourceTree = "<group>"; };
 		B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGMainViewController.swift; sourceTree = "<group>"; };
 		B063F3DB1ADE46F800E8A1AA /* MuGuangIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MuGuangIOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		B0650A351ADF840400CBDC97 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		B0650A361ADF840400CBDC97 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		B0E520731ADE732100B8F451 /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
 		B0E520751ADE732100B8F451 /* AGCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGCommon.framework; sourceTree = "<group>"; };
 		B0E520771ADE732100B8F451 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ShareSDKLocalizable.strings; sourceTree = "<group>"; };
@@ -158,8 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				3DB388FC1ADE18AB003361A6 /* AppDelegate.swift */,
-				3DB388FE1ADE18AB003361A6 /* ViewController.swift */,
-				3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */,
+				3DFA1A6D1ADF879A003E3177 /* ViewController */,
 				3DB389001ADE18AB003361A6 /* Main.storyboard */,
 				3DB389031ADE18AB003361A6 /* Images.xcassets */,
 				3DB389051ADE18AB003361A6 /* LaunchScreen.xib */,
@@ -195,6 +210,39 @@
 				3DB389111ADE18AB003361A6 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3DFA1A6D1ADF879A003E3177 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3DFA1A7D1ADFB862003E3177 /* Publisher */,
+				3DFA1A721ADFB20C003E3177 /* Filter */,
+				3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		3DFA1A721ADFB20C003E3177 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				3DFA1A6E1ADFB1F5003E3177 /* PhotoFilterCollectionViewCell.swift */,
+				3DFA1A6F1ADFB1F5003E3177 /* PhotoFilterViewController.swift */,
+				3DFA1A731ADFB246003E3177 /* FilteredImageView.swift */,
+				3DFA1A751ADFB282003E3177 /* ParameterAdjustmentView.swift */,
+				3DFA1A771ADFB2AC003E3177 /* ScalarFilterParameter.swift */,
+				3DFA1A791ADFB32A003E3177 /* LabeledSliderView.swift */,
+				3DFA1A7B1ADFB389003E3177 /* duckling.jpg */,
+			);
+			name = Filter;
+			sourceTree = "<group>";
+		};
+		3DFA1A7D1ADFB862003E3177 /* Publisher */ = {
+			isa = PBXGroup;
+			children = (
+				3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */,
+				3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */,
+			);
+			name = Publisher;
 			sourceTree = "<group>";
 		};
 		A78C8E108F51FB9B6328E8BA /* Frameworks */ = {
@@ -233,8 +281,8 @@
 		B0650A341ADF83ED00CBDC97 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				B04C9D771ADFFC9800CD9405 /* FXBlurView.h */,
-				B04C9D781ADFFC9800CD9405 /* FXBlurView.m */,
+				B0650A351ADF840400CBDC97 /* UIImage+ImageEffects.h */,
+				B0650A361ADF840400CBDC97 /* UIImage+ImageEffects.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -350,6 +398,7 @@
 				TargetAttributes = {
 					3DB388F61ADE18AB003361A6 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 2TJ8YYXYK5;
 					};
 					3DB3890B1ADE18AB003361A6 = {
 						CreatedOnToolsVersion = 6.2;
@@ -386,6 +435,7 @@
 				3DB389071ADE18AB003361A6 /* LaunchScreen.xib in Resources */,
 				B0E5208D1ADE732100B8F451 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				B0E520871ADE732100B8F451 /* ShareSDKLocalizable.strings in Resources */,
+				3DFA1A7C1ADFB389003E3177 /* duckling.jpg in Resources */,
 				3DB389041ADE18AB003361A6 /* Images.xcassets in Resources */,
 				B0E520881ADE732100B8F451 /* Resource.bundle in Resources */,
 				B0E5208B1ADE732100B8F451 /* WeiboSDK.bundle in Resources */,
@@ -439,12 +489,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DB388FF1ADE18AB003361A6 /* ViewController.swift in Sources */,
 				B063F3D91ADE3C5200E8A1AA /* MGMainViewController.swift in Sources */,
+
+				3DFA1A7A1ADFB32A003E3177 /* LabeledSliderView.swift in Sources */,
+				3DFA1A711ADFB1F5003E3177 /* PhotoFilterViewController.swift in Sources */,
+				3DFA1A741ADFB246003E3177 /* FilteredImageView.swift in Sources */,
+				3DFA1A781ADFB2AC003E3177 /* ScalarFilterParameter.swift in Sources */,
+				3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */,
+				3DFA1A761ADFB282003E3177 /* ParameterAdjustmentView.swift in Sources */,
+
+				B0650A371ADF840400CBDC97 /* UIImage+ImageEffects.m in Sources */,
 				3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */,
+				3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */,
 				3DB388FD1ADE18AB003361A6 /* AppDelegate.swift in Sources */,
-				B04C9D791ADFFC9800CD9405 /* FXBlurView.m in Sources */,
 				B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */,
+				3DFA1A701ADFB1F5003E3177 /* PhotoFilterCollectionViewCell.swift in Sources */,
 				B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,6 +640,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShareSDK/Connection",
@@ -595,7 +656,7 @@
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bf216cdf-df75-4967-be74-528751f2f1aa";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MuGuangIOS/MuGuangIOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -607,6 +668,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShareSDK/Connection",
@@ -621,7 +684,7 @@
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bf216cdf-df75-4967-be74-528751f2f1aa";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MuGuangIOS/MuGuangIOS-Bridging-Header.h";
 			};
 			name = Release;
