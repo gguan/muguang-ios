@@ -13,25 +13,62 @@ import UIKit
  */
 class MGMainViewController: MGBaseViewController {
     
+    // 模糊背景
+    let pictureView: UIImageView = UIImageView(frame: CGRectZero)
+    let blurView: FXBlurView = FXBlurView(frame: CGRectZero)
     // 相机视图
-    lazy var cameraView: MGCameraView = {
-        var camera = MGCameraView(frame: CGRectZero)
-        camera.addTapAction({ (isRunning) -> Void in
-            if isRunning {
-                camera.stopRunning()
-            } else {
-                camera.startRunning()
-            }
-        })
-        return camera
-    }()
+    let cameraView: MGCameraView = MGCameraView(frame: CGRectZero)
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        pictureView.hidden = true
+        blurView.hidden = true
+        blurView.userInteractionEnabled = false
+        cameraView.addTapAction { (isRunning) -> Void in
+            if isRunning {
+                // 拍照
+                self.cameraView.takePhoto({ (aImage) -> Void in
+                    self.pictureView.image = aImage
+                    self.pictureView.hidden = false
+                    self.blurView.hidden = false
+//                    UIView.animateWithDuration(2, animations: { () -> Void in
+//                        self.blurView.blurRadius = 40
+//                    })
+                    
+                    UIView.animateWithDuration(2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+                        self.blurView.blurRadius = 40
+                    }, completion: { (finsih) -> Void in
+                        
+                    })
+                    
+//                    if let image = aImage {
+//                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+//                            var context = CIContext(options: nil)
+//                            var inputImage = CIImage(image: image)
+//                            var filter = CIFilter(name: "CIGaussianBlur", withInputParameters: [kCIInputImageKey:inputImage, "inputRadius" : 10])
+//                            var outputImage = filter.outputImage
+//                            var outImage = context.createCGImage(outputImage, fromRect: outputImage.extent())
+//                            
+//                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                                self.blurView.image = UIImage(CGImage: outImage)
+//                                self.blurView.hidden = false
+//                            })
+//                        })
+//                    }
+                })
+                self.cameraView.stopRunning()
+            } else {
+                self.cameraView.startRunning()
+                self.pictureView.hidden = true
+                self.blurView.hidden = true
+                self.blurView.blurRadius = 0
+            }
+        }
         
         self.view.addSubview(self.cameraView)
-        
+        self.view.addSubview(self.pictureView)
+        self.view.addSubview(self.blurView)
         /**
          *  添加布局
          */
@@ -39,7 +76,22 @@ class MGMainViewController: MGBaseViewController {
             make.edges.equalTo()(self.view)
         }
         
-        UIVisualEffect
+        self.pictureView.mas_makeConstraints { make in
+            make.edges.equalTo()(self.view)
+        }
+        
+        self.blurView.mas_makeConstraints { make in
+            make.edges.equalTo()(self.view)
+        }
+        
+    }
+    
+    func getImageFromView(view: UIView!) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, view.layer.contentsScale)
+        view.layer.renderInContext(UIGraphicsGetCurrentContext())
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
     
     override func viewWillAppear(animated: Bool) {

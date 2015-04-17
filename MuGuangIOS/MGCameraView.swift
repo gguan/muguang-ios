@@ -8,16 +8,19 @@
 
 import UIKit
 import AVFoundation
+import ImageIO
+import CoreImage
 
 /**
  *  主页面的相机类
  */
 class MGCameraView: UIView {
     let captureSession: AVCaptureSession = AVCaptureSession()
-    let stillImageOutput: AVCaptureStillImageOutput = AVCaptureStillImageOutput()
+    let stillImageOutput: AVCaptureStillImageOutput! = AVCaptureStillImageOutput()
     let previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer()
     // 闭包回调
     var tapAction: ((isRunning: Bool) -> Void)? = nil
+
     override init(frame: CGRect) {
         
         // 配置相机
@@ -28,7 +31,11 @@ class MGCameraView: UIView {
             //simulator
             #else
             //device
-            device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+            for devi: AnyObject in AVCaptureDevice.devices() {
+                if devi.position == AVCaptureDevicePosition.Back {
+                    device = devi as? AVCaptureDevice
+                }
+            }
         #endif
         if let captureDevice = device {
             if captureDevice.lockForConfiguration(nil) {
@@ -49,18 +56,17 @@ class MGCameraView: UIView {
             captureSession.addInput(captureInput)
         }
 
-        var outputSettings: NSDictionary = [AVVideoCodecKey : AVVideoCodecJPEG]
-        stillImageOutput.outputSettings = outputSettings as [NSObject : AnyObject]
-        
-        captureSession.addOutput(stillImageOutput)
+        stillImageOutput.outputSettings = NSDictionary(object: AVVideoCodecJPEG, forKey: AVVideoCodecKey) as [NSObject : AnyObject]
         previewLayer.session = captureSession
         previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        previewLayer.masksToBounds = true
         super.init(frame: frame)
         self.layer.addSublayer(previewLayer)
         
         // 添加点击手势
         var tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("methodForTapGestureRecognizer:"))
         self.addGestureRecognizer(tapGR)
+        self.captureSession.addOutput(stillImageOutput)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -85,10 +91,6 @@ class MGCameraView: UIView {
      *开始运行
      */
     func startRunning() {
-        var fadeAnimation = CATransition()
-        fadeAnimation.type = kCATransitionFade
-        fadeAnimation.duration = 0.25
-        self.previewLayer.addAnimation(fadeAnimation, forKey: "Fade")
         self.captureSession.startRunning()
     }
     
@@ -97,6 +99,23 @@ class MGCameraView: UIView {
      */
     func stopRunning() {
         self.captureSession.stopRunning()
+    }
+    
+    /**
+     *  拍照
+     */
+    func takePhoto(completion: (aImage: UIImage?) -> Void) {
+        if let videoConnection = self.stillImageOutput.connectionWithMediaType(AVMediaTypeVideo) {
+            self.stillImageOutput.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (imageBuffer:CMSampleBuffer!, error: NSError!) -> Void in
+                if let attachments = CMGetAttachment(imageBuffer, kCGImagePropertyExifDictionary, nil) {
+                    var imageData: NSData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageBuffer)
+                    var image = UIImage(data: imageData)
+                    completion(aImage: image)
+//                    completion(aImage: UIImage(data: UIImageJPEGRepresentation(image, 0.05)))
+                    
+                }
+            })
+        }
     }
     
     override func layoutSubviews() {
@@ -111,5 +130,4 @@ class MGCameraView: UIView {
         // Drawing code
     }
     */
-
 }
