@@ -8,6 +8,7 @@
 
 import UIKit
 
+let kScaleLabelHeight: CGFloat = 30
 /**
  *  主页面
  */
@@ -18,6 +19,17 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
     let blurView: FXBlurView = FXBlurView(frame: CGRectZero)
     // 相机视图
     let cameraView: MGCameraView = MGCameraView(frame: CGRectZero)
+    // 比例尺的标签
+    let scaleLabel: UILabel = {
+        var label = UILabel(frame: CGRectZero)
+        label.layer.masksToBounds = true
+        label.layer.cornerRadius = kScaleLabelHeight / 2
+        label.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        label.textColor = UIColor.whiteColor()
+        label.font = UIFont.systemFontOfSize(13.0)
+        label.textAlignment = .Center
+        return label
+    }()
     
     override func viewDidLoad() {
         
@@ -73,6 +85,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
         self.view.addSubview(self.blurView)
         self.makeAwesomeMenu()
         self.makeVerticalSlider()
+        self.view.addSubview(self.scaleLabel)
         /**
          *  添加布局
          */
@@ -86,6 +99,28 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
         
         self.blurView.mas_makeConstraints { make in
             make.edges.equalTo()(self.view)
+        }
+        
+        var button = UIButton(frame: CGRectZero)
+        button.setTitle("发布", forState: .Normal)
+        button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        button.addTarget(self, action: Selector("methodForButton:"), forControlEvents: .TouchUpInside)
+        self.view.addSubview(button)
+        
+        button.mas_makeConstraints { make in
+            make.width.equalTo()(50)
+            make.height.equalTo()(40)
+            make.centerX.equalTo()(self.view)
+            make.bottom.equalTo()(self.view).with().offset()(-50)
+        }
+    }
+    
+    // 按钮的回调
+    func methodForButton(btn: UIButton) {
+        var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        var viewController = storyBoard.instantiateViewControllerWithIdentifier("MGPublishViewController") as? UIViewController
+        if let vc = viewController {
+            self.presentViewController(vc, animated: true, completion: nil)
         }
     }
     
@@ -149,7 +184,17 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
         var slider = MGVerticalSlider(frame: CGRectMake(0, 0, 300, 30))
         slider.center = CGPointMake(CGRectGetWidth(self.view.frame) - 50, CGRectGetHeight(self.view.frame) / 2)
         slider.setThumbImage(UIImage(named: "bg-addbutton"), forState: .Normal)
+        slider.minimumValue = 0
+        slider.maximumValue = 100
+        slider.addTarget(self, action: Selector("methodForSlider:"), forControlEvents: .ValueChanged)
         self.view.addSubview(slider)
+    }
+    
+    // 滑杆的回调
+    func methodForSlider(slider: MGVerticalSlider) {
+        self.scaleLabel.text = "查看半径：\(Int(slider.value)) km"
+        var size = self.scaleLabel.text?.sizeWithAttributes([NSFontAttributeName : self.scaleLabel.font])
+        self.scaleLabel.frame = CGRectMake((CGRectGetWidth(self.view.frame) - size!.width - 10) / 2, 30, size!.width + 10, kScaleLabelHeight)
     }
     
     // MARK: AwesomeMenuDelegate
