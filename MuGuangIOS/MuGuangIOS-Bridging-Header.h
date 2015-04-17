@@ -6,3 +6,4 @@
 #import <ShareSDK/ShareSDK.h>
 #import "WeiboSDK.h"
 #import "FXBlurView.h"
+#import "AwesomeMenu.h"

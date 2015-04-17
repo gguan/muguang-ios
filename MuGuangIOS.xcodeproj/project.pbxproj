@@ -25,6 +25,7 @@
 		B04C9D7C1AE0A49400CD9405 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B04C9D7B1AE0A49400CD9405 /* FXBlurView.m */; };
 		B04C9D821AE0A67600CD9405 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B04C9D7F1AE0A67600CD9405 /* AwesomeMenu.m */; };
 		B04C9D831AE0A67600CD9405 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B04C9D811AE0A67600CD9405 /* AwesomeMenuItem.m */; };
+		B04C9D871AE0AFAC00CD9405 /* bg-addbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B04C9D861AE0AFAC00CD9405 /* bg-addbutton@2x.png */; };
 		B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */; };
 		B063F3D91ADE3C5200E8A1AA /* MGMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */; };
 		B0E520851ADE732100B8F451 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E520731ADE732100B8F451 /* SinaWeiboConnection.framework */; };
@@ -87,6 +88,7 @@
 		B04C9D7F1AE0A67600CD9405 /* AwesomeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenu.m; sourceTree = "<group>"; };
 		B04C9D801AE0A67600CD9405 /* AwesomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenuItem.h; sourceTree = "<group>"; };
 		B04C9D811AE0A67600CD9405 /* AwesomeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenuItem.m; sourceTree = "<group>"; };
+		B04C9D861AE0AFAC00CD9405 /* bg-addbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-addbutton@2x.png"; sourceTree = "<group>"; };
 		B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGBaseViewController.swift; sourceTree = "<group>"; };
 		B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGMainViewController.swift; sourceTree = "<group>"; };
 		B063F3DB1ADE46F800E8A1AA /* MuGuangIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MuGuangIOS-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 		B04C9D7D1AE0A67600CD9405 /* AwesomeMenu */ = {
 			isa = PBXGroup;
 			children = (
+				B04C9D861AE0AFAC00CD9405 /* bg-addbutton@2x.png */,
 				B04C9D7E1AE0A67600CD9405 /* AwesomeMenu.h */,
 				B04C9D7F1AE0A67600CD9405 /* AwesomeMenu.m */,
 				B04C9D801AE0A67600CD9405 /* AwesomeMenuItem.h */,
@@ -456,6 +459,7 @@
 				3DFA1A7C1ADFB389003E3177 /* duckling.jpg in Resources */,
 				3DB389041ADE18AB003361A6 /* Images.xcassets in Resources */,
 				B0E520881ADE732100B8F451 /* Resource.bundle in Resources */,
+				B04C9D871AE0AFAC00CD9405 /* bg-addbutton@2x.png in Resources */,
 				B0E5208B1ADE732100B8F451 /* WeiboSDK.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

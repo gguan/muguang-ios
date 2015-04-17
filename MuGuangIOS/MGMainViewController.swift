@@ -11,7 +11,7 @@ import UIKit
 /**
  *  主页面
  */
-class MGMainViewController: MGBaseViewController {
+class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
     
     // 模糊背景
     let pictureView: UIImageView = UIImageView(frame: CGRectZero)
@@ -22,6 +22,7 @@ class MGMainViewController: MGBaseViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.whiteColor()
         pictureView.hidden = true
         blurView.hidden = true
         blurView.userInteractionEnabled = false
@@ -29,6 +30,7 @@ class MGMainViewController: MGBaseViewController {
             if isRunning {
                 // 拍照
                 self.cameraView.takePhoto({ (aImage) -> Void in
+                    // MARK:模糊效果待优化
                     self.pictureView.image = aImage
                     self.pictureView.hidden = false
                     self.blurView.hidden = false
@@ -69,6 +71,7 @@ class MGMainViewController: MGBaseViewController {
         self.view.addSubview(self.cameraView)
         self.view.addSubview(self.pictureView)
         self.view.addSubview(self.blurView)
+        self.makeAwesomeMenu()
         /**
          *  添加布局
          */
@@ -83,16 +86,16 @@ class MGMainViewController: MGBaseViewController {
         self.blurView.mas_makeConstraints { make in
             make.edges.equalTo()(self.view)
         }
-        
     }
     
-    func getImageFromView(view: UIView!) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, view.layer.contentsScale)
-        view.layer.renderInContext(UIGraphicsGetCurrentContext())
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
-    }
+    // view转image
+//    func getImageFromView(view: UIView!) -> UIImage {
+//        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, view.layer.contentsScale)
+//        view.layer.renderInContext(UIGraphicsGetCurrentContext())
+//        let image = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//        return image
+//    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -108,5 +111,38 @@ class MGMainViewController: MGBaseViewController {
          *  停止运行相机（页面消失后）
          */
         self.cameraView.stopRunning()
+    }
+    
+    // 初始化扇形菜单
+    func makeAwesomeMenu() {
+        
+        var itemImage = UIImage(named: "bg-addbutton")
+//        var itemImagePressed = UIImage(named: "")
+//        var starImage = UIImage(named: "")
+        
+        var item1 = AwesomeMenuItem(image: itemImage, highlightedImage: nil)
+        var item2 = AwesomeMenuItem(image: itemImage, highlightedImage: nil)
+        var item3 = AwesomeMenuItem(image: itemImage, highlightedImage: nil)
+        
+        var startItem = AwesomeMenuItem(image: itemImage, highlightedImage: nil)
+        
+        var menu: AwesomeMenu = AwesomeMenu(frame: CGRectZero, startItem: startItem, menuItems: [item1, item2, item3])
+        menu.delegate = self
+        menu.startPoint     = CGPointMake(30, self.view.frame.size.height - 30);
+        menu.rotateAngle    = 0.0
+        menu.menuWholeAngle = CGFloat(M_PI_2)
+        menu.timeOffset     = 0.036
+        menu.farRadius      = 90.0
+        menu.endRadius      = 70.0
+        menu.nearRadius     = 60.0
+        self.view.addSubview(menu)
+        
+        menu.mas_makeConstraints { make in
+            make.edges.equalTo()(self.view)
+        }
+    }
+    // MARK: AwesomeMenuDelegate
+    func awesomeMenu(menu: AwesomeMenu!, didSelectIndex idx: Int) {
+        println(idx)
     }
 }
