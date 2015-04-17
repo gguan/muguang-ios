@@ -22,9 +22,9 @@
 		3DFA1A7A1ADFB32A003E3177 /* LabeledSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A791ADFB32A003E3177 /* LabeledSliderView.swift */; };
 		3DFA1A7C1ADFB389003E3177 /* duckling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA1A7B1ADFB389003E3177 /* duckling.jpg */; };
 		3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */; };
+		B04C9D7C1AE0A49400CD9405 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B04C9D7B1AE0A49400CD9405 /* FXBlurView.m */; };
 		B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */; };
 		B063F3D91ADE3C5200E8A1AA /* MGMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */; };
-		B0650A371ADF840400CBDC97 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B0650A361ADF840400CBDC97 /* UIImage+ImageEffects.m */; };
 		B0E520851ADE732100B8F451 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E520731ADE732100B8F451 /* SinaWeiboConnection.framework */; };
 		B0E520861ADE732100B8F451 /* AGCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E520751ADE732100B8F451 /* AGCommon.framework */; };
 		B0E520871ADE732100B8F451 /* ShareSDKLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0E520761ADE732100B8F451 /* ShareSDKLocalizable.strings */; };
@@ -79,11 +79,11 @@
 		3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotosViewControllerExtensions.swift; sourceTree = "<group>"; };
 		40C8118B762B513DB0757678 /* Pods-MuGuangIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.release.xcconfig"; sourceTree = "<group>"; };
 		71625E48BCC889AEA28BA88E /* Pods-MuGuangIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		B04C9D7A1AE0A49400CD9405 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		B04C9D7B1AE0A49400CD9405 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGBaseViewController.swift; sourceTree = "<group>"; };
 		B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGMainViewController.swift; sourceTree = "<group>"; };
 		B063F3DB1ADE46F800E8A1AA /* MuGuangIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MuGuangIOS-Bridging-Header.h"; sourceTree = "<group>"; };
-		B0650A351ADF840400CBDC97 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
-		B0650A361ADF840400CBDC97 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		B0E520731ADE732100B8F451 /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
 		B0E520751ADE732100B8F451 /* AGCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGCommon.framework; sourceTree = "<group>"; };
 		B0E520771ADE732100B8F451 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ShareSDKLocalizable.strings; sourceTree = "<group>"; };
@@ -281,8 +281,8 @@
 		B0650A341ADF83ED00CBDC97 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				B0650A351ADF840400CBDC97 /* UIImage+ImageEffects.h */,
-				B0650A361ADF840400CBDC97 /* UIImage+ImageEffects.m */,
+				B04C9D7A1AE0A49400CD9405 /* FXBlurView.h */,
+				B04C9D7B1AE0A49400CD9405 /* FXBlurView.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -490,17 +490,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B063F3D91ADE3C5200E8A1AA /* MGMainViewController.swift in Sources */,
-
 				3DFA1A7A1ADFB32A003E3177 /* LabeledSliderView.swift in Sources */,
 				3DFA1A711ADFB1F5003E3177 /* PhotoFilterViewController.swift in Sources */,
 				3DFA1A741ADFB246003E3177 /* FilteredImageView.swift in Sources */,
 				3DFA1A781ADFB2AC003E3177 /* ScalarFilterParameter.swift in Sources */,
 				3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */,
 				3DFA1A761ADFB282003E3177 /* ParameterAdjustmentView.swift in Sources */,
-
-				B0650A371ADF840400CBDC97 /* UIImage+ImageEffects.m in Sources */,
 				3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */,
 				3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */,
+				B04C9D7C1AE0A49400CD9405 /* FXBlurView.m in Sources */,
 				3DB388FD1ADE18AB003361A6 /* AppDelegate.swift in Sources */,
 				B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */,
 				3DFA1A701ADFB1F5003E3177 /* PhotoFilterCollectionViewCell.swift in Sources */,
