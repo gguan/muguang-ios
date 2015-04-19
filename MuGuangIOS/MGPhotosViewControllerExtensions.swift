@@ -13,13 +13,28 @@ extension MGPublishViewController : UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return filterDescriptors.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
-        cell.backgroundColor = UIColor.redColor()
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PhotoFilterCollectionViewCell
+        cell.filteredImageView.contentMode = .ScaleAspectFill
+        cell.filteredImageView.inputImage = filteredImageView.inputImage
+        
+        if !filters.isEmpty {
+            cell.filteredImageView.filter = filters[indexPath.item]
+            cell.filterNameLabel.text = filterDescriptors[indexPath.item].filterDisplayName
+        }
         return cell
+    }
+}
+
+extension MGPublishViewController : UICollectionViewDelegate {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if !filters.isEmpty {
+            filteredImageView.filter = filters[indexPath.item]
+            filteredImageView.backgroundColor = UIColor.yellowColor()
+        }
     }
 }

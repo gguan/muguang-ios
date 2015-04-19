@@ -42,6 +42,7 @@ class MGLogInViewController: UIViewController {
         var mainViewCoontroller = MGMainViewController();
         self.presentViewController(mainViewCoontroller, animated: true, completion: nil)
     }
+    
     /*
     // MARK: - Navigation
 

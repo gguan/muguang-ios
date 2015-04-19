@@ -14,35 +14,124 @@ import QuartzCore
 
 import ImageIO
 
+import GPUImage
+
 class MGPublishViewController: UIViewController {
 
+ 
     let captureSession = AVCaptureSession()
     var captureDevice    : AVCaptureDevice?
     var previewLayer     : AVCaptureVideoPreviewLayer?
     var stillImageOutput : AVCaptureStillImageOutput!
     
-    @IBOutlet weak var preview: UIView!
-    @IBOutlet weak var previewImage: UIImageView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var preview          : UIView!
+    @IBOutlet weak var previewImage     : UIImageView!
+    @IBOutlet weak var collectionView   : UICollectionView!
+    @IBOutlet weak var filteredImageView: FilteredImageView!
     
+    
+    let videoCamera: GPUImageVideoCamera
+    
+    /************GPU*****************/
+    @IBOutlet weak var filterView: UIImageView!
+    
+    /************常用滤镜*****************/
+    var filters = [CIFilter]()
+    let filterDescriptors: [(filterName: String, filterDisplayName: String)] = [
+        ("CIColorControls", "None"),
+        ("CIPhotoEffectMono", "Mono"),
+        ("CIPhotoEffectTonal", "Tonal"),
+        ("CIPhotoEffectNoir", "Noir"),
+        ("CIPhotoEffectFade", "Fade"),
+        ("CIPhotoEffectChrome", "Chrome"),
+        ("CIPhotoEffectProcess", "Process"),
+        ("CIPhotoEffectTransfer", "Transfer"),
+        ("CIPhotoEffectInstant", "Instant"),
+    ]
     
     let reuseIdentifier = "MGPhotoCell"
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    
+    
+    required init(coder aDecoder: NSCoder) {
         
-        //Capture Size
-        previewLayer?.frame = preview.bounds;
-        collectionView.backgroundColor = UIColor.blueColor()
+        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
+        videoCamera.outputImageOrientation = .Portrait;
+        
+        super.init(coder: aDecoder)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    var filterOperation: FilterOperationInterface? {
+        didSet {
+            self.configureView()
+        }
+    }
+    
+    func configureView() {
+//        if let currentFilterConfiguration = self.filterOperation {
+////            self.title = currentFilterConfiguration.titleName
+////            
+////            if let view = self.filterView {
+////                switch currentFilterConfiguration.filterOperationType {
+////                case .SingleInput:
+////                    videoCamera.addTarget((currentFilterConfiguration.filter as! GPUImageInput))
+////                    currentFilterConfiguration.filter.addTarget(view)
+////                case .Blend:
+////                    videoCamera.addTarget((currentFilterConfiguration.filter as! GPUImageInput))
+////                    let inputImage = UIImage(named:"WID-small.jpg")
+////                    self.blendImage = GPUImagePicture(image: inputImage)
+////                    self.blendImage?.addTarget((currentFilterConfiguration.filter as! GPUImageInput))
+////                    self.blendImage?.processImage()
+////                    currentFilterConfiguration.filter.addTarget(view)
+////                case let .Custom(filterSetupFunction:setupFunction):
+////                    let inputToFunction:(GPUImageOutput, GPUImageOutput?) = setupFunction(camera:videoCamera, outputView:view) // Type inference falls down, for now needs this hard cast
+////                    currentFilterConfiguration.configureCustomFilter(inputToFunction)
+////                }
+////                
+////                videoCamera.startCameraCapture()
+//            }
+//            
+//            // Hide or display the slider, based on whether the filter needs it
+//            if let slider = self.filterSlider {
+//                switch currentFilterConfiguration.sliderConfiguration {
+//                case .Disabled:
+//                    slider.hidden = true
+//                    //                case let .Enabled(minimumValue, initialValue, maximumValue, filterSliderCallback):
+//                case let .Enabled(minimumValue, maximumValue, initialValue):
+//                    slider.minimumValue = minimumValue
+//                    slider.maximumValue = maximumValue
+//                    slider.value = initialValue
+//                    slider.hidden = false
+//                    self.updateSliderValue()
+//                }
+//            }
+//            
+//        }
+    }
+
+    
+    
+    
+    // 初始化变量
+    func initVariables() {
+
+        previewImage.image = UIImage(named: kSampleImageName)
+        
+        collectionView.backgroundColor = UIColor.blueColor()
+
+        for descriptor in filterDescriptors {
+            filters.append(CIFilter(name: descriptor.filterName))
+        }
+        filteredImageView.layer.borderColor = UIColor.yellowColor().CGColor
+        filteredImageView.layer.borderWidth = 2
+        
+        filteredImageView.inputImage = UIImage(named: kSampleImageName)
+
+        filteredImageView.contentMode = .ScaleAspectFit
+        filteredImageView.filter = filters[0]
         
         captureSession.sessionPreset = AVCaptureSessionPresetHigh
-        
-        let devices = AVCaptureDevice.devices()
-        
         for device in AVCaptureDevice.devices() {
             // Make sure this particular device supports video
             if (device.hasMediaType(AVMediaTypeVideo)) {
@@ -55,6 +144,54 @@ class MGPublishViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    // 初始化视图size
+    func initViewVariables () {
+        
+        preview.backgroundColor = UIColor.greenColor()
+        filteredImageView.backgroundColor = UIColor.yellowColor()
+        
+        //Capture Size
+        previewLayer?.frame = preview.bounds;
+        
+    }
+    
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.initViewVariables()
+
+//        filteredImageView.frame = CGRectMake(0, 0, 50, 50)
+//        filteredImageView.updateConstraintsIfNeeded()
+        
+        
+
+        var customFilter = GPUImageFilter(fragmentShaderFromFile:"Shader1")
+        
+        var filteredVideoView = GPUImageView(frame: CGRectMake(0.0, 0.0, 200, 200))
+        self.view.addSubview(filteredVideoView)
+        //self.view.bringSubviewToFront(filteredVideoView)
+        filteredVideoView.backgroundColor = UIColor.redColor()
+        
+        customFilter.addTarget(filteredVideoView)
+        self.videoCamera.addTarget(customFilter)
+        
+        self.videoCamera.startCameraCapture()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.initVariables()
+        
+        filteredImageView.hidden = true
+        preview.hidden = true
+        
+        
+        
     }
 
     func beginSession() {
@@ -71,14 +208,14 @@ class MGPublishViewController: UIViewController {
         previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
         self.preview.layer.addSublayer(previewLayer)
         self.preview.backgroundColor = UIColor.redColor()
-        //拍照
-        stillImageOutput = AVCaptureStillImageOutput()
-        self.stillImageOutput.outputSettings =
-            NSDictionary(object: AVVideoCodecJPEG, forKey: AVVideoCodecKey) as [NSObject : AnyObject]
-        captureSession.addOutput(self.stillImageOutput)
-        
-        //运行取景器
-        captureSession.startRunning()
+//        //拍照
+//        stillImageOutput = AVCaptureStillImageOutput()
+//        self.stillImageOutput.outputSettings =
+//            NSDictionary(object: AVVideoCodecJPEG, forKey: AVVideoCodecKey) as [NSObject : AnyObject]
+//        captureSession.addOutput(self.stillImageOutput)
+//        
+//        //运行取景器
+//        captureSession.startRunning()
     }
     
     func configureDevice() {

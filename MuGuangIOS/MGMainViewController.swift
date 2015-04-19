@@ -39,7 +39,7 @@ class MGMainViewController: MGBaseViewController {
             make.edges.equalTo()(self.view)
         }
         
-        UIVisualEffect
+        
     }
     
     override func viewWillAppear(animated: Bool) {
