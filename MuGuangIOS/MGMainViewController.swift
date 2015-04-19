@@ -18,7 +18,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
     let pictureView: UIImageView = UIImageView(frame: CGRectZero)
     let blurView: FXBlurView = FXBlurView(frame: CGRectZero)
     // 相机视图
-    let cameraView: MGCameraView = MGCameraView(frame: CGRectZero)
+    var cameraView: MGCameraView = MGCameraView(frame: CGRectZero)
     // 比例尺的标签
     let scaleLabel: UILabel = {
         var label = UILabel(frame: CGRectZero)
@@ -38,6 +38,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
         pictureView.hidden = true
         blurView.hidden = true
         blurView.userInteractionEnabled = false
+
         cameraView.addTapAction { (isRunning) -> Void in
             if isRunning {
                 // 拍照
@@ -179,6 +180,10 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
         }
     }
     
+//    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+//        self.cameraView.bounds.size = size
+//    }
+    
     // 滑杆
     func makeVerticalSlider() {
         var slider = MGVerticalSlider(frame: CGRectMake(0, 0, 300, 30))
@@ -201,5 +206,4 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
     func awesomeMenu(menu: AwesomeMenu!, didSelectIndex idx: Int) {
         println(idx)
     }
-    
 }

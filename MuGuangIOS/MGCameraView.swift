@@ -8,41 +8,66 @@
 
 import UIKit
 import AVFoundation
-import ImageIO
 import CoreImage
 
 /**
  *  主页面的相机类
  */
-class MGCameraView: UIView {
-    let captureSession: AVCaptureSession = AVCaptureSession()
-    let stillImageOutput: AVCaptureStillImageOutput! = AVCaptureStillImageOutput()
-    let previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer()
+class MGCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
+    var captureSession: AVCaptureSession!
+    var previewLayer: CALayer!
+    var filter: CIFilter = CIFilter(name: "CIColorInvert")
+    lazy var filterNames: [String] = {
+        return ["CIColorInvert","CIPhotoEffectMono","CIPhotoEffectInstant","CIPhotoEffectTransfer"]
+        }()
+    lazy var context: CIContext = {
+        let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
+        let options = [kCIContextWorkingColorSpace : NSNull()]
+        return CIContext(EAGLContext: eaglContext, options: options)
+        }()
     // 闭包回调
     var tapAction: ((isRunning: Bool) -> Void)? = nil
 
     override init(frame: CGRect) {
-        
-        // 配置相机
-        captureSession.sessionPreset = AVCaptureSessionPresetPhoto
-        var device: AVCaptureDevice?
-        // 加判断防止模拟器crash
+        super.init(frame: frame)
+
+        // 防止模拟器crash
         #if arch(i386) || arch(x86_64)
-            //simulator
+            // simulator
             #else
-            //device
-            for devi: AnyObject in AVCaptureDevice.devices() {
-                if devi.position == AVCaptureDevicePosition.Back {
-                    device = devi as? AVCaptureDevice
-                }
-            }
+            // device
+            self.setupCaptureSession()
         #endif
+        previewLayer = CALayer()
+        previewLayer.anchorPoint = CGPointZero
+        previewLayer.masksToBounds = true
+
+        self.layer.insertSublayer(previewLayer, atIndex: 0)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    /**
+     *配置相机
+     */
+    func setupCaptureSession() {
+        captureSession = AVCaptureSession()
+        captureSession.beginConfiguration()
+        captureSession.sessionPreset = AVCaptureSessionPresetHigh
+        var device: AVCaptureDevice?
+        for devi: AnyObject in AVCaptureDevice.devices() {
+            if devi.position == AVCaptureDevicePosition.Back {
+                device = devi as? AVCaptureDevice
+            }
+        }
+        
         if let captureDevice = device {
             if captureDevice.lockForConfiguration(nil) {
                 if captureDevice.isFocusModeSupported(.AutoFocus) {
                     captureDevice.focusMode = .AutoFocus;
                 }
-                
                 if captureDevice.isExposureModeSupported(.ContinuousAutoExposure) {
                     captureDevice.exposureMode = .ContinuousAutoExposure;
                 }
@@ -53,24 +78,25 @@ class MGCameraView: UIView {
             if captureInput == nil {
                 println("open camera error! \(error?.localizedDescription)")
             }
-            captureSession.addInput(captureInput)
+            if captureSession.canAddInput(captureInput) {
+                captureSession.addInput(captureInput)
+            }
         }
+        let dataOutput: AVCaptureVideoDataOutput = AVCaptureVideoDataOutput()
+        dataOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey : kCVPixelFormatType_32BGRA]
+        dataOutput.alwaysDiscardsLateVideoFrames = true
 
-        stillImageOutput.outputSettings = NSDictionary(object: AVVideoCodecJPEG, forKey: AVVideoCodecKey) as [NSObject : AnyObject]
-        previewLayer.session = captureSession
-        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        previewLayer.masksToBounds = true
-        super.init(frame: frame)
-        self.layer.addSublayer(previewLayer)
+        if captureSession.canAddOutput(dataOutput) {
+            captureSession.addOutput(dataOutput)
+        }
+        
+        let queue = dispatch_queue_create("VideoQueue", DISPATCH_QUEUE_SERIAL)
+        dataOutput.setSampleBufferDelegate(self, queue: queue)
+        captureSession.commitConfiguration()
         
         // 添加点击手势
         var tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("methodForTapGestureRecognizer:"))
         self.addGestureRecognizer(tapGR)
-        self.captureSession.addOutput(stillImageOutput)
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
     
     // 添加点击后执行的方法
@@ -105,22 +131,53 @@ class MGCameraView: UIView {
      *  拍照
      */
     func takePhoto(completion: (aImage: UIImage?) -> Void) {
-        if let videoConnection = self.stillImageOutput.connectionWithMediaType(AVMediaTypeVideo) {
-            self.stillImageOutput.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (imageBuffer:CMSampleBuffer!, error: NSError!) -> Void in
-                if let attachments = CMGetAttachment(imageBuffer, kCGImagePropertyExifDictionary, nil) {
-                    var imageData: NSData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageBuffer)
-                    var image = UIImage(data: imageData)
-                    completion(aImage: image)
-//                    completion(aImage: UIImage(data: UIImageJPEGRepresentation(image, 0.05)))
-                    
-                }
-            })
-        }
+//        if let videoConnection = self.stillImageOutput.connectionWithMediaType(AVMediaTypeVideo) {
+//            self.stillImageOutput.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (imageBuffer:CMSampleBuffer!, error: NSError!) -> Void in
+//                if let attachments = CMGetAttachment(imageBuffer, kCGImagePropertyExifDictionary, nil) {
+//                    var imageData: NSData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageBuffer)
+//                    var image = UIImage(data: imageData)
+//                    completion(aImage: image)
+////                    completion(aImage: UIImage(data: UIImageJPEGRepresentation(image, 0.05)))
+//                    
+//                }
+//            })
+//        }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.previewLayer.frame = self.frame
+        self.previewLayer.bounds = self.bounds
+    }
+
+    // MARK: - AVCaptureVideoDataOutputSampleBufferDelegate
+    func captureOutput(captureOutput: AVCaptureOutput!,didOutputSampleBuffer sampleBuffer: CMSampleBuffer!,fromConnection connection: AVCaptureConnection!) {
+        autoreleasepool {
+            let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+            
+            var outputImage = CIImage(CVPixelBuffer: imageBuffer)
+            
+            self.filter.setValue(outputImage, forKey: kCIInputImageKey)
+            outputImage = self.filter.outputImage
+            
+            let orientation = UIDevice.currentDevice().orientation
+            var t: CGAffineTransform!
+            if orientation == UIDeviceOrientation.Portrait {
+                t = CGAffineTransformMakeRotation(CGFloat(-M_PI / 2.0))
+            } else if orientation == UIDeviceOrientation.PortraitUpsideDown {
+                t = CGAffineTransformMakeRotation(CGFloat(M_PI / 2.0))
+            } else if (orientation == UIDeviceOrientation.LandscapeRight) {
+                t = CGAffineTransformMakeRotation(CGFloat(M_PI))
+            } else {
+                t = CGAffineTransformMakeRotation(0)
+            }
+            outputImage = outputImage.imageByApplyingTransform(t)
+            
+            let cgImage = self.context.createCGImage(outputImage, fromRect: outputImage.extent())
+            
+            dispatch_sync(dispatch_get_main_queue(), {
+                self.previewLayer.contents = cgImage
+            })
+        }
     }
     
     /*
