@@ -16,10 +16,8 @@ import CoreImage
 class MGCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: CALayer!
-    var filter: CIFilter = CIFilter(name: "CIColorInvert")
-    lazy var filterNames: [String] = {
-        return ["CIColorInvert","CIPhotoEffectMono","CIPhotoEffectInstant","CIPhotoEffectTransfer"]
-        }()
+    // filter: "CIColorInvert" : 反色， "CIPhotoEffectFade" : 褪色
+    var filter: CIFilter = CIFilter(name: "CIPhotoEffectFade")
     lazy var context: CIContext = {
         let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
         let options = [kCIContextWorkingColorSpace : NSNull()]
@@ -50,7 +48,7 @@ class MGCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
     }
     
     /**
-     *配置相机
+     *  配置相机
      */
     func setupCaptureSession() {
         captureSession = AVCaptureSession()
@@ -105,7 +103,7 @@ class MGCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
     }
     
     /**
-     *点击手势
+     *  点击手势
      */
     func methodForTapGestureRecognizer(tap: UITapGestureRecognizer!) {
         if let action = self.tapAction {
@@ -114,14 +112,14 @@ class MGCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
     }
     
     /**
-     *开始运行
+     *  开始运行
      */
     func startRunning() {
         self.captureSession.startRunning()
     }
     
     /**
-     *停止运行
+     *  停止运行
      */
     func stopRunning() {
         self.captureSession.stopRunning()
@@ -130,18 +128,16 @@ class MGCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
     /**
      *  拍照
      */
-    func takePhoto(completion: (aImage: UIImage?) -> Void) {
-//        if let videoConnection = self.stillImageOutput.connectionWithMediaType(AVMediaTypeVideo) {
-//            self.stillImageOutput.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (imageBuffer:CMSampleBuffer!, error: NSError!) -> Void in
-//                if let attachments = CMGetAttachment(imageBuffer, kCGImagePropertyExifDictionary, nil) {
-//                    var imageData: NSData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageBuffer)
-//                    var image = UIImage(data: imageData)
-//                    completion(aImage: image)
-////                    completion(aImage: UIImage(data: UIImageJPEGRepresentation(image, 0.05)))
-//                    
-//                }
-//            })
-//        }
+    func takePhoto(completion: (aImage: CGImage?) -> Void) {
+        self.stopRunning()
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            var cg_image = self.previewLayer.contents as! CGImage
+            if let ui_image = UIImageJPEGRepresentation(UIImage(CGImage: cg_image), 0.5) {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(aImage: UIImage(data: ui_image)?.CGImage)
+                })
+            }
+        })
     }
     
     override func layoutSubviews() {

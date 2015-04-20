@@ -15,7 +15,6 @@ let kScaleLabelHeight: CGFloat = 30
 class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
     
     // 模糊背景
-    let pictureView: UIImageView = UIImageView(frame: CGRectZero)
     let blurView: FXBlurView = FXBlurView(frame: CGRectZero)
     // 相机视图
     var cameraView: MGCameraView = MGCameraView(frame: CGRectZero)
@@ -35,7 +34,6 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
         
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
-        pictureView.hidden = true
         blurView.hidden = true
         blurView.userInteractionEnabled = false
 
@@ -43,50 +41,28 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
             if isRunning {
                 // 拍照
                 self.cameraView.takePhoto({ (aImage) -> Void in
-                    // MARK:模糊效果待优化
-                    self.pictureView.image = aImage
-                    self.pictureView.hidden = false
+                    // 模糊效果
                     self.blurView.hidden = false
-//                    UIView.animateWithDuration(2, animations: { () -> Void in
-//                        self.blurView.blurRadius = 40
-//                    })
+                    self.blurView.alpha = 0
+                    self.blurView.blurRadius = 40
+                    UIView.animateWithDuration(0.35, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                        self.blurView.alpha = 1
+                    }, completion: nil)
                     
-                    UIView.animateWithDuration(2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-                        self.blurView.blurRadius = 40
-                    }, completion: { (finsih) -> Void in
-                        
-                    })
-                    
-//                    if let image = aImage {
-//                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-//                            var context = CIContext(options: nil)
-//                            var inputImage = CIImage(image: image)
-//                            var filter = CIFilter(name: "CIGaussianBlur", withInputParameters: [kCIInputImageKey:inputImage, "inputRadius" : 10])
-//                            var outputImage = filter.outputImage
-//                            var outImage = context.createCGImage(outputImage, fromRect: outputImage.extent())
-//                            
-//                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                                self.blurView.image = UIImage(CGImage: outImage)
-//                                self.blurView.hidden = false
-//                            })
-//                        })
-//                    }
                 })
-                self.cameraView.stopRunning()
             } else {
                 self.cameraView.startRunning()
-                self.pictureView.hidden = true
                 self.blurView.hidden = true
                 self.blurView.blurRadius = 0
             }
         }
         
         self.view.addSubview(self.cameraView)
-        self.view.addSubview(self.pictureView)
         self.view.addSubview(self.blurView)
         self.makeAwesomeMenu()
         self.makeVerticalSlider()
         self.view.addSubview(self.scaleLabel)
+        
         /**
          *  添加布局
          */
@@ -94,14 +70,11 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
             make.edges.equalTo()(self.view)
         }
         
-        self.pictureView.mas_makeConstraints { make in
-            make.edges.equalTo()(self.view)
-        }
-        
         self.blurView.mas_makeConstraints { make in
             make.edges.equalTo()(self.view)
         }
         
+        // 发布按钮
         var button = UIButton(frame: CGRectZero)
         button.setTitle("发布", forState: .Normal)
         button.setTitleColor(UIColor.blueColor(), forState: .Normal)
@@ -124,15 +97,6 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
             self.presentViewController(vc, animated: true, completion: nil)
         }
     }
-    
-    // view转image
-//    func getImageFromView(view: UIView!) -> UIImage {
-//        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, view.layer.contentsScale)
-//        view.layer.renderInContext(UIGraphicsGetCurrentContext())
-//        let image = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//        return image
-//    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
