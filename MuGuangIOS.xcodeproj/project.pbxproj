@@ -689,8 +689,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 				);
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "73acbd08-c9e5-45c9-a150-73c2724880b5";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MuGuangIOS/MuGuangIOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -718,7 +719,7 @@
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "73acbd08-c9e5-45c9-a150-73c2724880b5";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MuGuangIOS/MuGuangIOS-Bridging-Header.h";
 			};
 			name = Release;

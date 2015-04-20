@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+//import MapKit
 
 /**
  *  提供位置服务
@@ -26,6 +27,7 @@ class MGLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     let locationManager: CLLocationManager = CLLocationManager()
+    weak var delegate: MGLocationManagerDelegate?
     
     override init() {
         super.init()
@@ -56,15 +58,22 @@ class MGLocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    // 停止定位服务
+    func stopUpdating() {
+        self.locationManager.stopUpdatingHeading()
+        self.locationManager.stopUpdatingLocation()
+    }
+    
     // MARK: CLLocationManagerDelegate
     // 位置更新
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        println(locations)
+//        println(locations)
+        self.delegate?.locationManagerDidUpdateLocations!(locations[0] as! CLLocation)
     }
     
     // 方向更新（正北为0度）
     func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
-        println(newHeading)
+//        println(newHeading)
     }
     
     // 方向更新过滤
@@ -84,6 +93,11 @@ class MGLocationManager: NSObject, CLLocationManagerDelegate {
                 manager.startUpdatingLocation()
             }
         }
+    }
+    
+    // 经纬度反向解析
+    func startReverseGeoder(location: CLLocation) {
+//        var geoCoder: MKReverseGeocoder?
     }
 }
 

@@ -8,12 +8,13 @@
 
 import UIKit
 import CoreLocation
+import CoreMotion
 
 let kScaleLabelHeight: CGFloat = 30
 /**
  *  主页面
  */
-class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
+class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocationManagerDelegate {
     
     // 模糊背景
     let blurView: FXBlurView = FXBlurView(frame: CGRectZero)
@@ -30,6 +31,13 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
         label.textAlignment = .Center
         return label
     }()
+    // 加速计
+    let motionManager: CMMotionManager = CMMotionManager()
+
+    #if DEBUG
+        // 加速计、经纬度数据展示图
+        let monitorView: MGMonitorView = MGMonitorView(frame: CGRectZero)
+    #endif
     
     override func viewDidLoad() {
         
@@ -91,6 +99,17 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
         
         // 开启定位
         self.setupLocationService()
+        // 开启加速计
+        self.setupMotionManager()
+        
+        #if DEBUG
+            self.view.addSubview(self.monitorView)
+            self.monitorView.mas_makeConstraints { make in
+                make.top.equalTo()(self.view).offset()(50)
+                make.width.equalTo()(self.view)
+                make.height.equalTo()(160)
+            }
+        #endif
     }
     
     // 按钮的回调
@@ -113,9 +132,11 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         /**
-         *  停止运行相机（页面消失后）
+         *  停止运行相机（页面消失后）,停止加速计，停止定位
          */
         self.cameraView.stopRunning()
+        self.motionManager.stopAccelerometerUpdates()
+        MGLocationManager.shared.stopUpdating()
     }
     
     // 初始化扇形菜单
@@ -175,8 +196,28 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
         println(idx)
     }
     
+    // MARK: 加速计
+    func setupMotionManager() {
+        if !self.motionManager.accelerometerAvailable {
+            println("没有加速计")
+            return
+        }
+        // 更新频率是10Hz
+        self.motionManager.accelerometerUpdateInterval = 1
+        self.motionManager.startAccelerometerUpdates()
+
+        self.motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue()) { (latestAcc, error) -> Void in
+//            println(latestAcc)
+            var accData = latestAcc as CMAccelerometerData
+            #if DEBUG
+                self.monitorView.updateMotionLabel(accData.acceleration)
+            #endif
+        }
+    }
+    
     // MARK: 定位服务
     func setupLocationService() {
+        MGLocationManager.shared.delegate = self
         switch CLLocationManager.authorizationStatus() {
         case .AuthorizedWhenInUse, .AuthorizedAlways:
             // 开始定位
@@ -202,5 +243,12 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
             alertController.addAction(openAction)
             self.presentViewController(alertController, animated: true, completion: nil)
         }
+    }
+    
+    // MARK: MGLocationManagerDelegate
+    func locationManagerDidUpdateLocations(location: CLLocation!) {
+        #if DEBUG
+            self.monitorView.updateLocationLabel(location)
+        #endif
     }
 }
