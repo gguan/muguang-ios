@@ -105,6 +105,12 @@
                                             <rect key="frame" x="200" y="41" width="153" height="128"/>
                                         </variation>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="duckling.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="SGK-tn-KB7" customClass="UICDisplayImageView">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="160" y="8" width="41" height="38"/>
+                                        </variation>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -131,6 +137,7 @@
                                         <exclude reference="bF3-3R-ely"/>
                                         <exclude reference="Tng-As-fSr"/>
                                         <exclude reference="r9o-aH-eYv"/>
+                                        <exclude reference="SGK-tn-KB7"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="79P-ex-uZ4"/>
@@ -151,6 +158,7 @@
                                         <include reference="bF3-3R-ely"/>
                                         <include reference="Tng-As-fSr"/>
                                         <include reference="r9o-aH-eYv"/>
+                                        <include reference="SGK-tn-KB7"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="79P-ex-uZ4"/>
@@ -172,7 +180,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9G-TZ-k0s">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" title="take">
+                                        <state key="normal" title="拍照">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <variation key="widthClass=compact" fixedFrame="YES">
@@ -337,9 +345,11 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="captureButton" destination="T9G-TZ-k0s" id="w5F-mY-0sn"/>
                         <outlet property="collectionView" destination="AuL-CD-UhX" id="mZh-Rx-b4b"/>
                         <outlet property="filterView" destination="r9o-aH-eYv" id="axS-Cb-k62"/>
                         <outlet property="filteredImageView" destination="Tng-As-fSr" id="J4e-Pw-zl4"/>
+                        <outlet property="mV_displayImageView" destination="SGK-tn-KB7" id="MtD-HO-ger"/>
                         <outlet property="preview" destination="mYP-Ap-uf1" id="hAB-5R-3Co"/>
                         <outlet property="previewImage" destination="bF3-3R-ely" id="R7c-iF-nCe"/>
                     </connections>
@@ -366,4 +376,7 @@
             <point key="canvasLocation" x="1642.5" y="164"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="duckling.jpg" width="1280" height="800"/>
+    </resources>
 </document>

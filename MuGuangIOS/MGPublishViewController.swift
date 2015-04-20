@@ -16,7 +16,9 @@ import ImageIO
 
 import GPUImage
 
-class MGPublishViewController: UIViewController {
+import AssetsLibrary
+
+class MGPublishViewController: UIViewController, pg_edit_sdk_controller_delegate {
 
  
     let captureSession   = AVCaptureSession()
@@ -24,6 +26,7 @@ class MGPublishViewController: UIViewController {
     var previewLayer     : AVCaptureVideoPreviewLayer?
     var stillImageOutput : AVCaptureStillImageOutput!
     
+    @IBOutlet weak var captureButton: UIButton!
     @IBOutlet weak var preview          : UIView!
     @IBOutlet weak var previewImage     : UIImageView!
     @IBOutlet weak var collectionView   : UICollectionView!
@@ -36,6 +39,12 @@ class MGPublishViewController: UIViewController {
     @IBOutlet weak var filterView: UIImageView!
     
     var stillCamera: GPUImageStillCamera?
+    var filter: GPUImageSketchFilter? //默认图片的Filter
+    
+    /************Camera 360*****************/
+    
+    @IBOutlet weak var mV_displayImageView: UICDisplayImageView!
+    
     
     /************常用滤镜*****************/
     var filters = [CIFilter]()
@@ -142,20 +151,26 @@ class MGPublishViewController: UIViewController {
     func initImageCamera () {
         stillCamera = GPUImageStillCamera()
         stillCamera?.outputImageOrientation = .Portrait
-        var filter = GPUImageGammaFilter()
+        filter = GPUImageSketchFilter()
+        filter?.forceProcessingAtSize(preview.frame.size)
         stillCamera?.addTarget(filter)
     
         let pp = GPUImageView(frame: preview.bounds)
+        
         preview.addSubview(pp)
-        filter.addTarget(pp)
+        filter?.addTarget(pp)
+        
         stillCamera?.startCameraCapture()
     }
+    
     
     // 初始化变量
     func initVariables() {
         
         //初始化视频取景器
         self.initVideoCamera()
+        
+        
         
         previewImage.image = UIImage(named: kSampleImageName)
         
@@ -253,10 +268,8 @@ class MGPublishViewController: UIViewController {
         }
     }
     
-    
-    //拍照
-    @IBAction func capture(sender: AnyObject) {
-        
+    // 普通拍照（苹果）
+    func commonCapture () {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
             var videoConnection :AVCaptureConnection?
             if let videoConnection = self.stillImageOutput.connectionWithMediaType(AVMediaTypeVideo){
@@ -272,9 +285,51 @@ class MGPublishViewController: UIViewController {
                     }
                 })
             }
-
+            
         }
+    }
+    
+    
+    func GUIImageCapture() {
+        self.captureButton.enabled = false
+        self.stillCamera?.capturePhotoAsJPEGProcessedUpToFilter(filter, withCompletionHandler: { (processedJPEG:NSData!, error1:NSError!) -> Void in
+            var library:ALAssetsLibrary = ALAssetsLibrary()
+            library.writeImageDataToSavedPhotosAlbum(processedJPEG, metadata: self.stillCamera?.currentCaptureMetadata, completionBlock: { (assetURL:NSURL!, error2:NSError!) -> Void in
+                if (error2 != nil) {
+                    println("ERROR: the image failed to be written")
+                }else {
+                    println("PHOTO SAVED - assetURL:\(assetURL)")
+                }
+            })
+            runOnMainQueueWithoutDeadlocking({ () -> Void in
+                self.captureButton.enabled = true
+            })
+        })
 
+    }
+    //拍照
+    @IBAction func capture(sender: AnyObject) {
+        //AVFoundation 拍照
+        //self.commonCapture()
+        
+        //GUIImage
+        //拍照保存到相册
+        //self.GUIImageCapture()
+        
+        //Camera 360
+        self.mV_displayImageView.pSetupOrigImage(UIImage(named: "duckling.jpg"))
+        
+        let obj = pg_edit_sdk_controller_object() as pg_edit_sdk_controller_object?
+        
+        if obj != nil  {
+            obj!.pCSA_fullImage = self.mV_displayImageView.mOrigImage.copy() as! UIImage
+        }
+        
+        let editCtl = pg_edit_sdk_controller(editObject: obj, withDelegate: self)// as pg_edit_sdk_controller
+        
+        if editCtl != nil {
+            self.presentViewController(editCtl, animated: true, completion: nil)
+        }
     }
 
     //重新拍照
@@ -298,4 +353,13 @@ class MGPublishViewController: UIViewController {
     }
     */
 
+    
+    //MARK: pg_edit_sdk_controller delegate methods
+    func dgPhotoEditingViewControllerDidFinish(pController: UIViewController!, object: pg_edit_sdk_controller_object!) {
+        
+    }
+    
+    func dgPhotoEditingViewControllerDidCancel(pController: UIViewController!, withClickSaveButton isClickSaveBtn: Bool) {
+        
+    }
 }

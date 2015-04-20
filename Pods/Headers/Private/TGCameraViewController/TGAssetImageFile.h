@@ -1,0 +1,1 @@
+../../../TGCameraViewController/TGCameraViewController/Model/TGAssetImageFile.h

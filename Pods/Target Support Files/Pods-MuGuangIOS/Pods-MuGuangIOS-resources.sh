@@ -57,6 +57,22 @@ install_resource()
       ;;
   esac
 }
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "TGCameraViewController/TGCameraViewController/View/Base.lproj/TGCameraAuthorizationViewController.xib"
+  install_resource "TGCameraViewController/TGCameraViewController/View/Base.lproj/TGCameraViewController.xib"
+  install_resource "TGCameraViewController/TGCameraViewController/View/Base.lproj/TGPhotoViewController.xib"
+  install_resource "TGCameraViewController/TGCameraViewController/View/de.lproj/TGCameraAuthorizationViewController.strings"
+  install_resource "TGCameraViewController/TGCameraViewController/View/pt-BR.lproj/TGCameraAuthorizationViewController.strings"
+  install_resource "TGCameraViewController/TGCameraViewController/TGCameraViewController.xcassets"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "TGCameraViewController/TGCameraViewController/View/Base.lproj/TGCameraAuthorizationViewController.xib"
+  install_resource "TGCameraViewController/TGCameraViewController/View/Base.lproj/TGCameraViewController.xib"
+  install_resource "TGCameraViewController/TGCameraViewController/View/Base.lproj/TGPhotoViewController.xib"
+  install_resource "TGCameraViewController/TGCameraViewController/View/de.lproj/TGCameraAuthorizationViewController.strings"
+  install_resource "TGCameraViewController/TGCameraViewController/View/pt-BR.lproj/TGCameraAuthorizationViewController.strings"
+  install_resource "TGCameraViewController/TGCameraViewController/TGCameraViewController.xcassets"
+fi
 
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then
