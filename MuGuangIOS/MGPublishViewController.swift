@@ -19,7 +19,7 @@ import GPUImage
 class MGPublishViewController: UIViewController {
 
  
-    let captureSession = AVCaptureSession()
+    let captureSession   = AVCaptureSession()
     var captureDevice    : AVCaptureDevice?
     var previewLayer     : AVCaptureVideoPreviewLayer?
     var stillImageOutput : AVCaptureStillImageOutput!
@@ -29,11 +29,13 @@ class MGPublishViewController: UIViewController {
     @IBOutlet weak var collectionView   : UICollectionView!
     @IBOutlet weak var filteredImageView: FilteredImageView!
     
-    
-    let videoCamera: GPUImageVideoCamera
-    
     /************GPU*****************/
+    
+    var videoCamera: GPUImageVideoCamera?
+    
     @IBOutlet weak var filterView: UIImageView!
+    
+    var stillCamera: GPUImageStillCamera?
     
     /************常用滤镜*****************/
     var filters = [CIFilter]()
@@ -52,13 +54,10 @@ class MGPublishViewController: UIViewController {
     let reuseIdentifier = "MGPhotoCell"
     
     
-    
     required init(coder aDecoder: NSCoder) {
         
-        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
-        videoCamera.outputImageOrientation = .Portrait;
-        
         super.init(coder: aDecoder)
+
     }
     
     
@@ -110,12 +109,54 @@ class MGPublishViewController: UIViewController {
 //        }
     }
 
+    /**
+    *  初始化视频取景器
+    */
+    func initVideoCamera () {
+        // Video Camera 取景
+        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
+        if videoCamera != nil {
+            videoCamera!.outputImageOrientation = .Portrait
+        }
+    }
+    
+    /**
+     *  打开视频取景器
+     */
+    func startVideoCamera () {
+        var customFilter        = GPUImageFilter(fragmentShaderFromFile:"Shader1")
+        var filteredVideoView   = GPUImageView(frame: CGRectZero)
+        filteredVideoView.frame = preview.frame;
+        preview.backgroundColor = UIColor.yellowColor()
+        self.view.addSubview(filteredVideoView)
+        filteredVideoView.backgroundColor = UIColor.redColor()
+        customFilter.addTarget(filteredVideoView)
+        self.videoCamera?.addTarget(customFilter)
+        self.videoCamera?.startCameraCapture()
+    }
     
     
+    /**
+    *  初始化图片取景器
+    */
+    func initImageCamera () {
+        stillCamera = GPUImageStillCamera()
+        stillCamera?.outputImageOrientation = .Portrait
+        var filter = GPUImageGammaFilter()
+        stillCamera?.addTarget(filter)
+    
+        let pp = GPUImageView(frame: preview.bounds)
+        preview.addSubview(pp)
+        filter.addTarget(pp)
+        stillCamera?.startCameraCapture()
+    }
     
     // 初始化变量
     func initVariables() {
-
+        
+        //初始化视频取景器
+        self.initVideoCamera()
+        
         previewImage.image = UIImage(named: kSampleImageName)
         
         collectionView.backgroundColor = UIColor.blueColor()
@@ -163,35 +204,21 @@ class MGPublishViewController: UIViewController {
         super.viewDidAppear(animated)
         
         self.initViewVariables()
-
-//        filteredImageView.frame = CGRectMake(0, 0, 50, 50)
-//        filteredImageView.updateConstraintsIfNeeded()
         
+        ////self.startVideoCamera()
         
-
-        var customFilter = GPUImageFilter(fragmentShaderFromFile:"Shader1")
-        
-        var filteredVideoView = GPUImageView(frame: CGRectMake(0.0, 0.0, 200, 200))
-        self.view.addSubview(filteredVideoView)
-        //self.view.bringSubviewToFront(filteredVideoView)
-        filteredVideoView.backgroundColor = UIColor.redColor()
-        
-        customFilter.addTarget(filteredVideoView)
-        self.videoCamera.addTarget(customFilter)
-        
-        self.videoCamera.startCameraCapture()
+        self.initImageCamera()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /**
+        *  初始化变量
+        */
         self.initVariables()
         
-        filteredImageView.hidden = true
-        preview.hidden = true
-        
-        
-        
+    
     }
 
     func beginSession() {
