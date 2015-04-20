@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D0267331AE4CCD8004FE669 /* pg_edit_sdk_cdb_piratesdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D02672F1AE4CCD8004FE669 /* pg_edit_sdk_cdb_piratesdk.framework */; };
-		3D0267341AE4CCD8004FE669 /* pg_edit_sdk_common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0267301AE4CCD8004FE669 /* pg_edit_sdk_common.framework */; };
-		3D0267361AE4CCD8004FE669 /* PhotoEditFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0267321AE4CCD8004FE669 /* PhotoEditFramework.framework */; };
 		3D0267381AE4CCF0004FE669 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0267371AE4CCF0004FE669 /* CoreMotion.framework */; };
 		3D02673A1AE4CCF7004FE669 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0267391AE4CCF7004FE669 /* AVFoundation.framework */; };
 		3D02673C1AE4CD01004FE669 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D02673B1AE4CD01004FE669 /* CoreMedia.framework */; };
@@ -17,9 +14,12 @@
 		3D0267401AE4CD12004FE669 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D02673F1AE4CD12004FE669 /* CoreGraphics.framework */; };
 		3D0267421AE4CD19004FE669 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0267411AE4CD19004FE669 /* CoreImage.framework */; };
 		3D0267441AE4CD3B004FE669 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0267431AE4CD3B004FE669 /* libstdc++.6.dylib */; };
-		3D0267461AE4CD87004FE669 /* pg_edit_sdk_resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D0267451AE4CD87004FE669 /* pg_edit_sdk_resource.bundle */; };
 		3D0267481AE4CF00004FE669 /* MGPublisherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0267471AE4CF00004FE669 /* MGPublisherViewController.swift */; };
 		3D02674A1AE4D0CA004FE669 /* MGCamera360.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D0267491AE4D0CA004FE669 /* MGCamera360.mm */; };
+		3D02674C1AE4D4D9004FE669 /* pg_edit_sdk_resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D02674B1AE4D4D9004FE669 /* pg_edit_sdk_resource.bundle */; };
+		3D02674D1AE4D4EE004FE669 /* pg_edit_sdk_cdb_piratesdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D02672F1AE4CCD8004FE669 /* pg_edit_sdk_cdb_piratesdk.framework */; };
+		3D02674E1AE4D4EE004FE669 /* pg_edit_sdk_common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0267301AE4CCD8004FE669 /* pg_edit_sdk_common.framework */; };
+		3D02674F1AE4D4EE004FE669 /* PhotoEditFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0267321AE4CCD8004FE669 /* PhotoEditFramework.framework */; };
 		3D9DC8B61AE110B60022F9C1 /* FilterOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9DC8B41AE110B50022F9C1 /* FilterOperations.swift */; };
 		3D9DC8B71AE110B60022F9C1 /* FilterOperationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9DC8B51AE110B50022F9C1 /* FilterOperationTypes.swift */; };
 		3D9DC8BD1AE11A140022F9C1 /* Shader1.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 3D9DC8BC1AE11A140022F9C1 /* Shader1.fsh */; };
@@ -115,9 +115,9 @@
 		3D02673F1AE4CD12004FE669 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3D0267411AE4CD19004FE669 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		3D0267431AE4CD3B004FE669 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
-		3D0267451AE4CD87004FE669 /* pg_edit_sdk_resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = pg_edit_sdk_resource.bundle; path = ../camera360/pg_edit_sdk_resource.bundle; sourceTree = "<group>"; };
 		3D0267471AE4CF00004FE669 /* MGPublisherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublisherViewController.swift; sourceTree = "<group>"; };
 		3D0267491AE4D0CA004FE669 /* MGCamera360.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGCamera360.mm; sourceTree = "<group>"; };
+		3D02674B1AE4D4D9004FE669 /* pg_edit_sdk_resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = pg_edit_sdk_resource.bundle; path = ../camera360/pg_edit_sdk_resource.bundle; sourceTree = "<group>"; };
 		3D473EA41AE49CEA00554BF7 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = GPUImage.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3D9DC8B41AE110B50022F9C1 /* FilterOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterOperations.swift; sourceTree = "<group>"; };
 		3D9DC8B51AE110B50022F9C1 /* FilterOperationTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterOperationTypes.swift; sourceTree = "<group>"; };
@@ -177,6 +177,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D02674D1AE4D4EE004FE669 /* pg_edit_sdk_cdb_piratesdk.framework in Frameworks */,
+				3D02674E1AE4D4EE004FE669 /* pg_edit_sdk_common.framework in Frameworks */,
+				3D02674F1AE4D4EE004FE669 /* PhotoEditFramework.framework in Frameworks */,
 				B0E520991ADE749700B8F451 /* libz.1.2.5.dylib in Frameworks */,
 				3D0267441AE4CD3B004FE669 /* libstdc++.6.dylib in Frameworks */,
 				B0E5209D1ADE74C600B8F451 /* ImageIO.framework in Frameworks */,
@@ -186,9 +189,6 @@
 				3D02673C1AE4CD01004FE669 /* CoreMedia.framework in Frameworks */,
 				3D02673A1AE4CCF7004FE669 /* AVFoundation.framework in Frameworks */,
 				3D0267381AE4CCF0004FE669 /* CoreMotion.framework in Frameworks */,
-				3D0267331AE4CCD8004FE669 /* pg_edit_sdk_cdb_piratesdk.framework in Frameworks */,
-				3D0267341AE4CCD8004FE669 /* pg_edit_sdk_common.framework in Frameworks */,
-				3D0267361AE4CCD8004FE669 /* PhotoEditFramework.framework in Frameworks */,
 				B0E5209B1ADE74A100B8F451 /* Security.framework in Frameworks */,
 				B0E520971ADE748800B8F451 /* libicucore.dylib in Frameworks */,
 				B0E520951ADE747400B8F451 /* CoreTelephony.framework in Frameworks */,
@@ -284,7 +284,7 @@
 		3DB388FA1ADE18AB003361A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3D0267451AE4CD87004FE669 /* pg_edit_sdk_resource.bundle */,
+				3D02674B1AE4D4D9004FE669 /* pg_edit_sdk_resource.bundle */,
 				3D473EA41AE49CEA00554BF7 /* GPUImage.xcodeproj */,
 				3DB388FB1ADE18AB003361A6 /* Info.plist */,
 			);
@@ -568,7 +568,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D0267461AE4CD87004FE669 /* pg_edit_sdk_resource.bundle in Resources */,
+				3D02674C1AE4D4D9004FE669 /* pg_edit_sdk_resource.bundle in Resources */,
 				3DB389021ADE18AB003361A6 /* Main.storyboard in Resources */,
 				3DB389071ADE18AB003361A6 /* LaunchScreen.xib in Resources */,
 				B0E5208D1ADE732100B8F451 /* ShareSDKFlatShareViewUI.bundle in Resources */,
@@ -769,6 +769,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -779,7 +780,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71625E48BCC889AEA28BA88E /* Pods-MuGuangIOS.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -797,6 +800,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -827,7 +831,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 40C8118B762B513DB0757678 /* Pods-MuGuangIOS.release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -845,6 +851,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
