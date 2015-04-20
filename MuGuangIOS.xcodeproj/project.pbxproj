@@ -49,6 +49,8 @@
 		B0E5209D1ADE74C600B8F451 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E5209C1ADE74C600B8F451 /* ImageIO.framework */; };
 		B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */; };
 		D9CC3AA9770E281BE598BCE3 /* libPods-MuGuangIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */; };
+		F98081641AE4CD7900E217DC /* MGMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081631AE4CD7900E217DC /* MGMonitorView.swift */; };
+		F98081661AE4CED800E217DC /* MGLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081651AE4CED800E217DC /* MGLocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		B0E5209A1ADE74A100B8F451 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B0E5209C1ADE74C600B8F451 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCameraView.swift; sourceTree = "<group>"; };
+		F98081631AE4CD7900E217DC /* MGMonitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGMonitorView.swift; sourceTree = "<group>"; };
+		F98081651AE4CED800E217DC /* MGLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGLocationManager.swift; sourceTree = "<group>"; };
 		FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MuGuangIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -189,10 +193,9 @@
 				3DB389031ADE18AB003361A6 /* Images.xcassets */,
 				3DB389051ADE18AB003361A6 /* LaunchScreen.xib */,
 				3DB388FA1ADE18AB003361A6 /* Supporting Files */,
-				B0650A321ADF839900CBDC97 /* View */,
-				B0650A331ADF83BE00CBDC97 /* Control */,
-				B0650A341ADF83ED00CBDC97 /* Helper */,
-				B063F3DB1ADE46F800E8A1AA /* MuGuangIOS-Bridging-Header.h */,
+				B0650A321ADF839900CBDC97 /* Views */,
+				B0650A331ADF83BE00CBDC97 /* Controllers */,
+				B0650A341ADF83ED00CBDC97 /* Helpers */,
 			);
 			path = MuGuangIOS;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 		3DB388FA1ADE18AB003361A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B063F3DB1ADE46F800E8A1AA /* MuGuangIOS-Bridging-Header.h */,
 				3DB388FB1ADE18AB003361A6 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -283,7 +287,7 @@
 			path = AwesomeMenu;
 			sourceTree = "<group>";
 		};
-		B0650A321ADF839900CBDC97 /* View */ = {
+		B0650A321ADF839900CBDC97 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				B04C9D7D1AE0A67600CD9405 /* AwesomeMenu */,
@@ -291,24 +295,26 @@
 				B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */,
 				B04C9D7A1AE0A49400CD9405 /* FXBlurView.h */,
 				B04C9D7B1AE0A49400CD9405 /* FXBlurView.m */,
+				F98081631AE4CD7900E217DC /* MGMonitorView.swift */,
 			);
-			name = View;
+			name = Views;
 			sourceTree = "<group>";
 		};
-		B0650A331ADF83BE00CBDC97 /* Control */ = {
+		B0650A331ADF83BE00CBDC97 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */,
 				B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */,
 			);
-			name = Control;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
-		B0650A341ADF83ED00CBDC97 /* Helper */ = {
+		B0650A341ADF83ED00CBDC97 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F98081651AE4CED800E217DC /* MGLocationManager.swift */,
 			);
-			name = Helper;
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		B0E520711ADE732100B8F451 /* ShareSDK */ = {
@@ -515,6 +521,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B063F3D91ADE3C5200E8A1AA /* MGMainViewController.swift in Sources */,
+				F98081641AE4CD7900E217DC /* MGMonitorView.swift in Sources */,
 				B04C9D831AE0A67600CD9405 /* AwesomeMenuItem.m in Sources */,
 				3DFA1A7A1ADFB32A003E3177 /* LabeledSliderView.swift in Sources */,
 				3DFA1A711ADFB1F5003E3177 /* PhotoFilterViewController.swift in Sources */,
@@ -530,6 +537,7 @@
 				B04C9D821AE0A67600CD9405 /* AwesomeMenu.m in Sources */,
 				3DFA1A701ADFB1F5003E3177 /* PhotoFilterCollectionViewCell.swift in Sources */,
 				B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */,
+				F98081661AE4CED800E217DC /* MGLocationManager.swift in Sources */,
 				B04C9D891AE0BA9A00CD9405 /* MGVerticalSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
