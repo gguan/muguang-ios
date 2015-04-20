@@ -14,7 +14,7 @@ let ShareAppKey     = "6bfabdd0c3f3"
 let ShareAppSecret  = "2b9631dc59bb449cfb475480410bd071"
 
 
-//新浪SDK
+//新浪微博SDK
 let SinaAppKey      = "3927488598"
 let SinaAppSecret   = "4935c913baa5146cf1cd1f5757e350e4"
 

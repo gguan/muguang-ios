@@ -21,16 +21,13 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Masonry (0.6.1)
-  - TGCameraViewController (2.0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - Masonry (~> 0.6.1)
-  - TGCameraViewController
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
-  TGCameraViewController: 319a4809cd244186eb709d3319c832f29ed76591
 
 COCOAPODS: 0.36.4

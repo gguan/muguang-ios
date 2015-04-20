@@ -7,3 +7,7 @@
 #import "WeiboSDK.h"
 #import <PhotoEditFramework/PhotoEditFramework.h>
 #import "UICDisplayImageView.h"
+
+//TGCamera
+#import "TGCamera.h"
+#import "TGCameraViewController.h"

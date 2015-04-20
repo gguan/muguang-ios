@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MGLogInViewController: UIViewController {
+class MGLogInViewController: UIViewController, TGCameraDelegate {
     let SinaRedirectURI = "http://ec2-54-223-171-74.cn-north-1.compute.amazonaws.com.cn:9000/auth"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,4 +53,22 @@ class MGLogInViewController: UIViewController {
     }
     */
 
+    @IBAction func takePhoto(sender: AnyObject) {
+        var nav = TGCameraNavigationController.newWithCameraDelegate(self)
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    // MARK: TGCamera Delegate Methods
+    func cameraDidCancel() {
+        self.dismissViewControllerAnimated(false, completion: nil)
+    }
+    
+    func cameraDidTakePhoto(image: UIImage!) {
+        self.dismissViewControllerAnimated(false, completion: nil)
+    }
+    
+    func cameraDidSelectAlbumPhoto(image: UIImage!) {
+        self.dismissViewControllerAnimated(false, completion: nil)
+    }
+    
 }

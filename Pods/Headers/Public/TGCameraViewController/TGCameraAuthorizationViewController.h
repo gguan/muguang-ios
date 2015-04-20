@@ -1,1 +1,0 @@
-../../../TGCameraViewController/TGCameraViewController/Control/TGCameraAuthorizationViewController.h

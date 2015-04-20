@@ -1,1 +1,0 @@
-../../../TGCameraViewController/TGCameraViewController/Category/UIImage+CameraFilters.h

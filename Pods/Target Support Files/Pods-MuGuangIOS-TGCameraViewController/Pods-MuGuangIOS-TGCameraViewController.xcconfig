@@ -1,1 +1,0 @@
-PODS_MUGUANGIOS_TGCAMERAVIEWCONTROLLER_OTHER_LDFLAGS = -framework "AVFoundation" -framework "AssetsLibrary" -framework "CoreImage" -framework "Foundation" -framework "MobileCoreServices" -framework "UIKit"
