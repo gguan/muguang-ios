@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 let kScaleLabelHeight: CGFloat = 30
 /**
@@ -87,6 +88,9 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
             make.centerX.equalTo()(self.view)
             make.bottom.equalTo()(self.view).with().offset()(-50)
         }
+        
+        // 开启定位
+        self.setupLocationService()
     }
     
     // 按钮的回调
@@ -169,5 +173,34 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate {
     // MARK: AwesomeMenuDelegate
     func awesomeMenu(menu: AwesomeMenu!, didSelectIndex idx: Int) {
         println(idx)
+    }
+    
+    // MARK: 定位服务
+    func setupLocationService() {
+        switch CLLocationManager.authorizationStatus() {
+        case .AuthorizedWhenInUse, .AuthorizedAlways:
+            // 开始定位
+            MGLocationManager.shared.startUpdating()
+        case .NotDetermined:
+            // 请求授权
+            MGLocationManager.shared.requestWhenInUseAuthorization()
+        case .Restricted, .Denied:
+            // 请求授权
+            let alertController = UIAlertController(
+                title: "Background Location Access Disabled",
+                message: "In order to be notified about adorable kittens near you, please open this app's settings and set location access to 'Always'.",
+                preferredStyle: .Alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
+                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                    UIApplication.sharedApplication().openURL(url)
+                }
+            }
+            alertController.addAction(openAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
 }

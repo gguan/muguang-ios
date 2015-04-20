@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ *  主页面显示经纬度、陀螺仪状态的view
+ */
 class MGMonitorView: UIView {
 
     /*
