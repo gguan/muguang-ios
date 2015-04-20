@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import CoreMotion
 
-let kScaleLabelHeight: CGFloat = 30
+let kScaleLabelHeight: CGFloat = 20
 /**
  *  主页面
  */
