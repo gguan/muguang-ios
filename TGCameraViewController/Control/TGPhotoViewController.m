@@ -63,6 +63,10 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 - (void)addDetailViewToButton:(UIButton *)button;
 + (instancetype)newController;
 
+
+
+
+
 @end
 
 

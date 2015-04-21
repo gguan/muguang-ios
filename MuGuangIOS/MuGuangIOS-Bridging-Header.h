@@ -5,8 +5,8 @@
 #import <Masonry.h>
 #import <ShareSDK/ShareSDK.h>
 #import "WeiboSDK.h"
-#import <PhotoEditFramework/PhotoEditFramework.h>
-#import "UICDisplayImageView.h"
+//#import <PhotoEditFramework/PhotoEditFramework.h>
+
 
 //TGCamera
 #import "TGCamera.h"

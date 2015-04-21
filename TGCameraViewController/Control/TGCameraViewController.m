@@ -26,7 +26,7 @@
 #import "TGCameraViewController.h"
 #import "TGPhotoViewController.h"
 #import "TGCameraSlideView.h"
-
+#import "TGCameraFilterView.h"
 
 
 @interface TGCameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -63,11 +63,24 @@
 - (AVCaptureVideoOrientation)videoOrientationForDeviceOrientation:(UIDeviceOrientation)deviceOrientation;
 - (void)viewWillDisappearWithCompletion:(void (^)(void))completion;
 
+
+@property (strong, nonatomic) IBOutlet TGCameraFilterView *filterView;
+
 @end
 
 
 
 @implementation TGCameraViewController
+
+
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -85,6 +98,17 @@
     _topRightView.transform = CGAffineTransformMakeRotation(M_PI_2);
     _bottomLeftView.transform = CGAffineTransformMakeRotation(-M_PI_2);
     _bottomRightView.transform = CGAffineTransformMakeRotation(M_PI_2*2);
+    
+    
+    if ([_filterView isDescendantOfView:self.view]) {
+        [_filterView removeFromSuperviewAnimated];
+    } else {
+//        [_filterView addToView:self.view aboveView:_bottomView];
+        [self.actionsView addSubview:_filterView];
+        //[self.view sendSubviewToBack:_filterView];
+//        [self.view sendSubviewToBack:_photoView];
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -231,10 +255,15 @@
     [self viewWillDisappearWithCompletion:^{
         [_camera takePhotoWithCaptureView:_captureView videoOrientation:videoOrientation cropSize:_captureView.frame.size
         completion:^(UIImage *photo) {
-            TGPhotoViewController *viewController = [TGPhotoViewController newWithDelegate:_delegate photo:photo];
-            [self.navigationController pushViewController:viewController animated:YES];
+            //TGPhotoViewController *viewController = [TGPhotoViewController newWithDelegate:_delegate photo:photo];
+            //[self.navigationController pushViewController:viewController animated:YES];
         }];
     }];
+    
+    UIImage *photo = [UIImage imageNamed:@"duckling.jpg"];
+    TGPhotoViewController *viewController = [TGPhotoViewController newWithDelegate:_delegate photo:photo];
+    [self.navigationController pushViewController:viewController animated:YES];
+
 }
 
 - (IBAction)albumTapped

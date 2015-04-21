@@ -14,11 +14,11 @@ import QuartzCore
 
 import ImageIO
 
-import GPUImage
+//import GPUImage
 
-import AssetsLibrary
+//import AssetsLibrary
 
-class MGPublishViewController: UIViewController, pg_edit_sdk_controller_delegate {
+class MGPublishViewController: UIViewController {
 
  
     let captureSession   = AVCaptureSession()
@@ -34,17 +34,14 @@ class MGPublishViewController: UIViewController, pg_edit_sdk_controller_delegate
     
     /************GPU*****************/
     
-    var videoCamera: GPUImageVideoCamera?
+//    var videoCamera: GPUImageVideoCamera?
     
     @IBOutlet weak var filterView: UIImageView!
     
-    var stillCamera: GPUImageStillCamera?
-    var filter: GPUImageSketchFilter? //默认图片的Filter
-    
-    /************Camera 360*****************/
-    
-    @IBOutlet weak var mV_displayImageView: UICDisplayImageView!
-    
+//    var stillCamera: GPUImageStillCamera?
+//    var filter: GPUImageSketchFilter? //默认图片的Filter
+//    
+//    
     
     /************常用滤镜*****************/
     var filters = [CIFilter]()
@@ -63,18 +60,18 @@ class MGPublishViewController: UIViewController, pg_edit_sdk_controller_delegate
     let reuseIdentifier = "MGPhotoCell"
     
     
-    required init(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
-
-    }
+//    required init(coder aDecoder: NSCoder) {
+//        
+//        super.init(coder: aDecoder)
+//
+//    }
     
     
-    var filterOperation: FilterOperationInterface? {
-        didSet {
-            self.configureView()
-        }
-    }
+//    var filterOperation: FilterOperationInterface? {
+//        didSet {
+//            self.configureView()
+//        }
+//    }
     
     func configureView() {
 //        if let currentFilterConfiguration = self.filterOperation {
@@ -123,25 +120,25 @@ class MGPublishViewController: UIViewController, pg_edit_sdk_controller_delegate
     */
     func initVideoCamera () {
         // Video Camera 取景
-        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
-        if videoCamera != nil {
-            videoCamera!.outputImageOrientation = .Portrait
-        }
+//        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
+//        if videoCamera != nil {
+//            videoCamera!.outputImageOrientation = .Portrait
+//        }
     }
     
     /**
      *  打开视频取景器
      */
     func startVideoCamera () {
-        var customFilter        = GPUImageFilter(fragmentShaderFromFile:"Shader1")
-        var filteredVideoView   = GPUImageView(frame: CGRectZero)
-        filteredVideoView.frame = preview.frame;
-        preview.backgroundColor = UIColor.yellowColor()
-        self.view.addSubview(filteredVideoView)
-        filteredVideoView.backgroundColor = UIColor.redColor()
-        customFilter.addTarget(filteredVideoView)
-        self.videoCamera?.addTarget(customFilter)
-        self.videoCamera?.startCameraCapture()
+//        var customFilter        = GPUImageFilter(fragmentShaderFromFile:"Shader1")
+//        var filteredVideoView   = GPUImageView(frame: CGRectZero)
+//        filteredVideoView.frame = preview.frame;
+//        preview.backgroundColor = UIColor.yellowColor()
+//        self.view.addSubview(filteredVideoView)
+//        filteredVideoView.backgroundColor = UIColor.redColor()
+//        customFilter.addTarget(filteredVideoView)
+//        self.videoCamera?.addTarget(customFilter)
+//        self.videoCamera?.startCameraCapture()
     }
     
     
@@ -149,18 +146,18 @@ class MGPublishViewController: UIViewController, pg_edit_sdk_controller_delegate
     *  初始化图片取景器
     */
     func initImageCamera () {
-        stillCamera = GPUImageStillCamera()
-        stillCamera?.outputImageOrientation = .Portrait
-        filter = GPUImageSketchFilter()
-        filter?.forceProcessingAtSize(preview.frame.size)
-        stillCamera?.addTarget(filter)
-    
-        let pp = GPUImageView(frame: preview.bounds)
-        
-        preview.addSubview(pp)
-        filter?.addTarget(pp)
-        
-        stillCamera?.startCameraCapture()
+//        stillCamera = GPUImageStillCamera()
+//        stillCamera?.outputImageOrientation = .Portrait
+//        filter = GPUImageSketchFilter()
+//        filter?.forceProcessingAtSize(preview.frame.size)
+//        stillCamera?.addTarget(filter)
+//    
+//        let pp = GPUImageView(frame: preview.bounds)
+//        
+//        preview.addSubview(pp)
+//        filter?.addTarget(pp)
+//        
+//        stillCamera?.startCameraCapture()
     }
     
     
@@ -291,46 +288,23 @@ class MGPublishViewController: UIViewController, pg_edit_sdk_controller_delegate
     
     
     func GUIImageCapture() {
-        self.captureButton.enabled = false
-        self.stillCamera?.capturePhotoAsJPEGProcessedUpToFilter(filter, withCompletionHandler: { (processedJPEG:NSData!, error1:NSError!) -> Void in
-            var library:ALAssetsLibrary = ALAssetsLibrary()
-            library.writeImageDataToSavedPhotosAlbum(processedJPEG, metadata: self.stillCamera?.currentCaptureMetadata, completionBlock: { (assetURL:NSURL!, error2:NSError!) -> Void in
-                if (error2 != nil) {
-                    println("ERROR: the image failed to be written")
-                }else {
-                    println("PHOTO SAVED - assetURL:\(assetURL)")
-                }
-            })
-            runOnMainQueueWithoutDeadlocking({ () -> Void in
-                self.captureButton.enabled = true
-            })
-        })
+//        self.captureButton.enabled = false
+//        self.stillCamera?.capturePhotoAsJPEGProcessedUpToFilter(filter, withCompletionHandler: { (processedJPEG:NSData!, error1:NSError!) -> Void in
+//            var library:ALAssetsLibrary = ALAssetsLibrary()
+//            library.writeImageDataToSavedPhotosAlbum(processedJPEG, metadata: self.stillCamera?.currentCaptureMetadata, completionBlock: { (assetURL:NSURL!, error2:NSError!) -> Void in
+//                if (error2 != nil) {
+//                    println("ERROR: the image failed to be written")
+//                }else {
+//                    println("PHOTO SAVED - assetURL:\(assetURL)")
+//                }
+//            })
+//            runOnMainQueueWithoutDeadlocking({ () -> Void in
+//                self.captureButton.enabled = true
+//            })
+//        })
 
     }
-    //拍照
-    @IBAction func capture(sender: AnyObject) {
-        //AVFoundation 拍照
-        //self.commonCapture()
-        
-        //GUIImage
-        //拍照保存到相册
-        //self.GUIImageCapture()
-        
-        //Camera 360
-        self.mV_displayImageView.pSetupOrigImage(UIImage(named: "duckling.jpg"))
-        
-        let obj = pg_edit_sdk_controller_object() as pg_edit_sdk_controller_object?
-        
-        if obj != nil  {
-            obj!.pCSA_fullImage = self.mV_displayImageView.mOrigImage.copy() as! UIImage
-        }
-        
-        let editCtl = pg_edit_sdk_controller(editObject: obj, withDelegate: self)// as pg_edit_sdk_controller
-        
-        if editCtl != nil {
-            self.presentViewController(editCtl, animated: true, completion: nil)
-        }
-    }
+    
 
     //重新拍照
     @IBAction func retake(sender: AnyObject) {
@@ -353,13 +327,4 @@ class MGPublishViewController: UIViewController, pg_edit_sdk_controller_delegate
     }
     */
 
-    
-    //MARK: pg_edit_sdk_controller delegate methods
-    func dgPhotoEditingViewControllerDidFinish(pController: UIViewController!, object: pg_edit_sdk_controller_object!) {
-        
-    }
-    
-    func dgPhotoEditingViewControllerDidCancel(pController: UIViewController!, withClickSaveButton isClickSaveBtn: Bool) {
-        
-    }
 }

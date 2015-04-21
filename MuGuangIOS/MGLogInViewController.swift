@@ -71,4 +71,8 @@ class MGLogInViewController: UIViewController, TGCameraDelegate {
         self.dismissViewControllerAnimated(false, completion: nil)
     }
     
+    @IBAction func publish(sender: AnyObject) {
+        let nav = MGPublishViewController()
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
 }

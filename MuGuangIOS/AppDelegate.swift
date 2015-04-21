@@ -29,9 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
         //程序主体颜色
         //window?.tintColor = UIColor.redColor()
         
-        //Camera360
-        pg_edit_sdk_controller.sStart(Camera360Key)
-        
         
         
         return true

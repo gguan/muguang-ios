@@ -548,7 +548,7 @@
 		44C4245E11043F49EF8AA55F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0630;
 			};
 			buildConfigurationList = E859CAAE6A0853470A89B5E3 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -642,7 +642,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F2618692D5238FC35E720A53 /* Pods-MuGuangIOS.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -659,7 +658,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6772D3C2FAA210F6A026826A /* Pods-MuGuangIOS.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -676,7 +674,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 29C2C745014DC7C737A1E199 /* Pods-MuGuangIOS-Masonry-Private.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-MuGuangIOS-Masonry/Pods-MuGuangIOS-Masonry-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -732,7 +729,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 29C2C745014DC7C737A1E199 /* Pods-MuGuangIOS-Masonry-Private.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-MuGuangIOS-Masonry/Pods-MuGuangIOS-Masonry-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -749,7 +745,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A20B9B397CC563388FDFB106 /* Pods-MuGuangIOS-AFNetworking-Private.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-MuGuangIOS-AFNetworking/Pods-MuGuangIOS-AFNetworking-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -800,7 +795,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A20B9B397CC563388FDFB106 /* Pods-MuGuangIOS-AFNetworking-Private.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-MuGuangIOS-AFNetworking/Pods-MuGuangIOS-AFNetworking-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
