@@ -12,8 +12,7 @@ class MGLogInViewController: UIViewController, TGCameraDelegate {
     let SinaRedirectURI = "http://ec2-54-223-171-74.cn-north-1.compute.amazonaws.com.cn:9000/auth"
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +21,11 @@ class MGLogInViewController: UIViewController, TGCameraDelegate {
     }
     
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        var sender: AnyObject = UIButton.buttonWithType(UIButtonType.Custom)
+        self.takePhoto(sender)
+    }
     @IBAction func ssoAuth(sender: AnyObject) {
         var wbRequest = WBAuthorizeRequest.request() as! WBAuthorizeRequest
         

@@ -27,7 +27,13 @@
 #import "TGPhotoViewController.h"
 #import "TGCameraSlideView.h"
 #import "TGCameraFilterView.h"
+#import "UIImage+CameraFilters.h"
+#import "TGCameraColor.h"
 
+
+static NSString* const kTGCacheSatureKey = @"TGCacheSatureKey";
+static NSString* const kTGCacheCurveKey = @"TGCacheCurveKey";
+static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 
 @interface TGCameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -50,6 +56,9 @@
 
 @property (strong, nonatomic) TGCamera *camera;
 @property (nonatomic) BOOL wasLoaded;
+@property (nonatomic,strong) UIImage *origionalPhoto;
+@property (strong, nonatomic) IBOutlet UIImageView *previewImage;
+@property (strong, nonatomic) IBOutlet UIView *nextView;
 
 - (IBAction)closeTapped;
 - (IBAction)gridTapped;
@@ -65,6 +74,9 @@
 
 
 @property (strong, nonatomic) IBOutlet TGCameraFilterView *filterView;
+@property (strong, nonatomic) NSCache *cachePhoto;
+
+@property (nonatomic,strong) UIView *detailFilterView;
 
 @end
 
@@ -91,7 +103,8 @@
     }
     
     _camera = [TGCamera cameraWithFlashButton:_flashButton];
-    
+    _origionalPhoto = [UIImage new];
+    _cachePhoto = [NSCache new];
     _captureView.backgroundColor = [UIColor clearColor];
     
     _topLeftView.transform = CGAffineTransformMakeRotation(0);
@@ -139,6 +152,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    _previewImage.frame = _captureView.frame;
+    
+    _nextView.hidden = YES;
     
     [self deviceOrientationDidChangeNotification];
     
@@ -249,21 +266,30 @@
     _shotButton.enabled =
     _albumButton.enabled = NO;
     
+    
     UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
     AVCaptureVideoOrientation videoOrientation = [self videoOrientationForDeviceOrientation:deviceOrientation];
     
-    [self viewWillDisappearWithCompletion:^{
-        [_camera takePhotoWithCaptureView:_captureView videoOrientation:videoOrientation cropSize:_captureView.frame.size
-        completion:^(UIImage *photo) {
-            //TGPhotoViewController *viewController = [TGPhotoViewController newWithDelegate:_delegate photo:photo];
-            //[self.navigationController pushViewController:viewController animated:YES];
-        }];
-    }];
+//    [self viewWillDisappearWithCompletion:^{
+//        [_camera takePhotoWithCaptureView:_captureView videoOrientation:videoOrientation cropSize:_captureView.frame.size
+//        completion:^(UIImage *photo) {
+//            TGPhotoViewController *viewController = [TGPhotoViewController newWithDelegate:_delegate photo:photo];
+//            [self.navigationController pushViewController:viewController animated:YES];
+//        }];
+//    }];
     
-    UIImage *photo = [UIImage imageNamed:@"duckling.jpg"];
-    TGPhotoViewController *viewController = [TGPhotoViewController newWithDelegate:_delegate photo:photo];
-    [self.navigationController pushViewController:viewController animated:YES];
-
+    [_camera takePhotoWithCaptureView:_captureView videoOrientation:videoOrientation cropSize:_captureView.frame.size
+                           completion:^(UIImage *photo) {
+                               [self.view addSubview:_previewImage];
+                               _origionalPhoto = photo;
+                               _previewImage.image = photo;
+                               _nextView.hidden = NO;
+                               _previewImage.hidden = NO;
+//                               TGPhotoViewController *viewController = [TGPhotoViewController newWithDelegate:_delegate photo:photo];
+//                               [self.navigationController pushViewController:viewController animated:YES];
+                           }];
+    
+    
 }
 
 - (IBAction)albumTapped
@@ -355,6 +381,73 @@
     [TGCameraSlideView showSlideUpView:_slideUpView slideDownView:_slideDownView atView:_captureView completion:^{
         completion();
     }];
+}
+- (IBAction)retake:(id)sender {
+    _nextView.hidden =
+    _previewImage.hidden =
+    _shotButton.enabled = YES;
+}
+- (IBAction)next:(id)sender {
+}
+
+- (IBAction)defaultFilterTapped:(UIButton *)button
+{
+    [self addDetailViewToButton:button];
+    _previewImage.image = _origionalPhoto;
+}
+
+- (IBAction)satureFilterTapped:(UIButton *)button
+{
+    [self addDetailViewToButton:button];
+    if ([_cachePhoto objectForKey:kTGCacheSatureKey]) {
+        _previewImage.image = [_cachePhoto objectForKey:kTGCacheSatureKey];
+    } else {
+        [_cachePhoto setObject:[_origionalPhoto saturateImage:1.8 withContrast:1] forKey:kTGCacheSatureKey];
+        _previewImage.image = [_cachePhoto objectForKey:kTGCacheSatureKey];
+    }
+    
+}
+
+- (IBAction)curveFilterTapped:(UIButton *)button
+{
+    [self addDetailViewToButton:button];
+    
+    if ([_cachePhoto objectForKey:kTGCacheCurveKey]) {
+        _previewImage.image = [_cachePhoto objectForKey:kTGCacheCurveKey];
+    } else {
+        [_cachePhoto setObject:[_origionalPhoto curveFilter] forKey:kTGCacheCurveKey];
+        _previewImage.image = [_cachePhoto objectForKey:kTGCacheCurveKey];
+    }
+}
+
+- (IBAction)vignetteFilterTapped:(UIButton *)button
+{
+    [self addDetailViewToButton:button];
+    
+    if ([_cachePhoto objectForKey:kTGCacheVignetteKey]) {
+        _previewImage.image = [_cachePhoto objectForKey:kTGCacheVignetteKey];
+    } else {
+        [_cachePhoto setObject:[_origionalPhoto vignetteWithRadius:0 intensity:6] forKey:kTGCacheVignetteKey];
+        _previewImage.image = [_cachePhoto objectForKey:kTGCacheVignetteKey];
+    }
+}
+
+- (void)addDetailViewToButton:(UIButton *)button
+{
+    [_detailFilterView removeFromSuperview];
+    
+    CGFloat height = 2.5;
+    
+    CGRect frame = button.frame;
+    frame.size.height = height;
+    frame.origin.x = 0;
+    frame.origin.y = CGRectGetMaxY(button.frame) - height;
+    
+    _detailFilterView = [[UIView alloc] initWithFrame:frame];
+    _detailFilterView.backgroundColor = [TGCameraColor orangeColor];
+    _detailFilterView.userInteractionEnabled = NO;
+    
+    [button addSubview:_detailFilterView];
 }
 
 @end

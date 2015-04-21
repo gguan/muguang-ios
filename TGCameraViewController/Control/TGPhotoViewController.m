@@ -97,6 +97,8 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
     _photoView.clipsToBounds = YES;
     _photoView.image = _photo;
     
+    _cachePhoto = [[NSCache alloc] init];
+    
     [self addDetailViewToButton:_defaultFilterButton];
 }
 
