@@ -20,6 +20,8 @@
 		3D2B019B1AE5F5B400F2BBC8 /* TGCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01931AE5F5B400F2BBC8 /* TGCameraViewController.xib */; };
 		3D2B019C1AE5F5B400F2BBC8 /* TGPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01951AE5F5B400F2BBC8 /* TGPhotoViewController.xib */; };
 		3D2B019D1AE5F5B400F2BBC8 /* TGCameraAuthorizationViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01971AE5F5B400F2BBC8 /* TGCameraAuthorizationViewController.strings */; };
+		3D2B019F1AE6347500F2BBC8 /* TGCameraViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B019E1AE6347500F2BBC8 /* TGCameraViewControllerExtensions.swift */; };
+		3D2B01A91AE64F0500F2BBC8 /* MGVideoCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01A81AE64F0500F2BBC8 /* MGVideoCamera.m */; };
 		3D95A5DE1AE53AC60031DD9F /* UIImage+CameraFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5A61AE53AC60031DD9F /* UIImage+CameraFilters.m */; };
 		3D95A5DF1AE53AC60031DD9F /* TGCameraAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5A91AE53AC60031DD9F /* TGCameraAuthorizationViewController.m */; };
 		3D95A5E01AE53AC60031DD9F /* TGCameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5AB1AE53AC60031DD9F /* TGCameraNavigationController.m */; };
@@ -122,6 +124,9 @@
 		3D2B01961AE5F5B400F2BBC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TGPhotoViewController.xib; sourceTree = "<group>"; };
 		3D2B01981AE5F5B400F2BBC8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/TGCameraAuthorizationViewController.strings; sourceTree = "<group>"; };
 		3D2B01991AE5F5B400F2BBC8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/TGCameraAuthorizationViewController.strings"; sourceTree = "<group>"; };
+		3D2B019E1AE6347500F2BBC8 /* TGCameraViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TGCameraViewControllerExtensions.swift; sourceTree = "<group>"; };
+		3D2B01A71AE64F0500F2BBC8 /* MGVideoCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGVideoCamera.h; sourceTree = "<group>"; };
+		3D2B01A81AE64F0500F2BBC8 /* MGVideoCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGVideoCamera.m; sourceTree = "<group>"; };
 		3D95A5A51AE53AC60031DD9F /* UIImage+CameraFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CameraFilters.h"; sourceTree = "<group>"; };
 		3D95A5A61AE53AC60031DD9F /* UIImage+CameraFilters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CameraFilters.m"; sourceTree = "<group>"; };
 		3D95A5A81AE53AC60031DD9F /* TGCameraAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGCameraAuthorizationViewController.h; sourceTree = "<group>"; };
@@ -276,6 +281,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3D2B01A01AE6347D00F2BBC8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3D2B019E1AE6347500F2BBC8 /* TGCameraViewControllerExtensions.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
 		3D95A5A31AE53AC60031DD9F /* TGCameraViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +348,8 @@
 				3D95A5C01AE53AC60031DD9F /* TGCameraShot.m */,
 				3D95A5C11AE53AC60031DD9F /* TGCameraToggle.h */,
 				3D95A5C21AE53AC60031DD9F /* TGCameraToggle.m */,
+				3D2B01A71AE64F0500F2BBC8 /* MGVideoCamera.h */,
+				3D2B01A81AE64F0500F2BBC8 /* MGVideoCamera.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -390,6 +405,7 @@
 		3DB388F91ADE18AB003361A6 /* MuGuangIOS */ = {
 			isa = PBXGroup;
 			children = (
+				3D2B01A01AE6347D00F2BBC8 /* Extension */,
 				3D9DC8BC1AE11A140022F9C1 /* Shader1.fsh */,
 				3DB388FC1ADE18AB003361A6 /* AppDelegate.swift */,
 				3D0267521AE4E18B004FE669 /* MGConstants.swift */,
@@ -735,6 +751,7 @@
 				3D95A5EE1AE53AC60031DD9F /* TGCameraFilterView.m in Sources */,
 				3D95A5EC1AE53AC60031DD9F /* TGAssetImageFile.m in Sources */,
 				3D95A5EF1AE53AC60031DD9F /* TGCameraFocusView.m in Sources */,
+				3D2B01A91AE64F0500F2BBC8 /* MGVideoCamera.m in Sources */,
 				3D95A5E41AE53AC60031DD9F /* TGAssetsLibrary.m in Sources */,
 				3DFA1A781ADFB2AC003E3177 /* ScalarFilterParameter.swift in Sources */,
 				3D95A5EA1AE53AC60031DD9F /* TGCameraShot.m in Sources */,
@@ -752,6 +769,7 @@
 				3D0267481AE4CF00004FE669 /* MGPublisherViewController.swift in Sources */,
 				3D95A5E61AE53AC60031DD9F /* TGCameraColor.m in Sources */,
 				3D95A5EB1AE53AC60031DD9F /* TGCameraToggle.m in Sources */,
+				3D2B019F1AE6347500F2BBC8 /* TGCameraViewControllerExtensions.swift in Sources */,
 				3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */,
 				3D95A5E01AE53AC60031DD9F /* TGCameraNavigationController.m in Sources */,
 				3D95A5F01AE53AC60031DD9F /* TGCameraGridView.m in Sources */,

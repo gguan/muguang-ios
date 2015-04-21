@@ -24,7 +24,7 @@ class MGLogInViewController: UIViewController, TGCameraDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         var sender: AnyObject = UIButton.buttonWithType(UIButtonType.Custom)
-        self.takePhoto(sender)
+        //self.takePhoto(sender)
     }
     @IBAction func ssoAuth(sender: AnyObject) {
         var wbRequest = WBAuthorizeRequest.request() as! WBAuthorizeRequest

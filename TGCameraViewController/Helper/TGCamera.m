@@ -30,17 +30,21 @@
 #import "TGCameraFocus.h"
 #import "TGCameraShot.h"
 #import "TGCameraToggle.h"
+#import <CoreImage/CoreImage.h>
 
 NSMutableDictionary *optionDictionary;
 
-
-
-@interface TGCamera ()
+@interface TGCamera () <AVCaptureVideoDataOutputSampleBufferDelegate>
 
 @property (strong, nonatomic) AVCaptureSession *session;
 @property (strong, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
+
+//图片output
 @property (strong, nonatomic) AVCaptureStillImageOutput *stillImageOutput;
+
 @property (strong, nonatomic) TGCameraGridView *gridView;
+
+@property (nonatomic, strong) CIFilter *filter;
 
 + (instancetype)newCamera;
 + (void)initOptions;
@@ -58,6 +62,7 @@ NSMutableDictionary *optionDictionary;
     TGCamera *camera = [TGCamera newCamera];
     [camera setupWithFlashButton:flashButton];
     
+
     return camera;
 }
 
@@ -222,6 +227,7 @@ NSMutableDictionary *optionDictionary;
     NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:AVVideoCodecJPEG, AVVideoCodecKey, nil];
     
     _stillImageOutput = [AVCaptureStillImageOutput new];
+
     _stillImageOutput.outputSettings = outputSettings;
     
     [_session addOutput:_stillImageOutput];
@@ -236,6 +242,77 @@ NSMutableDictionary *optionDictionary;
 + (void)initOptions
 {
     optionDictionary = [NSMutableDictionary dictionary];
+}
+
+#pragma mark - AVCapture Delegate
+- (void) captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
+{
+    @autoreleasepool {
+//        CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+//        CIImage *outputImage         = [CIImage imageWithCVPixelBuffer:imageBuffer];
+//        _filter = [CIFilter filterWithName:@"CIPhotoEffectFade"];
+//        [_filter setValue:outputImage forKey:kCIInputImageKey];
+        UIImage *im = [self imageFromSampleBuffer:sampleBuffer];
+        NSLog(@"---%@",im);
+//        self.previewLayer.contents =
+//        dispatch_sync(dispatch_get_main_queue(), {
+//            self.previewLayer.contents = cgImage
+//        })
+    }
+        
+//        let orientation = UIDevice.currentDevice().orientation
+//        var t: CGAffineTransform!
+//        if orientation == UIDeviceOrientation.Portrait {
+//            t = CGAffineTransformMakeRotation(CGFloat(-M_PI / 2.0))
+//        } else if orientation == UIDeviceOrientation.PortraitUpsideDown {
+//            t = CGAffineTransformMakeRotation(CGFloat(M_PI / 2.0))
+//        } else if (orientation == UIDeviceOrientation.LandscapeRight) {
+//            t = CGAffineTransformMakeRotation(CGFloat(M_PI))
+//        } else {
+//            t = CGAffineTransformMakeRotation(0)
+//        }
+    //}
+}
+
+
+- (UIImage *) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer
+{
+    // Get a CMSampleBuffer's Core Video image buffer for the media data
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    // Lock the base address of the pixel buffer
+    CVPixelBufferLockBaseAddress(imageBuffer, 0);
+    
+    // Get the number of bytes per row for the pixel buffer
+    void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer);
+    
+    // Get the number of bytes per row for the pixel buffer
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+    // Get the pixel buffer width and height
+    size_t width = CVPixelBufferGetWidth(imageBuffer);
+    size_t height = CVPixelBufferGetHeight(imageBuffer);
+    
+    // Create a device-dependent RGB color space
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    // Create a bitmap graphics context with the sample buffer data
+    CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8,
+                                                 bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+    // Create a Quartz image from the pixel data in the bitmap graphics context
+    CGImageRef quartzImage = CGBitmapContextCreateImage(context);
+    // Unlock the pixel buffer
+    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+    
+    // Free up the context and color space
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+    
+    // Create an image object from the Quartz image
+    UIImage *image = [UIImage imageWithCGImage:quartzImage];
+    
+    // Release the Quartz image
+    CGImageRelease(quartzImage);
+    
+    return (image);
 }
 
 @end

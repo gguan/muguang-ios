@@ -30,6 +30,7 @@
 #import "UIImage+CameraFilters.h"
 #import "TGCameraColor.h"
 
+#import "MGVideoCamera.h"
 
 static NSString* const kTGCacheSatureKey = @"TGCacheSatureKey";
 static NSString* const kTGCacheCurveKey = @"TGCacheCurveKey";
@@ -54,7 +55,12 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeight;
 
+//处理图片
 @property (strong, nonatomic) TGCamera *camera;
+
+//处理视频output （实时滤镜）
+@property (nonatomic, strong) MGVideoCamera *videoCamera;
+
 @property (nonatomic) BOOL wasLoaded;
 @property (nonatomic,strong) UIImage *origionalPhoto;
 @property (strong, nonatomic) IBOutlet UIImageView *previewImage;
@@ -122,6 +128,9 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 //        [self.view sendSubviewToBack:_photoView];
     }
     
+    
+    /**********************实时滤镜*****************/
+    _videoCamera = [MGVideoCamera cameraWithFlashButton:_flashButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -159,7 +168,7 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
     
     [self deviceOrientationDidChangeNotification];
     
-    [_camera startRunning];
+    ////[_camera startRunning];
     
     _separatorView.hidden = YES;
     
@@ -393,19 +402,30 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 - (IBAction)defaultFilterTapped:(UIButton *)button
 {
     [self addDetailViewToButton:button];
-    _previewImage.image = _origionalPhoto;
+    _previewImage.hidden = YES;
+    if (_previewImage.hidden) {
+        ////[_camera stopRunning];
+        
+        [_videoCamera insertSublayerWithCaptureView:self.captureView atRootView:self.view];
+        [_videoCamera startRunning];
+    }else{
+        ////[_videoCamera stopRunning];
+        ////[_camera startRunning];
+        
+        _previewImage.image = _origionalPhoto;
+    }
 }
 
 - (IBAction)satureFilterTapped:(UIButton *)button
 {
     [self addDetailViewToButton:button];
-    if ([_cachePhoto objectForKey:kTGCacheSatureKey]) {
-        _previewImage.image = [_cachePhoto objectForKey:kTGCacheSatureKey];
-    } else {
-        [_cachePhoto setObject:[_origionalPhoto saturateImage:1.8 withContrast:1] forKey:kTGCacheSatureKey];
-        _previewImage.image = [_cachePhoto objectForKey:kTGCacheSatureKey];
-    }
-    
+//    if ([_cachePhoto objectForKey:kTGCacheSatureKey]) {
+//        _previewImage.image = [_cachePhoto objectForKey:kTGCacheSatureKey];
+//    } else {
+//        [_cachePhoto setObject:[_origionalPhoto saturateImage:1.8 withContrast:1] forKey:kTGCacheSatureKey];
+//        _previewImage.image = [_cachePhoto objectForKey:kTGCacheSatureKey];
+//    }
+//    
 }
 
 - (IBAction)curveFilterTapped:(UIButton *)button

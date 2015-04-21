@@ -95,7 +95,6 @@
 - (void)setupAuthorizedWithDelegate:(id<TGCameraDelegate>)delegate
 {
     TGCameraViewController *viewController = [TGCameraViewController new];
-    //TGCameraViewController *viewController = [[TGCameraViewController alloc] initWithNibName:@"TGCameraViewController" bundle:nil];
     viewController.delegate = delegate;
     
     self.viewControllers = @[viewController];
