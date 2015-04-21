@@ -47,7 +47,7 @@ class MGMonitorView: UIView {
     
     // 更新地点
     func updateLocationLabel(location: CLLocation) {
-        self.locationLabel.text = "lat: \(location.coordinate.latitude)\nlon: \(location.coordinate.longitude)\n"
+        self.locationLabel.text = "lat: \(location.coordinate.latitude)\nlon: \(location.coordinate.longitude)\naltitude: \(location.altitude)"
     }
     
     override func layoutSubviews() {

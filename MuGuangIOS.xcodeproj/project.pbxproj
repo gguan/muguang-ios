@@ -51,6 +51,9 @@
 		D9CC3AA9770E281BE598BCE3 /* libPods-MuGuangIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */; };
 		F98081641AE4CD7900E217DC /* MGMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081631AE4CD7900E217DC /* MGMonitorView.swift */; };
 		F98081661AE4CED800E217DC /* MGLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081651AE4CED800E217DC /* MGLocationManager.swift */; };
+		F98081681AE5F03A00E217DC /* MGCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081671AE5F03A00E217DC /* MGCard.swift */; };
+		F980816A1AE5F14F00E217DC /* MGUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081691AE5F14F00E217DC /* MGUserViewController.swift */; };
+		F980816C1AE5F1AB00E217DC /* MGCardDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F980816B1AE5F1AB00E217DC /* MGCardDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +122,9 @@
 		B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCameraView.swift; sourceTree = "<group>"; };
 		F98081631AE4CD7900E217DC /* MGMonitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGMonitorView.swift; sourceTree = "<group>"; };
 		F98081651AE4CED800E217DC /* MGLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGLocationManager.swift; sourceTree = "<group>"; };
+		F98081671AE5F03A00E217DC /* MGCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCard.swift; sourceTree = "<group>"; };
+		F98081691AE5F14F00E217DC /* MGUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGUserViewController.swift; sourceTree = "<group>"; };
+		F980816B1AE5F1AB00E217DC /* MGCardDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCardDetailController.swift; sourceTree = "<group>"; };
 		FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MuGuangIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -296,6 +302,7 @@
 				B04C9D7A1AE0A49400CD9405 /* FXBlurView.h */,
 				B04C9D7B1AE0A49400CD9405 /* FXBlurView.m */,
 				F98081631AE4CD7900E217DC /* MGMonitorView.swift */,
+				F98081671AE5F03A00E217DC /* MGCard.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -305,6 +312,8 @@
 			children = (
 				B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */,
 				B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */,
+				F98081691AE5F14F00E217DC /* MGUserViewController.swift */,
+				F980816B1AE5F1AB00E217DC /* MGCardDetailController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -524,13 +533,16 @@
 				F98081641AE4CD7900E217DC /* MGMonitorView.swift in Sources */,
 				B04C9D831AE0A67600CD9405 /* AwesomeMenuItem.m in Sources */,
 				3DFA1A7A1ADFB32A003E3177 /* LabeledSliderView.swift in Sources */,
+				F980816C1AE5F1AB00E217DC /* MGCardDetailController.swift in Sources */,
 				3DFA1A711ADFB1F5003E3177 /* PhotoFilterViewController.swift in Sources */,
+				F98081681AE5F03A00E217DC /* MGCard.swift in Sources */,
 				3DFA1A741ADFB246003E3177 /* FilteredImageView.swift in Sources */,
 				3DFA1A781ADFB2AC003E3177 /* ScalarFilterParameter.swift in Sources */,
 				3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */,
 				3DFA1A761ADFB282003E3177 /* ParameterAdjustmentView.swift in Sources */,
 				3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */,
 				3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */,
+				F980816A1AE5F14F00E217DC /* MGUserViewController.swift in Sources */,
 				B04C9D7C1AE0A49400CD9405 /* FXBlurView.m in Sources */,
 				3DB388FD1ADE18AB003361A6 /* AppDelegate.swift in Sources */,
 				B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */,
