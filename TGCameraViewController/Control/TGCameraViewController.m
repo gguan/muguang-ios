@@ -56,7 +56,8 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeight;
 
-@property (nonatomic, strong) MGFilterPhotoCollectionViewCell *selectCell;
+//@property (nonatomic, strong) MGFilterPhotoCollectionViewCell *selectCell;
+@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 
 //处理图片
 @property (strong, nonatomic) TGCamera *camera;
@@ -238,9 +239,10 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 {
     [_camera startRunning];
     
-    _selectCell = (MGFilterPhotoCollectionViewCell *)[_collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    _selectCell.filterImage.layer.borderWidth = 2.0;
-    _selectCell.filterImage.layer.borderColor = [UIColor redColor].CGColor;
+    //默认第一项选中
+    _selectedIndexPath = [NSIndexPath indexPathForItem:0 inSection:0];
+    [self addBorderLayerToSelectCell:_selectedIndexPath];
+    
     
     //未照相的时候先隐藏
     _previewImage.hidden = YES;
@@ -470,7 +472,8 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
     _shotButton.enabled = YES;
     
     //滤镜Index＝0 不加滤镜那么使用stillImageOutPut
-    if ([_selectCell.filterName.text isEqualToString:@"None"]) {
+    MGFilterPhotoCollectionViewCell *selectCell = (MGFilterPhotoCollectionViewCell *)[_collectionView cellForItemAtIndexPath:_selectedIndexPath];
+    if ([selectCell.filterName.text isEqualToString:@"None"]) {
         //启动相机
         [_videoCamera stopRunning];
         [_camera startRunning];
@@ -478,7 +481,7 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
     }else{
         //启动VideoCamera
         [_filterDescriptors enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            if ([_selectCell.filterName.text isEqualToString:obj[@"name"]])
+            if ([selectCell.filterName.text isEqualToString:obj[@"name"]])
             {
                 CIFilter *currentFilter = obj[@"filter"];
                 //[_videoCamera insertSublayerWithCaptureView:self.captureView atRootView:self.view];
@@ -513,9 +516,25 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
     MGFilterPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"mgCell" forIndexPath:indexPath];
-
+    
     cell.filterName.text = _filterDescriptors[indexPath.row][@"name"];
+    cell.filterImage.image = [UIImage imageNamed:@"test.png"];
+    
+    if (_selectedIndexPath!= nil && [_selectedIndexPath compare:indexPath] == NSOrderedSame) {
+        cell.filterImage.layer.borderWidth = 2.0;
+    }else
+        cell.filterImage.layer.borderWidth = 0.0;
+    
+    NSString *cacheKey = [NSString stringWithFormat:@"%@KEY",_filterDescriptors[indexPath.row][@"name"]];
+    if ([_cachePhoto objectForKey:cacheKey]) {
+        cell.filterImage.image = [_cachePhoto objectForKey:cacheKey];
+    }else{
+        [_cachePhoto setObject:[cell.filterImage.image addFilter:_filterDescriptors[indexPath.row][@"filter"]] forKey:cacheKey];
+        cell.filterImage.image = [_cachePhoto objectForKey:cacheKey];
+    }
     
     return cell;
 }
@@ -543,37 +562,12 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
             _videoCamera.filter = _filterDescriptors[indexPath.row][@"filter"];
         }
 
-        
-        
-
-//        [_videoCamera insertSublayerWithCaptureView:self.captureView atRootView:self.view];
-//        
-//        if (indexPath.row == 1) {
-//            //_videoCamera.filter = [CIFilter filterWithName:@"CIVibrance"];
-//        }
-//
-//        if (indexPath.row == 2) {
-//            //_videoCamera.filter = [CIFilter filterWithName:@"CIGaussianBlur"];
-////            _isStillImageCamera = YES;
-//        }
-//        
-//        
-//        [_videoCamera startRunning];
-//        [_camera stopRunning];
     }else
     {
         //没有滤镜显示原图片
         if (_origionalPhoto) {
             _previewImage.image = _origionalPhoto;
         }
-        
-        
-        //图片状态
-        //_isStillImageCamera = YES;
-//        _previewImage.hidden = YES;
-//        [_videoCamera stopRunning];
-//        [_videoCamera.previewLayer removeFromSuperlayer];
-//        [_camera startRunning];
     }
 }
 
@@ -600,13 +594,15 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 
 - (void) addBorderLayerToSelectCell:(NSIndexPath *) indexPath
 {
-    if (_selectCell) {
-        _selectCell.filterImage.layer.borderWidth = 0.0;
-        _selectCell.filterImage.layer.borderColor = [UIColor whiteColor].CGColor;
+    MGFilterPhotoCollectionViewCell *selectCell = (MGFilterPhotoCollectionViewCell *)[_collectionView cellForItemAtIndexPath:_selectedIndexPath];
+    if (selectCell) {
+        selectCell.filterImage.layer.borderWidth = 0.0;
     }
-    _selectCell = (MGFilterPhotoCollectionViewCell *)[_collectionView cellForItemAtIndexPath:indexPath];
-    _selectCell.filterImage.layer.borderWidth = 2.0;
-    _selectCell.filterImage.layer.borderColor = [UIColor redColor].CGColor;
+    selectCell = (MGFilterPhotoCollectionViewCell *)[_collectionView cellForItemAtIndexPath:indexPath];
+    _selectedIndexPath = indexPath;
+    selectCell.filterName.text = _filterDescriptors[indexPath.row][@"name"];
+    selectCell.filterImage.layer.borderWidth = 2.0;
+    selectCell.filterImage.layer.borderColor = [UIColor redColor].CGColor;
 }
 
 @end

@@ -24,6 +24,7 @@
 		3D2B01AD1AE7358800F2BBC8 /* MGFilterPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01AC1AE7358800F2BBC8 /* MGFilterPhotoCollectionViewCell.m */; };
 		3D2B01AF1AE736C000F2BBC8 /* MGFilterPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01AE1AE736C000F2BBC8 /* MGFilterPhotoCollectionViewCell.xib */; };
 		3D2B01B31AE79F6900F2BBC8 /* CIFilter+mgFiliters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01B21AE79F6900F2BBC8 /* CIFilter+mgFiliters.m */; };
+		3D2B01B51AE7A60C00F2BBC8 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01B41AE7A60C00F2BBC8 /* test.png */; };
 		3D95A5DE1AE53AC60031DD9F /* UIImage+CameraFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5A61AE53AC60031DD9F /* UIImage+CameraFilters.m */; };
 		3D95A5DF1AE53AC60031DD9F /* TGCameraAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5A91AE53AC60031DD9F /* TGCameraAuthorizationViewController.m */; };
 		3D95A5E01AE53AC60031DD9F /* TGCameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5AB1AE53AC60031DD9F /* TGCameraNavigationController.m */; };
@@ -134,6 +135,7 @@
 		3D2B01B01AE740BA00F2BBC8 /* MuGuangIOSPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MuGuangIOSPrefixHeader.pch; sourceTree = "<group>"; };
 		3D2B01B11AE79F6900F2BBC8 /* CIFilter+mgFiliters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CIFilter+mgFiliters.h"; sourceTree = "<group>"; };
 		3D2B01B21AE79F6900F2BBC8 /* CIFilter+mgFiliters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CIFilter+mgFiliters.m"; sourceTree = "<group>"; };
+		3D2B01B41AE7A60C00F2BBC8 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		3D95A5A51AE53AC60031DD9F /* UIImage+CameraFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CameraFilters.h"; sourceTree = "<group>"; };
 		3D95A5A61AE53AC60031DD9F /* UIImage+CameraFilters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CameraFilters.m"; sourceTree = "<group>"; };
 		3D95A5A81AE53AC60031DD9F /* TGCameraAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGCameraAuthorizationViewController.h; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 				3D0267471AE4CF00004FE669 /* MGPublisherViewController.swift */,
 				3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */,
 				3DFA1A7B1ADFB389003E3177 /* duckling.jpg */,
+				3D2B01B41AE7A60C00F2BBC8 /* test.png */,
 			);
 			name = Publisher;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				3D95A5ED1AE53AC60031DD9F /* TGCameraViewController.xcassets in Resources */,
 				3DB389041ADE18AB003361A6 /* Images.xcassets in Resources */,
 				3D9DC8BD1AE11A140022F9C1 /* Shader1.fsh in Resources */,
+				3D2B01B51AE7A60C00F2BBC8 /* test.png in Resources */,
 				B0E520881ADE732100B8F451 /* Resource.bundle in Resources */,
 				3D2B019D1AE5F5B400F2BBC8 /* TGCameraAuthorizationViewController.strings in Resources */,
 				3D2B019C1AE5F5B400F2BBC8 /* TGPhotoViewController.xib in Resources */,
