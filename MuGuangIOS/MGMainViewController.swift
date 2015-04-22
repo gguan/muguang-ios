@@ -14,7 +14,7 @@ let kScaleLabelHeight: CGFloat = 20
 /**
  *  主页面
  */
-class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocationManagerDelegate {
+class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocationManagerDelegate, MGCardDelegate {
     
     // 模糊背景
     let blurView: FXBlurView = FXBlurView(frame: CGRectZero)
@@ -43,9 +43,12 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
+        self.navigationController?.navigationBarHidden = true
+        
         blurView.hidden = true
         blurView.userInteractionEnabled = false
-
+        blurView.tintColor = UIColor.clearColor()
+        
         cameraView.addTapAction { (isRunning) -> Void in
             if isRunning {
                 // 拍照
@@ -68,7 +71,6 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         
         self.view.addSubview(self.cameraView)
         self.view.addSubview(self.blurView)
-        self.makeAwesomeMenu()
         self.makeVerticalSlider()
         self.view.addSubview(self.scaleLabel)
         
@@ -113,17 +115,11 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         
         // test 
         var card: MGCard = MGCard(frame: CGRectMake(0, 0, 213, 88))
+        card.delegate = self
         self.view.addSubview(card)
         card.center = self.view.center
-    }
-    
-    // 按钮的回调
-    func methodForButton(btn: UIButton) {
-        var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        var viewController = storyBoard.instantiateViewControllerWithIdentifier("MGPublishViewController") as? UIViewController
-        if let vc = viewController {
-            self.presentViewController(vc, animated: true, completion: nil)
-        }
+        
+        self.makeAwesomeMenu()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -134,7 +130,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         self.cameraView.startRunning()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewWillDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         /**
          *  停止运行相机（页面消失后）,停止加速计，停止定位
@@ -144,18 +140,40 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         MGLocationManager.shared.stopUpdating()
     }
     
+    
+    // 拍照按钮的回调
+    func methodForButton(btn: UIButton) {
+        var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        var viewController = storyBoard.instantiateViewControllerWithIdentifier("MGPublishViewController") as? UIViewController
+        if let vc = viewController {
+            self.presentViewController(vc, animated: true, completion: nil)
+        }
+    }
+    
     // 初始化扇形菜单
     func makeAwesomeMenu() {
         
         var itemImage = UIImage(named: "bg-addbutton")
-//        var itemImagePressed = UIImage(named: "")
-//        var starImage = UIImage(named: "")
+        var itemImagePressed = UIImage(named: "bg-addbutton")
+        var starImage = UIImage(named: "bg-addbutton")
         
-        var item1 = AwesomeMenuItem(image: itemImage, highlightedImage: nil)
-        var item2 = AwesomeMenuItem(image: itemImage, highlightedImage: nil)
-        var item3 = AwesomeMenuItem(image: itemImage, highlightedImage: nil)
+        var item1 = AwesomeMenuItem(image: itemImage,
+            highlightedImage: itemImagePressed,
+            contentImage: starImage,
+            highlightedContentImage: nil)
+        var item2 = AwesomeMenuItem(image: itemImage,
+            highlightedImage: itemImagePressed,
+            contentImage: starImage,
+            highlightedContentImage: nil)
+        var item3 = AwesomeMenuItem(image: itemImage,
+            highlightedImage: itemImagePressed,
+            contentImage: starImage,
+            highlightedContentImage: nil)
         
-        var startItem = AwesomeMenuItem(image: itemImage, highlightedImage: nil)
+        var startItem = AwesomeMenuItem(image: itemImage,
+            highlightedImage: itemImagePressed,
+            contentImage: starImage,
+            highlightedContentImage: nil)
         
         var menu: AwesomeMenu = AwesomeMenu(frame: CGRectZero, startItem: startItem, menuItems: [item1, item2, item3])
         menu.delegate = self
@@ -199,6 +217,16 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     // MARK: AwesomeMenuDelegate
     func awesomeMenu(menu: AwesomeMenu!, didSelectIndex idx: Int) {
         println(idx)
+        switch idx {
+        case 0:
+            break
+        case 1:
+            break
+        case 2:
+            self.navigationController?.pushViewController(MGUserViewController(), animated: true)
+        default :
+            break
+        }
     }
     
     // MARK: 加速计
@@ -255,5 +283,16 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         #if DEBUG
             self.monitorView.updateLocationLabel(location)
         #endif
+    }
+    
+    // MARK: MGCardDelegate
+    // 跳转到个人信息
+    func showUserInfo() {
+        self.navigationController?.pushViewController(MGUserViewController(), animated: true)
+    }
+    
+    // 跳转到卡片详情
+    func showCardDetail() {
+        self.navigationController?.pushViewController(MGCardDetailController(), animated: true)
     }
 }

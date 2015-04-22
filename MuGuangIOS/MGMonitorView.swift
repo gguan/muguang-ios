@@ -42,7 +42,11 @@ class MGMonitorView: UIView {
     
     // 更新加速计的数据
     func updateMotionLabel(acceleration: CMAcceleration) {
-        self.motionLabel.text = "x: \(acceleration.x)\ny: \(acceleration.y)\nz: \(acceleration.z)\n"
+        var x : Double, y : Double, z : Double
+        x = acceleration.x
+        y = acceleration.y
+        z = acceleration.z
+        self.motionLabel.text = "x: \(round(x * 100)/100)\ny: \(round(y * 100)/100)\nz: \(round(z * 100)/100)\n"
     }
     
     // 更新地点

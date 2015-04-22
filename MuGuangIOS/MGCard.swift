@@ -65,6 +65,8 @@ class MGCard: UIView {
     // 缩略图
     let thumb: UIImageView = UIImageView(frame: CGRectZero)
     
+    weak var delegate: MGCardDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clearColor()
@@ -77,13 +79,18 @@ class MGCard: UIView {
         self.addSubview(timeLogo)
         self.addSubview(timeLabel)
         self.addSubview(thumb)
+        
+        // 头像
+        avatar.userInteractionEnabled = true
+        
         // 模糊层
         blurView.layer.masksToBounds = true
         blurView.layer.cornerRadius = kCardRadiuWidth
         blurView.layer.borderWidth = kCardBorderWidth
         blurView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.38).CGColor
         blurView.blurRadius = 10.0
-        
+        blurView.tintColor = UIColor.clearColor()
+
         // 名字
         nameLabel.numberOfLines = 1
         nameLabel.lineBreakMode = .ByTruncatingTail
@@ -183,10 +190,26 @@ class MGCard: UIView {
         // 添加手势
         var panGR: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: Selector("methodForPanGestureRecognizer:"))
         self.addGestureRecognizer(panGR)
+        
+        var tapAvatar = UITapGestureRecognizer(target: self, action: Selector("tapAvatar:"))
+        self.avatar.addGestureRecognizer(tapAvatar)
+        
+        var tapBlurView = UITapGestureRecognizer(target: self, action: Selector("tapBlurView:"))
+        self.blurView.addGestureRecognizer(tapBlurView)
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    // 点击头像
+    func tapAvatar(tap: UITapGestureRecognizer) {
+        self.delegate?.showUserInfo!()
+    }
+    
+    // 点击内容
+    func tapBlurView(tap: UITapGestureRecognizer) {
+        self.delegate?.showCardDetail!()
     }
     
     // drag的手势
@@ -196,11 +219,13 @@ class MGCard: UIView {
             if let responder = next?.nextResponder() {
                 if responder.isKindOfClass(MGMainViewController.classForCoder()) {
                     var viewController: MGMainViewController = responder as! MGMainViewController
-                    if !viewController.cameraView.captureSession.running {
-                        var translation = pan.translationInView(self.superview!)
-                        pan.view?.center = CGPointMake(pan.view!.center.x + translation.x,
-                            pan.view!.center.y + translation.y)
-                        pan.setTranslation(CGPointMake(0, 0), inView: self.superview)
+                    if let captureSession = viewController.cameraView.captureSession {
+                        if !captureSession.running {
+                            var translation = pan.translationInView(self.superview!)
+                            pan.view?.center = CGPointMake(pan.view!.center.x + translation.x,
+                                pan.view!.center.y + translation.y)
+                            pan.setTranslation(CGPointMake(0, 0), inView: self.superview)
+                        }
                     }
                     break
                 }
@@ -221,20 +246,12 @@ class MGCard: UIView {
         }
         // 更新性别图片的位置
         sex.frame.origin = CGPointMake(CGRectGetMaxX(nameLabel.frame) + kCardPadding, sex.frame.origin.y)
-//        self.sex.mas_updateConstraints { make in
-//            make.left.equalTo()(self.nameLabel.mas_right).offset()(kCardPadding)
-//            make.top.and().height().equalTo()(self.nameLabel)
-//            make.width.equalTo()(15)
-//        }
         super.layoutSubviews()
     }
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
+}
 
+// 卡片的回调
+@objc protocol MGCardDelegate {
+    optional func showUserInfo()
+    optional func showCardDetail()
 }

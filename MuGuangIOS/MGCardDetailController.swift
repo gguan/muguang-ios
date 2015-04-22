@@ -12,8 +12,23 @@ class MGCardDetailController: MGBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor.whiteColor()
+        // back button
+        var backButton: UIButton = UIButton(frame: CGRectZero)
+        backButton.setTitle("Back", forState: .Normal)
+        backButton.setTitleColor(UIColor.purpleColor(), forState: .Normal)
+        backButton.addTarget(self, action: Selector("pop:"), forControlEvents: .TouchUpInside)
+        self.view.addSubview(backButton)
+        
+        backButton.mas_makeConstraints { make in
+            make.top.and().left().equalTo()(self.view).offset()(20)
+            make.width.equalTo()(50)
+            make.height.equalTo()(40)
+        }
+    }
+    
+    func pop(button: UIButton) {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
     override func didReceiveMemoryWarning() {

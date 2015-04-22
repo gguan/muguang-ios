@@ -40,7 +40,8 @@ class MGCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
         previewLayer.anchorPoint = CGPointZero
         previewLayer.masksToBounds = true
 
-        self.layer.insertSublayer(previewLayer, atIndex: 0)
+//        self.layer.insertSublayer(previewLayer, atIndex: 0)
+        self.layer.addSublayer(previewLayer)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -115,14 +116,18 @@ class MGCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate {
      *  开始运行
      */
     func startRunning() {
-        self.captureSession.startRunning()
+        if self.captureSession != nil {
+            self.captureSession.startRunning()
+        }
     }
     
     /**
      *  停止运行
      */
     func stopRunning() {
-        self.captureSession.stopRunning()
+        if self.captureSession != nil {
+            self.captureSession.stopRunning()
+        }
     }
     
     /**
