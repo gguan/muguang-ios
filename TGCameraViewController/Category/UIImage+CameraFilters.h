@@ -33,4 +33,7 @@
 
 //添加自定义filter
 - (UIImage *) addFilter:(CIFilter *)filter;
+
+
+
 @end

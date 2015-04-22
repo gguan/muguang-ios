@@ -80,6 +80,8 @@ static NSString* const kInputSaturation         = @"inputSaturation";
     return [self imageFromContext:context withFilter:filter];
 }
 
+
+
 - (UIImage *)vignetteWithRadius:(CGFloat)radius intensity:(CGFloat)intensity
 {
     CIImage *inputImage = [[CIImage alloc] initWithImage:self];
@@ -127,5 +129,7 @@ static NSString* const kInputSaturation         = @"inputSaturation";
     
     return image;
 }
+
+
 
 @end
