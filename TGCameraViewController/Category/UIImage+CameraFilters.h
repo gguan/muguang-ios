@@ -31,4 +31,6 @@
 - (UIImage *)saturateImage:(CGFloat)saturation withContrast:(CGFloat)contrast;
 - (UIImage *)vignetteWithRadius:(CGFloat)radius intensity:(CGFloat)intensity;
 
+//添加自定义filter
+- (UIImage *) addFilter:(CIFilter *)filter;
 @end

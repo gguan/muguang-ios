@@ -12,7 +12,7 @@
 @property (strong, nonatomic) AVCaptureSession *session;
 @property (nonatomic, strong) AVCaptureVideoDataOutput *videoOutput;
 //@property (nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;
-@property (nonatomic, strong) CALayer *previewLayer;
+
 @property (nonatomic, strong) CIContext *context;
 
 @end
@@ -107,8 +107,7 @@
     CIImage *image = [CIImage imageWithCVPixelBuffer:pixelBuffer];
     [self.filter setValue:image forKey:kCIInputImageKey];
     image  = self.filter.outputImage;
-    CGImageRef cgimg =
-    [_context createCGImage:image fromRect:[image extent]];
+    CGImageRef cgimg = [_context createCGImage:image fromRect:[image extent]];
     
     _previewLayer.contents = (__bridge id)(cgimg);
     
@@ -141,6 +140,16 @@
     
 //    NSInteger index = [captureView.subviews count]-1;
 //    [captureView insertSubview:self.gridView atIndex:index];
+}
+
+- (UIImage *) captureImage
+{
+    if (_filter) {
+        CIImage *image = self.filter.outputImage;
+        CGImageRef cgimg = [_context createCGImage:image fromRect:[image extent]];
+        return [UIImage imageWithCGImage:cgimg];
+    }else
+        return nil;
 }
 
 @end

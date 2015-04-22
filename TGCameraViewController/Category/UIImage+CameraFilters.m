@@ -96,6 +96,23 @@ static NSString* const kInputSaturation         = @"inputSaturation";
     return [self imageFromContext:context withFilter:filter];
 }
 
+
+- (UIImage *) addFilter:(CIFilter *)filter
+{
+    @autoreleasepool {
+        CIImage *inputImage = [[CIImage alloc] initWithImage:self];
+        [filter setValue:inputImage forKey:kCIInputImageKey];
+        CIContext *context = [CIContext contextWithOptions:nil];
+        
+        CGImageRef cgimg =
+        [context createCGImage:filter.outputImage fromRect:[filter.outputImage extent]];
+        
+        UIImage *newImage = [UIImage imageWithCGImage:cgimg];
+        CGImageRelease(cgimg);
+        return newImage;
+    }
+}
+
 #pragma mark -
 #pragma mark - Private methods
 

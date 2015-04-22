@@ -19,4 +19,8 @@
 - (void)startRunning;
 - (void)stopRunning;
 - (void)insertSublayerWithCaptureView:(UIView *)captureView atRootView:(UIView *)rootView;
+
+@property (nonatomic, strong) CALayer *previewLayer;
+//照相
+- (UIImage *) captureImage;
 @end

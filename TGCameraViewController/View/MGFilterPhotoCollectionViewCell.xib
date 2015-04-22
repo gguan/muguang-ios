@@ -43,7 +43,7 @@
                                 <variation key="widthClass=compact" constant="20"/>
                             </constraint>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.3377382478" green="0.75725297849999995" blue="0.95310527150000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <variation key="default">

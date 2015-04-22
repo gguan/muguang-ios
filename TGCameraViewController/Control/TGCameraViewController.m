@@ -82,8 +82,6 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 - (void)viewWillDisappearWithCompletion:(void (^)(void))completion;
 
 
-@property (strong, nonatomic) IBOutlet TGCameraFilterView *filterView;
-
 @property (strong, nonatomic) IBOutlet TGCameraFilterView *mgFilterView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -92,6 +90,8 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 @property (nonatomic,strong) UIView *detailFilterView;
 
 @property (nonatomic, strong) NSArray *filterDescriptors;
+
+@property (nonatomic) BOOL isStillImageCamera;
 
 @end
 
@@ -121,9 +121,25 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
         _topViewHeight.constant = 0;
     }
     
-    _filterDescriptors = @[@"1",@"2",@"3"];
+    
+    //初始化滤镜
+    _filterDescriptors = @[
+                           @{@"filter":[CIFilter filterWithName:@"CIGaussianBlur"],@"name":@"None"},
+                           @{@"filter":[CIFilter filterWithName:@"CIGaussianBlur"],@"name":@"GaussianBlur"},
+                           @{@"filter":[CIFilter filterWithName:@"CIPhotoEffectMono"],@"name":@"Mono"},
+                           @{@"filter":[CIFilter filterWithName:@"CIPhotoEffectInstant"],@"name":@"Instant"},
+                           @{@"filter":[CIFilter filterWithName:@"CIPhotoEffectFade"],@"name":@"Fade"}];
 
+    
+    //初始化静态图片Output（默认的）
+    _isStillImageCamera = @YES;
     _camera = [TGCamera cameraWithFlashButton:_flashButton];
+    
+    /**********************初始化Video output滤镜*****************/
+    _videoCamera = [MGVideoCamera cameraWithFlashButton:_flashButton];
+    
+    
+    
     _origionalPhoto = [UIImage new];
 //    _cachePhoto = [NSCache new];
     _captureView.backgroundColor = [UIColor clearColor];
@@ -134,8 +150,9 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
     _bottomRightView.transform = CGAffineTransformMakeRotation(M_PI_2*2);
     
     
-    if ([_filterView isDescendantOfView:self.view]) {
-        [_filterView removeFromSuperviewAnimated];
+    
+    if ([_mgFilterView isDescendantOfView:self.view]) {
+
     } else {
 //        [_filterView addToView:self.view aboveView:_bottomView];
         [self.actionsView addSubview:_mgFilterView];
@@ -144,9 +161,6 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 //        [self.view sendSubviewToBack:_photoView];
     }
     
-    
-    /**********************实时滤镜*****************/
-    _videoCamera = [MGVideoCamera cameraWithFlashButton:_flashButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -184,7 +198,7 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
     
     [self deviceOrientationDidChangeNotification];
     
-    ////[_camera startRunning];
+
     
     _separatorView.hidden = YES;
     
@@ -208,6 +222,16 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
        [_camera insertSublayerWithCaptureView:_captureView atRootView:self.view];
     }
     
+    
+    //设置默认滤镜None
+    [self setDefaultFilterToNone];
+}
+
+//初始化
+- (void) setDefaultFilterToNone
+{
+    [_camera startRunning];
+    
     _selectCell = (MGFilterPhotoCollectionViewCell *)[_collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     _selectCell.filterImage.layer.borderWidth = 2.0;
     _selectCell.filterImage.layer.borderColor = [UIColor redColor].CGColor;
@@ -220,6 +244,7 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [_camera stopRunning];
+    [_videoCamera stopRunning];
 }
 
 - (void)didReceiveMemoryWarning
@@ -292,7 +317,7 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 
 - (IBAction)shotTapped
 {
-    _shotButton.enabled =
+    //_shotButton.enabled =
     _albumButton.enabled = NO;
     
     
@@ -307,20 +332,41 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 //        }];
 //    }];
     
-    [_camera takePhotoWithCaptureView:_captureView videoOrientation:videoOrientation cropSize:_captureView.frame.size
-                           completion:^(UIImage *photo) {
-                               [self.view addSubview:_previewImage];
-                               _origionalPhoto = photo;
-                               _previewImage.image = photo;
-                               _nextView.hidden = NO;
-                               _previewImage.hidden = NO;
-//                               TGPhotoViewController *viewController = [TGPhotoViewController newWithDelegate:_delegate photo:photo];
-//                               [self.navigationController pushViewController:viewController animated:YES];
-                           }];
+    
+    if (_isStillImageCamera)
+    {
+        // 静态照相
+        [_camera takePhotoWithCaptureView:_captureView videoOrientation:videoOrientation cropSize:_captureView.frame.size
+                               completion:^(UIImage *photo) {
+                                   [self.view addSubview:_previewImage];
+                                   _origionalPhoto = photo;
+                                   _previewImage.image = photo;
+                                   _nextView.hidden = NO;
+                                   _previewImage.hidden = NO;
+                                   [_camera stopRunning];
+                                   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                                       //UIImageWriteToSavedPhotosAlbum(photo, self, @selector(saveDone), nil);
+                                        //UIImageWriteToSavedPhotosAlbum(photo, nil, nil, nil);
+                                   });
+                                   
+                               }];
+    }else {
+        [self.view addSubview:_previewImage];
+        UIImage *im = [_videoCamera captureImage];
+        _previewImage.hidden = NO;
+        _previewImage.image = im;
+        [self.view bringSubviewToFront:_previewImage];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImageWriteToSavedPhotosAlbum(im, nil, nil, nil);
+        });
+    }
     
     
 }
-
+- (void) saveDone
+{
+    NSLog(@"save done");
+}
 - (IBAction)albumTapped
 {
     _shotButton.enabled =
@@ -412,16 +458,17 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
     }];
 }
 - (IBAction)retake:(id)sender {
+    [_previewImage removeFromSuperview];
     _nextView.hidden =
-    _previewImage.hidden =
     _shotButton.enabled = YES;
+    [_camera startRunning];
 }
 - (IBAction)next:(id)sender {
 }
 
 - (IBAction)defaultFilterTapped:(UIButton *)button
 {
-    [self addDetailViewToButton:button];
+
     _previewImage.hidden = YES;
     if (_previewImage.hidden) {
         ////[_camera stopRunning];
@@ -438,7 +485,7 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 
 - (IBAction)satureFilterTapped:(UIButton *)button
 {
-    [self addDetailViewToButton:button];
+ 
 //    if ([_cachePhoto objectForKey:kTGCacheSatureKey]) {
 //        _previewImage.image = [_cachePhoto objectForKey:kTGCacheSatureKey];
 //    } else {
@@ -450,19 +497,18 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 
 - (IBAction)curveFilterTapped:(UIButton *)button
 {
-    [self addDetailViewToButton:button];
+
     
-//    if ([_cachePhoto objectForKey:kTGCacheCurveKey]) {
-//        _previewImage.image = [_cachePhoto objectForKey:kTGCacheCurveKey];
-//    } else {
-//        [_cachePhoto setObject:[_origionalPhoto curveFilter] forKey:kTGCacheCurveKey];
-//        _previewImage.image = [_cachePhoto objectForKey:kTGCacheCurveKey];
-//    }
+    if ([_cachePhoto objectForKey:kTGCacheCurveKey]) {
+        _previewImage.image = [_cachePhoto objectForKey:kTGCacheCurveKey];
+    } else {
+        [_cachePhoto setObject:[_origionalPhoto curveFilter] forKey:kTGCacheCurveKey];
+        _previewImage.image = [_cachePhoto objectForKey:kTGCacheCurveKey];
+    }
 }
 
 - (IBAction)vignetteFilterTapped:(UIButton *)button
 {
-    [self addDetailViewToButton:button];
     
 //    if ([_cachePhoto objectForKey:kTGCacheVignetteKey]) {
 //        _previewImage.image = [_cachePhoto objectForKey:kTGCacheVignetteKey];
@@ -472,25 +518,8 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 //    }
 }
 
-- (void)addDetailViewToButton:(UIButton *)button
-{
-    [_detailFilterView removeFromSuperview];
-    
-    CGFloat height = 2.5;
-    
-    CGRect frame = button.frame;
-    frame.size.height = height;
-    frame.origin.x = 0;
-    frame.origin.y = CGRectGetMaxY(button.frame) - height;
-    
-    _detailFilterView = [[UIView alloc] initWithFrame:frame];
-    _detailFilterView.backgroundColor = [TGCameraColor orangeColor];
-    _detailFilterView.userInteractionEnabled = NO;
-    
-    [button addSubview:_detailFilterView];
-}
 
-
+#pragma mark - CollectionViewDelete methods
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
@@ -505,8 +534,7 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 {
     MGFilterPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"mgCell" forIndexPath:indexPath];
 
-    cell.filterName.text = _filterDescriptors[indexPath.row];
-    
+    cell.filterName.text = _filterDescriptors[indexPath.row][@"name"];
     
     return cell;
 }
@@ -518,22 +546,57 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
     
     if (indexPath.row > 0)
     {
-        [_videoCamera insertSublayerWithCaptureView:self.captureView atRootView:self.view];
-        
-        if (indexPath.row == 1) {
-            _videoCamera.filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+        //照相前
+        if(_previewImage.hidden)
+        {
+            
+        }else //照相后
+        {
+
+            //[image addFilter:_filterDescriptors[indexPath.row][@"filter"]];
+//            _previewImage.image = [image curveFilter];
+            // 拍照后，stop camera
+
+            
+            
+            CIFilter *f = _filterDescriptors[indexPath.row][@"filter"];
+            NSLog(@"%@",f);
+            _previewImage.image = [_origionalPhoto addFilter:f];
         }
-        
-        if (indexPath.row == 2) {
-            _videoCamera.filter = [CIFilter filterWithName:@"CIVibrance"];
-        }
-        
-        
-        
-        [_videoCamera startRunning];
+
+//        [_videoCamera insertSublayerWithCaptureView:self.captureView atRootView:self.view];
+//        
+//        if (indexPath.row == 1) {
+//            //_videoCamera.filter = [CIFilter filterWithName:@"CIVibrance"];
+//        }
+//
+//        if (indexPath.row == 2) {
+//            //_videoCamera.filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+////            _isStillImageCamera = YES;
+//        }
+//        
+//        
+//        [_videoCamera startRunning];
+//        [_camera stopRunning];
+    }else
+    {
+//        _isStillImageCamera = YES;
+//        _previewImage.hidden = YES;
+//        [_videoCamera stopRunning];
+//        [_videoCamera.previewLayer removeFromSuperlayer];
+//        [_camera startRunning];
     }
 }
 
+- (void) changeCameraToFilter:(CIFilter *) filter
+{
+    
+}
+
+- (void) changeVideoCameraToFilter:(CIFilter *) filter
+{
+    
+}
 
 - (void) addBorderLayerToSelectCell:(NSIndexPath *) indexPath
 {
