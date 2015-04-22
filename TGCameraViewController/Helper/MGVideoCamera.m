@@ -14,7 +14,7 @@
 //@property (nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;
 @property (nonatomic, strong) CALayer *previewLayer;
 @property (nonatomic, strong) CIContext *context;
-@property (nonatomic, strong) CIFilter *filter;
+
 @end
 
 @implementation MGVideoCamera
@@ -42,7 +42,8 @@
     _session = [AVCaptureSession new];
     _session.sessionPreset = AVCaptureSessionPresetPhoto;
     _context = [CIContext contextWithOptions:nil];
-    _filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    
+    
     //
     // setup device
     //
@@ -102,22 +103,16 @@
 }
 
 -(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
-    
-    NSLog(@"cap ture ");
-    
     CVPixelBufferRef pixelBuffer = (CVPixelBufferRef)CMSampleBufferGetImageBuffer(sampleBuffer);
     CIImage *image = [CIImage imageWithCVPixelBuffer:pixelBuffer];
     [self.filter setValue:image forKey:kCIInputImageKey];
     image  = self.filter.outputImage;
-//    image = [CIFilter filterWithName:@"CIColorInvert"].outputImage;
-    
     CGImageRef cgimg =
     [_context createCGImage:image fromRect:[image extent]];
     
     _previewLayer.contents = (__bridge id)(cgimg);
     
-    //CGImageRelease(cgimg);
-    
+    CGImageRelease(cgimg);
 }
 
 - (void)startRunning

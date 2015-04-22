@@ -12,6 +12,9 @@
 @import UIKit;
 
 @interface MGVideoCamera : NSObject
+
+@property (nonatomic, strong) CIFilter *filter;
+
 + (instancetype)cameraWithFlashButton:(UIButton *)flashButton;
 - (void)startRunning;
 - (void)stopRunning;

@@ -1,0 +1,15 @@
+//
+//  MuGuangIOSPrefixHeader.pch
+//  MuGuangIOS
+//
+//  Created by William Hu on 4/22/15.
+//  Copyright (c) 2015 北京目光璀璨科技有限公司. All rights reserved.
+//
+
+#ifndef MuGuangIOS_MuGuangIOSPrefixHeader_pch
+#define MuGuangIOS_MuGuangIOSPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import "MuGuangIOS-Swift.h"
+#endif

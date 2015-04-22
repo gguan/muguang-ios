@@ -29,6 +29,7 @@
 #import "TGCameraFilterView.h"
 #import "UIImage+CameraFilters.h"
 #import "TGCameraColor.h"
+#import "MGFilterPhotoCollectionViewCell.h"
 
 #import "MGVideoCamera.h"
 
@@ -36,7 +37,7 @@ static NSString* const kTGCacheSatureKey = @"TGCacheSatureKey";
 static NSString* const kTGCacheCurveKey = @"TGCacheCurveKey";
 static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 
-@interface TGCameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface TGCameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *captureView;
 @property (strong, nonatomic) IBOutlet UIImageView *topLeftView;
@@ -54,6 +55,8 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 @property (strong, nonatomic) IBOutlet TGCameraSlideView *slideDownView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeight;
+
+@property (nonatomic, strong) MGFilterPhotoCollectionViewCell *selectCell;
 
 //处理图片
 @property (strong, nonatomic) TGCamera *camera;
@@ -80,9 +83,15 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 
 
 @property (strong, nonatomic) IBOutlet TGCameraFilterView *filterView;
+
+@property (strong, nonatomic) IBOutlet TGCameraFilterView *mgFilterView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 @property (strong, nonatomic) NSCache *cachePhoto;
 
 @property (nonatomic,strong) UIView *detailFilterView;
+
+@property (nonatomic, strong) NSArray *filterDescriptors;
 
 @end
 
@@ -104,13 +113,19 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 {
     [super viewDidLoad];
     
+    
+    UINib *cellNib = [UINib nibWithNibName:@"MGFilterPhotoCollectionViewCell" bundle:nil];
+    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"mgCell"];
+    
     if (CGRectGetHeight([[UIScreen mainScreen] bounds]) <= 480) {
         _topViewHeight.constant = 0;
     }
     
+    _filterDescriptors = @[@"1",@"2",@"3"];
+
     _camera = [TGCamera cameraWithFlashButton:_flashButton];
     _origionalPhoto = [UIImage new];
-    _cachePhoto = [NSCache new];
+//    _cachePhoto = [NSCache new];
     _captureView.backgroundColor = [UIColor clearColor];
     
     _topLeftView.transform = CGAffineTransformMakeRotation(0);
@@ -123,7 +138,8 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
         [_filterView removeFromSuperviewAnimated];
     } else {
 //        [_filterView addToView:self.view aboveView:_bottomView];
-        [self.actionsView addSubview:_filterView];
+        [self.actionsView addSubview:_mgFilterView];
+        _mgFilterView.backgroundColor = [UIColor redColor];
         //[self.view sendSubviewToBack:_filterView];
 //        [self.view sendSubviewToBack:_photoView];
     }
@@ -191,6 +207,10 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
         _wasLoaded = YES;
        [_camera insertSublayerWithCaptureView:_captureView atRootView:self.view];
     }
+    
+    _selectCell = (MGFilterPhotoCollectionViewCell *)[_collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    _selectCell.filterImage.layer.borderWidth = 2.0;
+    _selectCell.filterImage.layer.borderColor = [UIColor redColor].CGColor;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -432,24 +452,24 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 {
     [self addDetailViewToButton:button];
     
-    if ([_cachePhoto objectForKey:kTGCacheCurveKey]) {
-        _previewImage.image = [_cachePhoto objectForKey:kTGCacheCurveKey];
-    } else {
-        [_cachePhoto setObject:[_origionalPhoto curveFilter] forKey:kTGCacheCurveKey];
-        _previewImage.image = [_cachePhoto objectForKey:kTGCacheCurveKey];
-    }
+//    if ([_cachePhoto objectForKey:kTGCacheCurveKey]) {
+//        _previewImage.image = [_cachePhoto objectForKey:kTGCacheCurveKey];
+//    } else {
+//        [_cachePhoto setObject:[_origionalPhoto curveFilter] forKey:kTGCacheCurveKey];
+//        _previewImage.image = [_cachePhoto objectForKey:kTGCacheCurveKey];
+//    }
 }
 
 - (IBAction)vignetteFilterTapped:(UIButton *)button
 {
     [self addDetailViewToButton:button];
     
-    if ([_cachePhoto objectForKey:kTGCacheVignetteKey]) {
-        _previewImage.image = [_cachePhoto objectForKey:kTGCacheVignetteKey];
-    } else {
-        [_cachePhoto setObject:[_origionalPhoto vignetteWithRadius:0 intensity:6] forKey:kTGCacheVignetteKey];
-        _previewImage.image = [_cachePhoto objectForKey:kTGCacheVignetteKey];
-    }
+//    if ([_cachePhoto objectForKey:kTGCacheVignetteKey]) {
+//        _previewImage.image = [_cachePhoto objectForKey:kTGCacheVignetteKey];
+//    } else {
+//        [_cachePhoto setObject:[_origionalPhoto vignetteWithRadius:0 intensity:6] forKey:kTGCacheVignetteKey];
+//        _previewImage.image = [_cachePhoto objectForKey:kTGCacheVignetteKey];
+//    }
 }
 
 - (void)addDetailViewToButton:(UIButton *)button
@@ -468,6 +488,62 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
     _detailFilterView.userInteractionEnabled = NO;
     
     [button addSubview:_detailFilterView];
+}
+
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return _filterDescriptors.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    MGFilterPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"mgCell" forIndexPath:indexPath];
+
+    cell.filterName.text = _filterDescriptors[indexPath.row];
+    
+    
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    //选中的filter添加选中状态
+    [self addBorderLayerToSelectCell:indexPath];
+    
+    if (indexPath.row > 0)
+    {
+        [_videoCamera insertSublayerWithCaptureView:self.captureView atRootView:self.view];
+        
+        if (indexPath.row == 1) {
+            _videoCamera.filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+        }
+        
+        if (indexPath.row == 2) {
+            _videoCamera.filter = [CIFilter filterWithName:@"CIVibrance"];
+        }
+        
+        
+        
+        [_videoCamera startRunning];
+    }
+}
+
+
+- (void) addBorderLayerToSelectCell:(NSIndexPath *) indexPath
+{
+    if (_selectCell) {
+        _selectCell.filterImage.layer.borderWidth = 0.0;
+        _selectCell.filterImage.layer.borderColor = [UIColor whiteColor].CGColor;
+    }
+    _selectCell = (MGFilterPhotoCollectionViewCell *)[_collectionView cellForItemAtIndexPath:indexPath];
+    _selectCell.filterImage.layer.borderWidth = 2.0;
+    _selectCell.filterImage.layer.borderColor = [UIColor redColor].CGColor;
 }
 
 @end

@@ -20,8 +20,9 @@
 		3D2B019B1AE5F5B400F2BBC8 /* TGCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01931AE5F5B400F2BBC8 /* TGCameraViewController.xib */; };
 		3D2B019C1AE5F5B400F2BBC8 /* TGPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01951AE5F5B400F2BBC8 /* TGPhotoViewController.xib */; };
 		3D2B019D1AE5F5B400F2BBC8 /* TGCameraAuthorizationViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01971AE5F5B400F2BBC8 /* TGCameraAuthorizationViewController.strings */; };
-		3D2B019F1AE6347500F2BBC8 /* TGCameraViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B019E1AE6347500F2BBC8 /* TGCameraViewControllerExtensions.swift */; };
 		3D2B01A91AE64F0500F2BBC8 /* MGVideoCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01A81AE64F0500F2BBC8 /* MGVideoCamera.m */; };
+		3D2B01AD1AE7358800F2BBC8 /* MGFilterPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01AC1AE7358800F2BBC8 /* MGFilterPhotoCollectionViewCell.m */; };
+		3D2B01AF1AE736C000F2BBC8 /* MGFilterPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01AE1AE736C000F2BBC8 /* MGFilterPhotoCollectionViewCell.xib */; };
 		3D95A5DE1AE53AC60031DD9F /* UIImage+CameraFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5A61AE53AC60031DD9F /* UIImage+CameraFilters.m */; };
 		3D95A5DF1AE53AC60031DD9F /* TGCameraAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5A91AE53AC60031DD9F /* TGCameraAuthorizationViewController.m */; };
 		3D95A5E01AE53AC60031DD9F /* TGCameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5AB1AE53AC60031DD9F /* TGCameraNavigationController.m */; };
@@ -124,9 +125,12 @@
 		3D2B01961AE5F5B400F2BBC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TGPhotoViewController.xib; sourceTree = "<group>"; };
 		3D2B01981AE5F5B400F2BBC8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/TGCameraAuthorizationViewController.strings; sourceTree = "<group>"; };
 		3D2B01991AE5F5B400F2BBC8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/TGCameraAuthorizationViewController.strings"; sourceTree = "<group>"; };
-		3D2B019E1AE6347500F2BBC8 /* TGCameraViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TGCameraViewControllerExtensions.swift; sourceTree = "<group>"; };
 		3D2B01A71AE64F0500F2BBC8 /* MGVideoCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGVideoCamera.h; sourceTree = "<group>"; };
 		3D2B01A81AE64F0500F2BBC8 /* MGVideoCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGVideoCamera.m; sourceTree = "<group>"; };
+		3D2B01AB1AE7358800F2BBC8 /* MGFilterPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFilterPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		3D2B01AC1AE7358800F2BBC8 /* MGFilterPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFilterPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		3D2B01AE1AE736C000F2BBC8 /* MGFilterPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MGFilterPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		3D2B01B01AE740BA00F2BBC8 /* MuGuangIOSPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MuGuangIOSPrefixHeader.pch; sourceTree = "<group>"; };
 		3D95A5A51AE53AC60031DD9F /* UIImage+CameraFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CameraFilters.h"; sourceTree = "<group>"; };
 		3D95A5A61AE53AC60031DD9F /* UIImage+CameraFilters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CameraFilters.m"; sourceTree = "<group>"; };
 		3D95A5A81AE53AC60031DD9F /* TGCameraAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGCameraAuthorizationViewController.h; sourceTree = "<group>"; };
@@ -275,6 +279,7 @@
 			children = (
 				3D2B01911AE5F5B400F2BBC8 /* TGCameraAuthorizationViewController.xib */,
 				3D2B01931AE5F5B400F2BBC8 /* TGCameraViewController.xib */,
+				3D2B01AE1AE736C000F2BBC8 /* MGFilterPhotoCollectionViewCell.xib */,
 				3D2B01951AE5F5B400F2BBC8 /* TGPhotoViewController.xib */,
 				3D2B01971AE5F5B400F2BBC8 /* TGCameraAuthorizationViewController.strings */,
 			);
@@ -284,7 +289,6 @@
 		3D2B01A01AE6347D00F2BBC8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				3D2B019E1AE6347500F2BBC8 /* TGCameraViewControllerExtensions.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -321,6 +325,8 @@
 				3D95A5AB1AE53AC60031DD9F /* TGCameraNavigationController.m */,
 				3D95A5AC1AE53AC60031DD9F /* TGCameraViewController.h */,
 				3D95A5AD1AE53AC60031DD9F /* TGCameraViewController.m */,
+				3D2B01AB1AE7358800F2BBC8 /* MGFilterPhotoCollectionViewCell.h */,
+				3D2B01AC1AE7358800F2BBC8 /* MGFilterPhotoCollectionViewCell.m */,
 				3D95A5AE1AE53AC60031DD9F /* TGPhotoViewController.h */,
 				3D95A5AF1AE53AC60031DD9F /* TGPhotoViewController.m */,
 			);
@@ -454,6 +460,7 @@
 				3DFA1A7D1ADFB862003E3177 /* Publisher */,
 				3DFA1A721ADFB20C003E3177 /* Filter */,
 				3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */,
+				3D2B01B01AE740BA00F2BBC8 /* MuGuangIOSPrefixHeader.pch */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -684,6 +691,7 @@
 				3D2B019A1AE5F5B400F2BBC8 /* TGCameraAuthorizationViewController.xib in Resources */,
 				3D2B019B1AE5F5B400F2BBC8 /* TGCameraViewController.xib in Resources */,
 				3DB389071ADE18AB003361A6 /* LaunchScreen.xib in Resources */,
+				3D2B01AF1AE736C000F2BBC8 /* MGFilterPhotoCollectionViewCell.xib in Resources */,
 				B0E5208D1ADE732100B8F451 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				B0E520871ADE732100B8F451 /* ShareSDKLocalizable.strings in Resources */,
 				3DFA1A7C1ADFB389003E3177 /* duckling.jpg in Resources */,
@@ -759,6 +767,7 @@
 				3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */,
 				3DFA1A761ADFB282003E3177 /* ParameterAdjustmentView.swift in Sources */,
 				3D95A5E51AE53AC60031DD9F /* TGCamera.m in Sources */,
+				3D2B01AD1AE7358800F2BBC8 /* MGFilterPhotoCollectionViewCell.m in Sources */,
 				B0650A371ADF840400CBDC97 /* UIImage+ImageEffects.m in Sources */,
 				3D95A5F11AE53AC60031DD9F /* TGCameraSlideDownView.m in Sources */,
 				3D95A5E81AE53AC60031DD9F /* TGCameraFocus.m in Sources */,
@@ -769,7 +778,6 @@
 				3D0267481AE4CF00004FE669 /* MGPublisherViewController.swift in Sources */,
 				3D95A5E61AE53AC60031DD9F /* TGCameraColor.m in Sources */,
 				3D95A5EB1AE53AC60031DD9F /* TGCameraToggle.m in Sources */,
-				3D2B019F1AE6347500F2BBC8 /* TGCameraViewControllerExtensions.swift in Sources */,
 				3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */,
 				3D95A5E01AE53AC60031DD9F /* TGCameraNavigationController.m in Sources */,
 				3D95A5F01AE53AC60031DD9F /* TGCameraGridView.m in Sources */,
@@ -885,11 +893,14 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MuGuangIOS/MuGuangIOSPrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -905,6 +916,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_MODULE_NAME = MuGuangIOS;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -930,10 +942,13 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MuGuangIOS/MuGuangIOSPrefixHeader.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -944,6 +959,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_MODULE_NAME = MuGuangIOS;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
