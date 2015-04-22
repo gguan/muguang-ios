@@ -396,7 +396,7 @@
 
 - (UIView *)underlyingView
 {
-    return _underlyingView ?: self.superview;
+    return _underlyingView ?: [self.superview.backgroundColor isEqual:[UIColor clearColor]] ? self.superview.superview : self.superview;
 }
 
 - (CALayer *)underlyingLayer

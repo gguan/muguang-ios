@@ -53,7 +53,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
                     // 模糊效果
                     self.blurView.hidden = false
                     self.blurView.alpha = 0
-                    self.blurView.blurRadius = 40
+                    self.blurView.blurRadius = 10
                     UIView.animateWithDuration(0.35, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
                         self.blurView.alpha = 1
                     }, completion: nil)
@@ -110,6 +110,11 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
                 make.height.equalTo()(160)
             }
         #endif
+        
+        // test 
+        var card: MGCard = MGCard(frame: CGRectMake(0, 0, 213, 88))
+        self.view.addSubview(card)
+        card.center = self.view.center
     }
     
     // 按钮的回调
