@@ -138,10 +138,8 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
     /**********************初始化Video output滤镜*****************/
     _videoCamera = [MGVideoCamera cameraWithFlashButton:_flashButton];
     
-    
-    
     _origionalPhoto = [UIImage new];
-//    _cachePhoto = [NSCache new];
+    _cachePhoto = [NSCache new];
     _captureView.backgroundColor = [UIColor clearColor];
     
     _topLeftView.transform = CGAffineTransformMakeRotation(0);
@@ -555,13 +553,15 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 
             //[image addFilter:_filterDescriptors[indexPath.row][@"filter"]];
 //            _previewImage.image = [image curveFilter];
-            // 拍照后，stop camera
 
-            
-            
-            CIFilter *f = _filterDescriptors[indexPath.row][@"filter"];
-            NSLog(@"%@",f);
-            _previewImage.image = [_origionalPhoto addFilter:f];
+            NSString *filterName = _filterDescriptors[indexPath.row][@"name"];
+            if ([_cachePhoto objectForKey:filterName]) {
+                _previewImage.image = [_cachePhoto objectForKey:filterName];
+            } else {
+                CIFilter *f = _filterDescriptors[indexPath.row][@"filter"];
+                [_cachePhoto setObject:[_origionalPhoto addFilter:f] forKey:filterName];
+                _previewImage.image = [_cachePhoto objectForKey:filterName];
+            }
         }
 
 //        [_videoCamera insertSublayerWithCaptureView:self.captureView atRootView:self.view];
