@@ -54,7 +54,6 @@ NSMutableDictionary *optionDictionary;
 @end
 
 
-
 @implementation TGCamera
 
 + (instancetype)cameraWithFlashButton:(UIButton *)flashButton

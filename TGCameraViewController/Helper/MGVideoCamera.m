@@ -24,7 +24,6 @@
 {
     MGVideoCamera *camera = [MGVideoCamera newCamera];
     [camera setupWithFlashButton:flashButton];
-    
     return camera;
 }
 
@@ -83,6 +82,7 @@
     //NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:AVVideoCodecJPEG, AVVideoCodecKey, nil];
     
     _videoOutput = [AVCaptureVideoDataOutput new];
+
     //_videoOutput.videoSettings = outputSettings;
     [_videoOutput setAlwaysDiscardsLateVideoFrames:YES];
     [_videoOutput setVideoSettings:[NSDictionary  dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA]
@@ -102,16 +102,31 @@
     [TGCameraFlash flashModeWithCaptureSession:_session andButton:flashButton];
 }
 
+
 -(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+    
     CVPixelBufferRef pixelBuffer = (CVPixelBufferRef)CMSampleBufferGetImageBuffer(sampleBuffer);
     CIImage *image = [CIImage imageWithCVPixelBuffer:pixelBuffer];
     [self.filter setValue:image forKey:kCIInputImageKey];
     image  = self.filter.outputImage;
+    
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    CGAffineTransform transform;
+    
+    if (orientation == UIDeviceOrientationPortrait) {
+        transform = CGAffineTransformMakeRotation(-M_PI/2.0);
+    } else if (orientation == UIDeviceOrientationPortraitUpsideDown) {
+        transform = CGAffineTransformMakeRotation(M_PI / 2.0);
+    } else if (orientation == UIDeviceOrientationLandscapeRight) {
+        transform = CGAffineTransformMakeRotation(M_PI);
+    } else {
+        transform = CGAffineTransformMakeRotation(0);
+    }
+    image = [image imageByApplyingTransform:transform];
     CGImageRef cgimg = [_context createCGImage:image fromRect:[image extent]];
-    
     _previewLayer.contents = (__bridge id)(cgimg);
-    
     CGImageRelease(cgimg);
+    
 }
 
 - (void)startRunning
