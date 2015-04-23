@@ -57,6 +57,7 @@
 		F98A8F6A1AE79634004DED25 /* MGCLLocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F691AE79634004DED25 /* MGCLLocationHelper.swift */; };
 		F98A8F7E1AE8FD7A004DED25 /* ArcView.m in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F7C1AE8FD7A004DED25 /* ArcView.m */; };
 		F98A8F7F1AE8FD7A004DED25 /* MGAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F7D1AE8FD7A004DED25 /* MGAvatarView.swift */; };
+		F98A8F811AE9014A004DED25 /* MGButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F801AE9014A004DED25 /* MGButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		F98A8F7B1AE8FD7A004DED25 /* ArcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcView.h; sourceTree = "<group>"; };
 		F98A8F7C1AE8FD7A004DED25 /* ArcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcView.m; sourceTree = "<group>"; };
 		F98A8F7D1AE8FD7A004DED25 /* MGAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGAvatarView.swift; sourceTree = "<group>"; };
+		F98A8F801AE9014A004DED25 /* MGButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGButton.swift; sourceTree = "<group>"; };
 		FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MuGuangIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -313,6 +315,7 @@
 				F98A8F7B1AE8FD7A004DED25 /* ArcView.h */,
 				F98A8F7C1AE8FD7A004DED25 /* ArcView.m */,
 				F98A8F7D1AE8FD7A004DED25 /* MGAvatarView.swift */,
+				F98A8F801AE9014A004DED25 /* MGButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */,
 				3DFA1A761ADFB282003E3177 /* ParameterAdjustmentView.swift in Sources */,
 				3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */,
+				F98A8F811AE9014A004DED25 /* MGButton.swift in Sources */,
 				3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */,
 				F980816A1AE5F14F00E217DC /* MGUserViewController.swift in Sources */,
 				B04C9D7C1AE0A49400CD9405 /* FXBlurView.m in Sources */,

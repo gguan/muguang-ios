@@ -7,3 +7,4 @@
 #import "WeiboSDK.h"
 #import "FXBlurView.h"
 #import "AwesomeMenu.h"
+#import "ArcView.h"
