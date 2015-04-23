@@ -92,12 +92,15 @@
     // add focus view animated
     //
     TGCameraFocusView *cameraFocusView = [[TGCameraFocusView alloc] initWithFrame:CGRectMake(0, 0, TGCameraFocusSize, TGCameraFocusSize)];
+    //cameraFocusView.backgroundColor = [UIColor greenColor];
     cameraFocusView.center = touchPoint;
+    //focusView.backgroundColor = [UIColor colorWithWhite:.2 alpha:.5];
     [focusView addSubview:cameraFocusView];
+    [focusView bringSubviewToFront:cameraFocusView];
     [cameraFocusView startAnimation];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        [NSThread sleepForTimeInterval:.5f];
+        [NSThread sleepForTimeInterval:.3f];
         
         while ([device isAdjustingFocus] ||
                [device isAdjustingExposure] ||

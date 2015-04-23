@@ -95,6 +95,8 @@
 //当前的滤镜
 @property (nonatomic, strong) NSDictionary *currentFilter;
 
+@property (nonatomic) BOOL isFromAlbum;
+
 @end
 
 
@@ -115,6 +117,7 @@
 {
     [super viewDidLoad];
     
+    _isFromAlbum = NO;
     
     UINib *cellNib = [UINib nibWithNibName:@"MGFilterPhotoCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"mgCell"];
@@ -184,7 +187,7 @@
     _separatorView.hidden = NO;
     
     _actionsView.hidden = YES;
-    
+    _nextView.hidden = YES;
     _topLeftView.hidden =
     _topRightView.hidden =
     _bottomLeftView.hidden =
@@ -201,36 +204,41 @@
 {
     [super viewDidAppear:animated];
     
-    _previewImage.frame = _captureView.frame;
-    [self.view addSubview:_previewImage];
-    _nextView.hidden = YES;
     
-    [self deviceOrientationDidChangeNotification];
-    
-    _separatorView.hidden = YES;
-    
-    [TGCameraSlideView hideSlideUpView:_slideUpView slideDownView:_slideDownView atView:_captureView completion:^{
-        _topLeftView.hidden =
-        _topRightView.hidden =
-        _bottomLeftView.hidden =
-        _bottomRightView.hidden = NO;
+    if (!_isFromAlbum) {
+        _previewImage.frame = _captureView.frame;
+        [self.view addSubview:_previewImage];
         
-        _actionsView.hidden = NO;
         
-        _gridButton.enabled =
-        _toggleButton.enabled =
-        _shotButton.enabled =
-        _albumButton.enabled =
-        _flashButton.enabled = YES;
-    }];
-     
-    if (_wasLoaded == NO) {
-        _wasLoaded = YES;
+        [self deviceOrientationDidChangeNotification];
         
-       [_camera insertSublayerWithCaptureView:_captureView atRootView:self.view];
+        _separatorView.hidden = YES;
         
-       [_videoCamera insertSublayerWithCaptureView:self.captureView atRootView:self.view];
+        [TGCameraSlideView hideSlideUpView:_slideUpView slideDownView:_slideDownView atView:_captureView completion:^{
+            _topLeftView.hidden =
+            _topRightView.hidden =
+            _bottomLeftView.hidden =
+            _bottomRightView.hidden = YES;
+            
+            _actionsView.hidden = NO;
+            
+            _gridButton.enabled =
+            _toggleButton.enabled =
+            _shotButton.enabled =
+            _albumButton.enabled =
+            _flashButton.enabled = YES;
+        }];
+        
+        if (_wasLoaded == NO) {
+            _wasLoaded = YES;
+            
+            [_camera insertSublayerWithCaptureView:_captureView atRootView:self.view];
+            
+            [_videoCamera insertSublayerWithCaptureView:self.captureView atRootView:self.view];
+        }
+        
     }
+    
     
     
     //设置默认滤镜None
@@ -295,13 +303,13 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *photo = [TGAlbum imageWithMediaInfo:info];
-    
-    TGPhotoViewController *viewController = [TGPhotoViewController newWithDelegate:_delegate photo:photo];
-    [viewController setAlbumPhoto:YES];
-    [self.navigationController pushViewController:viewController animated:NO];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        UIImage *photo = [TGAlbum imageWithMediaInfo:info];
+        _previewImage.hidden = NO;
+        _previewImage.image = photo;
+        _origionalPhoto = photo;
+        _isFromAlbum = YES;
+    }];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -431,8 +439,20 @@
 
 - (IBAction)handleTapGesture:(UITapGestureRecognizer *)recognizer
 {
-    CGPoint touchPoint = [recognizer locationInView:_captureView];
-    [_camera focusView:_captureView inTouchPoint:touchPoint];
+    CGPoint touchPoint = [recognizer locationInView:self.view];
+    
+    if (!CGRectContainsPoint(self.captureView.frame, touchPoint)) {
+        return;
+    }
+    
+    if (_isStillImageCamera) {
+        //CGPoint touchPoint = [recognizer locationInView:_captureView];
+        [_camera focusView:self.view inTouchPoint:touchPoint];
+    }else
+    {
+        //CGPoint touchPoint = [recognizer locationInView:self.view];
+        [_videoCamera focusView:self.view inTouchPoint:touchPoint];
+    }
 }
 
 #pragma mark -
@@ -505,8 +525,9 @@
 }
 - (IBAction)retake:(id)sender {
     
+    _albumButton.enabled = YES;
+    
     //删除当前预览图片
-
     _previewImage.hidden = YES;
     
     //隐藏下一步和重拍View
@@ -516,9 +537,7 @@
     //滤镜Index＝0 不加滤镜那么使用stillImageOutPut
     MGFilterPhotoCollectionViewCell *selectCell = (MGFilterPhotoCollectionViewCell *)[_collectionView cellForItemAtIndexPath:_selectedIndexPath];
     if ([selectCell.filterName.text isEqualToString:@"None"]) {
-        if (_isStillImageCamera) {
-            return;
-        }
+        
         //启动相机
         [_videoCamera stopRunning];
         [_camera startRunning];

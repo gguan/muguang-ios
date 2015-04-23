@@ -125,8 +125,8 @@ NSMutableDictionary *optionDictionary;
     
     [rootLayer insertSublayer:_previewLayer atIndex:0];
     
-    NSInteger index = [captureView.subviews count]-1;
-    [captureView insertSubview:self.gridView atIndex:index];
+//    NSInteger index = [captureView.subviews count]-1;
+//    [captureView insertSubview:self.gridView atIndex:index];
 }
 
 - (void)disPlayGridView

@@ -9,6 +9,7 @@
 #import "MGVideoCamera.h"
 #import "TGCameraFlash.h"
 #import "TGCameraToggle.h"
+#import "TGCameraFocus.h"
 
 @interface MGVideoCamera() <AVCaptureVideoDataOutputSampleBufferDelegate>
 @property (strong, nonatomic) AVCaptureSession *session;
@@ -188,5 +189,19 @@
 {
     [TGCameraFlash changeModeWithCaptureSession:_session andButton:button];
 }
+
+//聚焦
+- (void)focusView:(UIView *)focusView inTouchPoint:(CGPoint)touchPoint
+{
+    [TGCameraFocus focusWithCaptureSession:_session touchPoint:touchPoint inFocusView:focusView];
+}
+
+- (void) test:(UIView *) camView view:(UIView *) foucusView
+{
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 50, 50)];
+    v.backgroundColor = [UIColor yellowColor];
+    [camView addSubview:v];
+}
+
 @end
 

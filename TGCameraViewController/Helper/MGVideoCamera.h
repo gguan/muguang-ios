@@ -26,4 +26,8 @@
 
 - (void)toogleWithFlashButton:(UIButton *)flashButton;
 - (void)changeFlashModeWithButton:(UIButton *)button;
+
+- (void)focusView:(UIView *)focusView inTouchPoint:(CGPoint)touchPoint;
+
+- (void) test:(UIView *) camView view:(UIView *) foucusView;
 @end
