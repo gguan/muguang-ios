@@ -26,6 +26,12 @@
 		3D2B01B31AE79F6900F2BBC8 /* CIFilter+mgFiliters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01B21AE79F6900F2BBC8 /* CIFilter+mgFiliters.m */; };
 		3D2B01B51AE7A60C00F2BBC8 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01B41AE7A60C00F2BBC8 /* test.png */; };
 		3D2B01B91AE8929A00F2BBC8 /* CALayer+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01B81AE8929A00F2BBC8 /* CALayer+Additions.m */; };
+		3D2B01C21AE9079D00F2BBC8 /* FilteredImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01BC1AE9079D00F2BBC8 /* FilteredImageView.swift */; };
+		3D2B01C31AE9079D00F2BBC8 /* LabeledSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01BD1AE9079D00F2BBC8 /* LabeledSliderView.swift */; };
+		3D2B01C41AE9079D00F2BBC8 /* ParameterAdjustmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01BE1AE9079D00F2BBC8 /* ParameterAdjustmentView.swift */; };
+		3D2B01C51AE9079D00F2BBC8 /* PhotoFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01BF1AE9079D00F2BBC8 /* PhotoFilterCollectionViewCell.swift */; };
+		3D2B01C61AE9079D00F2BBC8 /* PhotoFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01C01AE9079D00F2BBC8 /* PhotoFilterViewController.swift */; };
+		3D2B01C71AE9079D00F2BBC8 /* ScalarFilterParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01C11AE9079D00F2BBC8 /* ScalarFilterParameter.swift */; };
 		3D95A5DE1AE53AC60031DD9F /* UIImage+CameraFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5A61AE53AC60031DD9F /* UIImage+CameraFilters.m */; };
 		3D95A5DF1AE53AC60031DD9F /* TGCameraAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5A91AE53AC60031DD9F /* TGCameraAuthorizationViewController.m */; };
 		3D95A5E01AE53AC60031DD9F /* TGCameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5AB1AE53AC60031DD9F /* TGCameraNavigationController.m */; };
@@ -56,12 +62,6 @@
 		3DB389131ADE18AB003361A6 /* MuGuangIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB389121ADE18AB003361A6 /* MuGuangIOSTests.swift */; };
 		3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */; };
 		3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */; };
-		3DFA1A701ADFB1F5003E3177 /* PhotoFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A6E1ADFB1F5003E3177 /* PhotoFilterCollectionViewCell.swift */; };
-		3DFA1A711ADFB1F5003E3177 /* PhotoFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A6F1ADFB1F5003E3177 /* PhotoFilterViewController.swift */; };
-		3DFA1A741ADFB246003E3177 /* FilteredImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A731ADFB246003E3177 /* FilteredImageView.swift */; };
-		3DFA1A761ADFB282003E3177 /* ParameterAdjustmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A751ADFB282003E3177 /* ParameterAdjustmentView.swift */; };
-		3DFA1A781ADFB2AC003E3177 /* ScalarFilterParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A771ADFB2AC003E3177 /* ScalarFilterParameter.swift */; };
-		3DFA1A7A1ADFB32A003E3177 /* LabeledSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A791ADFB32A003E3177 /* LabeledSliderView.swift */; };
 		3DFA1A7C1ADFB389003E3177 /* duckling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA1A7B1ADFB389003E3177 /* duckling.jpg */; };
 		3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */; };
 		B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */; };
@@ -139,6 +139,12 @@
 		3D2B01B41AE7A60C00F2BBC8 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		3D2B01B71AE8929A00F2BBC8 /* CALayer+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Additions.h"; sourceTree = "<group>"; };
 		3D2B01B81AE8929A00F2BBC8 /* CALayer+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Additions.m"; sourceTree = "<group>"; };
+		3D2B01BC1AE9079D00F2BBC8 /* FilteredImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilteredImageView.swift; sourceTree = "<group>"; };
+		3D2B01BD1AE9079D00F2BBC8 /* LabeledSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledSliderView.swift; sourceTree = "<group>"; };
+		3D2B01BE1AE9079D00F2BBC8 /* ParameterAdjustmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterAdjustmentView.swift; sourceTree = "<group>"; };
+		3D2B01BF1AE9079D00F2BBC8 /* PhotoFilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		3D2B01C01AE9079D00F2BBC8 /* PhotoFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFilterViewController.swift; sourceTree = "<group>"; };
+		3D2B01C11AE9079D00F2BBC8 /* ScalarFilterParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalarFilterParameter.swift; sourceTree = "<group>"; };
 		3D95A5A51AE53AC60031DD9F /* UIImage+CameraFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CameraFilters.h"; sourceTree = "<group>"; };
 		3D95A5A61AE53AC60031DD9F /* UIImage+CameraFilters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CameraFilters.m"; sourceTree = "<group>"; };
 		3D95A5A81AE53AC60031DD9F /* TGCameraAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGCameraAuthorizationViewController.h; sourceTree = "<group>"; };
@@ -194,12 +200,6 @@
 		3DB389121ADE18AB003361A6 /* MuGuangIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuGuangIOSTests.swift; sourceTree = "<group>"; };
 		3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGLogInViewController.swift; sourceTree = "<group>"; };
 		3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishViewController.swift; sourceTree = "<group>"; };
-		3DFA1A6E1ADFB1F5003E3177 /* PhotoFilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFilterCollectionViewCell.swift; sourceTree = "<group>"; };
-		3DFA1A6F1ADFB1F5003E3177 /* PhotoFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFilterViewController.swift; sourceTree = "<group>"; };
-		3DFA1A731ADFB246003E3177 /* FilteredImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilteredImageView.swift; sourceTree = "<group>"; };
-		3DFA1A751ADFB282003E3177 /* ParameterAdjustmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterAdjustmentView.swift; sourceTree = "<group>"; };
-		3DFA1A771ADFB2AC003E3177 /* ScalarFilterParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalarFilterParameter.swift; sourceTree = "<group>"; };
-		3DFA1A791ADFB32A003E3177 /* LabeledSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledSliderView.swift; sourceTree = "<group>"; };
 		3DFA1A7B1ADFB389003E3177 /* duckling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = duckling.jpg; sourceTree = "<group>"; };
 		3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotosViewControllerExtensions.swift; sourceTree = "<group>"; };
 		40C8118B762B513DB0757678 /* Pods-MuGuangIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -299,6 +299,28 @@
 			children = (
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		3D2B01BA1AE9064400F2BBC8 /* no_use */ = {
+			isa = PBXGroup;
+			children = (
+				3D2B01BB1AE9077900F2BBC8 /* filter */,
+				3DFA1A7D1ADFB862003E3177 /* Publisher */,
+			);
+			name = no_use;
+			sourceTree = "<group>";
+		};
+		3D2B01BB1AE9077900F2BBC8 /* filter */ = {
+			isa = PBXGroup;
+			children = (
+				3D2B01BC1AE9079D00F2BBC8 /* FilteredImageView.swift */,
+				3D2B01BD1AE9079D00F2BBC8 /* LabeledSliderView.swift */,
+				3D2B01BE1AE9079D00F2BBC8 /* ParameterAdjustmentView.swift */,
+				3D2B01BF1AE9079D00F2BBC8 /* PhotoFilterCollectionViewCell.swift */,
+				3D2B01C01AE9079D00F2BBC8 /* PhotoFilterViewController.swift */,
+				3D2B01C11AE9079D00F2BBC8 /* ScalarFilterParameter.swift */,
+			);
+			name = filter;
 			sourceTree = "<group>";
 		};
 		3D95A5A31AE53AC60031DD9F /* TGCameraViewController */ = {
@@ -423,6 +445,7 @@
 		3DB388F91ADE18AB003361A6 /* MuGuangIOS */ = {
 			isa = PBXGroup;
 			children = (
+				3D2B01BA1AE9064400F2BBC8 /* no_use */,
 				3D2B01A01AE6347D00F2BBC8 /* Extension */,
 				3D9DC8BC1AE11A140022F9C1 /* Shader1.fsh */,
 				3DB388FC1ADE18AB003361A6 /* AppDelegate.swift */,
@@ -469,25 +492,10 @@
 			isa = PBXGroup;
 			children = (
 				3D95A5A31AE53AC60031DD9F /* TGCameraViewController */,
-				3DFA1A7D1ADFB862003E3177 /* Publisher */,
-				3DFA1A721ADFB20C003E3177 /* Filter */,
 				3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */,
 				3D2B01B01AE740BA00F2BBC8 /* MuGuangIOSPrefixHeader.pch */,
 			);
 			name = ViewController;
-			sourceTree = "<group>";
-		};
-		3DFA1A721ADFB20C003E3177 /* Filter */ = {
-			isa = PBXGroup;
-			children = (
-				3DFA1A6E1ADFB1F5003E3177 /* PhotoFilterCollectionViewCell.swift */,
-				3DFA1A6F1ADFB1F5003E3177 /* PhotoFilterViewController.swift */,
-				3DFA1A731ADFB246003E3177 /* FilteredImageView.swift */,
-				3DFA1A751ADFB282003E3177 /* ParameterAdjustmentView.swift */,
-				3DFA1A771ADFB2AC003E3177 /* ScalarFilterParameter.swift */,
-				3DFA1A791ADFB32A003E3177 /* LabeledSliderView.swift */,
-			);
-			name = Filter;
 			sourceTree = "<group>";
 		};
 		3DFA1A7D1ADFB862003E3177 /* Publisher */ = {
@@ -767,21 +775,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				B063F3D91ADE3C5200E8A1AA /* MGMainViewController.swift in Sources */,
-				3DFA1A7A1ADFB32A003E3177 /* LabeledSliderView.swift in Sources */,
-				3DFA1A711ADFB1F5003E3177 /* PhotoFilterViewController.swift in Sources */,
-				3DFA1A741ADFB246003E3177 /* FilteredImageView.swift in Sources */,
 				3D95A5EE1AE53AC60031DD9F /* TGCameraFilterView.m in Sources */,
 				3D95A5EC1AE53AC60031DD9F /* TGAssetImageFile.m in Sources */,
 				3D95A5EF1AE53AC60031DD9F /* TGCameraFocusView.m in Sources */,
 				3D2B01A91AE64F0500F2BBC8 /* MGVideoCamera.m in Sources */,
 				3D95A5E41AE53AC60031DD9F /* TGAssetsLibrary.m in Sources */,
-				3DFA1A781ADFB2AC003E3177 /* ScalarFilterParameter.swift in Sources */,
 				3D95A5EA1AE53AC60031DD9F /* TGCameraShot.m in Sources */,
 				3D95A5DE1AE53AC60031DD9F /* UIImage+CameraFilters.m in Sources */,
 				3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */,
-				3DFA1A761ADFB282003E3177 /* ParameterAdjustmentView.swift in Sources */,
+				3D2B01C51AE9079D00F2BBC8 /* PhotoFilterCollectionViewCell.swift in Sources */,
 				3D95A5E51AE53AC60031DD9F /* TGCamera.m in Sources */,
 				3D2B01AD1AE7358800F2BBC8 /* MGFilterPhotoCollectionViewCell.m in Sources */,
+				3D2B01C21AE9079D00F2BBC8 /* FilteredImageView.swift in Sources */,
 				B0650A371ADF840400CBDC97 /* UIImage+ImageEffects.m in Sources */,
 				3D95A5F11AE53AC60031DD9F /* TGCameraSlideDownView.m in Sources */,
 				3D95A5E81AE53AC60031DD9F /* TGCameraFocus.m in Sources */,
@@ -791,9 +796,11 @@
 				3D0267531AE4E18B004FE669 /* MGConstants.swift in Sources */,
 				3D95A5E11AE53AC60031DD9F /* TGCameraViewController.m in Sources */,
 				3D0267481AE4CF00004FE669 /* MGPublisherViewController.swift in Sources */,
+				3D2B01C71AE9079D00F2BBC8 /* ScalarFilterParameter.swift in Sources */,
 				3D95A5E61AE53AC60031DD9F /* TGCameraColor.m in Sources */,
 				3D95A5EB1AE53AC60031DD9F /* TGCameraToggle.m in Sources */,
 				3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */,
+				3D2B01C61AE9079D00F2BBC8 /* PhotoFilterViewController.swift in Sources */,
 				3D95A5E01AE53AC60031DD9F /* TGCameraNavigationController.m in Sources */,
 				3D95A5F01AE53AC60031DD9F /* TGCameraGridView.m in Sources */,
 				3D95A5F21AE53AC60031DD9F /* TGCameraSlideUpView.m in Sources */,
@@ -801,10 +808,11 @@
 				3DB388FD1ADE18AB003361A6 /* AppDelegate.swift in Sources */,
 				B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */,
 				3D95A5E31AE53AC60031DD9F /* TGAlbum.m in Sources */,
-				3DFA1A701ADFB1F5003E3177 /* PhotoFilterCollectionViewCell.swift in Sources */,
 				3D95A5E71AE53AC60031DD9F /* TGCameraFlash.m in Sources */,
 				3D95A5F31AE53AC60031DD9F /* TGCameraSlideView.m in Sources */,
+				3D2B01C31AE9079D00F2BBC8 /* LabeledSliderView.swift in Sources */,
 				B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */,
+				3D2B01C41AE9079D00F2BBC8 /* ParameterAdjustmentView.swift in Sources */,
 				3D95A5E21AE53AC60031DD9F /* TGPhotoViewController.m in Sources */,
 				3D2B01B91AE8929A00F2BBC8 /* CALayer+Additions.m in Sources */,
 			);

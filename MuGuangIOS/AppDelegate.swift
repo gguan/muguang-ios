@@ -13,8 +13,6 @@ let kSampleImageName = "duckling.jpg"
 
 class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
 
-    
-
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

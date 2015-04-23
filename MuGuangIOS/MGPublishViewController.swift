@@ -167,8 +167,6 @@ class MGPublishViewController: UIViewController {
         //初始化视频取景器
         self.initVideoCamera()
         
-        
-        
         previewImage.image = UIImage(named: kSampleImageName)
         
         collectionView.backgroundColor = UIColor.blueColor()
