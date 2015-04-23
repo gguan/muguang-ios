@@ -322,7 +322,11 @@
 
 - (IBAction)flashTapped
 {
-    [_camera changeFlashModeWithButton:_flashButton];
+    if (_isStillImageCamera) {
+        [_camera changeFlashModeWithButton:_flashButton];
+    }else
+        [_videoCamera changeFlashModeWithButton:_flashButton];
+    
 }
 
 - (IBAction)shotTapped
@@ -384,7 +388,11 @@
 
 - (IBAction)toggleTapped
 {
-    [_camera toogleWithFlashButton:_flashButton];
+    if (_isStillImageCamera) {
+        [_camera toogleWithFlashButton:_flashButton];
+    }else
+        [_videoCamera toogleWithFlashButton:_flashButton];
+    
 }
 
 - (IBAction)handleTapGesture:(UITapGestureRecognizer *)recognizer
@@ -563,20 +571,34 @@
                 [self changeToFilter:indexPath];
             }
         }else{
-            //实时滤镜，准备下次拍摄
-            _videoCamera.filter = _filterDescriptors[indexPath.row][@"filter"];
-            [self videoCameraStarting];
+            if (_previewImage.hidden) {
+                //实时滤镜，准备下次拍摄
+                [self videoCameraStarting];
+                _videoCamera.filter = _filterDescriptors[indexPath.row][@"filter"];
+                
+            }else{
+                //照相后
+                //对照片加滤镜
+                [self changeToFilter:indexPath];
+            }
         }
 
     }else
     {
-        //没有滤镜显示原图片
-        if (_origionalPhoto) {
-            _previewImage.image = _origionalPhoto;
+        if (!_previewImage.hidden)
+        {
+            //照相后
+            //不需要加滤镜 直接显示原图片
+            if (_origionalPhoto) {
+                _previewImage.image = _origionalPhoto;
+            }
+            
+        }else {
+            
+            //None 不加filter的情况
+            [self cameraStaring];
         }
         
-        //None 不加filter的情况
-        [self cameraStaring];
     }
 }
 
@@ -585,12 +607,14 @@
     [_camera startRunning];
     [_videoCamera stopRunning];
     [self.view.layer bringSublayerToFront:_camera.previewLayer];
+    _isStillImageCamera = YES;
 }
 - (void) videoCameraStarting
 {
     [_camera stopRunning];
     [_videoCamera startRunning];
     [self.view.layer bringSublayerToFront:_videoCamera.previewLayer];
+    _isStillImageCamera = NO;
 }
 
 
@@ -599,7 +623,6 @@
     [self videoCameraStarting];
     
     _videoCamera.filter = filter;
-    _isStillImageCamera = NO;
 }
 
 

@@ -23,4 +23,7 @@
 @property (nonatomic, strong) CALayer *previewLayer;
 //照相
 - (UIImage *) captureImage;
+
+- (void)toogleWithFlashButton:(UIButton *)flashButton;
+- (void)changeFlashModeWithButton:(UIButton *)button;
 @end

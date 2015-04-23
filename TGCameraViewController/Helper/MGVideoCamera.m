@@ -8,6 +8,8 @@
 
 #import "MGVideoCamera.h"
 #import "TGCameraFlash.h"
+#import "TGCameraToggle.h"
+
 @interface MGVideoCamera() <AVCaptureVideoDataOutputSampleBufferDelegate>
 @property (strong, nonatomic) AVCaptureSession *session;
 @property (nonatomic, strong) AVCaptureVideoDataOutput *videoOutput;
@@ -110,6 +112,16 @@
     [self.filter setValue:image forKey:kCIInputImageKey];
     image  = self.filter.outputImage;
     
+    image = [self makeRightOrientationOnCIImage:image];
+    
+    CGImageRef cgimg = [_context createCGImage:image fromRect:[image extent]];
+    _previewLayer.contents = (__bridge id)(cgimg);
+    CGImageRelease(cgimg);
+    
+}
+
+- (CIImage *) makeRightOrientationOnCIImage:(CIImage *) image
+{
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     CGAffineTransform transform;
     
@@ -122,12 +134,9 @@
     } else {
         transform = CGAffineTransformMakeRotation(0);
     }
-    image = [image imageByApplyingTransform:transform];
-    CGImageRef cgimg = [_context createCGImage:image fromRect:[image extent]];
-    _previewLayer.contents = (__bridge id)(cgimg);
-    CGImageRelease(cgimg);
-    
+    return [image imageByApplyingTransform:transform];
 }
+
 
 - (void)startRunning
 {
@@ -158,16 +167,27 @@
 //    [captureView insertSubview:self.gridView atIndex:index];
 }
 
-
 - (UIImage *) captureImage
 {
     if (_filter) {
         CIImage *image = self.filter.outputImage;
+        image = [self makeRightOrientationOnCIImage:image];
         CGImageRef cgimg = [_context createCGImage:image fromRect:[image extent]];
         return [UIImage imageWithCGImage:cgimg];
     }else
         return nil;
 }
 
+//前置摄像头
+- (void)toogleWithFlashButton:(UIButton *)flashButton
+{
+    [TGCameraToggle toogleWithCaptureSession:_session];
+    [TGCameraFlash flashModeWithCaptureSession:_session andButton:flashButton];
+}
+//闪光灯
+- (void)changeFlashModeWithButton:(UIButton *)button
+{
+    [TGCameraFlash changeModeWithCaptureSession:_session andButton:button];
+}
 @end
 
