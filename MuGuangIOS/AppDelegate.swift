@@ -28,9 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
         
         //程序主体颜色
         //window?.tintColor = UIColor.redColor()
-        
-        
-        
         return true
     }
     

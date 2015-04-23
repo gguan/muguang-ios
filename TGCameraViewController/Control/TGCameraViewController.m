@@ -34,10 +34,6 @@
 #import "MGVideoCamera.h"
 #import "CALayer+Additions.h"
 
-static NSString* const kTGCacheSatureKey = @"TGCacheSatureKey";
-static NSString* const kTGCacheCurveKey = @"TGCacheCurveKey";
-static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
-
 @interface TGCameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *captureView;
@@ -52,6 +48,7 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 @property (strong, nonatomic) IBOutlet UIButton *shotButton;
 @property (strong, nonatomic) IBOutlet UIButton *albumButton;
 @property (strong, nonatomic) IBOutlet UIButton *flashButton;
+
 @property (strong, nonatomic) IBOutlet TGCameraSlideView *slideUpView;
 @property (strong, nonatomic) IBOutlet TGCameraSlideView *slideDownView;
 
@@ -145,6 +142,7 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
     //添加滤镜视图
     [self.actionsView addSubview:_mgFilterView];
     
+    //初始化cache 和 原始图片
     _origionalPhoto = [UIImage new];
     _cachePhoto = [NSCache new];
     
@@ -567,9 +565,7 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
         }else{
             //实时滤镜，准备下次拍摄
             _videoCamera.filter = _filterDescriptors[indexPath.row][@"filter"];
-            [_camera stopRunning];
-            [_videoCamera startRunning];
-            [self.view.layer bringSublayerToFront:_videoCamera.previewLayer];
+            [self videoCameraStarting];
         }
 
     }else
@@ -580,16 +576,28 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
         }
         
         //None 不加filter的情况
-        [_camera startRunning];
-        [_videoCamera stopRunning];
-        [self.view.layer bringSublayerToFront:_camera.previewLayer];
+        [self cameraStaring];
     }
 }
 
-- (void) changeToVideoCameraWithFilter:(CIFilter *) filter {
+- (void) cameraStaring
+{
+    [_camera startRunning];
+    [_videoCamera stopRunning];
+    [self.view.layer bringSublayerToFront:_camera.previewLayer];
+}
+- (void) videoCameraStarting
+{
     [_camera stopRunning];
     [_videoCamera startRunning];
     [self.view.layer bringSublayerToFront:_videoCamera.previewLayer];
+}
+
+
+- (void) changeToVideoCameraWithFilter:(CIFilter *) filter {
+    
+    [self videoCameraStarting];
+    
     _videoCamera.filter = filter;
     _isStillImageCamera = NO;
 }
