@@ -202,7 +202,7 @@
     [super viewDidAppear:animated];
     
     _previewImage.frame = _captureView.frame;
-    
+    [self.view addSubview:_previewImage];
     _nextView.hidden = YES;
     
     [self deviceOrientationDidChangeNotification];
@@ -354,7 +354,6 @@
         // 静态照相
         [_camera takePhotoWithCaptureView:_captureView videoOrientation:videoOrientation cropSize:_captureView.frame.size
                                completion:^(UIImage *photo) {
-                                   [self.view addSubview:_previewImage];
                                    _origionalPhoto      = photo;
                                    _previewImage.image  = photo;
                                    _nextView.hidden     = NO;
@@ -383,11 +382,11 @@
                          videoOrientation:videoOrientation
                                  cropSize:_captureView.frame.size
                                completion:^(UIImage *photo) {
-                                   
-                                   [self.view addSubview:_previewImage];
+
                                    _origionalPhoto      = photo;
                                    _nextView.hidden     = NO;
                                    _previewImage.hidden = NO;
+                                   
                                    
                                    //在照好的照片添加对应的滤镜
                                    if ([_currentFilter[@"name"] isEqualToString:@"None"]) {
@@ -396,6 +395,9 @@
                                    {
                                        _previewImage.image = [_origionalPhoto addFilter:_currentFilter[@"filter"]];
                                    }
+                                   [_camera stopRunning];
+                                   [self.view.layer bringSublayerToFront:_videoCamera.previewLayer];
+                                   _isStillImageCamera = NO;
                                    
                                    
         }];
@@ -504,7 +506,8 @@
 - (IBAction)retake:(id)sender {
     
     //删除当前预览图片
-    [_previewImage removeFromSuperview];
+
+    _previewImage.hidden = YES;
     
     //隐藏下一步和重拍View
     _nextView.hidden =
@@ -513,6 +516,9 @@
     //滤镜Index＝0 不加滤镜那么使用stillImageOutPut
     MGFilterPhotoCollectionViewCell *selectCell = (MGFilterPhotoCollectionViewCell *)[_collectionView cellForItemAtIndexPath:_selectedIndexPath];
     if ([selectCell.filterName.text isEqualToString:@"None"]) {
+        if (_isStillImageCamera) {
+            return;
+        }
         //启动相机
         [_videoCamera stopRunning];
         [_camera startRunning];
