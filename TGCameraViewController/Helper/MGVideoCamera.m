@@ -121,6 +121,7 @@
 - (void)stopRunning
 {
     [_session stopRunning];
+    [_previewLayer removeFromSuperlayer];
 }
 
 - (void)insertSublayerWithCaptureView:(UIView *)captureView atRootView:(UIView *)rootView
@@ -137,10 +138,11 @@
     
 //    [rootLayer insertSublayer:_previewLayer atIndex:0];
     [rootLayer addSublayer:_previewLayer];
-    
+
 //    NSInteger index = [captureView.subviews count]-1;
 //    [captureView insertSubview:self.gridView atIndex:index];
 }
+
 
 - (UIImage *) captureImage
 {

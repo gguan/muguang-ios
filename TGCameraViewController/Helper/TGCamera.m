@@ -106,9 +106,11 @@ NSMutableDictionary *optionDictionary;
     [_session startRunning];
 }
 
+
 - (void)stopRunning
 {
     [_session stopRunning];
+    [_previewLayer removeFromSuperlayer];
 }
 
 - (void)insertSublayerWithCaptureView:(UIView *)captureView atRootView:(UIView *)rootView

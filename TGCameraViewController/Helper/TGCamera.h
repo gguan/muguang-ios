@@ -67,8 +67,6 @@
 
 - (void)toogleWithFlashButton:(UIButton *)flashButton;
 
-@property (nonatomic, strong) CIFilter *filter;
-
 @end
 
 

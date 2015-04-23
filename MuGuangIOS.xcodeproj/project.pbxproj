@@ -25,6 +25,7 @@
 		3D2B01AF1AE736C000F2BBC8 /* MGFilterPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01AE1AE736C000F2BBC8 /* MGFilterPhotoCollectionViewCell.xib */; };
 		3D2B01B31AE79F6900F2BBC8 /* CIFilter+mgFiliters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01B21AE79F6900F2BBC8 /* CIFilter+mgFiliters.m */; };
 		3D2B01B51AE7A60C00F2BBC8 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01B41AE7A60C00F2BBC8 /* test.png */; };
+		3D2B01B91AE8929A00F2BBC8 /* CALayer+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B01B81AE8929A00F2BBC8 /* CALayer+Additions.m */; };
 		3D95A5DE1AE53AC60031DD9F /* UIImage+CameraFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5A61AE53AC60031DD9F /* UIImage+CameraFilters.m */; };
 		3D95A5DF1AE53AC60031DD9F /* TGCameraAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5A91AE53AC60031DD9F /* TGCameraAuthorizationViewController.m */; };
 		3D95A5E01AE53AC60031DD9F /* TGCameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5AB1AE53AC60031DD9F /* TGCameraNavigationController.m */; };
@@ -136,6 +137,8 @@
 		3D2B01B11AE79F6900F2BBC8 /* CIFilter+mgFiliters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CIFilter+mgFiliters.h"; sourceTree = "<group>"; };
 		3D2B01B21AE79F6900F2BBC8 /* CIFilter+mgFiliters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CIFilter+mgFiliters.m"; sourceTree = "<group>"; };
 		3D2B01B41AE7A60C00F2BBC8 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		3D2B01B71AE8929A00F2BBC8 /* CALayer+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Additions.h"; sourceTree = "<group>"; };
+		3D2B01B81AE8929A00F2BBC8 /* CALayer+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Additions.m"; sourceTree = "<group>"; };
 		3D95A5A51AE53AC60031DD9F /* UIImage+CameraFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CameraFilters.h"; sourceTree = "<group>"; };
 		3D95A5A61AE53AC60031DD9F /* UIImage+CameraFilters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CameraFilters.m"; sourceTree = "<group>"; };
 		3D95A5A81AE53AC60031DD9F /* TGCameraAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGCameraAuthorizationViewController.h; sourceTree = "<group>"; };
@@ -319,6 +322,8 @@
 				3D95A5A61AE53AC60031DD9F /* UIImage+CameraFilters.m */,
 				3D2B01B11AE79F6900F2BBC8 /* CIFilter+mgFiliters.h */,
 				3D2B01B21AE79F6900F2BBC8 /* CIFilter+mgFiliters.m */,
+				3D2B01B71AE8929A00F2BBC8 /* CALayer+Additions.h */,
+				3D2B01B81AE8929A00F2BBC8 /* CALayer+Additions.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -801,6 +806,7 @@
 				3D95A5F31AE53AC60031DD9F /* TGCameraSlideView.m in Sources */,
 				B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */,
 				3D95A5E21AE53AC60031DD9F /* TGPhotoViewController.m in Sources */,
+				3D2B01B91AE8929A00F2BBC8 /* CALayer+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

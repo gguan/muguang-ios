@@ -32,6 +32,7 @@
 #import "MGFilterPhotoCollectionViewCell.h"
 #import "CIFilter+mgFiliters.h"
 #import "MGVideoCamera.h"
+#import "CALayer+Additions.h"
 
 static NSString* const kTGCacheSatureKey = @"TGCacheSatureKey";
 static NSString* const kTGCacheCurveKey = @"TGCacheCurveKey";
@@ -135,7 +136,7 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 
     
     //初始化静态图片Output（默认的）
-    _isStillImageCamera = @YES;
+    _isStillImageCamera = YES;
     _camera = [TGCamera cameraWithFlashButton:_flashButton];
     
     /**********************初始化Video output滤镜*****************/
@@ -204,8 +205,6 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
     
     [self deviceOrientationDidChangeNotification];
     
-
-    
     _separatorView.hidden = YES;
     
     [TGCameraSlideView hideSlideUpView:_slideUpView slideDownView:_slideDownView atView:_captureView completion:^{
@@ -225,7 +224,9 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
      
     if (_wasLoaded == NO) {
         _wasLoaded = YES;
+        
        [_camera insertSublayerWithCaptureView:_captureView atRootView:self.view];
+        
        [_videoCamera insertSublayerWithCaptureView:self.captureView atRootView:self.view];
     }
     
@@ -478,15 +479,18 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
         [_videoCamera stopRunning];
         [_camera startRunning];
         _isStillImageCamera = YES;
+        [self.view.layer bringSublayerToFront:_camera.previewLayer];
     }else{
         //启动VideoCamera
         [_filterDescriptors enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             if ([selectCell.filterName.text isEqualToString:obj[@"name"]])
             {
+                [_camera stopRunning];
                 CIFilter *currentFilter = obj[@"filter"];
                 //[_videoCamera insertSublayerWithCaptureView:self.captureView atRootView:self.view];
                 _videoCamera.filter = currentFilter;
                 [_videoCamera startRunning];
+                [self.view.layer bringSublayerToFront:_videoCamera.previewLayer];
             }
         }];
         _isStillImageCamera = NO;
@@ -516,8 +520,6 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
     MGFilterPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"mgCell" forIndexPath:indexPath];
     
     cell.filterName.text = _filterDescriptors[indexPath.row][@"name"];
@@ -528,19 +530,24 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
     }else
         cell.filterImage.layer.borderWidth = 0.0;
     
-    NSString *cacheKey = [NSString stringWithFormat:@"%@KEY",_filterDescriptors[indexPath.row][@"name"]];
-    if ([_cachePhoto objectForKey:cacheKey]) {
-        cell.filterImage.image = [_cachePhoto objectForKey:cacheKey];
-    }else{
-        [_cachePhoto setObject:[cell.filterImage.image addFilter:_filterDescriptors[indexPath.row][@"filter"]] forKey:cacheKey];
-        cell.filterImage.image = [_cachePhoto objectForKey:cacheKey];
+    if (indexPath.row > 0) {
+        NSString *cacheKey = [NSString stringWithFormat:@"%@KEY",_filterDescriptors[indexPath.row][@"name"]];
+        if ([_cachePhoto objectForKey:cacheKey]) {
+            cell.filterImage.image = [_cachePhoto objectForKey:cacheKey];
+        }else{
+            [_cachePhoto setObject:[cell.filterImage.image addFilter:_filterDescriptors[indexPath.row][@"filter"]] forKey:cacheKey];
+            cell.filterImage.image = [_cachePhoto objectForKey:cacheKey];
+        }
     }
-    
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    //第一次选None不需要任何操作
+    if (_selectedIndexPath == indexPath) {
+        return;
+    }
     //选中的filter添加选中状态
     [self addBorderLayerToSelectCell:indexPath];
     
@@ -560,6 +567,9 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
         }else{
             //实时滤镜，准备下次拍摄
             _videoCamera.filter = _filterDescriptors[indexPath.row][@"filter"];
+            [_camera stopRunning];
+            [_videoCamera startRunning];
+            [self.view.layer bringSublayerToFront:_videoCamera.previewLayer];
         }
 
     }else
@@ -568,12 +578,18 @@ static NSString* const kTGCacheVignetteKey = @"TGCacheVignetteKey";
         if (_origionalPhoto) {
             _previewImage.image = _origionalPhoto;
         }
+        
+        //None 不加filter的情况
+        [_camera startRunning];
+        [_videoCamera stopRunning];
+        [self.view.layer bringSublayerToFront:_camera.previewLayer];
     }
 }
 
 - (void) changeToVideoCameraWithFilter:(CIFilter *) filter {
     [_camera stopRunning];
     [_videoCamera startRunning];
+    [self.view.layer bringSublayerToFront:_videoCamera.previewLayer];
     _videoCamera.filter = filter;
     _isStillImageCamera = NO;
 }
