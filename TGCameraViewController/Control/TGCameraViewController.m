@@ -92,6 +92,9 @@
 
 @property (nonatomic) BOOL isStillImageCamera;
 
+//当前的滤镜
+@property (nonatomic, strong) NSDictionary *currentFilter;
+
 @end
 
 
@@ -131,6 +134,7 @@
                            @{@"filter":[CIFilter filterWithName:@"CIPhotoEffectInstant"],@"name":@"Instant"},
                            @{@"filter":[CIFilter filterWithName:@"CIPhotoEffectFade"],@"name":@"Fade"}];
 
+    _currentFilter = _filterDescriptors[0];
     
     //初始化静态图片Output（默认的）
     _isStillImageCamera = YES;
@@ -359,6 +363,7 @@
                                }];
     }else {
         //实时
+        /*
             UIImage *im = [_videoCamera captureImage];
             if (im) {
                 _previewImage.hidden = NO;
@@ -369,6 +374,33 @@
                 [self.view bringSubviewToFront:_previewImage];
                 [_videoCamera stopRunning];
             }
+         */
+        
+        //启动照片
+        [self cameraStaring];
+        
+        [_camera takePhotoWithCaptureView:_captureView
+                         videoOrientation:videoOrientation
+                                 cropSize:_captureView.frame.size
+                               completion:^(UIImage *photo) {
+                                   
+                                   [self.view addSubview:_previewImage];
+                                   _origionalPhoto      = photo;
+                                   _nextView.hidden     = NO;
+                                   _previewImage.hidden = NO;
+                                   
+                                   //在照好的照片添加对应的滤镜
+                                   if ([_currentFilter[@"name"] isEqualToString:@"None"]) {
+                                       _previewImage.image = photo;
+                                   }else
+                                   {
+                                       _previewImage.image = [_origionalPhoto addFilter:_currentFilter[@"filter"]];
+                                   }
+                                   
+                                   
+        }];
+        
+       
     }
 }
 - (void) saveDone
@@ -550,6 +582,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    //当前滤镜
+    _currentFilter = _filterDescriptors[indexPath.row];
+    
     //第一次选None不需要任何操作
     if (_selectedIndexPath == indexPath) {
         return;

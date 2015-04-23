@@ -145,7 +145,6 @@
 - (void)stopRunning
 {
     [_session stopRunning];
-    [_previewLayer removeFromSuperlayer];
 }
 
 - (void)insertSublayerWithCaptureView:(UIView *)captureView atRootView:(UIView *)rootView
