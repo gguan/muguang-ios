@@ -39,6 +39,15 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         let monitorView: MGMonitorView = MGMonitorView(frame: CGRectZero)
     #endif
     
+    // 数据源
+    var dataSource: [CLLocation] = Array()
+    // 当前方向
+    var trueHeading: Double?
+    // 当前经纬度
+    var currentLocation: CLLocation?
+    
+    var cardArray: [MGCard] = Array()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -48,21 +57,28 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         blurView.hidden = true
         blurView.userInteractionEnabled = false
         blurView.tintColor = UIColor.clearColor()
+        // 关闭BlurView的动态模糊效果，否则会大量占用CPU时间
+        blurView.dynamic = false
         
         cameraView.addTapAction { (isRunning) -> Void in
             if isRunning {
+                // 停止定位、加速计
+                MGLocationManager.shared.stopUpdating()
                 // 拍照
                 self.cameraView.takePhoto({ (aImage) -> Void in
                     // 模糊效果
                     self.blurView.hidden = false
                     self.blurView.alpha = 0
                     self.blurView.blurRadius = 10
-                    UIView.animateWithDuration(0.35, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                        self.blurView.alpha = 1
-                    }, completion: nil)
-                    
+                    self.blurView.updateAsynchronously(true, completion: { () -> Void in
+                        UIView.animateWithDuration(0.35, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                            self.blurView.alpha = 1
+                            }, completion: nil)
+                    })
                 })
             } else {
+                // 开始定位、加速计
+                MGLocationManager.shared.startUpdating()
                 self.cameraView.startRunning()
                 self.blurView.hidden = true
                 self.blurView.blurRadius = 0
@@ -113,13 +129,72 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
             }
         #endif
         
-        // test 
-        var card: MGCard = MGCard(frame: CGRectMake(0, 0, 213, 88))
-        card.delegate = self
-        self.view.addSubview(card)
-        card.center = self.view.center
-        
+        self.dataSource = [
+            CLLocation(latitude: 39.91160739, longitude: 116.48525809),
+            CLLocation(latitude: 39.90160739, longitude: 116.47525809),
+            CLLocation(latitude: 39.92160739, longitude: 116.49525809)
+        ]
+        self.reloadCard()
         self.makeAwesomeMenu()
+    }
+    
+    // 刷新卡片
+    func reloadCard() {
+        self.cardArray.removeAll(keepCapacity: false)
+        if self.dataSource.isEmpty {
+            return
+        }
+        for (index, item) in enumerate(self.dataSource) {
+            var card: MGCard = MGCard(frame: CGRectMake(0, 0, 213, 88))
+            card.delegate = self
+            card.center = self.view.center
+            card.index = index
+            self.cardArray.append(card)
+        }
+    }
+    
+    // 刷新卡片位置
+    func refreshCardFrame() {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            for item in self.cardArray {
+                if let index = item.index {
+                    var location: CLLocation = self.dataSource[item.index!]
+                    if self.judgeDegreeInField(self.currentLocation, location2: location) {
+                        var degree: Double = MGCLLocationHelper.calculatorDegree(self.currentLocation!, location2: location)
+                        var offsetUnit = CGRectGetWidth(self.view.frame) / 90
+                        // 计算比例 然后add倒self.view
+                        var offsetDegree: Double = 0
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            if self.trueHeading > degree {
+                                offsetDegree = self.trueHeading! - degree
+                                item.center.x = self.view.center.x - offsetUnit * CGFloat(offsetDegree)
+                            } else {
+                                offsetDegree = degree - self.trueHeading!
+                                item.center.x = self.view.center.x + offsetUnit * CGFloat(offsetDegree)
+                            }
+                            if item.superview == nil {
+                                self.view.addSubview(item)
+                            }
+                        })
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            item.removeFromSuperview()
+                        })
+                    }
+                }
+            }
+
+        })
+    }
+    
+    // 判断卡片是否在视野中
+    func judgeDegreeInField(location1: CLLocation?, location2: CLLocation?) -> Bool {
+        if location1 == nil || location2 == nil || self.trueHeading == nil {
+            return false
+        }
+        // 目标方位
+        var targerDegree = MGCLLocationHelper.calculatorDegree(location1!, location2: location2!)
+        return MGCLLocationHelper.judgeDegreeInField(self.trueHeading!, targetDegree: targerDegree)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -237,8 +312,6 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         }
         // 更新频率是10Hz
         self.motionManager.accelerometerUpdateInterval = 1
-        self.motionManager.startAccelerometerUpdates()
-
         self.motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue()) { (latestAcc, error) -> Void in
 //            println(latestAcc)
             var accData = latestAcc as CMAccelerometerData
@@ -279,20 +352,28 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     }
     
     // MARK: MGLocationManagerDelegate
+    // 位置更新
     func locationManagerDidUpdateLocations(location: CLLocation!) {
         #if DEBUG
             self.monitorView.updateLocationLabel(location)
         #endif
+        self.currentLocation = location
+    }
+    // 方向更新
+    func locationManagerDidUpdateHeading(head: CLHeading!) {
+        self.trueHeading = head.trueHeading
+        self.refreshCardFrame()
     }
     
     // MARK: MGCardDelegate
     // 跳转到个人信息
-    func showUserInfo() {
+    func showUserInfo(index: Int) {
         self.navigationController?.pushViewController(MGUserViewController(), animated: true)
     }
     
     // 跳转到卡片详情
-    func showCardDetail() {
+    func showCardDetail(index: Int) {
         self.navigationController?.pushViewController(MGCardDetailController(), animated: true)
     }
 }
+

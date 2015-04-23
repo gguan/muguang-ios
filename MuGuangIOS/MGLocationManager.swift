@@ -37,6 +37,7 @@ class MGLocationManager: NSObject, CLLocationManagerDelegate {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         // 响应位置变化的最小距离(m)
         self.locationManager.distanceFilter = 5.0
+        self.locationManager.headingFilter = 5.0
     }
     
     // 请求定位服务授权
@@ -67,13 +68,14 @@ class MGLocationManager: NSObject, CLLocationManagerDelegate {
     // MARK: CLLocationManagerDelegate
     // 位置更新
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-//        println(locations)
+//        println("=======",locations)
         self.delegate?.locationManagerDidUpdateLocations!(locations[0] as! CLLocation)
     }
     
     // 方向更新（正北为0度）
     func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
-//        println(newHeading)
+//        println("----方向----",newHeading)
+        self.delegate?.locationManagerDidUpdateHeading!(newHeading)
     }
     
     // 方向更新过滤
@@ -107,4 +109,6 @@ class MGLocationManager: NSObject, CLLocationManagerDelegate {
 @objc protocol MGLocationManagerDelegate {
     // 位置更新
     optional func locationManagerDidUpdateLocations(location: CLLocation!)
+    // 方向更新
+    optional func locationManagerDidUpdateHeading(head: CLHeading!)
 }

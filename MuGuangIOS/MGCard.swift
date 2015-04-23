@@ -67,6 +67,9 @@ class MGCard: UIView {
     
     weak var delegate: MGCardDelegate?
     
+    // 下标
+    var index: Int?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clearColor()
@@ -204,12 +207,12 @@ class MGCard: UIView {
     
     // 点击头像
     func tapAvatar(tap: UITapGestureRecognizer) {
-        self.delegate?.showUserInfo!()
+        self.delegate?.showUserInfo!(self.index!)
     }
     
     // 点击内容
     func tapBlurView(tap: UITapGestureRecognizer) {
-        self.delegate?.showCardDetail!()
+        self.delegate?.showCardDetail!(self.index!)
     }
     
     // drag的手势
@@ -252,6 +255,6 @@ class MGCard: UIView {
 
 // 卡片的回调
 @objc protocol MGCardDelegate {
-    optional func showUserInfo()
-    optional func showCardDetail()
+    optional func showUserInfo(index: Int)
+    optional func showCardDetail(index: Int)
 }

@@ -54,6 +54,7 @@
 		F98081681AE5F03A00E217DC /* MGCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081671AE5F03A00E217DC /* MGCard.swift */; };
 		F980816A1AE5F14F00E217DC /* MGUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081691AE5F14F00E217DC /* MGUserViewController.swift */; };
 		F980816C1AE5F1AB00E217DC /* MGCardDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F980816B1AE5F1AB00E217DC /* MGCardDetailController.swift */; };
+		F98A8F6A1AE79634004DED25 /* MGCLLocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F691AE79634004DED25 /* MGCLLocationHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		F98081671AE5F03A00E217DC /* MGCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCard.swift; sourceTree = "<group>"; };
 		F98081691AE5F14F00E217DC /* MGUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGUserViewController.swift; sourceTree = "<group>"; };
 		F980816B1AE5F1AB00E217DC /* MGCardDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCardDetailController.swift; sourceTree = "<group>"; };
+		F98A8F691AE79634004DED25 /* MGCLLocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCLLocationHelper.swift; sourceTree = "<group>"; };
 		FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MuGuangIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -322,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				F98081651AE4CED800E217DC /* MGLocationManager.swift */,
+				F98A8F691AE79634004DED25 /* MGCLLocationHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				3DFA1A701ADFB1F5003E3177 /* PhotoFilterCollectionViewCell.swift in Sources */,
 				B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */,
 				F98081661AE4CED800E217DC /* MGLocationManager.swift in Sources */,
+				F98A8F6A1AE79634004DED25 /* MGCLLocationHelper.swift in Sources */,
 				B04C9D891AE0BA9A00CD9405 /* MGVerticalSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
