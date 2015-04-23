@@ -205,6 +205,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
          *  开始运行相机（页面出现时）
          */
         self.cameraView.startRunning()
+        MGLocationManager.shared.startUpdating()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -213,7 +214,6 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
          *  停止运行相机（页面消失后）,停止加速计，停止定位
          */
         self.cameraView.stopRunning()
-        self.motionManager.stopAccelerometerUpdates()
         MGLocationManager.shared.stopUpdating()
     }
     
@@ -300,7 +300,9 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         case 1:
             break
         case 2:
-            self.navigationController?.pushViewController(MGUserViewController(), animated: true)
+            var second: UIStoryboard = UIStoryboard(name: "Second", bundle: NSBundle.mainBundle())
+            var userVC: MGUserViewController = second.instantiateViewControllerWithIdentifier("MGUserViewController") as! MGUserViewController
+            self.navigationController?.pushViewController(userVC, animated: true)
         default :
             break
         }
@@ -355,7 +357,9 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     // MARK: MGCardDelegate
     // 跳转到个人信息
     func showUserInfo(index: Int) {
-        self.navigationController?.pushViewController(MGUserViewController(), animated: true)
+        var second: UIStoryboard = UIStoryboard(name: "Second", bundle: NSBundle.mainBundle())
+        var userVC: MGUserViewController = second.instantiateViewControllerWithIdentifier("MGUserViewController") as! MGUserViewController
+        self.navigationController?.pushViewController(userVC, animated: true)
     }
     
     // 跳转到卡片详情

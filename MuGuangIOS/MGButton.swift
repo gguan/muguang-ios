@@ -14,10 +14,17 @@ class MGButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.addTarget(self, action: Selector("methodForClicked:"), forControlEvents: .TouchUpInside)
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func methodForClicked(button: UIButton) {
+        if let closure = tapAction {
+            closure(button: button)
+        }
     }
     
     func addClicked(clicked: (button: UIButton) -> Void) {
