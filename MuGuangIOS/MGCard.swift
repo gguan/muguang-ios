@@ -93,7 +93,10 @@ class MGCard: UIView {
         blurView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.38).CGColor
         blurView.blurRadius = 10.0
         blurView.tintColor = UIColor.clearColor()
-
+        
+        blurView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+        blurView.dynamic = false
+        
         // 名字
         nameLabel.numberOfLines = 1
         nameLabel.lineBreakMode = .ByTruncatingTail

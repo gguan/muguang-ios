@@ -11,7 +11,7 @@ import CoreMotion
 import CoreLocation
 
 /**
- *  主页面显示经纬度、陀螺仪状态的view
+ *  主页面显示经纬度、陀螺仪状态的view(Debug显示)
  */
 
 class MGMonitorView: UIView {
@@ -34,10 +34,15 @@ class MGMonitorView: UIView {
         self.locationLabel.numberOfLines = 0
         self.locationLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateLocationLabel:"), name: kLocationNotificationDidUpdateLocations, object: nil)
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // 更新加速计的数据
@@ -50,7 +55,8 @@ class MGMonitorView: UIView {
     }
     
     // 更新地点
-    func updateLocationLabel(location: CLLocation) {
+    func updateLocationLabel(notification: NSNotification) {
+        var location = notification.object as! CLLocation
         self.locationLabel.text = "lat: \(location.coordinate.latitude)\nlon: \(location.coordinate.longitude)\naltitude: \(location.altitude)"
     }
     

@@ -55,6 +55,8 @@
 		F980816A1AE5F14F00E217DC /* MGUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081691AE5F14F00E217DC /* MGUserViewController.swift */; };
 		F980816C1AE5F1AB00E217DC /* MGCardDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F980816B1AE5F1AB00E217DC /* MGCardDetailController.swift */; };
 		F98A8F6A1AE79634004DED25 /* MGCLLocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F691AE79634004DED25 /* MGCLLocationHelper.swift */; };
+		F98A8F7E1AE8FD7A004DED25 /* ArcView.m in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F7C1AE8FD7A004DED25 /* ArcView.m */; };
+		F98A8F7F1AE8FD7A004DED25 /* MGAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F7D1AE8FD7A004DED25 /* MGAvatarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,9 @@
 		F98081691AE5F14F00E217DC /* MGUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGUserViewController.swift; sourceTree = "<group>"; };
 		F980816B1AE5F1AB00E217DC /* MGCardDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCardDetailController.swift; sourceTree = "<group>"; };
 		F98A8F691AE79634004DED25 /* MGCLLocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCLLocationHelper.swift; sourceTree = "<group>"; };
+		F98A8F7B1AE8FD7A004DED25 /* ArcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcView.h; sourceTree = "<group>"; };
+		F98A8F7C1AE8FD7A004DED25 /* ArcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcView.m; sourceTree = "<group>"; };
+		F98A8F7D1AE8FD7A004DED25 /* MGAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGAvatarView.swift; sourceTree = "<group>"; };
 		FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MuGuangIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -305,6 +310,9 @@
 				B04C9D7B1AE0A49400CD9405 /* FXBlurView.m */,
 				F98081631AE4CD7900E217DC /* MGMonitorView.swift */,
 				F98081671AE5F03A00E217DC /* MGCard.swift */,
+				F98A8F7B1AE8FD7A004DED25 /* ArcView.h */,
+				F98A8F7C1AE8FD7A004DED25 /* ArcView.m */,
+				F98A8F7D1AE8FD7A004DED25 /* MGAvatarView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -537,6 +545,7 @@
 				B04C9D831AE0A67600CD9405 /* AwesomeMenuItem.m in Sources */,
 				3DFA1A7A1ADFB32A003E3177 /* LabeledSliderView.swift in Sources */,
 				F980816C1AE5F1AB00E217DC /* MGCardDetailController.swift in Sources */,
+				F98A8F7E1AE8FD7A004DED25 /* ArcView.m in Sources */,
 				3DFA1A711ADFB1F5003E3177 /* PhotoFilterViewController.swift in Sources */,
 				F98081681AE5F03A00E217DC /* MGCard.swift in Sources */,
 				3DFA1A741ADFB246003E3177 /* FilteredImageView.swift in Sources */,
@@ -554,6 +563,7 @@
 				B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */,
 				F98081661AE4CED800E217DC /* MGLocationManager.swift in Sources */,
 				F98A8F6A1AE79634004DED25 /* MGCLLocationHelper.swift in Sources */,
+				F98A8F7F1AE8FD7A004DED25 /* MGAvatarView.swift in Sources */,
 				B04C9D891AE0BA9A00CD9405 /* MGVerticalSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

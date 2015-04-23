@@ -41,11 +41,8 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     
     // 数据源
     var dataSource: [CLLocation] = Array()
-    // 当前方向
-    var trueHeading: Double?
-    // 当前经纬度
-    var currentLocation: CLLocation?
     
+    // 卡片数组
     var cardArray: [MGCard] = Array()
     
     override func viewDidLoad() {
@@ -136,6 +133,8 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         ]
         self.reloadCard()
         self.makeAwesomeMenu()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("refreshCardFrame:"), name: kLocationNotificationDidUpdateHeading, object: nil)
     }
     
     // 刷新卡片
@@ -148,28 +147,31 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
             var card: MGCard = MGCard(frame: CGRectMake(0, 0, 213, 88))
             card.delegate = self
             card.center = self.view.center
+            var y1 = self.view.center.y
+            var y2 = CGFloat(CGFloat(arc4random() % 50) - 25.0)
+            card.center.y = y1 + y2
             card.index = index
             self.cardArray.append(card)
         }
     }
     
     // 刷新卡片位置
-    func refreshCardFrame() {
+    func refreshCardFrame(notifaction: NSNotification) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
             for item in self.cardArray {
                 if let index = item.index {
-                    var location: CLLocation = self.dataSource[item.index!]
-                    if self.judgeDegreeInField(self.currentLocation, location2: location) {
-                        var degree: Double = MGCLLocationHelper.calculatorDegree(self.currentLocation!, location2: location)
+                    var location: CLLocation = self.dataSource[index]
+                    if self.judgeDegreeInField(MGLocationManager.shared.currentLocation, location2: location) {
+                        var degree: Double = MGCLLocationHelper.calculatorDegree(MGLocationManager.shared.currentLocation!, location2: location)
                         var offsetUnit = CGRectGetWidth(self.view.frame) / 90
                         // 计算比例 然后add倒self.view
                         var offsetDegree: Double = 0
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            if self.trueHeading > degree {
-                                offsetDegree = self.trueHeading! - degree
+                            if MGLocationManager.shared.trueHeading > degree {
+                                offsetDegree = MGLocationManager.shared.trueHeading! - degree
                                 item.center.x = self.view.center.x - offsetUnit * CGFloat(offsetDegree)
                             } else {
-                                offsetDegree = degree - self.trueHeading!
+                                offsetDegree = degree - MGLocationManager.shared.trueHeading!
                                 item.center.x = self.view.center.x + offsetUnit * CGFloat(offsetDegree)
                             }
                             if item.superview == nil {
@@ -189,12 +191,12 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     
     // 判断卡片是否在视野中
     func judgeDegreeInField(location1: CLLocation?, location2: CLLocation?) -> Bool {
-        if location1 == nil || location2 == nil || self.trueHeading == nil {
+        if location1 == nil || location2 == nil || MGLocationManager.shared.trueHeading == nil {
             return false
         }
         // 目标方位
         var targerDegree = MGCLLocationHelper.calculatorDegree(location1!, location2: location2!)
-        return MGCLLocationHelper.judgeDegreeInField(self.trueHeading!, targetDegree: targerDegree)
+        return MGCLLocationHelper.judgeDegreeInField(MGLocationManager.shared.trueHeading!, targetDegree: targerDegree)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -323,7 +325,6 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     
     // MARK: 定位服务
     func setupLocationService() {
-        MGLocationManager.shared.delegate = self
         switch CLLocationManager.authorizationStatus() {
         case .AuthorizedWhenInUse, .AuthorizedAlways:
             // 开始定位
@@ -349,20 +350,6 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
             alertController.addAction(openAction)
             self.presentViewController(alertController, animated: true, completion: nil)
         }
-    }
-    
-    // MARK: MGLocationManagerDelegate
-    // 位置更新
-    func locationManagerDidUpdateLocations(location: CLLocation!) {
-        #if DEBUG
-            self.monitorView.updateLocationLabel(location)
-        #endif
-        self.currentLocation = location
-    }
-    // 方向更新
-    func locationManagerDidUpdateHeading(head: CLHeading!) {
-        self.trueHeading = head.trueHeading
-        self.refreshCardFrame()
     }
     
     // MARK: MGCardDelegate

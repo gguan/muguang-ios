@@ -10,6 +10,9 @@ import UIKit
 import CoreLocation
 //import MapKit
 
+let kLocationNotificationDidUpdateLocations = "locationManagerDidUpdateLocations"
+let kLocationNotificationDidUpdateHeading = "locationManagerDidUpdateHeading"
+
 /**
  *  提供位置服务
  */
@@ -27,7 +30,13 @@ class MGLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     let locationManager: CLLocationManager = CLLocationManager()
+    
     weak var delegate: MGLocationManagerDelegate?
+    
+    // 当前方向
+    var trueHeading: Double?
+    // 当前经纬度
+    var currentLocation: CLLocation?
     
     override init() {
         super.init()
@@ -69,16 +78,18 @@ class MGLocationManager: NSObject, CLLocationManagerDelegate {
     // 位置更新
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
 //        println("=======",locations)
-        self.delegate?.locationManagerDidUpdateLocations!(locations[0] as! CLLocation)
+        self.currentLocation = locations[0] as? CLLocation
+        NSNotificationCenter.defaultCenter().postNotificationName(kLocationNotificationDidUpdateLocations, object: self.currentLocation)
     }
     
     // 方向更新（正北为0度）
     func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
 //        println("----方向----",newHeading)
-        self.delegate?.locationManagerDidUpdateHeading!(newHeading)
+        self.trueHeading = newHeading.trueHeading
+        NSNotificationCenter.defaultCenter().postNotificationName(kLocationNotificationDidUpdateHeading, object: self.trueHeading)
     }
     
-    // 方向更新过滤
+    // 方向更新校准
     func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager!) -> Bool {
         return true
     }
