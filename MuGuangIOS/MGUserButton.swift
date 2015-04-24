@@ -1,5 +1,5 @@
 //
-//  MGUserButtonView.swift
+//  MGUserButton.swift
 //  MuGuangIOS
 //
 //  Created by ZhangHao on 15/4/24.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MGUserButtonView: UIView {
+class MGUserButton: UIButton {
 
     /*
     // Only override drawRect: if you perform custom drawing.
