@@ -55,7 +55,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         if isLogin == nil {
             var mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
             var launchingVC = mainStoryboard.instantiateViewControllerWithIdentifier("MGLaunchingViewController") as! UIViewController
-            self.presentViewController(launchingVC, animated: false, completion: nil)
+            self.navigationController?.pushViewController(launchingVC, animated: false)
         }
         
         self.view.backgroundColor = UIColor.whiteColor()
