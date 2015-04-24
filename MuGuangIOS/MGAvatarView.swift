@@ -9,7 +9,9 @@
 import UIKit
 
 class MGAvatarView: UIView {
+    // 弧形Label
     let arcView = ArcView(frame: CGRectZero)
+    // 圆形头像
     let avatarView = UIImageView(frame: CGRectZero)
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,6 +35,7 @@ class MGAvatarView: UIView {
         avatarView.layer.borderWidth = 5
         avatarView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).CGColor
         avatarView.backgroundColor = UIColor.greenColor()
+        avatarView.contentMode = UIViewContentMode.ScaleToFill
         
         self.addSubview(arcView)
         self.addSubview(avatarView)
