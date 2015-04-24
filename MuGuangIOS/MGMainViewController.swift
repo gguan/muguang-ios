@@ -11,6 +11,7 @@ import CoreLocation
 import CoreMotion
 
 let kScaleLabelHeight: CGFloat = 20
+let kISLOGIN = "isLogin"
 /**
  *  主页面
  */
@@ -48,6 +49,15 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        var isLogin = NSUserDefaults.standardUserDefaults().valueForKey(kISLOGIN)
+        
+        if isLogin == nil {
+            var mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            var launchingVC = mainStoryboard.instantiateViewControllerWithIdentifier("MGLaunchingViewController") as! UIViewController
+            self.presentViewController(launchingVC, animated: false, completion: nil)
+        }
+        
         self.view.backgroundColor = UIColor.whiteColor()
         self.navigationController?.navigationBarHidden = true
         

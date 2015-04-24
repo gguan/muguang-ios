@@ -17,12 +17,20 @@ class MGCollectionHeaderView: UICollectionReusableView {
     @IBOutlet weak var avatarView: MGAvatarView!
     // 个人说明
     @IBOutlet weak var briefLabel: UILabel!
+    @IBOutlet weak var buttonView: UIView!
     // 照片按钮
     @IBOutlet weak var photoButton: MGUserButton!
     // 关注按钮
     @IBOutlet weak var focusButton: MGUserButton!
     // 粉丝按钮
     @IBOutlet weak var funsButton: MGUserButton!
+    
+    lazy var separateLine: CALayer = {
+        var line: CALayer = CALayer()
+        line.backgroundColor = UIColor.transformColor(kSeparateLineColorRed, alpha: 1.0).CGColor
+        self.buttonView.layer.addSublayer(line)
+        return line
+    }()
     
     weak var delegate: MGCollectionHeaderViewDelegate?
     // 照片按钮的方法
@@ -36,6 +44,16 @@ class MGCollectionHeaderView: UICollectionReusableView {
     // 粉丝按钮的方法
     @IBAction func methodForFunsButton(sender: AnyObject) {
         self.delegate?.clickedFunsButton()
+    }
+    
+    override func awakeFromNib() {
+        self.briefLabel.textColor = UIColor.transformColor(kTextColorGray, alpha: 1.0)
+        self.briefLabel.font = UIFont.systemFontOfSize(12.0)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.separateLine.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), 0.5)
     }
 }
 
