@@ -100,6 +100,18 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FPW-o5-Cqm">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="238" y="378" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="testAction:" destination="GQ6-nD-3PN" eventType="touchUpInside" id="GsP-0N-CGw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -122,6 +134,7 @@
                                 <exclude reference="lTH-oR-uSO"/>
                                 <exclude reference="jIr-tK-55d"/>
                                 <exclude reference="sRU-Dj-OG9"/>
+                                <exclude reference="FPW-o5-Cqm"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="C0E-9g-JpG"/>
@@ -142,6 +155,7 @@
                                 <include reference="lTH-oR-uSO"/>
                                 <include reference="jIr-tK-55d"/>
                                 <include reference="sRU-Dj-OG9"/>
+                                <include reference="FPW-o5-Cqm"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="C0E-9g-JpG"/>

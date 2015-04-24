@@ -57,5 +57,9 @@ class MGLaunchingViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func testAction(sender: AnyObject) {
+        let mainVC = MGMainViewController()
+        self.presentViewController(mainVC, animated: false, completion:nil)
+    }
 
 }
