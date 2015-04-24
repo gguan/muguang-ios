@@ -1,33 +1,18 @@
 //
-//  MGBaseViewController.swift
+//  MGCardDetailController.swift
 //  MuGuangIOS
 //
-//  Created by ZH on 15/4/15.
+//  Created by ZhangHao on 15/4/21.
 //  Copyright (c) 2015年 北京目光璀璨科技有限公司. All rights reserved.
 //
 
 import UIKit
 
-/**
- *  自定义UIViewController的基类
- */
-class MGBaseViewController: UIViewController {
-    
-    // 页面跳转传递参数的数组
-    var paramArray: Array<AnyObject>?
-    
-    /**
-     *便利构造器
-     */
-    convenience init(params: Array<AnyObject>) {
-        self.init()
-        self.paramArray = params
-    }
-    
+class MGCardDetailController: MGBaseViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
-        // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {

@@ -307,6 +307,7 @@ class MGPublishViewController: UIViewController {
     @IBAction func retake(sender: AnyObject) {
         //TODO: 逻辑待确定
         self.previewImage.hidden = true
+        self.presentViewController(UINavigationController(rootViewController: MGMainViewController()), animated: true, completion: nil)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

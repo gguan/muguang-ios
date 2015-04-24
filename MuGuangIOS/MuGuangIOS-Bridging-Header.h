@@ -8,9 +8,15 @@
 #import <ShareSDK/ShareSDK.h>
 #import "WeiboSDK.h"
 
+
 //TGCamera
 #import "TGCamera.h"
 #import "TGCameraViewController.h"
 
 //Restful
 #import <AFNetworking/AFNetworking.h>
+
+#import "FXBlurView.h"
+#import "AwesomeMenu.h"
+#import "ArcView.h"
+
