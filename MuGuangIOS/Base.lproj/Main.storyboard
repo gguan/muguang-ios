@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GQ6-nD-3PN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AS5-lz-U3I">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="c96-xC-zVo">
+            <objects>
+                <viewController storyboardIdentifier="MGMainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8JW-fC-tQl" customClass="MGMainViewController" customModule="MuGuangIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ShX-KP-g5E"/>
+                        <viewControllerLayoutGuide type="bottom" id="RH8-O6-9vH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="prL-nd-uDU">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7fp-Ui-eBc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RnN-Ic-flb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="64.5" y="-41"/>
+        </scene>
         <!--Launching View Controller-->
         <scene sceneID="5JG-aZ-2xm">
             <objects>
@@ -20,7 +38,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="q5R-ZK-YQ2">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="1920" id="A8K-9j-9pS"/>
+                                    <constraint firstAttribute="width" constant="1920" id="A8K-9j-9pS">
+                                        <variation key="widthClass=compact" constant="1920"/>
+                                    </constraint>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -177,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPm-4o-yI4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-730.5" y="491"/>
+            <point key="canvasLocation" x="187.5" y="491"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -261,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="144" y="302"/>
+            <point key="canvasLocation" x="1062" y="302"/>
         </scene>
         <!--Publish View Controller-->
         <scene sceneID="wb0-aV-lLb">
@@ -558,7 +578,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oM5-BY-OXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1027.5" y="163"/>
+            <point key="canvasLocation" x="1945.5" y="163"/>
         </scene>
         <!--Publisher View Controller-->
         <scene sceneID="dnb-bJ-JWy">
@@ -576,11 +596,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPI-ps-cZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1642.5" y="164"/>
+            <point key="canvasLocation" x="2560.5" y="164"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qsp-hv-Egw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AS5-lz-U3I" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yod-OF-J8F">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8JW-fC-tQl" kind="relationship" relationship="rootViewController" id="3cB-tY-5Ov"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wug-WU-8S2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-853.5" y="-41"/>
         </scene>
     </scenes>
     <resources>
-        <image name="background.png" width="1920" height="600"/>
+        <image name="background.png" width="3840" height="1200"/>
         <image name="duckling.jpg" width="1280" height="800"/>
         <image name="logo.png" width="379" height="138"/>
         <image name="sina.png" width="103" height="27"/>

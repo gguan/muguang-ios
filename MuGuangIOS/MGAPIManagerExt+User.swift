@@ -22,7 +22,11 @@ extension MGAPIManager {
     func sinaAuthInfo (uid:String, accessToken:String, success:((AFHTTPRequestOperation!,AnyObject!)-> Void)!, failure:((AFHTTPRequestOperation!, NSError!) -> Void)!){
         
         let path = "https://api.weibo.com/2/users/show.json"
-        let parameters = ["source":"3927488598","uid":"5579713750","access_token":"2.00DgnJwBTzIMHB0fed984c200mboHf"]
+        
+        let parameters = ["source":"3927488598",
+                             "uid":"5579713750",
+                    "access_token":"2.00DgnJwBTzIMHB0fed984c200mboHf"]
+        
         self.GET(path, parameters: parameters, success: success, failure: failure)
     }
     
