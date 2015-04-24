@@ -50,14 +50,18 @@ extension MGAPIManager {
     */
     
 
-    func registureUser (uid: String, accessToken: String, refreshToken: String, success: ((AFHTTPRequestOperation!,AnyObject!)-> Void)!, failure: ((AFHTTPRequestOperation!, NSError!) -> Void)!) {
+     func registerUser (uid: String!,
+                accessToken: String!,
+               refreshToken: String!,
+                    success: ((AFHTTPRequestOperation!,AnyObject!)-> Void)!,
+                    failure: ((AFHTTPRequestOperation!, NSError!) -> Void)!) {
         
-        let path       = "/api/v1/authenticate/weibo"
-        
-        let parameters = [          "uid":uid,
-                            "oauth2_info":["access_token":accessToken,
-                                          "refresh_token":refreshToken]
-                         ]
+            let path       = "/api/v1/authenticate/weibo"
+            
+            let parameters = [          "uid":uid,
+                                "oauth2_info":["access_token":accessToken,
+                                              "refresh_token":refreshToken]
+                             ]
         
         self.POST(path, parameters: parameters, success: success, failure: failure)
     }
