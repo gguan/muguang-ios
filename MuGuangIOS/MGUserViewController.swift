@@ -8,9 +8,10 @@
 
 import UIKit
 
-let kTextColorRed = "#f3361d"
-let kTextColorWhite = "#ffffff"
-let kTextColorGray = "#686868"
+let kTextColorRed = "f3361d"
+let kTextColorWhite = "ffffff"
+let kTextColorGray = "686868"
+let kSeparateLineColorRed = "fab5ac"
 
 extension UIColor {
     // 转换颜色 HEX -> RGB
@@ -41,7 +42,7 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
     }
     
     override func awakeFromNib() {
-
+        
     }
     
     override func didReceiveMemoryWarning() {

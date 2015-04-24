@@ -19,7 +19,7 @@ class MGUserButton: UIButton {
     // 右侧的分割线
     lazy var rightLine: CALayer = {
         var line: CALayer = CALayer()
-        line.backgroundColor = UIColor.redColor().CGColor
+        line.backgroundColor = UIColor.transformColor(kSeparateLineColorRed, alpha: 1.0).CGColor
         self.layer.addSublayer(line)
         return line
     }()
@@ -31,7 +31,8 @@ class MGUserButton: UIButton {
         countLabel.font = UIFont.systemFontOfSize(12.0)
         textLabel.font = UIFont.systemFontOfSize(9.0)
         
-        countLabel.textColor = UIColor.transformColor("f3361d", alpha: 1)
+        countLabel.textColor = UIColor.transformColor(kTextColorRed, alpha: 1)
+        textLabel.textColor = UIColor.transformColor(kTextColorGray, alpha: 1)
 
         
         self.addSubview(textLabel)

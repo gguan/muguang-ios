@@ -25,7 +25,7 @@ class MGAvatarView: UIView {
         
         arcView.backgroundColor = UIColor.clearColor()
         arcView.text = "啊呦，今天天气不错哦"
-        arcView.color = UIColor.blackColor()
+        arcView.color = UIColor.transformColor(kTextColorWhite, alpha: 1.0)
         arcView.font = UIFont.systemFontOfSize(18.0)
         arcView.radius = 60
         arcView.shiftV = 30
@@ -34,7 +34,6 @@ class MGAvatarView: UIView {
         avatarView.layer.cornerRadius = 55
         avatarView.layer.borderWidth = 5
         avatarView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).CGColor
-        avatarView.backgroundColor = UIColor.greenColor()
         avatarView.contentMode = UIViewContentMode.ScaleToFill
         
         self.addSubview(arcView)
