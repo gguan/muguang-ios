@@ -13,7 +13,7 @@ class MGLaunchingViewController: UIViewController {
     @IBOutlet weak var moveImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.clipsToBounds = true
         
     }
 
@@ -58,8 +58,7 @@ class MGLaunchingViewController: UIViewController {
     }
     */
     @IBAction func testAction(sender: AnyObject) {
-        let mainVC = MGMainViewController()
-        self.presentViewController(mainVC, animated: false, completion:nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
 }

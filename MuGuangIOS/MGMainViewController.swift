@@ -51,21 +51,25 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         super.viewDidAppear(animated)
     }
     
-    override func viewDidLayoutSubviews() {
-        var isLogin: AnyObject? = NSUserDefaults.standardUserDefaults().valueForKey(kISLOGIN)
+    override func viewWillLayoutSubviews() {
         
-        if isLogin == nil {
-            var mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            var launchingVC = mainStoryboard.instantiateViewControllerWithIdentifier("MGLaunchingViewController") as! MGLaunchingViewController
-            self.navigationController?.pushViewController(launchingVC, animated: false)
-        }
+    }
+    override func viewDidLayoutSubviews() {
+
     }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-       
+        var isLogin: AnyObject? = NSUserDefaults.standardUserDefaults().valueForKey(kISLOGIN)
+        
+        // 未登录的话 push到登录界面
+        if isLogin == nil {
+            var mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            var launchingVC = mainStoryboard.instantiateViewControllerWithIdentifier("MGLaunchingViewController") as! MGLaunchingViewController
+            self.navigationController?.pushViewController(launchingVC, animated: false)
+        }
         
         self.view.backgroundColor = UIColor.whiteColor()
         self.navigationController?.navigationBarHidden = true
