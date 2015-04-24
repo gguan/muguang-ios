@@ -354,6 +354,7 @@
 		3D2B01BA1AE9064400F2BBC8 /* no_use */ = {
 			isa = PBXGroup;
 			children = (
+				3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */,
 				3D9DC8BC1AE11A140022F9C1 /* Shader1.fsh */,
 				3D2B01BB1AE9077900F2BBC8 /* filter */,
 				3DFA1A7D1ADFB862003E3177 /* Publisher */,
@@ -566,7 +567,6 @@
 			isa = PBXGroup;
 			children = (
 				3D95A5A31AE53AC60031DD9F /* TGCameraViewController */,
-				3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */,
 				3D2B01CA1AE915F300F2BBC8 /* MGLaunchingViewController.swift */,
 			);
 			name = ViewController;
@@ -895,7 +895,6 @@
 				3D95A5E51AE53AC60031DD9F /* TGCamera.m in Sources */,
 				3D2B01AD1AE7358800F2BBC8 /* MGFilterPhotoCollectionViewCell.m in Sources */,
 				3D2B01C21AE9079D00F2BBC8 /* FilteredImageView.swift in Sources */,
-				B0650A371ADF840400CBDC97 /* UIImage+ImageEffects.m in Sources */,
 				3D95A5F11AE53AC60031DD9F /* TGCameraSlideDownView.m in Sources */,
 				3D95A5E81AE53AC60031DD9F /* TGCameraFocus.m in Sources */,
 				3D2B01B31AE79F6900F2BBC8 /* CIFilter+mgFiliters.m in Sources */,

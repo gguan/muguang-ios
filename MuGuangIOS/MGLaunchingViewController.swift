@@ -19,7 +19,7 @@ class MGLaunchingViewController: UIViewController {
 
     func moveBackgroundImage () {
         UIView.animateWithDuration(25, delay: 0.0, options: .Autoreverse | .Repeat | .CurveLinear , animations: { () -> Void in
-            self.moveImageView.center.x += 1300
+                self.moveImageView.center.x = 900
             //self.moveImageView.transform = CGAffineTransformRotate(self.moveImageView.transform, 90.0)
             }, completion: nil)
     }
@@ -34,7 +34,7 @@ class MGLaunchingViewController: UIViewController {
     }
     @IBAction func sinaLogin(sender: AnyObject) {
         
-        var wbRequest = WBAuthorizeRequest.request() as! WBAuthorizeRequest
+        var wbRequest         = WBAuthorizeRequest.request() as! WBAuthorizeRequest
         
         wbRequest.redirectURI = SinaRedirectURI
         

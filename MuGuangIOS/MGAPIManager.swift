@@ -8,7 +8,7 @@
 
 import UIKit
 
-var apiURL:String = "http://www.api.com"
+var apiURL:String = "http://ec2-54-223-171-74.cn-north-1.compute.amazonaws.com.cn:9000"
 
 //typealias successBlock = (AFHTTPRequestOperation! ,AnyObject!)-> (Void)
 //typealias failureBlock = (AFHTTPRequestOperation, NSError!) -> (Void)

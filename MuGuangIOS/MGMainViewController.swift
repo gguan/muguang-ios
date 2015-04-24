@@ -46,17 +46,26 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     // 卡片数组
     var cardArray: [MGCard] = Array()
     
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        var isLogin: AnyObject? = NSUserDefaults.standardUserDefaults().valueForKey(kISLOGIN)
+        
+        if isLogin == nil {
+            var mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            var launchingVC = mainStoryboard.instantiateViewControllerWithIdentifier("MGLaunchingViewController") as! MGLaunchingViewController
+            self.navigationController?.pushViewController(launchingVC, animated: false)
+        }
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        var isLogin = NSUserDefaults.standardUserDefaults().valueForKey(kISLOGIN)
-        
-        if isLogin == nil {
-            var mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            var launchingVC = mainStoryboard.instantiateViewControllerWithIdentifier("MGLaunchingViewController") as! UIViewController
-            self.navigationController?.pushViewController(launchingVC, animated: false)
-        }
+       
         
         self.view.backgroundColor = UIColor.whiteColor()
         self.navigationController?.navigationBarHidden = true
