@@ -37,6 +37,8 @@
 		3D2B01D91AE9DEBE00F2BBC8 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01D81AE9DEBE00F2BBC8 /* background.png */; };
 		3D2B01E41AE9E70700F2BBC8 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01E31AE9E70700F2BBC8 /* logo.png */; };
 		3D2B01E61AE9E71B00F2BBC8 /* sina@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2B01E51AE9E71B00F2BBC8 /* sina@3x.png */; };
+		3D879FB01AEA1480004CBF47 /* MGAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D879FAF1AEA1480004CBF47 /* MGAPIManager.swift */; };
+		3D879FB41AEA2759004CBF47 /* MGAPIManagerExt+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D879FB31AEA2759004CBF47 /* MGAPIManagerExt+User.swift */; };
 		3D95A5DE1AE53AC60031DD9F /* UIImage+CameraFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5A61AE53AC60031DD9F /* UIImage+CameraFilters.m */; };
 		3D95A5DF1AE53AC60031DD9F /* TGCameraAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5A91AE53AC60031DD9F /* TGCameraAuthorizationViewController.m */; };
 		3D95A5E01AE53AC60031DD9F /* TGCameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D95A5AB1AE53AC60031DD9F /* TGCameraNavigationController.m */; };
@@ -155,6 +157,9 @@
 		3D2B01D81AE9DEBE00F2BBC8 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		3D2B01E31AE9E70700F2BBC8 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		3D2B01E51AE9E71B00F2BBC8 /* sina@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sina@3x.png"; sourceTree = "<group>"; };
+		3D879FAD1AE9F481004CBF47 /* Test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Test.playground; sourceTree = "<group>"; };
+		3D879FAF1AEA1480004CBF47 /* MGAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGAPIManager.swift; sourceTree = "<group>"; };
+		3D879FB31AEA2759004CBF47 /* MGAPIManagerExt+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MGAPIManagerExt+User.swift"; sourceTree = "<group>"; };
 		3D95A5A51AE53AC60031DD9F /* UIImage+CameraFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CameraFilters.h"; sourceTree = "<group>"; };
 		3D95A5A61AE53AC60031DD9F /* UIImage+CameraFilters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CameraFilters.m"; sourceTree = "<group>"; };
 		3D95A5A81AE53AC60031DD9F /* TGCameraAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGCameraAuthorizationViewController.h; sourceTree = "<group>"; };
@@ -317,6 +322,7 @@
 				3D9DC8BC1AE11A140022F9C1 /* Shader1.fsh */,
 				3D2B01BB1AE9077900F2BBC8 /* filter */,
 				3DFA1A7D1ADFB862003E3177 /* Publisher */,
+				3D879FAD1AE9F481004CBF47 /* Test.playground */,
 			);
 			name = no_use;
 			sourceTree = "<group>";
@@ -343,6 +349,15 @@
 				3D2B01E31AE9E70700F2BBC8 /* logo.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		3D879FAE1AEA1111004CBF47 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				3D879FAF1AEA1480004CBF47 /* MGAPIManager.swift */,
+				3D879FB31AEA2759004CBF47 /* MGAPIManagerExt+User.swift */,
+			);
+			name = api;
 			sourceTree = "<group>";
 		};
 		3D95A5A31AE53AC60031DD9F /* TGCameraViewController */ = {
@@ -467,6 +482,7 @@
 		3DB388F91ADE18AB003361A6 /* MuGuangIOS */ = {
 			isa = PBXGroup;
 			children = (
+				3D879FAE1AEA1111004CBF47 /* api */,
 				3D2B01CD1AE9208600F2BBC8 /* Images */,
 				3D2B01BA1AE9064400F2BBC8 /* no_use */,
 				3D2B01A01AE6347D00F2BBC8 /* Extension */,
@@ -805,6 +821,7 @@
 				3D95A5EE1AE53AC60031DD9F /* TGCameraFilterView.m in Sources */,
 				3D95A5EC1AE53AC60031DD9F /* TGAssetImageFile.m in Sources */,
 				3D95A5EF1AE53AC60031DD9F /* TGCameraFocusView.m in Sources */,
+				3D879FB41AEA2759004CBF47 /* MGAPIManagerExt+User.swift in Sources */,
 				3D2B01A91AE64F0500F2BBC8 /* MGVideoCamera.m in Sources */,
 				3D95A5E41AE53AC60031DD9F /* TGAssetsLibrary.m in Sources */,
 				3D95A5EA1AE53AC60031DD9F /* TGCameraShot.m in Sources */,
@@ -826,6 +843,7 @@
 				3D2B01C71AE9079D00F2BBC8 /* ScalarFilterParameter.swift in Sources */,
 				3D95A5E61AE53AC60031DD9F /* TGCameraColor.m in Sources */,
 				3D95A5EB1AE53AC60031DD9F /* TGCameraToggle.m in Sources */,
+				3D879FB01AEA1480004CBF47 /* MGAPIManager.swift in Sources */,
 				3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */,
 				3D2B01CB1AE915F300F2BBC8 /* MGLaunchingViewController.swift in Sources */,
 				3D2B01C61AE9079D00F2BBC8 /* PhotoFilterViewController.swift in Sources */,

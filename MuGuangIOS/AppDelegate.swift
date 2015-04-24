@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         //Share SDK
-        //ShareSDK.registerApp(ShareAppKey)
+        ShareSDK.registerApp(ShareAppKey)
         
         //微博SDK
         WeiboSDK.enableDebugMode(true)
@@ -26,6 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
         
         //程序主体颜色
         //window?.tintColor = UIColor.redColor()
+        
+        MGAPIManager.sharedInstance.sinaAuthInfo("1", accessToken: "2", success: { (operation:AFHTTPRequestOperation!, responseData:AnyObject!) -> Void in
+            
+            println(operation.responseObject)
+            
+        },failure: { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+
+        });
+        
         return true
     }
     
@@ -48,7 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
@@ -65,7 +73,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
     }
     
     func didReceiveWeiboResponse(response: WBBaseResponse!) {
-        //response.userInfo["acesss_token"]
+        
+        //保存新浪微博有用的信息
+        if let app: AnyObject = response.userInfo["app"] {
+            let name            = app["name"]
+            let uid             = app["uid"]
+            let access_token    = app["access_token"]
+            let refresh_token   = app["refresh_token"];
+            NSUserDefaults.standardUserDefaults().setObject(uid, forKey: "uid")
+            NSUserDefaults.standardUserDefaults().setObject(access_token,  forKey: "access_token")
+            NSUserDefaults.standardUserDefaults().setObject(refresh_token, forKey: "refresh_token")
+        }
     }
     
 }

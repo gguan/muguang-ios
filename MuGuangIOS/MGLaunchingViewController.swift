@@ -33,12 +33,14 @@ class MGLaunchingViewController: UIViewController {
         self.moveBackgroundImage()
     }
     @IBAction func sinaLogin(sender: AnyObject) {
+        
         var wbRequest = WBAuthorizeRequest.request() as! WBAuthorizeRequest
         
         wbRequest.redirectURI = SinaRedirectURI
         
         wbRequest.scope       = "all"
         
+        //可以不填写
         wbRequest.userInfo    = ["SSO_From": "SendMessageToWeiboViewController",
             "Other_Info_1": 123,
             "Other_Info_2": ["obj1", "obj2"],
