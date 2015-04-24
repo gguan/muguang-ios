@@ -8,17 +8,42 @@
 
 import UIKit
 
-class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+let kTextColorRed = "#f3361d"
+let kTextColorWhite = "#ffffff"
+let kTextColorGray = "#686868"
+
+extension UIColor {
+    // 转换颜色 HEX -> RGB
+    class func transformColor(colorString: String!, alpha: CGFloat!) -> UIColor {
+        var scanner = NSScanner(string: colorString)
+        var color: UInt32 = 0;
+        scanner.scanHexInt(&color)
+        let mask = 0x000000FF
+        let r = CGFloat(Float(Int(color >> 16) & mask) / 255.0)
+        let g = CGFloat(Float(Int(color >> 8) & mask) / 255.0)
+        let b = CGFloat(Float(Int(color) & mask) / 255.0)
+        return UIColor(red: r, green: g, blue: b, alpha: CGFloat(alpha))
+    }
+}
+
+class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, MGCollectionHeaderViewDelegate {
     
+    @IBOutlet weak var photoView: UICollectionView!
+    // 返回按钮的方法
     @IBAction func methodForBackButton(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.
     }
+    
+    override func awakeFromNib() {
 
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -43,7 +68,11 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        var reusableView: UICollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "MGCollectionHeaderView", forIndexPath: indexPath) as! UICollectionReusableView
+        // 设置headerView
+        var reusableView: MGCollectionHeaderView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "MGCollectionHeaderView", forIndexPath: indexPath) as! MGCollectionHeaderView
+        reusableView.coverView.image = UIImage(named: "cover_placeholder")
+        reusableView.avatarView.avatarView.image = UIImage(named: "avatar_placeholder")
+        reusableView.delegate = self
         return reusableView
     }
     
@@ -58,6 +87,20 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         println(indexPath)
+    }
+    
+    // MARK: MGCollectionHeaderViewDelegate
+    // 照片
+    func clickedPhotoButton() {
+        println("照片")
+    }
+    // 关注
+    func clickedFocusButton() {
+        println("关注")
+    }
+    // 粉丝
+    func clickedFunsButton() {
+        println("粉丝")
     }
     
     /*
