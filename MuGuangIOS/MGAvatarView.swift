@@ -13,10 +13,17 @@ class MGAvatarView: UIView {
     let avatarView = UIImageView(frame: CGRectZero)
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.grayColor()
+    }
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func awakeFromNib() {
+        self.backgroundColor = UIColor.clearColor()
         
-        arcView.backgroundColor = UIColor.purpleColor()
+        arcView.backgroundColor = UIColor.clearColor()
         arcView.text = "啊呦，今天天气不错哦"
+        arcView.color = UIColor.blackColor()
         arcView.font = UIFont.systemFontOfSize(18.0)
         arcView.radius = 60
         arcView.shiftV = 30
@@ -29,9 +36,6 @@ class MGAvatarView: UIView {
         
         self.addSubview(arcView)
         self.addSubview(avatarView)
-    }
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
     
     override func layoutSubviews() {

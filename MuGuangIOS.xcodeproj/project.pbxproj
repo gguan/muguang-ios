@@ -59,6 +59,8 @@
 		F98A8F7F1AE8FD7A004DED25 /* MGAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F7D1AE8FD7A004DED25 /* MGAvatarView.swift */; };
 		F98A8F811AE9014A004DED25 /* MGButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F801AE9014A004DED25 /* MGButton.swift */; };
 		F98A8F831AE9137C004DED25 /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F98A8F821AE9137C004DED25 /* Second.storyboard */; };
+		F98A8F851AE9E47F004DED25 /* MGCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F841AE9E47F004DED25 /* MGCollectionHeaderView.swift */; };
+		F98A8F871AEA1007004DED25 /* MGUserButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F861AEA1007004DED25 /* MGUserButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +138,8 @@
 		F98A8F7D1AE8FD7A004DED25 /* MGAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGAvatarView.swift; sourceTree = "<group>"; };
 		F98A8F801AE9014A004DED25 /* MGButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGButton.swift; sourceTree = "<group>"; };
 		F98A8F821AE9137C004DED25 /* Second.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
+		F98A8F841AE9E47F004DED25 /* MGCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCollectionHeaderView.swift; sourceTree = "<group>"; };
+		F98A8F861AEA1007004DED25 /* MGUserButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGUserButtonView.swift; sourceTree = "<group>"; };
 		FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MuGuangIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -318,6 +322,8 @@
 				F98A8F7C1AE8FD7A004DED25 /* ArcView.m */,
 				F98A8F7D1AE8FD7A004DED25 /* MGAvatarView.swift */,
 				F98A8F801AE9014A004DED25 /* MGButton.swift */,
+				F98A8F841AE9E47F004DED25 /* MGCollectionHeaderView.swift */,
+				F98A8F861AEA1007004DED25 /* MGUserButtonView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -558,9 +564,11 @@
 				3DFA1A741ADFB246003E3177 /* FilteredImageView.swift in Sources */,
 				3DFA1A781ADFB2AC003E3177 /* ScalarFilterParameter.swift in Sources */,
 				3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */,
+				F98A8F851AE9E47F004DED25 /* MGCollectionHeaderView.swift in Sources */,
 				3DFA1A761ADFB282003E3177 /* ParameterAdjustmentView.swift in Sources */,
 				3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */,
 				F98A8F811AE9014A004DED25 /* MGButton.swift in Sources */,
+				F98A8F871AEA1007004DED25 /* MGUserButtonView.swift in Sources */,
 				3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */,
 				F980816A1AE5F14F00E217DC /* MGUserViewController.swift in Sources */,
 				B04C9D7C1AE0A49400CD9405 /* FXBlurView.m in Sources */,
