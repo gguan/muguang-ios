@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
         //程序主体颜色
         //window?.tintColor = UIColor.redColor()
         
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(kAccessToken)
+        
 //获取新浪用户信息
 //        
 //        MGAPIManager.sharedInstance.sinaAuthInfo(uid, accessToken: accessToken, success: { (operation:AFHTTPRequestOperation!, responseData:AnyObject!) -> Void in
@@ -110,28 +112,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
 //                                "user_id" = 553dd4dd1900001900afd350;
 //                        }
                         
-                        //Rewrite it
-                        NSUserDefaults.standardUserDefaults().setObject(accessToken,  forKey: kAccessToken)
-                        NSUserDefaults.standardUserDefaults().setObject(refreshToken, forKey: kRefreshToken)
                         
-                        if let nav = self.window?.rootViewController as? UINavigationController {
-                            nav.popToRootViewControllerAnimated(false)
-                        }
-                        
+                        self.rewrite()
                     },
                     failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                         println(operation.response.URL,operation.responseObject,operation.response.statusCode)
                         
-                        
-                        NSUserDefaults.standardUserDefaults().setObject(accessToken,  forKey: kAccessToken)
-                        NSUserDefaults.standardUserDefaults().setObject(refreshToken, forKey: kRefreshToken)
-                        if let nav = self.window?.rootViewController as? UINavigationController {
-                            nav.popToRootViewControllerAnimated(false)
-                        }
+                        self.rewrite()
                 })
             }
         }
     }
     
+    
+    func rewrite() {
+        let access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0MzAxMjU4MjgsInN1YiI6IjgzNWJmYmYyMWUzMTRhM2EwN2ZmNjRiNmQwNWUyODI4Mzc5NWVkMDBkNTUwMTQ4MDM3OTFmODEwMWQ4MDAwMjlmNDYwNzc4MGM4MWYxZjg5N2RiYjQxOTY3MmZhNmEzMDczNWNjZGQzMzY0YjI4YTExZTAyNmQ1NTE2YTY3YTk3IiwiaXNzIjoibXVndWFuZyIsImp0aSI6IjRhOTBlY2U4OGExOThiNjg3YzkzODQxMTFkMWZkMjc5ZDRiMzM0N2EzYjNmZDEyMTFmMDIzMDI5MGZmNzMxMjQiLCJpYXQiOjE0MzAxMTg2Mjh9.mUhrJOmXMoMLUYhfcwFjk0pLoFYPgQyWzjy3DCFu6vE"
+        
+        //Rewrite it
+        NSUserDefaults.standardUserDefaults().setObject(access_token,  forKey: kAccessToken)
+        //NSUserDefaults.standardUserDefaults().setObject(refreshToken, forKey: kRefreshToken)
+        
+        if let nav = self.window?.rootViewController as? UINavigationController {
+            nav.popToRootViewControllerAnimated(false)
+        }
+        
+    }
 }
 
