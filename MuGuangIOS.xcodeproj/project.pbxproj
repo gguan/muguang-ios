@@ -107,6 +107,7 @@
 		F9EFE24D1AEDD07000334C4F /* MGSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFE24C1AEDD07000334C4F /* MGSettingViewController.swift */; };
 		F9EFE24F1AEDD1A400334C4F /* MGFoucsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFE24E1AEDD1A400334C4F /* MGFoucsViewController.swift */; };
 		F9EFE2511AEDD1C900334C4F /* MGFansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFE2501AEDD1C900334C4F /* MGFansViewController.swift */; };
+		F9EFE2531AEDDEB100334C4F /* MGPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFE2521AEDDEB100334C4F /* MGPhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -280,6 +281,7 @@
 		F9EFE24C1AEDD07000334C4F /* MGSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGSettingViewController.swift; sourceTree = "<group>"; };
 		F9EFE24E1AEDD1A400334C4F /* MGFoucsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGFoucsViewController.swift; sourceTree = "<group>"; };
 		F9EFE2501AEDD1C900334C4F /* MGFansViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGFansViewController.swift; sourceTree = "<group>"; };
+		F9EFE2521AEDDEB100334C4F /* MGPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MuGuangIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -637,6 +639,7 @@
 				F98A8F801AE9014A004DED25 /* MGButton.swift */,
 				F98A8F841AE9E47F004DED25 /* MGCollectionHeaderView.swift */,
 				F98A8F881AEA16F2004DED25 /* MGUserButton.swift */,
+				F9EFE2521AEDDEB100334C4F /* MGPhotoCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -911,6 +914,7 @@
 				3D95A5E01AE53AC60031DD9F /* TGCameraNavigationController.m in Sources */,
 				3D95A5F01AE53AC60031DD9F /* TGCameraGridView.m in Sources */,
 				3D95A5F21AE53AC60031DD9F /* TGCameraSlideUpView.m in Sources */,
+				F9EFE2531AEDDEB100334C4F /* MGPhotoCollectionViewCell.swift in Sources */,
 				3D95A5DF1AE53AC60031DD9F /* TGCameraAuthorizationViewController.m in Sources */,
 				3DB388FD1ADE18AB003361A6 /* AppDelegate.swift in Sources */,
 				B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */,

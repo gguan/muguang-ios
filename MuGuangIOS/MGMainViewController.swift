@@ -388,6 +388,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     func showUserInfo(index: Int) {
         var second: UIStoryboard = UIStoryboard(name: "Second", bundle: NSBundle.mainBundle())
         var userVC: MGUserViewController = second.instantiateViewControllerWithIdentifier("MGUserViewController") as! MGUserViewController
+        userVC.isMyInfo = true
         self.navigationController?.pushViewController(userVC, animated: true)
     }
     
