@@ -12,12 +12,10 @@ class MGLaunchingViewController: UIViewController {
 
     @IBOutlet weak var moveImageView: UIImageView!
 
-    var defaultCenter:CGPoint!
+    var testBlcok:(() -> Void)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //self.view.clipsToBounds = true
     }
 
     func moveBackgroundImage () {
@@ -27,6 +25,7 @@ class MGLaunchingViewController: UIViewController {
                 self.moveImageView.center.x = -(self.moveImageView.center.x - self.view.frame.size.width)
                 self.moveImageView.updateConstraintsIfNeeded()
             }, completion: nil)
+        testBlcok()
     }
 
     

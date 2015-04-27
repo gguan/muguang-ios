@@ -61,7 +61,7 @@ extension MGAPIManager {
                                 "oauth2_info":["access_token":accessToken,
                                               "refresh_token":refreshToken]
                              ]
-                        
+                  
             self.POST(path, parameters: parameters, success: success, failure: failure)
     }
     

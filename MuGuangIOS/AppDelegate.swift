@@ -8,7 +8,7 @@
 
 import UIKit
 
-let kSampleImageName = "duckling.jpg"
+
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
@@ -91,22 +91,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
             
             if uid != nil && accessToken != nil && refreshToken != nil {
                 NSUserDefaults.standardUserDefaults().setObject(uid, forKey: "uid")
-                NSUserDefaults.standardUserDefaults().setObject(accessToken,  forKey: "access_token")
-                NSUserDefaults.standardUserDefaults().setObject(refreshToken, forKey: "refresh_token")
+                NSUserDefaults.standardUserDefaults().setObject(accessToken,  forKey: "sina_access_token")
+                NSUserDefaults.standardUserDefaults().setObject(refreshToken, forKey: "sina_refresh_token")
                 
                 //注册用户
                 MGAPIManager.sharedInstance.registerUser(uid as! String,
                     accessToken: accessToken as! String,
                     refreshToken: refreshToken as! String,
                     success: { (operation: AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-                        println(operation.response.URL)
+                        
+//                        response data
+                        
+//                            {
+//                                "access_token" = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0MzAxMjU4MjgsInN1YiI6IjgzNWJmYmYyMWUzMTRhM2EwN2ZmNjRiNmQwNWUyODI4Mzc5NWVkMDBkNTUwMTQ4MDM3OTFmODEwMWQ4MDAwMjlmNDYwNzc4MGM4MWYxZjg5N2RiYjQxOTY3MmZhNmEzMDczNWNjZGQzMzY0YjI4YTExZTAyNmQ1NTE2YTY3YTk3IiwiaXNzIjoibXVndWFuZyIsImp0aSI6IjRhOTBlY2U4OGExOThiNjg3YzkzODQxMTFkMWZkMjc5ZDRiMzM0N2EzYjNmZDEyMTFmMDIzMDI5MGZmNzMxMjQiLCJpYXQiOjE0MzAxMTg2Mjh9.mUhrJOmXMoMLUYhfcwFjk0pLoFYPgQyWzjy3DCFu6vE";
+//                                "expires_in" = 7199;
+//                                "refresh_token" = 49506359476678423554608907565679945683;
+//                                "token_type" = Bearer;
+//                                "user_id" = 553dd4dd1900001900afd350;
+//                        }
+                        
+                        //Rewrite it
+                        NSUserDefaults.standardUserDefaults().setObject(accessToken,  forKey: kAccessToken)
+                        NSUserDefaults.standardUserDefaults().setObject(refreshToken, forKey: kRefreshToken)
+                        
+                        if let nav = self.window?.rootViewController as? UINavigationController {
+                            nav.popToRootViewControllerAnimated(false)
+                        }
+                        
                     },
                     failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                         println(operation.response.URL,operation.responseObject,operation.response.statusCode)
+                        
+                        
+                        NSUserDefaults.standardUserDefaults().setObject(accessToken,  forKey: kAccessToken)
+                        NSUserDefaults.standardUserDefaults().setObject(refreshToken, forKey: kRefreshToken)
+                        if let nav = self.window?.rootViewController as? UINavigationController {
+                            nav.popToRootViewControllerAnimated(false)
+                        }
                 })
             }
-            
-            
         }
     }
     
