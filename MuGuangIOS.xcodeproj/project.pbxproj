@@ -110,6 +110,9 @@
 		F98A8F831AE9137C004DED25 /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F98A8F821AE9137C004DED25 /* Second.storyboard */; };
 		F98A8F851AE9E47F004DED25 /* MGCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F841AE9E47F004DED25 /* MGCollectionHeaderView.swift */; };
 		F98A8F891AEA16F2004DED25 /* MGUserButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F881AEA16F2004DED25 /* MGUserButton.swift */; };
+		F9EFE24D1AEDD07000334C4F /* MGSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFE24C1AEDD07000334C4F /* MGSettingViewController.swift */; };
+		F9EFE24F1AEDD1A400334C4F /* MGFoucsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFE24E1AEDD1A400334C4F /* MGFoucsViewController.swift */; };
+		F9EFE2511AEDD1C900334C4F /* MGFansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFE2501AEDD1C900334C4F /* MGFansViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -280,6 +283,9 @@
 		F98A8F821AE9137C004DED25 /* Second.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
 		F98A8F841AE9E47F004DED25 /* MGCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCollectionHeaderView.swift; sourceTree = "<group>"; };
 		F98A8F881AEA16F2004DED25 /* MGUserButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGUserButton.swift; sourceTree = "<group>"; };
+		F9EFE24C1AEDD07000334C4F /* MGSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGSettingViewController.swift; sourceTree = "<group>"; };
+		F9EFE24E1AEDD1A400334C4F /* MGFoucsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGFoucsViewController.swift; sourceTree = "<group>"; };
+		F9EFE2501AEDD1C900334C4F /* MGFansViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGFansViewController.swift; sourceTree = "<group>"; };
 		FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MuGuangIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -644,11 +650,14 @@
 		B0650A331ADF83BE00CBDC97 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F98A8F821AE9137C004DED25 /* Second.storyboard */,
 				B063F3D61ADE3B3D00E8A1AA /* MGBaseViewController.swift */,
 				B063F3D81ADE3C5200E8A1AA /* MGMainViewController.swift */,
 				F98081691AE5F14F00E217DC /* MGUserViewController.swift */,
 				F980816B1AE5F1AB00E217DC /* MGCardDetailController.swift */,
-				F98A8F821AE9137C004DED25 /* Second.storyboard */,
+				F9EFE24C1AEDD07000334C4F /* MGSettingViewController.swift */,
+				F9EFE24E1AEDD1A400334C4F /* MGFoucsViewController.swift */,
+				F9EFE2501AEDD1C900334C4F /* MGFansViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -906,6 +915,7 @@
 				3D2B01C71AE9079D00F2BBC8 /* ScalarFilterParameter.swift in Sources */,
 				3D95A5E61AE53AC60031DD9F /* TGCameraColor.m in Sources */,
 				3D95A5EB1AE53AC60031DD9F /* TGCameraToggle.m in Sources */,
+				F9EFE24D1AEDD07000334C4F /* MGSettingViewController.swift in Sources */,
 				3D879FB01AEA1480004CBF47 /* MGAPIManager.swift in Sources */,
 				3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */,
 				3D2B01CB1AE915F300F2BBC8 /* MGLaunchingViewController.swift in Sources */,
@@ -916,11 +926,13 @@
 				3D95A5DF1AE53AC60031DD9F /* TGCameraAuthorizationViewController.m in Sources */,
 				3DB388FD1ADE18AB003361A6 /* AppDelegate.swift in Sources */,
 				B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */,
+				F9EFE2511AEDD1C900334C4F /* MGFansViewController.swift in Sources */,
 				3D95A5E31AE53AC60031DD9F /* TGAlbum.m in Sources */,
 				3D95A5E71AE53AC60031DD9F /* TGCameraFlash.m in Sources */,
 				3D95A5F31AE53AC60031DD9F /* TGCameraSlideView.m in Sources */,
 				3D2B01C31AE9079D00F2BBC8 /* LabeledSliderView.swift in Sources */,
 				B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */,
+				F9EFE24F1AEDD1A400334C4F /* MGFoucsViewController.swift in Sources */,
 				3D2B01C41AE9079D00F2BBC8 /* ParameterAdjustmentView.swift in Sources */,
 				3D95A5E21AE53AC60031DD9F /* TGPhotoViewController.m in Sources */,
 				3D2B01B91AE8929A00F2BBC8 /* CALayer+Additions.m in Sources */,
