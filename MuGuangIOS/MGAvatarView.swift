@@ -26,7 +26,7 @@ class MGAvatarView: UIView {
         arcView.backgroundColor = UIColor.clearColor()
         arcView.text = "啊呦，今天天气不错哦"
         arcView.color = UIColor.transformColor(kTextColorWhite, alpha: 1.0)
-        arcView.font = UIFont.systemFontOfSize(18.0)
+        arcView.font = UIFont.systemFontOfSize(15.0)
         arcView.radius = 60
         arcView.shiftV = 30
         
@@ -38,6 +38,13 @@ class MGAvatarView: UIView {
         
         self.addSubview(arcView)
         self.addSubview(avatarView)
+    }
+    
+    // 设置文字
+    func setAvatarTitle(string: NSString!) {
+        arcView.text = string as String
+        var width = string.boundingRectWithSize(arcView.frame.size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: arcView.font], context: nil).width
+        arcView.arcDegree = (width * CGFloat(M_PI)) / 180
     }
     
     override func layoutSubviews() {

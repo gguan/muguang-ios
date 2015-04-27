@@ -90,9 +90,9 @@ class MGLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     // 方向更新校准
-    func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager!) -> Bool {
-        return true
-    }
+//    func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager!) -> Bool {
+//        return true
+//    }
     
     // 授权状态
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {

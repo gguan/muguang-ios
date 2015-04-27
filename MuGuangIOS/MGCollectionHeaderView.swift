@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import QuartzCore
+import CoreImage
 
 class MGCollectionHeaderView: UICollectionReusableView {
     // 封面
@@ -60,6 +62,44 @@ class MGCollectionHeaderView: UICollectionReusableView {
         self.delegate?.clickedFollow()
     }
 
+    // 封面加红色蒙版
+    func setCoverImageByCIFilter(image: UIImage?) {
+        // 模糊滤镜
+        var filter: CIFilter = CIFilter(name: "CIGaussianBlur")
+        filter.setValue(CIImage(CGImage: image!.CGImage), forKey: kCIInputImageKey)
+        filter.setValue(20, forKey: "inputRadius")
+        
+        let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
+        let options = [kCIContextWorkingColorSpace : NSNull()]
+        var ctx: CIContext =  CIContext(EAGLContext: eaglContext, options: options)
+        
+        var outputImage = filter.outputImage
+        var filterImage = UIImage(CGImage: ctx.createCGImage(outputImage, fromRect: outputImage.extent()))
+        
+        // 蒙版
+        var targetSize = self.coverView.bounds.size
+        UIGraphicsBeginImageContext(targetSize)
+        var context: CGContextRef = UIGraphicsGetCurrentContext();
+        image?.drawInRect(self.coverView.bounds)
+        
+        var color = UIColor.transformColor("d81e04", alpha: 1)
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        color.getRed(&r, green: &g, blue: &b, alpha: &a)
+        // overlay a red rectangle
+        CGContextSetBlendMode(context, kCGBlendModeOverlay)
+        CGContextSetRGBFillColor (context, r, g, b, a);
+        CGContextFillRect(context, self.coverView.bounds)
+        
+        // redraw gem
+        image?.drawInRect(self.coverView.bounds, blendMode: kCGBlendModeDestinationIn, alpha: 1.0)
+        var newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+
+        self.coverView.image = newImage
+//        self.coverView.image = image
+    }
+    
     override func awakeFromNib() {
         self.briefLabel.textColor = UIColor.transformColor(kTextColorGray, alpha: 1.0)
         self.briefLabel.font = UIFont.systemFontOfSize(12.0)
@@ -83,6 +123,13 @@ class MGCollectionHeaderView: UICollectionReusableView {
         self.followButton.setImage(UIImage(named: "add_follow"), forState: .Normal)
         self.followButton.setImage(UIImage(named: "followed"), forState: .Selected)
         self.followButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        
+        var tapGR = UITapGestureRecognizer(target: self, action: Selector("methodForTapGestureRecognizer:"))
+    }
+    
+    // 点击的手势
+    func methodForTapGestureRecognizer(tap: UITapGestureRecognizer) {
+        self.delegate?.clickedAvatar()
     }
     
     override func layoutSubviews() {
@@ -92,6 +139,10 @@ class MGCollectionHeaderView: UICollectionReusableView {
 }
 
 protocol MGCollectionHeaderViewDelegate: NSObjectProtocol {
+    /**
+    *  点击头像
+    */
+    func clickedAvatar()
     /**
     *  点击照片
     */

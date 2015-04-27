@@ -86,8 +86,9 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         // 设置headerView
         var reusableView: MGCollectionHeaderView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "MGCollectionHeaderView", forIndexPath: indexPath) as! MGCollectionHeaderView
-        reusableView.coverView.image = UIImage(named: "cover_placeholder")
+        reusableView.setCoverImageByCIFilter(UIImage(named: "cover_placeholder"))
         reusableView.avatarView.avatarView.image = UIImage(named: "avatar_placeholder")
+        reusableView.avatarView.setAvatarTitle("满-江-红")
         reusableView.delegate = self
         reusableView.briefLabel.text = "壮志饥餐胡虏肉，笑谈渴饮匈奴血。待从头、收拾旧山河，朝天阙。"
         if self.isMyInfo {
@@ -113,6 +114,10 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
     }
     
     // MARK: MGCollectionHeaderViewDelegate
+    // 头像
+    func clickedAvatar() {
+        println("头像")
+    }
     // 照片
     func clickedPhotoButton() {
         println("照片")
