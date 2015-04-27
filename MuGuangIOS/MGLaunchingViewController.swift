@@ -11,26 +11,47 @@ import UIKit
 class MGLaunchingViewController: UIViewController {
 
     @IBOutlet weak var moveImageView: UIImageView!
+
+    var defaultCenter:CGPoint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
     }
 
     func moveBackgroundImage () {
-        UIView.animateWithDuration(25, delay: 0.0, options: .Autoreverse | .Repeat | .CurveLinear , animations: { () -> Void in
-                self.moveImageView.center.x = 900
-            //self.moveImageView.transform = CGAffineTransformRotate(self.moveImageView.transform, 90.0)
+
+        println(self.moveImageView.image?.size)
+        UIView.animateWithDuration(15, delay: 0.0, options: .Autoreverse | .Repeat | .CurveLinear, animations: { () -> Void in
+                self.moveImageView.center.x = -(self.moveImageView.center.x - self.view.frame.size.width)
+                self.moveImageView.updateConstraintsIfNeeded()
             }, completion: nil)
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
     }
-    
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.moveBackgroundImage()
+    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.moveBackgroundImage()
+        
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.moveImageView.layer.removeAllAnimations()
+        
+
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
     }
     @IBAction func sinaLogin(sender: AnyObject) {
         

@@ -11,8 +11,6 @@ import Foundation
 typealias successBlock = (AFHTTPRequestOperation! ,AnyObject!)-> Void
 typealias failureBlock = (AFHTTPRequestOperation, NSError!) -> Void
 
-
-
 extension MGAPIManager {
     
     /**
@@ -66,5 +64,10 @@ extension MGAPIManager {
         self.POST(path, parameters: parameters, success: success, failure: failure)
     }
     
-
+/*
+    func getUserInfo(success: successBlock, failure: failureBlock) {
+        let path       = "/api/v1/authenticate/weibo" as String!
+        self.GET(path, (parameters: ["key":"value"]) as AnyObject!, success: success, failure: failure)
+    }
+*/
 }

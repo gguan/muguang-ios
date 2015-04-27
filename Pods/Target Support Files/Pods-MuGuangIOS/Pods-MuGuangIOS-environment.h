@@ -48,9 +48,33 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 2
 
+// FastImageCache
+#define COCOAPODS_POD_AVAILABLE_FastImageCache
+#define COCOAPODS_VERSION_MAJOR_FastImageCache 1
+#define COCOAPODS_VERSION_MINOR_FastImageCache 3
+#define COCOAPODS_VERSION_PATCH_FastImageCache 0
+
+// Mantle
+#define COCOAPODS_POD_AVAILABLE_Mantle
+#define COCOAPODS_VERSION_MAJOR_Mantle 2
+#define COCOAPODS_VERSION_MINOR_Mantle 0
+#define COCOAPODS_VERSION_PATCH_Mantle 0
+
+// Mantle/extobjc
+#define COCOAPODS_POD_AVAILABLE_Mantle_extobjc
+#define COCOAPODS_VERSION_MAJOR_Mantle_extobjc 2
+#define COCOAPODS_VERSION_MINOR_Mantle_extobjc 0
+#define COCOAPODS_VERSION_PATCH_Mantle_extobjc 0
+
 // Masonry
 #define COCOAPODS_POD_AVAILABLE_Masonry
 #define COCOAPODS_VERSION_MAJOR_Masonry 0
 #define COCOAPODS_VERSION_MINOR_Masonry 6
 #define COCOAPODS_VERSION_PATCH_Masonry 1
+
+// TMCache
+#define COCOAPODS_POD_AVAILABLE_TMCache
+#define COCOAPODS_VERSION_MAJOR_TMCache 1
+#define COCOAPODS_VERSION_MINOR_TMCache 2
+#define COCOAPODS_VERSION_PATCH_TMCache 4
 

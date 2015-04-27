@@ -14,6 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="RH8-O6-9vH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="prL-nd-uDU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -113,8 +114,7 @@
                                         <exclude reference="Rtr-bD-FKh"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="106" y="100" width="189" height="69"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="L1T-6d-lDI"/>
                                         <include reference="Rtr-bD-FKh"/>
