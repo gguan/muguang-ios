@@ -25,6 +25,11 @@ class MGAPIManager: AFHTTPRequestOperationManager {
         self.responseSerializer = AFJSONResponseSerializer()
         self.requestSerializer = AFJSONRequestSerializer()
         
+        //Token 设置到头文件中
+        if let accessToken: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey(kAccessToken) {
+                self.requestSerializer.setValue(accessToken as! String, forHTTPHeaderField:"access_token" )
+        }
+        
     }
     
     required init(coder aDecoder: NSCoder) {

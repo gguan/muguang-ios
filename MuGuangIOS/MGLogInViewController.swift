@@ -27,7 +27,7 @@ class MGLogInViewController: UIViewController, TGCameraDelegate {
         //self.takePhoto(sender)
     }
     @IBAction func ssoAuth(sender: AnyObject) {
-        var wbRequest = WBAuthorizeRequest.request() as! WBAuthorizeRequest
+        var wbRequest         = WBAuthorizeRequest.request() as! WBAuthorizeRequest
         
         wbRequest.redirectURI = SinaRedirectURI
         

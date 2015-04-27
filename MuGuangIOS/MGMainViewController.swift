@@ -11,7 +11,7 @@ import CoreLocation
 import CoreMotion
 
 let kScaleLabelHeight: CGFloat = 20
-let kISLOGIN = "isLogin"
+
 /**
  *  主页面
  */
@@ -55,12 +55,17 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         
         super.viewDidLoad()
         
-        var isLogin: AnyObject? = NSUserDefaults.standardUserDefaults().valueForKey(kISLOGIN)
+        var isLogin: AnyObject? = NSUserDefaults.standardUserDefaults().valueForKey(kAccessToken)
         
         // 未登录的话 push到登录界面
+        
         if isLogin == nil {
             var mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
             var launchingVC = mainStoryboard.instantiateViewControllerWithIdentifier("MGLaunchingViewController") as! MGLaunchingViewController
+            launchingVC.testBlcok = {() -> Void in
+                //println("i am block")
+            }
+            
             self.navigationController?.pushViewController(launchingVC, animated: false)
         }
         
