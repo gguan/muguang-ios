@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
         WeiboSDK.registerApp(SinaAppKey)
         
         //程序主体颜色
-        //window?.tintColor = UIColor.redColor()
+        window?.tintColor = UIColor.MGMainColor()
         
         
         // Test login

@@ -622,8 +622,8 @@
                             <include reference="4av-Ci-15B"/>
                             <exclude reference="AEb-N5-ejd"/>
                             <include reference="iNw-dV-Eau"/>
-                            <include reference="XLK-GN-dZP"/>
-                            <include reference="Zb5-88-Xbo"/>
+                            <exclude reference="XLK-GN-dZP"/>
+                            <exclude reference="Zb5-88-Xbo"/>
                             <include reference="iPK-gp-btx"/>
                         </mask>
                     </variation>
@@ -788,7 +788,7 @@
                     <include reference="BSr-Cw-JBH"/>
                     <exclude reference="a0v-Nv-K78"/>
                     <exclude reference="fme-nC-OpG"/>
-                    <include reference="nfM-1k-pYk"/>
+                    <exclude reference="nfM-1k-pYk"/>
                     <include reference="pLe-A2-b1i"/>
                 </mask>
             </variation>

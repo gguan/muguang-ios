@@ -58,7 +58,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         
         // 未登录的话 push到登录界面
         
-        if let lg: AnyObject =  NSUserDefaults.standardUserDefaults().valueForKey(kAccessToken) {
+        if  NSUserDefaults.standardUserDefaults().valueForKey(kAccessToken) == nil {
             var mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
             var launchingVC = mainStoryboard.instantiateViewControllerWithIdentifier("MGLaunchingViewController") as! MGLaunchingViewController
             launchingVC.testBlcok = {() -> Void in

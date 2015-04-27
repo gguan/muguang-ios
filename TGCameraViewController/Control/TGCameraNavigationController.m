@@ -43,7 +43,7 @@
 + (instancetype)newWithCameraDelegate:(id<TGCameraDelegate>)delegate
 {
     TGCameraNavigationController *navigationController = [super new];
-    navigationController.navigationBarHidden = YES;
+    //navigationController.navigationBarHidden = YES;
     
     if (navigationController) {
         AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];

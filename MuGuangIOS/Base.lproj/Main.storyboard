@@ -24,6 +24,44 @@
             </objects>
             <point key="canvasLocation" x="64.5" y="-41"/>
         </scene>
+        <!--Publish Status View Controller-->
+        <scene sceneID="Ta8-2K-2y8">
+            <objects>
+                <viewController storyboardIdentifier="MGPublishStatusViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1B8-yv-Eb2" customClass="MGPublishStatusViewController" customModule="MuGuangIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LvN-iV-SP2"/>
+                        <viewControllerLayoutGuide type="bottom" id="CXv-b4-uNd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yZj-tR-Wnv">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qte-4p-BZF">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="120" y="201" width="46" height="30"/>
+                                </variation>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="qte-4p-BZF"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="qte-4p-BZF"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xai-d0-aqI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="717" y="-5"/>
+        </scene>
         <!--Launching View Controller-->
         <scene sceneID="5JG-aZ-2xm">
             <objects>
@@ -199,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPm-4o-yI4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="975" y="627"/>
+            <point key="canvasLocation" x="73.5" y="634"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="tne-QT-ifu">

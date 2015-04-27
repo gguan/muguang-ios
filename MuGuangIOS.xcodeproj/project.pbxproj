@@ -62,6 +62,8 @@
 		3DB389041ADE18AB003361A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DB389031ADE18AB003361A6 /* Images.xcassets */; };
 		3DB389131ADE18AB003361A6 /* MuGuangIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB389121ADE18AB003361A6 /* MuGuangIOSTests.swift */; };
 		3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */; };
+		3DB3E2651AEE359900361C34 /* MGPublishStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3E2641AEE359900361C34 /* MGPublishStatusViewController.swift */; };
+		3DB3E2671AEE37F500361C34 /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3E2661AEE37F500361C34 /* UIColorExt.swift */; };
 		3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */; };
 		3DFA1A7C1ADFB389003E3177 /* duckling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA1A7B1ADFB389003E3177 /* duckling.jpg */; };
 		3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */; };
@@ -229,6 +231,8 @@
 		3DB389111ADE18AB003361A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DB389121ADE18AB003361A6 /* MuGuangIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuGuangIOSTests.swift; sourceTree = "<group>"; };
 		3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGLogInViewController.swift; sourceTree = "<group>"; };
+		3DB3E2641AEE359900361C34 /* MGPublishStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishStatusViewController.swift; sourceTree = "<group>"; };
+		3DB3E2661AEE37F500361C34 /* UIColorExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
 		3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishViewController.swift; sourceTree = "<group>"; };
 		3DFA1A7B1ADFB389003E3177 /* duckling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = duckling.jpg; sourceTree = "<group>"; };
 		3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotosViewControllerExtensions.swift; sourceTree = "<group>"; };
@@ -350,6 +354,7 @@
 		3D2B01A01AE6347D00F2BBC8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				3DB3E2661AEE37F500361C34 /* UIColorExt.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -522,7 +527,6 @@
 			isa = PBXGroup;
 			children = (
 				3D879FAE1AEA1111004CBF47 /* api */,
-				3D2B01CD1AE9208600F2BBC8 /* Images */,
 				3D2B01BA1AE9064400F2BBC8 /* no_use */,
 				3D2B01A01AE6347D00F2BBC8 /* Extension */,
 				3DB388FC1ADE18AB003361A6 /* AppDelegate.swift */,
@@ -543,6 +547,7 @@
 		3DB388FA1ADE18AB003361A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3D2B01CD1AE9208600F2BBC8 /* Images */,
 				B063F3DB1ADE46F800E8A1AA /* MuGuangIOS-Bridging-Header.h */,
 				3DB388FB1ADE18AB003361A6 /* Info.plist */,
 			);
@@ -566,11 +571,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3DFA1A6D1ADF879A003E3177 /* ViewController */ = {
+		3DB3E2601AEE350F00361C34 /* Publish */ = {
 			isa = PBXGroup;
 			children = (
 				3D95A5A31AE53AC60031DD9F /* TGCameraViewController */,
+				3DB3E2641AEE359900361C34 /* MGPublishStatusViewController.swift */,
+			);
+			name = Publish;
+			sourceTree = "<group>";
+		};
+		3DB3E2611AEE352400361C34 /* Login */ = {
+			isa = PBXGroup;
+			children = (
 				3D2B01CA1AE915F300F2BBC8 /* MGLaunchingViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		3DFA1A6D1ADF879A003E3177 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3DB3E2611AEE352400361C34 /* Login */,
+				3DB3E2601AEE350F00361C34 /* Publish */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -929,6 +951,7 @@
 				F9EFE24F1AEDD1A400334C4F /* MGFoucsViewController.swift in Sources */,
 				3D2B01C41AE9079D00F2BBC8 /* ParameterAdjustmentView.swift in Sources */,
 				3D95A5E21AE53AC60031DD9F /* TGPhotoViewController.m in Sources */,
+				3DB3E2651AEE359900361C34 /* MGPublishStatusViewController.swift in Sources */,
 				3D2B01B91AE8929A00F2BBC8 /* CALayer+Additions.m in Sources */,
 				F98081641AE4CD7900E217DC /* MGMonitorView.swift in Sources */,
 				B04C9D831AE0A67600CD9405 /* AwesomeMenuItem.m in Sources */,
@@ -939,6 +962,7 @@
 				F98A8F851AE9E47F004DED25 /* MGCollectionHeaderView.swift in Sources */,
 				F98A8F811AE9014A004DED25 /* MGButton.swift in Sources */,
 				F980816A1AE5F14F00E217DC /* MGUserViewController.swift in Sources */,
+				3DB3E2671AEE37F500361C34 /* UIColorExt.swift in Sources */,
 				B04C9D7C1AE0A49400CD9405 /* FXBlurView.m in Sources */,
 				B04C9D821AE0A67600CD9405 /* AwesomeMenu.m in Sources */,
 				F98081661AE4CED800E217DC /* MGLocationManager.swift in Sources */,

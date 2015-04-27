@@ -561,15 +561,26 @@
 
 }
 - (IBAction)next:(id)sender {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //UIImageWriteToSavedPhotosAlbum(photo, self, @selector(saveDone), nil);
-        //保存原始图片
-        UIImageWriteToSavedPhotosAlbum(_origionalPhoto, nil, nil, nil);
-        //保存滤镜图片
-        UIImageWriteToSavedPhotosAlbum(_previewImage.image, nil, nil, nil);
-    });
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MGPublishStatusViewController *publishStatusVC = [storyboard instantiateViewControllerWithIdentifier:@"MGPublishStatusViewController"];
+    [self.navigationController pushViewController:publishStatusVC animated:YES];
 }
 
+
+- (void) savePhoto
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //UIImageWriteToSavedPhotosAlbum(photo, self, @selector(saveDone), nil);
+        
+        //保存原始图片
+        UIImageWriteToSavedPhotosAlbum(_origionalPhoto, nil, nil, nil);
+        
+        //保存滤镜图片
+        UIImageWriteToSavedPhotosAlbum(_previewImage.image, nil, nil, nil);
+        
+    });
+}
 #pragma mark - CollectionViewDelete methods
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
