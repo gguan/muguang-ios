@@ -54,14 +54,15 @@ extension MGAPIManager {
                     success: ((AFHTTPRequestOperation!,AnyObject!)-> Void)!,
                     failure: ((AFHTTPRequestOperation!, NSError!) -> Void)!) {
         
+                        
             let path       = "/api/v1/authenticate/weibo"
             
             let parameters = [          "uid":uid,
                                 "oauth2_info":["access_token":accessToken,
                                               "refresh_token":refreshToken]
                              ]
-        
-        self.POST(path, parameters: parameters, success: success, failure: failure)
+                        
+            self.POST(path, parameters: parameters, success: success, failure: failure)
     }
     
 /*

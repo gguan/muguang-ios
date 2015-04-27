@@ -75,27 +75,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
     
     func didReceiveWeiboResponse(response: WBBaseResponse!) {
         
-        //保存新浪微博有用的信息
-        if let app: AnyObject  = response.userInfo["app"] {
-            let name           = app["name"] // 应用名字
-            let uid            = app["uid"]
-            let accessToken    = app["access_token"]
-            let refreshToken   = app["refresh_token"];
+        if response != nil {
             
-            NSUserDefaults.standardUserDefaults().setObject(uid, forKey: "uid")
-            NSUserDefaults.standardUserDefaults().setObject(accessToken,  forKey: "access_token")
-            NSUserDefaults.standardUserDefaults().setObject(refreshToken, forKey: "refresh_token")
+            //保存新浪微博有用的信息
             
-            //注册用户
-            MGAPIManager.sharedInstance.registerUser(uid as! String,
-                 accessToken: accessToken as! String,
-                refreshToken: refreshToken as! String,
-                     success: { (operation: AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+            let uid: AnyObject?            = response.userInfo["uid"]
+            let accessToken: AnyObject?    = response.userInfo["access_token"]
+            let refreshToken: AnyObject?   = response.userInfo["refresh_token"];
+            
+            
+            if let app: AnyObject  = response.userInfo["app"] {
+                let name           = app["name"]            // 应用名字
+                let logo           = app["logo"]            // 应用logo
+            }
+            
+            if uid != nil && accessToken != nil && refreshToken != nil {
+                NSUserDefaults.standardUserDefaults().setObject(uid, forKey: "uid")
+                NSUserDefaults.standardUserDefaults().setObject(accessToken,  forKey: "access_token")
+                NSUserDefaults.standardUserDefaults().setObject(refreshToken, forKey: "refresh_token")
                 
-                },
-                     failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                
-            })
+                //注册用户
+                MGAPIManager.sharedInstance.registerUser(uid as! String,
+                    accessToken: accessToken as! String,
+                    refreshToken: refreshToken as! String,
+                    success: { (operation: AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+                        println(operation.response.URL)
+                    },
+                    failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                        println(operation.response.URL,operation.responseObject,operation.response.statusCode)
+                })
+            }
+            
+            
         }
     }
     

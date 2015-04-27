@@ -65,8 +65,6 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         
         super.viewDidLoad()
         
-       
-        
         self.view.backgroundColor = UIColor.whiteColor()
         self.navigationController?.navigationBarHidden = true
         
