@@ -248,16 +248,8 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     
     // 拍照按钮的回调
     func methodForButton(btn: UIButton) {
-        
-        
-//        var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-//        var viewController = storyBoard.instantiateViewControllerWithIdentifier("MGPublishViewController") as? UIViewController
-//        if let vc = viewController {
-//            self.presentViewController(vc, animated: true, completion: nil)
-//        }
         var nav = TGCameraNavigationController.newWithCameraDelegate(self)
         self.presentViewController(nav, animated: true, completion: nil)
-        
     }
     
     // 初始化扇形菜单
