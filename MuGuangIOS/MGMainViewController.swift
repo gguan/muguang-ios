@@ -51,13 +51,6 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         super.viewDidAppear(animated)
     }
     
-    override func viewWillLayoutSubviews() {
-        
-    }
-    override func viewDidLayoutSubviews() {
-
-    }
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -326,6 +319,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         case 2:
             var second: UIStoryboard = UIStoryboard(name: "Second", bundle: NSBundle.mainBundle())
             var userVC: MGUserViewController = second.instantiateViewControllerWithIdentifier("MGUserViewController") as! MGUserViewController
+            userVC.isMyInfo = true
             self.navigationController?.pushViewController(userVC, animated: true)
         default :
             break
@@ -383,7 +377,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     func showUserInfo(index: Int) {
         var second: UIStoryboard = UIStoryboard(name: "Second", bundle: NSBundle.mainBundle())
         var userVC: MGUserViewController = second.instantiateViewControllerWithIdentifier("MGUserViewController") as! MGUserViewController
-        userVC.isMyInfo = true
+        userVC.isMyInfo = false
         self.navigationController?.pushViewController(userVC, animated: true)
     }
     

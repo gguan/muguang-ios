@@ -497,7 +497,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="3ou-bF-KSm" kind="show" identifier="pushToSetting" id="UPy-Cp-pHs"/>
+                                    <action selector="methodForSettingButton:" destination="W0h-q3-waE" eventType="touchUpInside" id="a2f-9S-RNB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -557,11 +557,13 @@
                     </view>
                     <connections>
                         <outlet property="photoView" destination="NBh-zs-VHQ" id="Gva-d2-tcv"/>
+                        <outlet property="settingButton" destination="eCI-t8-ipD" id="8YE-xM-dyF"/>
+                        <segue destination="3ou-bF-KSm" kind="show" identifier="pushToSetting" id="GgO-LE-TAO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFe-NM-fM2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3" y="-410"/>
+            <point key="canvasLocation" x="-42" y="-490"/>
         </scene>
         <!--设置-->
         <scene sceneID="hjj-fQ-Lp1">
@@ -571,7 +573,7 @@
                         <viewControllerLayoutGuide type="top" id="5Ov-n3-06q"/>
                         <viewControllerLayoutGuide type="bottom" id="fU4-fu-iDQ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="J9s-Sy-fXA">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="MGSettingViewController" id="J9s-Sy-fXA">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

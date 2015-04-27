@@ -108,6 +108,7 @@
 		F9EFE24F1AEDD1A400334C4F /* MGFoucsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFE24E1AEDD1A400334C4F /* MGFoucsViewController.swift */; };
 		F9EFE2511AEDD1C900334C4F /* MGFansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFE2501AEDD1C900334C4F /* MGFansViewController.swift */; };
 		F9EFE2531AEDDEB100334C4F /* MGPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFE2521AEDDEB100334C4F /* MGPhotoCollectionViewCell.swift */; };
+		F9EFE2541AEE28BB00334C4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DB389001ADE18AB003361A6 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -815,6 +816,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9EFE2541AEE28BB00334C4F /* Main.storyboard in Resources */,
 				3D2B01D71AE9DCA900F2BBC8 /* sina@2x.png in Resources */,
 				3D9E12BF1AEE081F007FEFCF /* background.png in Resources */,
 				3D2B01AF1AE736C000F2BBC8 /* MGFilterPhotoCollectionViewCell.xib in Resources */,
