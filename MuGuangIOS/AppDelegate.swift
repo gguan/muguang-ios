@@ -27,7 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
         //程序主体颜色
         //window?.tintColor = UIColor.redColor()
         
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(kAccessToken)
+        
+        // Test login
+        //NSUserDefaults.standardUserDefaults().removeObjectForKey(kAccessToken)
         
 //获取新浪用户信息
 //        
