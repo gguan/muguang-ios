@@ -100,7 +100,7 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
         println("关注")
     }
     // 粉丝
-    func clickedFunsButton() {
+    func clickedFansButton() {
         println("粉丝")
     }
     

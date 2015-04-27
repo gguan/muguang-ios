@@ -16,7 +16,8 @@ class MGLaunchingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        //self.view.clipsToBounds = true
     }
 
     func moveBackgroundImage () {
@@ -79,8 +80,7 @@ class MGLaunchingViewController: UIViewController {
     }
     */
     @IBAction func testAction(sender: AnyObject) {
-        let mainVC = MGMainViewController()
-        self.presentViewController(mainVC, animated: false, completion:nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
 }

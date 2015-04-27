@@ -43,7 +43,7 @@ class MGCollectionHeaderView: UICollectionReusableView {
     }
     // 粉丝按钮的方法
     @IBAction func methodForFunsButton(sender: AnyObject) {
-        self.delegate?.clickedFunsButton()
+        self.delegate?.clickedFansButton()
     }
     
     override func awakeFromNib() {
@@ -69,5 +69,5 @@ protocol MGCollectionHeaderViewDelegate: NSObjectProtocol {
     /**
     *  点击粉丝
     */
-    func clickedFunsButton()
+    func clickedFansButton()
 }

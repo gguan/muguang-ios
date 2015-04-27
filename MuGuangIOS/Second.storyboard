@@ -37,6 +37,9 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="mR4-2n-FtR" kind="show" id="j4M-zA-awp"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MGCollectionHeaderView" id="9gi-74-Ocl" customClass="MGCollectionHeaderView" customModule="MuGuangIOS" customModuleProvider="target">
@@ -130,6 +133,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="methodForFocusButton:" destination="9gi-74-Ocl" eventType="touchUpInside" id="00M-GX-7Bq"/>
+                                                        <segue destination="NPY-nU-oa3" kind="show" id="kLI-Dh-JzJ"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXj-90-FE6" customClass="MGUserButton" customModule="MuGuangIOS" customModuleProvider="target">
@@ -144,6 +148,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="methodForFunsButton:" destination="9gi-74-Ocl" eventType="touchUpInside" id="lvv-wP-AnM"/>
+                                                        <segue destination="75X-Xk-dVi" kind="show" id="Eim-z7-7pv"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -173,6 +178,10 @@
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="egf-mu-kVN"/>
+                                                    <exclude reference="1LA-T4-tSp"/>
+                                                    <exclude reference="1cO-rE-3yh"/>
+                                                    <exclude reference="Am3-NI-wcP"/>
+                                                    <exclude reference="ZDO-eB-iU9"/>
                                                     <exclude reference="5sl-Bg-za9"/>
                                                     <exclude reference="dHf-2L-9Fo"/>
                                                     <exclude reference="rAY-cC-EJK"/>
@@ -181,10 +190,6 @@
                                                     <exclude reference="0Wy-2N-0WN"/>
                                                     <exclude reference="lFs-mx-IL7"/>
                                                     <exclude reference="o0e-o4-Dag"/>
-                                                    <exclude reference="1LA-T4-tSp"/>
-                                                    <exclude reference="1cO-rE-3yh"/>
-                                                    <exclude reference="Am3-NI-wcP"/>
-                                                    <exclude reference="ZDO-eB-iU9"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -195,6 +200,10 @@
                                                 </mask>
                                                 <mask key="constraints">
                                                     <include reference="egf-mu-kVN"/>
+                                                    <include reference="1LA-T4-tSp"/>
+                                                    <include reference="1cO-rE-3yh"/>
+                                                    <include reference="Am3-NI-wcP"/>
+                                                    <include reference="ZDO-eB-iU9"/>
                                                     <include reference="5sl-Bg-za9"/>
                                                     <include reference="dHf-2L-9Fo"/>
                                                     <include reference="rAY-cC-EJK"/>
@@ -203,10 +212,6 @@
                                                     <include reference="0Wy-2N-0WN"/>
                                                     <include reference="lFs-mx-IL7"/>
                                                     <include reference="o0e-o4-Dag"/>
-                                                    <include reference="1LA-T4-tSp"/>
-                                                    <include reference="1cO-rE-3yh"/>
-                                                    <include reference="Am3-NI-wcP"/>
-                                                    <include reference="ZDO-eB-iU9"/>
                                                 </mask>
                                             </variation>
                                         </view>
@@ -261,19 +266,19 @@
                                             <exclude reference="v5w-Z3-z2E"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="6nP-Yt-heY"/>
-                                            <exclude reference="82D-oG-21b"/>
+                                            <exclude reference="Le5-aY-ekQ"/>
+                                            <exclude reference="rz6-Z7-FZU"/>
+                                            <exclude reference="bZu-Xl-OMY"/>
+                                            <exclude reference="pYD-4p-MG9"/>
                                             <exclude reference="7fQ-Wt-c2h"/>
                                             <exclude reference="ai7-L7-XBS"/>
                                             <exclude reference="h8n-vm-Okr"/>
-                                            <exclude reference="bZu-Xl-OMY"/>
-                                            <exclude reference="pYD-4p-MG9"/>
                                             <exclude reference="A9w-cT-10M"/>
                                             <exclude reference="ARY-Qs-ygC"/>
                                             <exclude reference="D2M-9L-Z6u"/>
                                             <exclude reference="ZUF-yZ-1TK"/>
-                                            <exclude reference="Le5-aY-ekQ"/>
-                                            <exclude reference="rz6-Z7-FZU"/>
+                                            <exclude reference="6nP-Yt-heY"/>
+                                            <exclude reference="82D-oG-21b"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -285,19 +290,19 @@
                                             <include reference="v5w-Z3-z2E"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="6nP-Yt-heY"/>
-                                            <include reference="82D-oG-21b"/>
+                                            <include reference="Le5-aY-ekQ"/>
+                                            <include reference="rz6-Z7-FZU"/>
+                                            <include reference="bZu-Xl-OMY"/>
+                                            <include reference="pYD-4p-MG9"/>
                                             <include reference="7fQ-Wt-c2h"/>
                                             <include reference="ai7-L7-XBS"/>
                                             <include reference="h8n-vm-Okr"/>
-                                            <include reference="bZu-Xl-OMY"/>
-                                            <include reference="pYD-4p-MG9"/>
                                             <include reference="A9w-cT-10M"/>
                                             <include reference="ARY-Qs-ygC"/>
                                             <include reference="D2M-9L-Z6u"/>
                                             <include reference="ZUF-yZ-1TK"/>
-                                            <include reference="Le5-aY-ekQ"/>
-                                            <include reference="rz6-Z7-FZU"/>
+                                            <include reference="6nP-Yt-heY"/>
+                                            <include reference="82D-oG-21b"/>
                                         </mask>
                                     </variation>
                                     <connections>
@@ -366,6 +371,9 @@
                                         <include reference="JrW-0V-nYO"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="3ou-bF-KSm" kind="show" id="UPy-Cp-pHs"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -390,16 +398,16 @@
                                 <exclude reference="eCI-t8-ipD"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="xme-WV-GlS"/>
+                                <exclude reference="Yai-0t-I1e"/>
+                                <exclude reference="sbF-Bk-WdM"/>
+                                <exclude reference="HSD-lM-Mna"/>
+                                <exclude reference="csb-cb-AKP"/>
                                 <exclude reference="4Tj-kf-QXc"/>
                                 <exclude reference="5aG-Hq-iQM"/>
                                 <exclude reference="ZR7-IP-N5D"/>
                                 <exclude reference="heo-Mc-UAS"/>
                                 <exclude reference="hz3-Ll-r0q"/>
-                                <exclude reference="Yai-0t-I1e"/>
-                                <exclude reference="sbF-Bk-WdM"/>
-                                <exclude reference="HSD-lM-Mna"/>
-                                <exclude reference="csb-cb-AKP"/>
-                                <exclude reference="xme-WV-GlS"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -409,16 +417,16 @@
                                 <include reference="eCI-t8-ipD"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="xme-WV-GlS"/>
+                                <include reference="Yai-0t-I1e"/>
+                                <include reference="sbF-Bk-WdM"/>
+                                <include reference="HSD-lM-Mna"/>
+                                <include reference="csb-cb-AKP"/>
                                 <include reference="4Tj-kf-QXc"/>
                                 <include reference="5aG-Hq-iQM"/>
                                 <exclude reference="ZR7-IP-N5D"/>
                                 <include reference="heo-Mc-UAS"/>
                                 <exclude reference="hz3-Ll-r0q"/>
-                                <include reference="Yai-0t-I1e"/>
-                                <include reference="sbF-Bk-WdM"/>
-                                <include reference="HSD-lM-Mna"/>
-                                <include reference="csb-cb-AKP"/>
-                                <include reference="xme-WV-GlS"/>
                             </mask>
                         </variation>
                     </view>
@@ -429,6 +437,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFe-NM-fM2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3" y="-410"/>
+        </scene>
+        <!--设置-->
+        <scene sceneID="hjj-fQ-Lp1">
+            <objects>
+                <viewController storyboardIdentifier="MGSettingViewController" title="设置" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3ou-bF-KSm" customClass="MGSettingViewController" customModule="MuGuangIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Ov-n3-06q"/>
+                        <viewControllerLayoutGuide type="bottom" id="fU4-fu-iDQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="J9s-Sy-fXA">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RPl-3l-jea" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="766.5" y="-1600"/>
+        </scene>
+        <!--关注-->
+        <scene sceneID="XFw-2e-aNQ">
+            <objects>
+                <viewController storyboardIdentifier="MGFoucsViewController" title="关注" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NPY-nU-oa3" customClass="MGFoucsViewController" customModule="MuGuangIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="O7s-cd-KRQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="PUB-K2-rFg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ygc-ZN-8w2">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uXt-0W-Emh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="766.5" y="-931"/>
+        </scene>
+        <!--粉丝-->
+        <scene sceneID="hZP-Um-sAy">
+            <objects>
+                <viewController storyboardIdentifier="MGFansViewController" title="粉丝" useStoryboardIdentifierAsRestorationIdentifier="YES" id="75X-Xk-dVi" customClass="MGFansViewController" customModule="MuGuangIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZzE-hP-dD2"/>
+                        <viewControllerLayoutGuide type="bottom" id="gAn-Ct-01q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3rE-1V-Q5B">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tGg-7B-mEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="766.5" y="-265"/>
+        </scene>
+        <!--图片详情-->
+        <scene sceneID="GIj-AJ-exK">
+            <objects>
+                <viewController storyboardIdentifier="MGCardDetailController" title="图片详情" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mR4-2n-FtR" customClass="MGCardDetailController" customModule="MuGuangIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bvN-Ug-XFs"/>
+                        <viewControllerLayoutGuide type="bottom" id="tlG-bL-qiP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mdS-Gh-ce2">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5sd-sv-QdH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="766.5" y="506"/>
         </scene>
     </scenes>
     <resources>
