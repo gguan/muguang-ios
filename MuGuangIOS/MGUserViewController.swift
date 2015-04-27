@@ -35,6 +35,9 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+    // 是否是个人信息页
+    var isMyInfo: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
@@ -74,6 +77,13 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
         reusableView.coverView.image = UIImage(named: "cover_placeholder")
         reusableView.avatarView.avatarView.image = UIImage(named: "avatar_placeholder")
         reusableView.delegate = self
+        reusableView.briefLabel.text = "壮志饥餐胡虏肉，笑谈渴饮匈奴血。待从头、收拾旧山河，朝天阙。"
+        if self.isMyInfo {
+            reusableView.otherButtons.hidden = true
+        } else {
+            reusableView.otherButtons.hidden = false
+            reusableView.frame.size.height = 300 + 30
+        }
         return reusableView
     }
     
@@ -82,7 +92,7 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("UICollectionViewCell", forIndexPath: indexPath) as! UICollectionViewCell
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("MGPhotoCollectionViewCell", forIndexPath: indexPath) as! MGPhotoCollectionViewCell
         return cell
     }
     
@@ -103,15 +113,30 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
     func clickedFansButton() {
         println("粉丝")
     }
+    // 发私信
+    func clickedSendMessage() {
+        println("发私信")
+    }
+    // 关注
+    func clickedFollow() {
+        println("关注")
+    }
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "pushToCardDetail" {
+            println("==pushToCardDetail")
+        } else if segue.identifier == "pushToSetting" {
+            println("==pushToSetting")
+        } else if segue.identifier == "pushToFocus" {
+            println("==pushToFocus")
+        } else if segue.identifier == "pushToFans" {
+            println("==pushToFans")
+        }
     }
-    */
 
 }
