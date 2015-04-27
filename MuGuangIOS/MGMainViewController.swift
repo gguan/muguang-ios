@@ -15,7 +15,7 @@ let kScaleLabelHeight: CGFloat = 20
 /**
  *  主页面
  */
-class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocationManagerDelegate, MGCardDelegate {
+class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocationManagerDelegate, MGCardDelegate, TGCameraDelegate {
     
     // 模糊背景
     let blurView: FXBlurView = FXBlurView(frame: CGRectZero)
@@ -62,11 +62,10 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         
         super.viewDidLoad()
         
-        var isLogin: AnyObject? = NSUserDefaults.standardUserDefaults().valueForKey(kAccessToken)
         
         // 未登录的话 push到登录界面
         
-        if isLogin == nil {
+        if let lg: AnyObject =  NSUserDefaults.standardUserDefaults().valueForKey(kAccessToken) {
             var mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
             var launchingVC = mainStoryboard.instantiateViewControllerWithIdentifier("MGLaunchingViewController") as! MGLaunchingViewController
             launchingVC.testBlcok = {() -> Void in
@@ -249,11 +248,16 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     
     // 拍照按钮的回调
     func methodForButton(btn: UIButton) {
-        var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        var viewController = storyBoard.instantiateViewControllerWithIdentifier("MGPublishViewController") as? UIViewController
-        if let vc = viewController {
-            self.presentViewController(vc, animated: true, completion: nil)
-        }
+        
+        
+//        var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+//        var viewController = storyBoard.instantiateViewControllerWithIdentifier("MGPublishViewController") as? UIViewController
+//        if let vc = viewController {
+//            self.presentViewController(vc, animated: true, completion: nil)
+//        }
+        var nav = TGCameraNavigationController.newWithCameraDelegate(self)
+        self.presentViewController(nav, animated: true, completion: nil)
+        
     }
     
     // 初始化扇形菜单
@@ -395,6 +399,19 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     // 跳转到卡片详情
     func showCardDetail(index: Int) {
         self.navigationController?.pushViewController(MGCardDetailController(), animated: true)
+    }
+    
+    // MARK: TGCamera Delegate Methods
+    func cameraDidCancel() {
+        self.dismissViewControllerAnimated(false, completion: nil)
+    }
+    
+    func cameraDidTakePhoto(image: UIImage!) {
+        self.dismissViewControllerAnimated(false, completion: nil)
+    }
+    
+    func cameraDidSelectAlbumPhoto(image: UIImage!) {
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
 }
 
