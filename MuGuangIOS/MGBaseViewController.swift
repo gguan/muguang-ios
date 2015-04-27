@@ -13,21 +13,14 @@ import UIKit
  */
 class MGBaseViewController: UIViewController {
     
-    // 页面跳转传递参数的数组
-    var paramArray: Array<AnyObject>?
-    
-    /**
-     *便利构造器
-     */
-    convenience init(params: Array<AnyObject>) {
-        self.init()
-        self.paramArray = params
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.barTintColor = UIColor.transformColor(kTextColorRed, alpha: 1.0)
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.barStyle = .Black
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,6 +29,10 @@ class MGBaseViewController: UIViewController {
     }
     
 
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -37,15 +37,27 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
     
     // 是否是个人信息页
     var isMyInfo: Bool = false
+    // 设置按钮
+    @IBOutlet weak var settingButton: UIButton!
+    
+    // 设置按钮的方法
+    @IBAction func methodForSettingButton(sender: AnyObject) {
+        if self.isMyInfo {
+            self.performSegueWithIdentifier("pushToSetting", sender: self)
+        } else {
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.
-    }
-    
-    override func awakeFromNib() {
-        
+        if self.isMyInfo {
+            self.settingButton.setImage(UIImage(named: "setting"), forState: .Normal)
+        } else {
+            self.settingButton.setImage(UIImage(named: "set_limits"), forState: .Normal)
+        }
     }
     
     override func didReceiveMemoryWarning() {
