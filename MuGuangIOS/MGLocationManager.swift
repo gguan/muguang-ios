@@ -79,6 +79,9 @@ class MGLocationManager: NSObject, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
 //        println("=======",locations)
         self.currentLocation = locations[0] as? CLLocation
+        self.reverseGeoder(self.currentLocation!, complete: { (address) -> Void in
+            // do something
+        })
         NSNotificationCenter.defaultCenter().postNotificationName(kLocationNotificationDidUpdateLocations, object: self.currentLocation)
     }
     
@@ -109,8 +112,23 @@ class MGLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     // 经纬度反向解析
-    func startReverseGeoder(location: CLLocation) {
-//        var geoCoder: MKReverseGeocoder?
+    func reverseGeoder(location: CLLocation, complete: (address: String) -> Void) {
+        var geoCoder: CLGeocoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+            if error == nil {
+                for item in placemarks {
+                    var mark: CLPlacemark = item as! CLPlacemark
+                    var city = mark.addressDictionary["State"] as! String
+                    var subLocality = mark.addressDictionary["SubLocality"] as! String
+                    var street = mark.addressDictionary["Street"] as! String
+                    var name = mark.addressDictionary["Name"] as! String
+                    println(city + subLocality + street + name)
+                    complete(address: (city + subLocality + street + name))
+                }
+            } else {
+                println("reverseGeocodeLocation error")
+            }
+        })
     }
 }
 
