@@ -8,11 +8,6 @@
 
 import UIKit
 
-let kTextColorRed = "f3361d"
-let kTextColorWhite = "ffffff"
-let kTextColorGray = "686868"
-let kSeparateLineColorRed = "fab5ac"
-
 extension UIColor {
     // 转换颜色 HEX -> RGB
     class func transformColor(colorString: String!, alpha: CGFloat!) -> UIColor {
@@ -94,7 +89,7 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
         // 设置headerView
         reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "MGCollectionHeaderView", forIndexPath: indexPath) as?MGCollectionHeaderView
         reusableView!.setCoverImageByCIFilter(UIImage(named: "cover_placeholder"))
-        reusableView!.avatarView.avatarView.image = UIImage(named: "avatar_placeholder")
+        reusableView!.avatarView.setAvatarImage(UIImage(named: "avatar_placeholder"))
         reusableView!.avatarView.setAvatarTitle("满-江-红")
         reusableView!.delegate = self
         reusableView!.briefLabel.text = "壮志饥餐胡虏肉，笑谈渴饮匈奴血。待从头、收拾旧山河，朝天阙。"
@@ -123,7 +118,7 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
     // MARK: MGCollectionHeaderViewDelegate
     // 点击封面
     func clickedCover() {
-        var actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
+        var actionSheet = UIActionSheet(title: "更换封面", delegate: self, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
         actionSheet.tag = 300
         actionSheet.addButtonWithTitle("拍摄新照片")
         actionSheet.addButtonWithTitle("相册中挑选")
@@ -132,7 +127,7 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
     // 头像
     func clickedAvatar() {
         if self.isMyInfo {
-            var actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
+            var actionSheet = UIActionSheet(title: "更换头像", delegate: self, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
             actionSheet.tag = 100
             actionSheet.addButtonWithTitle("拍摄新照片")
             actionSheet.addButtonWithTitle("相册中挑选")
@@ -243,7 +238,7 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
         var image = info[UIImagePickerControllerOriginalImage] as! UIImage
         if self.isSetAvatar {
             // 头像
-            reusableView?.avatarView.avatarView.image = image
+            reusableView!.avatarView.setAvatarImage(image)
         } else {
             // 封面
             reusableView?.setCoverImageByCIFilter(image)

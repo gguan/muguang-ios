@@ -24,3 +24,19 @@ let kAccessToken     = "mg_access_token"
 let kRefreshToken    = "mg_refresh_token"
 
 let kSampleImageName = "duckling.jpg"
+
+// 表格的圆角
+let kCellCornerRadius: CGFloat = 10
+
+// MARK: - 各种颜色
+// 红色－背景红色、字体红色
+let kTextColorRed         = "f3361d"
+// 白色
+let kTextColorWhite       = "ffffff"
+// 字体灰色
+let kTextColorGray        = "686868"
+// 红色分割线
+let kSeparateLineColorRed = "fab5ac"
+// 背景色浅灰色
+let kColorLightGray       = "f4f4f4"
+

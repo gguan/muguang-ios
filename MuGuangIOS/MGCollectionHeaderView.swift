@@ -65,34 +65,7 @@ class MGCollectionHeaderView: UICollectionReusableView {
     // 封面加红色蒙版
     func setCoverImageByCIFilter(image: UIImage?) {
         // 模糊滤镜
-        var filter: CIFilter = CIFilter(name: "CIGaussianBlur")
-        filter.setValue(CIImage(CGImage: image!.CGImage), forKey: kCIInputImageKey)
-        filter.setValue(2, forKey: "inputRadius")
-        
-//        let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
-//        let options = [kCIContextWorkingColorSpace : NSNull()]
-//        var ctx: CIContext =  CIContext(EAGLContext: eaglContext, options: options)
-//
-//        var outputImage = filter.outputImage
-//        var filterImage = UIImage(CGImage: ctx.createCGImage(outputImage, fromRect: outputImage.extent()))
-
-//        outputImage.imageByApplyingTransform(CGAffineTransformMakeTranslation(image!.size.width, image!.size.height))
-
-        var outputImage = filter.outputImage
-
-        // 从新生成图片大小
-        var scale = UIScreen.mainScreen().scale
-        var rect: CGRect = outputImage.extent()
-        rect.origin.x    += (rect.size.width  - image!.size.width * scale ) / 2
-        rect.origin.y    += (rect.size.height - image!.size.height * scale) / 2
-        rect.size.width  = image!.size.width * scale
-        rect.size.height = image!.size.height * scale
-
-        var context: CIContext = CIContext(options: nil);
-        var cgimg: CGImageRef  = context.createCGImage(outputImage, fromRect: rect);
-
-        var filterImage = UIImage(CGImage: cgimg)
-        
+        var filterImage = image?.blurredImageWithRadius(2, iterations: 3, tintColor: UIColor.transformColor(kTextColorRed, alpha: 1))
 //        // 蒙版
 //        var targetSize = self.coverView.bounds.size
 //        UIGraphicsBeginImageContext(targetSize)
@@ -112,9 +85,7 @@ class MGCollectionHeaderView: UICollectionReusableView {
 //        filterImage = UIGraphicsGetImageFromCurrentImageContext();
 //        UIGraphicsEndImageContext();
 
-
         self.coverView.image = filterImage
-        self.coverView.contentMode = UIViewContentMode.ScaleAspectFill
     }
     
     override func awakeFromNib() {

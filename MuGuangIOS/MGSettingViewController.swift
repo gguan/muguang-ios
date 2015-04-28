@@ -8,7 +8,9 @@
 
 import UIKit
 
-class MGSettingViewController: MGBaseViewController {
+class MGSettingViewController: MGBaseViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,36 @@ class MGSettingViewController: MGBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    // MARK: - UITableViewDataSource, UITableViewDelegate
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var height: CGFloat = 37.5
+        if indexPath.row == 0 {
+            height = 65
+        }
+        return height
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            var cell = tableView.dequeueReusableCellWithIdentifier("MGUserInfoCell", forIndexPath: indexPath) as! MGUserInfoCell
+            cell.avatarView.setAvatarImage(UIImage(named: "avatar_placeholder"))
+            cell.avatarView.borderWidth = 2
+            cell.nameLabel.text = "目光"
+            cell.briefLabel.text = "彪悍的人生，无需解释！"
+            cell.setSexIcon("2")
+            return cell
+        }
+        return MGUserInfoCell()
+    }
+    
     /*
     // MARK: - Navigation
 

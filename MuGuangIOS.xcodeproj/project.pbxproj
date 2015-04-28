@@ -92,6 +92,7 @@
 		B0E5209D1ADE74C600B8F451 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E5209C1ADE74C600B8F451 /* ImageIO.framework */; };
 		B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */; };
 		D9CC3AA9770E281BE598BCE3 /* libPods-MuGuangIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */; };
+		F93EABA51AEF6804000FB1C7 /* MGUserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93EABA41AEF6804000FB1C7 /* MGUserInfoCell.swift */; };
 		F98081641AE4CD7900E217DC /* MGMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081631AE4CD7900E217DC /* MGMonitorView.swift */; };
 		F98081661AE4CED800E217DC /* MGLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081651AE4CED800E217DC /* MGLocationManager.swift */; };
 		F98081681AE5F03A00E217DC /* MGCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081671AE5F03A00E217DC /* MGCard.swift */; };
@@ -266,6 +267,7 @@
 		B0E5209A1ADE74A100B8F451 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B0E5209C1ADE74C600B8F451 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCameraView.swift; sourceTree = "<group>"; };
+		F93EABA41AEF6804000FB1C7 /* MGUserInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGUserInfoCell.swift; sourceTree = "<group>"; };
 		F98081631AE4CD7900E217DC /* MGMonitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGMonitorView.swift; sourceTree = "<group>"; };
 		F98081651AE4CED800E217DC /* MGLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGLocationManager.swift; sourceTree = "<group>"; };
 		F98081671AE5F03A00E217DC /* MGCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCard.swift; sourceTree = "<group>"; };
@@ -641,6 +643,7 @@
 				F98A8F841AE9E47F004DED25 /* MGCollectionHeaderView.swift */,
 				F98A8F881AEA16F2004DED25 /* MGUserButton.swift */,
 				F9EFE2521AEDDEB100334C4F /* MGPhotoCollectionViewCell.swift */,
+				F93EABA41AEF6804000FB1C7 /* MGUserInfoCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -917,6 +920,7 @@
 				3D95A5F01AE53AC60031DD9F /* TGCameraGridView.m in Sources */,
 				3D95A5F21AE53AC60031DD9F /* TGCameraSlideUpView.m in Sources */,
 				F9EFE2531AEDDEB100334C4F /* MGPhotoCollectionViewCell.swift in Sources */,
+				F93EABA51AEF6804000FB1C7 /* MGUserInfoCell.swift in Sources */,
 				3D95A5DF1AE53AC60031DD9F /* TGCameraAuthorizationViewController.m in Sources */,
 				3DB388FD1ADE18AB003361A6 /* AppDelegate.swift in Sources */,
 				B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */,
