@@ -243,6 +243,8 @@
     
     //设置默认滤镜None
     [self setDefaultFilterToNone];
+    
+    [self next:nil];
 }
 
 //初始化

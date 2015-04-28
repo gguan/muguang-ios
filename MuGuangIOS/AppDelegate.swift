@@ -24,10 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
         WeiboSDK.enableDebugMode(true)
         WeiboSDK.registerApp(SinaAppKey)
         
-        //程序主体颜色
-        window?.tintColor = UIColor.MGMainColor()
-        
-        
+        self.configureMainUI()
         // Test login
         //NSUserDefaults.standardUserDefaults().removeObjectForKey(kAccessToken)
         
@@ -42,6 +39,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
 //        });
         return true
     }
+    
+    func configureMainUI () {
+        //程序主体颜色
+        //window?.tintColor = UIColor.MGMainColor()
+        
+        //UINavigationBar.appearance().barTintColor = UIColor.MGMainColor()
+        UINavigationBar.appearance().translucent = true
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
+    }
+    
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

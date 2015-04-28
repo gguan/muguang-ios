@@ -10,9 +10,12 @@ import UIKit
 
 class MGPublishStatusViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBarHidden = false
+        self.view.backgroundColor = UIColor.greenColor()
+        self.scrollView.contentSize = CGSizeMake(320, 800)
         // Do any additional setup after loading the view.
     }
 

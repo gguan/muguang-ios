@@ -44,19 +44,45 @@
                                     <rect key="frame" x="120" y="201" width="46" height="30"/>
                                 </variation>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06C-Li-BNA">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="06C-Li-BNA" secondAttribute="trailing" id="Hyv-AP-FgA"/>
+                            <constraint firstItem="06C-Li-BNA" firstAttribute="leading" secondItem="yZj-tR-Wnv" secondAttribute="leading" id="M6i-Qt-MUq"/>
+                            <constraint firstItem="06C-Li-BNA" firstAttribute="top" secondItem="yZj-tR-Wnv" secondAttribute="top" id="XiB-1y-ROu"/>
+                            <constraint firstItem="CXv-b4-uNd" firstAttribute="top" secondItem="06C-Li-BNA" secondAttribute="bottom" id="Z52-yn-tT4"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="qte-4p-BZF"/>
+                                <exclude reference="06C-Li-BNA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Hyv-AP-FgA"/>
+                                <exclude reference="M6i-Qt-MUq"/>
+                                <exclude reference="XiB-1y-ROu"/>
+                                <exclude reference="Z52-yn-tT4"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="qte-4p-BZF"/>
+                                <include reference="06C-Li-BNA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Hyv-AP-FgA"/>
+                                <include reference="M6i-Qt-MUq"/>
+                                <include reference="XiB-1y-ROu"/>
+                                <include reference="Z52-yn-tT4"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="06C-Li-BNA" id="bau-04-epp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xai-d0-aqI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
