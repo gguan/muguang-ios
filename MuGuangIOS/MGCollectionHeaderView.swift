@@ -67,37 +67,54 @@ class MGCollectionHeaderView: UICollectionReusableView {
         // 模糊滤镜
         var filter: CIFilter = CIFilter(name: "CIGaussianBlur")
         filter.setValue(CIImage(CGImage: image!.CGImage), forKey: kCIInputImageKey)
-        filter.setValue(20, forKey: "inputRadius")
+        filter.setValue(2, forKey: "inputRadius")
         
-        let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
-        let options = [kCIContextWorkingColorSpace : NSNull()]
-        var ctx: CIContext =  CIContext(EAGLContext: eaglContext, options: options)
-        
+//        let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
+//        let options = [kCIContextWorkingColorSpace : NSNull()]
+//        var ctx: CIContext =  CIContext(EAGLContext: eaglContext, options: options)
+//
+//        var outputImage = filter.outputImage
+//        var filterImage = UIImage(CGImage: ctx.createCGImage(outputImage, fromRect: outputImage.extent()))
+
+//        outputImage.imageByApplyingTransform(CGAffineTransformMakeTranslation(image!.size.width, image!.size.height))
+
         var outputImage = filter.outputImage
-        var filterImage = UIImage(CGImage: ctx.createCGImage(outputImage, fromRect: outputImage.extent()))
+
+        // 从新生成图片大小
+        var scale = UIScreen.mainScreen().scale
+        var rect: CGRect = outputImage.extent()
+        rect.origin.x    += (rect.size.width  - image!.size.width * scale ) / 2
+        rect.origin.y    += (rect.size.height - image!.size.height * scale) / 2
+        rect.size.width  = image!.size.width * scale
+        rect.size.height = image!.size.height * scale
+
+        var context: CIContext = CIContext(options: nil);
+        var cgimg: CGImageRef  = context.createCGImage(outputImage, fromRect: rect);
+
+        var filterImage = UIImage(CGImage: cgimg)
         
-        // 蒙版
-        var targetSize = self.coverView.bounds.size
-        UIGraphicsBeginImageContext(targetSize)
-        var context: CGContextRef = UIGraphicsGetCurrentContext();
-        image?.drawInRect(self.coverView.bounds)
-        
-        var color = UIColor.transformColor("d81e04", alpha: 1)
-        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
-        color.getRed(&r, green: &g, blue: &b, alpha: &a)
-        // overlay a red rectangle
-        CGContextSetBlendMode(context, kCGBlendModeOverlay)
-        CGContextSetRGBFillColor (context, r, g, b, a);
-        CGContextFillRect(context, self.coverView.bounds)
-        
-        // redraw gem
-        image?.drawInRect(self.coverView.bounds, blendMode: kCGBlendModeDestinationIn, alpha: 1.0)
-        var newImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+//        // 蒙版
+//        var targetSize = self.coverView.bounds.size
+//        UIGraphicsBeginImageContext(targetSize)
+//        var context: CGContextRef = UIGraphicsGetCurrentContext();
+//        filterImage?.drawInRect(self.coverView.bounds)
+//        
+////        var color = UIColor.transformColor("d81e04", alpha: 1)
+////        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+////        color.getRed(&r, green: &g, blue: &b, alpha: &a)
+////        // overlay a red rectangle
+////        CGContextSetBlendMode(context, kCGBlendModeOverlay)
+////        CGContextSetRGBFillColor (context, r, g, b, a);
+//        CGContextFillRect(context, self.coverView.bounds)
+//        
+//        // redraw gem
+//        filterImage?.drawInRect(self.coverView.bounds, blendMode: kCGBlendModeDestinationIn, alpha: 1.0)
+//        filterImage = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
 
 
-        self.coverView.image = newImage
-//        self.coverView.image = image
+        self.coverView.image = filterImage
+        self.coverView.contentMode = UIViewContentMode.ScaleAspectFill
     }
     
     override func awakeFromNib() {
@@ -124,21 +141,39 @@ class MGCollectionHeaderView: UICollectionReusableView {
         self.followButton.setImage(UIImage(named: "followed"), forState: .Selected)
         self.followButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         
-        var tapGR = UITapGestureRecognizer(target: self, action: Selector("methodForTapGestureRecognizer:"))
+        var redLayer = CALayer()
+        redLayer.backgroundColor = UIColor.transformColor(kTextColorRed, alpha: 0.5).CGColor
+        self.coverView.layer.addSublayer(redLayer)
+        
+        var tapGR1 = UITapGestureRecognizer(target: self, action: Selector("methodForTapAvatar:"))
+        self.avatarView.addGestureRecognizer(tapGR1)
+        
+        self.coverView.userInteractionEnabled = true
+        var tapGR2 = UITapGestureRecognizer(target: self, action: Selector("methodForTapCover:"))
+        self.coverView.addGestureRecognizer(tapGR2)
     }
     
     // 点击的手势
-    func methodForTapGestureRecognizer(tap: UITapGestureRecognizer) {
+    func methodForTapAvatar(tap: UITapGestureRecognizer) {
         self.delegate?.clickedAvatar()
+    }
+    func methodForTapCover(tap: UITapGestureRecognizer) {
+        self.delegate?.clickedCover()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.separateLine.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), 0.5)
+        var redLayer = self.coverView.layer.sublayers[0] as? CALayer
+        redLayer?.frame = self.coverView.bounds
     }
 }
 
 protocol MGCollectionHeaderViewDelegate: NSObjectProtocol {
+    /**
+    *  点击封面
+    */
+    func clickedCover()
     /**
     *  点击头像
     */

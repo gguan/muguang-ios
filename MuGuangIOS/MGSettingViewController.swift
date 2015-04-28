@@ -14,13 +14,6 @@ class MGSettingViewController: MGBaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        var label = UIScrollView(frame: CGRectMake(0, -20, self.view.frame.size.width, 500))
-        label.backgroundColor = UIColor.clearColor()
-        label.contentSize = CGSizeMake(0, 1000)
-        self.view.addSubview(label)
-        var lll = UILabel(frame: CGRectMake(0, 0, 320, 40))
-        lll.backgroundColor = UIColor.blackColor()
-        label.addSubview(lll)
     }
 
     override func viewWillAppear(animated: Bool) {

@@ -13,6 +13,8 @@ class MGAvatarView: UIView {
     let arcView = ArcView(frame: CGRectZero)
     // 圆形头像
     let avatarView = UIImageView(frame: CGRectZero)
+    // 圆形头像边框
+    let borderView = UIImageView(frame: CGRectZero)
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -31,13 +33,16 @@ class MGAvatarView: UIView {
         arcView.shiftV = 30
         
         avatarView.layer.masksToBounds = true
-        avatarView.layer.cornerRadius = 55
-        avatarView.layer.borderWidth = 5
-        avatarView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).CGColor
-        avatarView.contentMode = UIViewContentMode.ScaleToFill
+        avatarView.layer.cornerRadius = 50
         
+        borderView.layer.masksToBounds = true
+        borderView.layer.cornerRadius = 55
+        borderView.layer.borderWidth = 5
+        borderView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).CGColor
+        
+        borderView.addSubview(avatarView)
         self.addSubview(arcView)
-        self.addSubview(avatarView)
+        self.addSubview(borderView)
     }
     
     // 设置文字
@@ -52,6 +57,7 @@ class MGAvatarView: UIView {
         self.arcView.frame = self.bounds
         var x = (self.frame.size.width - 110) / 2
         var y = (self.frame.size.height - 110) / 2
-        self.avatarView.frame = CGRectMake(x, y, 110, 110)
+        self.borderView.frame = CGRectMake(x, y, 110, 110)
+        self.avatarView.frame = CGRectInset(self.borderView.bounds, 5, 5)
     }
 }
