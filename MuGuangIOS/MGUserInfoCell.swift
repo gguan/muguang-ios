@@ -43,7 +43,6 @@ class MGUserInfoCell: UITableViewCell {
         self.nameLabel.textColor = UIColor.transformColor(kTextColorGray, alpha: 1.0)
         self.nameLabel.font = UIFont.systemFontOfSize(12.0)
         self.nameLabel.textAlignment = .Left
-        self.nameLabel.preferredMaxLayoutWidth = 200
         
         self.briefLabel.textColor = UIColor.transformColor(kTextColorGray, alpha: 1.0)
         self.briefLabel.font = UIFont.systemFontOfSize(12.0)
