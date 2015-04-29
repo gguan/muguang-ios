@@ -36,11 +36,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="D5G-Z9-ZI6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="D5G-Z9-ZI6">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="312" id="F63-3k-QOK">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MGPublishPhotoCellIdentifier" rowHeight="312" id="F63-3k-QOK" customClass="MGPublishPhotoTableViewCell" customModule="MuGuangIOS" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F63-3k-QOK" id="02t-7S-k91">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -54,7 +54,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kHy-LZ-M91">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MGPhotoCollectionCell" id="kHy-LZ-M91" customClass="MGPhotoCollectionCell" customModule="MuGuangIOS" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -63,41 +63,89 @@
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="duckling.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="1js-4n-Jes">
                                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="104"/>
-                                                                        </variation>
                                                                     </imageView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jC1-6y-GGe">
+                                                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                                        <state key="normal" image="close.png">
+                                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        </state>
+                                                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                                                            <rect key="frame" x="39" y="29" width="60" height="60"/>
+                                                                        </variation>
+                                                                    </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="1js-4n-Jes" secondAttribute="bottom" id="Pxg-9K-Rtx"/>
+                                                                <constraint firstAttribute="trailing" secondItem="1js-4n-Jes" secondAttribute="trailing" id="Q7M-Hc-P0v"/>
+                                                                <constraint firstItem="1js-4n-Jes" firstAttribute="leading" secondItem="kHy-LZ-M91" secondAttribute="leading" id="ilD-NM-Vz6"/>
+                                                                <constraint firstItem="1js-4n-Jes" firstAttribute="top" secondItem="kHy-LZ-M91" secondAttribute="top" id="teD-Xn-8VZ"/>
+                                                            </constraints>
                                                             <variation key="default">
                                                                 <mask key="subviews">
                                                                     <exclude reference="1js-4n-Jes"/>
+                                                                    <exclude reference="jC1-6y-GGe"/>
+                                                                </mask>
+                                                                <mask key="constraints">
+                                                                    <exclude reference="Pxg-9K-Rtx"/>
+                                                                    <exclude reference="Q7M-Hc-P0v"/>
+                                                                    <exclude reference="ilD-NM-Vz6"/>
+                                                                    <exclude reference="teD-Xn-8VZ"/>
                                                                 </mask>
                                                             </variation>
                                                             <variation key="widthClass=compact">
                                                                 <mask key="subviews">
                                                                     <include reference="1js-4n-Jes"/>
+                                                                    <include reference="jC1-6y-GGe"/>
+                                                                </mask>
+                                                                <mask key="constraints">
+                                                                    <include reference="Pxg-9K-Rtx"/>
+                                                                    <include reference="Q7M-Hc-P0v"/>
+                                                                    <include reference="ilD-NM-Vz6"/>
+                                                                    <include reference="teD-Xn-8VZ"/>
                                                                 </mask>
                                                             </variation>
                                                         </collectionViewCell>
                                                     </cells>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="310"/>
-                                                    </variation>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="F63-3k-QOK" id="uJT-h1-YxX"/>
+                                                        <outlet property="delegate" destination="F63-3k-QOK" id="MBw-dW-6Rw"/>
+                                                    </connections>
                                                 </collectionView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="wvz-WG-EmD" secondAttribute="bottom" id="3Dd-se-5Ye"/>
+                                                <constraint firstItem="wvz-WG-EmD" firstAttribute="leading" secondItem="02t-7S-k91" secondAttribute="leading" id="bm8-7e-ByE"/>
+                                                <constraint firstItem="wvz-WG-EmD" firstAttribute="top" secondItem="02t-7S-k91" secondAttribute="top" id="fpk-cB-Xxb"/>
+                                                <constraint firstAttribute="trailing" secondItem="wvz-WG-EmD" secondAttribute="trailing" id="ozW-G1-pf1"/>
+                                            </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="wvz-WG-EmD"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="3Dd-se-5Ye"/>
+                                                    <exclude reference="bm8-7e-ByE"/>
+                                                    <exclude reference="fpk-cB-Xxb"/>
+                                                    <exclude reference="ozW-G1-pf1"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
                                                     <include reference="wvz-WG-EmD"/>
                                                 </mask>
+                                                <mask key="constraints">
+                                                    <include reference="3Dd-se-5Ye"/>
+                                                    <include reference="bm8-7e-ByE"/>
+                                                    <include reference="fpk-cB-Xxb"/>
+                                                    <include reference="ozW-G1-pf1"/>
+                                                </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="collectionView" destination="wvz-WG-EmD" id="Cu5-bV-kly"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="206" id="bBQ-Og-hpW">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -124,10 +172,10 @@
                                 <exclude reference="D5G-Z9-ZI6"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="JDB-DS-B95"/>
                                 <exclude reference="dMi-8D-AlL"/>
                                 <exclude reference="equ-Zr-9YB"/>
                                 <exclude reference="whl-YN-5iL"/>
-                                <exclude reference="JDB-DS-B95"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -135,10 +183,10 @@
                                 <include reference="D5G-Z9-ZI6"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="JDB-DS-B95"/>
                                 <include reference="dMi-8D-AlL"/>
                                 <include reference="equ-Zr-9YB"/>
                                 <include reference="whl-YN-5iL"/>
-                                <include reference="JDB-DS-B95"/>
                             </mask>
                         </variation>
                     </view>
@@ -747,6 +795,7 @@
     </scenes>
     <resources>
         <image name="background.png" width="3840" height="1200"/>
+        <image name="close.png" width="60" height="60"/>
         <image name="duckling.jpg" width="1280" height="800"/>
         <image name="logo.png" width="379" height="138"/>
         <image name="sina.png" width="103" height="27"/>

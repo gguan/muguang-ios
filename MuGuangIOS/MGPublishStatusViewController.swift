@@ -9,12 +9,10 @@
 import UIKit
 
 class MGPublishStatusViewController: UIViewController {
-
-    @IBOutlet weak var collectionView: UICollectionView!
    
     @IBOutlet weak var tableView: UITableView!
-    var images: NSArray!
-    let reuseIdentifier = "MGPhotoCell"
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +21,7 @@ class MGPublishStatusViewController: UIViewController {
 
         
 //        self.contentView.frame = CGRectMake(0, 0, self.view.frame.width, 1500)
-        images = ["","","","","","","","",""]
+
 //        
 //        self.scrollView.contentSize = self.contentView.frame.size
 //        
