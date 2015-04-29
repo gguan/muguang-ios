@@ -12,11 +12,13 @@ class MGPublishStatusViewController: UIViewController {
    
     @IBOutlet weak var tableView: UITableView!
 
-
+    var images: NSArray!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
+        
+        images = ["","","",""]
         //self.contentView.backgroundColor = UIColor.clearColor()
 
         

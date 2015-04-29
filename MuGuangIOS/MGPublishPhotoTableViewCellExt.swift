@@ -14,13 +14,14 @@ extension MGPublishPhotoTableViewCell: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return self.images.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(
             "MGPhotoCollectionCell", forIndexPath: indexPath) as! MGPhotoCollectionCell
-        cell.image.image = UIImage(named: "close.png")
+        //cell.image.image = UIImage(named: "close.png")
+        cell.contentView.backgroundColor = UIColor.whiteColor()
         cell.backgroundColor = UIColor.greenColor()
         return cell
     }

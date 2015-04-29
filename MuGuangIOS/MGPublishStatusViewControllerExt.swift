@@ -10,9 +10,18 @@ import Foundation
 
 extension MGPublishStatusViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let identifier = "MGPublishPhotoCellIdentifier"
-        var cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! UITableViewCell
-        return cell
+        if indexPath.row == 0 {
+            let identifier = "MGPublishPhotoCellIdentifier"
+            var cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! MGPublishPhotoTableViewCell
+            return cell
+        }else {
+            let identifier = "MGPublishTextTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! MGPublishTextTableViewCell
+            cell.grayBack.backgroundColor = UIColor.MGGrayColor()
+            cell.contentView.backgroundColor = UIColor.redColor()
+            return cell
+        }
+        
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
@@ -21,6 +30,10 @@ extension MGPublishStatusViewController: UITableViewDataSource, UITableViewDeleg
 //        return 1
 //    }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 312.0
+        if indexPath.row == 0 {
+            return 120.0 * CGFloat(self.images.count+3-1)/3.0
+        }else {
+            return 305.0
+        }
     }
 }

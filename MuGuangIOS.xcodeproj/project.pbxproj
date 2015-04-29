@@ -65,11 +65,20 @@
 		3DB3E2651AEE359900361C34 /* MGPublishStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3E2641AEE359900361C34 /* MGPublishStatusViewController.swift */; };
 		3DB3E2671AEE37F500361C34 /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3E2661AEE37F500361C34 /* UIColorExt.swift */; };
 		3DB3E26B1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3E26A1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift */; };
-		3DB3E26D1AEF610000361C34 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3E26C1AEF610000361C34 /* close.png */; };
 		3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */; };
 		3DE6724F1AF081A500A26559 /* MGPublishPhotoTableViewCellExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6724E1AF081A500A26559 /* MGPublishPhotoTableViewCellExt.swift */; };
 		3DE672531AF0871500A26559 /* MGPublishPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE672521AF0871500A26559 /* MGPublishPhotoTableViewCell.swift */; };
 		3DE672551AF0894D00A26559 /* MGPhotoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE672541AF0894D00A26559 /* MGPhotoCollectionCell.swift */; };
+		3DE672571AF0A9B900A26559 /* MGPublishTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE672561AF0A9B900A26559 /* MGPublishTextTableViewCell.swift */; };
+		3DE672591AF0B2C900A26559 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE672581AF0B2C900A26559 /* pin@2x.png */; };
+		3DE672631AF0B78C00A26559 /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE6725A1AF0B78C00A26559 /* add@2x.png */; };
+		3DE672641AF0B78C00A26559 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE6725B1AF0B78C00A26559 /* back@2x.png */; };
+		3DE672651AF0B78C00A26559 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE6725C1AF0B78C00A26559 /* close@2x.png */; };
+		3DE672661AF0B78C00A26559 /* emotion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE6725D1AF0B78C00A26559 /* emotion@2x.png */; };
+		3DE672681AF0B78C00A26559 /* wechatOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE6725F1AF0B78C00A26559 /* wechatOff@2x.png */; };
+		3DE672691AF0B78C00A26559 /* wechatOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE672601AF0B78C00A26559 /* wechatOn@2x.png */; };
+		3DE6726A1AF0B78C00A26559 /* weiboOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE672611AF0B78C00A26559 /* weiboOff@2x.png */; };
+		3DE6726B1AF0B78C00A26559 /* weiboOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE672621AF0B78C00A26559 /* weiboOn@2x.png */; };
 		3DFA1A7C1ADFB389003E3177 /* duckling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA1A7B1ADFB389003E3177 /* duckling.jpg */; };
 		3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */; };
 		B04C9D7C1AE0A49400CD9405 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B04C9D7B1AE0A49400CD9405 /* FXBlurView.m */; };
@@ -239,11 +248,20 @@
 		3DB3E2641AEE359900361C34 /* MGPublishStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishStatusViewController.swift; sourceTree = "<group>"; };
 		3DB3E2661AEE37F500361C34 /* UIColorExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
 		3DB3E26A1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishStatusViewControllerExt.swift; sourceTree = "<group>"; };
-		3DB3E26C1AEF610000361C34 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishViewController.swift; sourceTree = "<group>"; };
 		3DE6724E1AF081A500A26559 /* MGPublishPhotoTableViewCellExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishPhotoTableViewCellExt.swift; sourceTree = "<group>"; };
 		3DE672521AF0871500A26559 /* MGPublishPhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishPhotoTableViewCell.swift; sourceTree = "<group>"; };
 		3DE672541AF0894D00A26559 /* MGPhotoCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotoCollectionCell.swift; sourceTree = "<group>"; };
+		3DE672561AF0A9B900A26559 /* MGPublishTextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishTextTableViewCell.swift; sourceTree = "<group>"; };
+		3DE672581AF0B2C900A26559 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
+		3DE6725A1AF0B78C00A26559 /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
+		3DE6725B1AF0B78C00A26559 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		3DE6725C1AF0B78C00A26559 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
+		3DE6725D1AF0B78C00A26559 /* emotion@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emotion@2x.png"; sourceTree = "<group>"; };
+		3DE6725F1AF0B78C00A26559 /* wechatOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechatOff@2x.png"; sourceTree = "<group>"; };
+		3DE672601AF0B78C00A26559 /* wechatOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechatOn@2x.png"; sourceTree = "<group>"; };
+		3DE672611AF0B78C00A26559 /* weiboOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weiboOff@2x.png"; sourceTree = "<group>"; };
+		3DE672621AF0B78C00A26559 /* weiboOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weiboOn@2x.png"; sourceTree = "<group>"; };
 		3DFA1A7B1ADFB389003E3177 /* duckling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = duckling.jpg; sourceTree = "<group>"; };
 		3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotosViewControllerExtensions.swift; sourceTree = "<group>"; };
 		40C8118B762B513DB0757678 /* Pods-MuGuangIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -398,8 +416,16 @@
 			isa = PBXGroup;
 			children = (
 				3D2B01D61AE9DCA900F2BBC8 /* sina@2x.png */,
-				3DB3E26C1AEF610000361C34 /* close.png */,
+				3DE6725A1AF0B78C00A26559 /* add@2x.png */,
+				3DE6725B1AF0B78C00A26559 /* back@2x.png */,
+				3DE6725C1AF0B78C00A26559 /* close@2x.png */,
+				3DE6725D1AF0B78C00A26559 /* emotion@2x.png */,
+				3DE6725F1AF0B78C00A26559 /* wechatOff@2x.png */,
+				3DE672601AF0B78C00A26559 /* wechatOn@2x.png */,
+				3DE672611AF0B78C00A26559 /* weiboOff@2x.png */,
+				3DE672621AF0B78C00A26559 /* weiboOn@2x.png */,
 				3D9E12BE1AEE081F007FEFCF /* background.png */,
+				3DE672581AF0B2C900A26559 /* pin@2x.png */,
 				3D2B01E51AE9E71B00F2BBC8 /* sina@3x.png */,
 				3D2B01E31AE9E70700F2BBC8 /* logo.png */,
 			);
@@ -591,6 +617,7 @@
 				3DE672521AF0871500A26559 /* MGPublishPhotoTableViewCell.swift */,
 				3DE6724E1AF081A500A26559 /* MGPublishPhotoTableViewCellExt.swift */,
 				3DE672541AF0894D00A26559 /* MGPhotoCollectionCell.swift */,
+				3DE672561AF0A9B900A26559 /* MGPublishTextTableViewCell.swift */,
 			);
 			name = Publish;
 			sourceTree = "<group>";
@@ -853,24 +880,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DB3E26D1AEF610000361C34 /* close.png in Resources */,
+				3DE672591AF0B2C900A26559 /* pin@2x.png in Resources */,
 				F9EFE2541AEE28BB00334C4F /* Main.storyboard in Resources */,
 				3D2B01D71AE9DCA900F2BBC8 /* sina@2x.png in Resources */,
+				3DE6726A1AF0B78C00A26559 /* weiboOff@2x.png in Resources */,
 				3D9E12BF1AEE081F007FEFCF /* background.png in Resources */,
+				3DE672681AF0B78C00A26559 /* wechatOff@2x.png in Resources */,
 				3D2B01AF1AE736C000F2BBC8 /* MGFilterPhotoCollectionViewCell.xib in Resources */,
 				B0E5208D1ADE732100B8F451 /* ShareSDKFlatShareViewUI.bundle in Resources */,
+				3DE672661AF0B78C00A26559 /* emotion@2x.png in Resources */,
 				B0E520871ADE732100B8F451 /* ShareSDKLocalizable.strings in Resources */,
 				3DFA1A7C1ADFB389003E3177 /* duckling.jpg in Resources */,
 				3D95A5ED1AE53AC60031DD9F /* TGCameraViewController.xcassets in Resources */,
+				3DE672631AF0B78C00A26559 /* add@2x.png in Resources */,
 				3DB389041ADE18AB003361A6 /* Images.xcassets in Resources */,
 				3D2B01E41AE9E70700F2BBC8 /* logo.png in Resources */,
 				3D9DC8BD1AE11A140022F9C1 /* Shader1.fsh in Resources */,
 				3D2B01B51AE7A60C00F2BBC8 /* test.png in Resources */,
 				B0E520881ADE732100B8F451 /* Resource.bundle in Resources */,
+				3DE672651AF0B78C00A26559 /* close@2x.png in Resources */,
 				3D2B01E61AE9E71B00F2BBC8 /* sina@3x.png in Resources */,
 				B04C9D871AE0AFAC00CD9405 /* bg-addbutton@2x.png in Resources */,
+				3DE672641AF0B78C00A26559 /* back@2x.png in Resources */,
 				F98A8F831AE9137C004DED25 /* Second.storyboard in Resources */,
+				3DE672691AF0B78C00A26559 /* wechatOn@2x.png in Resources */,
 				B0E5208B1ADE732100B8F451 /* WeiboSDK.bundle in Resources */,
+				3DE6726B1AF0B78C00A26559 /* weiboOn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,6 +977,7 @@
 				3D2B01B31AE79F6900F2BBC8 /* CIFilter+mgFiliters.m in Sources */,
 				3D95A5E91AE53AC60031DD9F /* TGCameraGrid.m in Sources */,
 				3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */,
+				3DE672571AF0A9B900A26559 /* MGPublishTextTableViewCell.swift in Sources */,
 				3D0267531AE4E18B004FE669 /* MGConstants.swift in Sources */,
 				3D95A5E11AE53AC60031DD9F /* TGCameraViewController.m in Sources */,
 				3D0267481AE4CF00004FE669 /* MGPublisherViewController.swift in Sources */,

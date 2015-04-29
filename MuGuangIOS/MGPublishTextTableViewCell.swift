@@ -1,5 +1,5 @@
 //
-//  MGPublishPhotoTableViewCell.swift
+//  MGPublishTextTableViewCell.swift
 //  MuGuangIOS
 //
 //  Created by William Hu on 4/29/15.
@@ -8,17 +8,13 @@
 
 import UIKit
 
-class MGPublishPhotoTableViewCell: UITableViewCell {
+class MGPublishTextTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var collectionView: UICollectionView!
-    
-    var images = ["","",""]
-
-    
+    @IBOutlet weak var grayBack: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.collectionView.backgroundColor = UIColor.clearColor()
-
+        
+        self.grayBack.layer.cornerRadius = 8.0
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
