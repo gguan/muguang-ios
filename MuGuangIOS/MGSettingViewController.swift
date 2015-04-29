@@ -25,6 +25,9 @@ class MGSettingViewController: MGBaseViewController, UITableViewDelegate, UITabl
         logoutButton.backgroundColor     = UIColor.transformColor(kTextColorRed, alpha: 1.0)
         logoutButton.layer.cornerRadius  = 6
         logoutButton.layer.masksToBounds = true
+        
+        // 设置FooterView的高度
+        self.tableView.tableFooterView?.frame.size.height = 60
     }
 
     override func viewWillAppear(animated: Bool) {

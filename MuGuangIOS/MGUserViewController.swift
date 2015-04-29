@@ -87,7 +87,7 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         // 设置headerView
-        reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "MGCollectionHeaderView", forIndexPath: indexPath) as?MGCollectionHeaderView
+        reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "MGCollectionHeaderView", forIndexPath: indexPath) as? MGCollectionHeaderView
         reusableView!.setCoverImageByCIFilter(UIImage(named: "cover_placeholder"))
         reusableView!.avatarView.setAvatarImage(UIImage(named: "avatar_placeholder"))
         reusableView!.avatarView.setAvatarTitle("满-江-红")
