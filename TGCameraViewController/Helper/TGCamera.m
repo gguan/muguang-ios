@@ -219,7 +219,10 @@ NSMutableDictionary *optionDictionary;
     //
     
     AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
-    [_session addInput:deviceInput];
+    if (deviceInput) {
+        [_session addInput:deviceInput];
+    }
+    
     
     //
     // add output to session

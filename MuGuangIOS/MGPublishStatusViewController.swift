@@ -10,20 +10,48 @@ import UIKit
 
 class MGPublishStatusViewController: UIViewController {
 
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var collectionView: UICollectionView!
+   
+    @IBOutlet weak var tableView: UITableView!
+    var images: NSArray!
+    let reuseIdentifier = "MGPhotoCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
-        self.view.backgroundColor = UIColor.greenColor()
-        self.scrollView.contentSize = CGSizeMake(320, 800)
-        // Do any additional setup after loading the view.
+        //self.contentView.backgroundColor = UIColor.clearColor()
+
+        
+//        self.contentView.frame = CGRectMake(0, 0, self.view.frame.width, 1500)
+        images = ["","","","","","","","",""]
+//        
+//        self.scrollView.contentSize = self.contentView.frame.size
+//        
+//        
+//      
+//        var left: NSLayoutConstraint = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+//        self.view.addConstraint(left)
+//        
+//        var rightConstraint: NSLayoutConstraint = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+//        self.view.addConstraint(rightConstraint)
     }
 
+
+    override func viewDidLayoutSubviews() {
+
+        super.viewDidLayoutSubviews()
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+
 
     /*
     // MARK: - Navigation

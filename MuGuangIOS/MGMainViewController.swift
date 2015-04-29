@@ -49,6 +49,12 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        /**
+        * 测试
+        */
+        //FIXME: need delete
+        //let btn = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        //self.methodForButton(btn)
     }
     
     override func viewDidLoad() {
@@ -227,6 +233,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
          */
         self.cameraView.startRunning()
         MGLocationManager.shared.startUpdating()
+        
     }
     
     override func viewWillDisappear(animated: Bool) {

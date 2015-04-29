@@ -64,6 +64,9 @@
 		3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */; };
 		3DB3E2651AEE359900361C34 /* MGPublishStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3E2641AEE359900361C34 /* MGPublishStatusViewController.swift */; };
 		3DB3E2671AEE37F500361C34 /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3E2661AEE37F500361C34 /* UIColorExt.swift */; };
+		3DB3E2691AEF3A7400361C34 /* MGPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3E2681AEF3A7400361C34 /* MGPhotoCell.swift */; };
+		3DB3E26B1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3E26A1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift */; };
+		3DB3E26D1AEF610000361C34 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3E26C1AEF610000361C34 /* close.png */; };
 		3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */; };
 		3DFA1A7C1ADFB389003E3177 /* duckling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA1A7B1ADFB389003E3177 /* duckling.jpg */; };
 		3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */; };
@@ -233,6 +236,9 @@
 		3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGLogInViewController.swift; sourceTree = "<group>"; };
 		3DB3E2641AEE359900361C34 /* MGPublishStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishStatusViewController.swift; sourceTree = "<group>"; };
 		3DB3E2661AEE37F500361C34 /* UIColorExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
+		3DB3E2681AEF3A7400361C34 /* MGPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotoCell.swift; sourceTree = "<group>"; };
+		3DB3E26A1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishStatusViewControllerExt.swift; sourceTree = "<group>"; };
+		3DB3E26C1AEF610000361C34 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishViewController.swift; sourceTree = "<group>"; };
 		3DFA1A7B1ADFB389003E3177 /* duckling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = duckling.jpg; sourceTree = "<group>"; };
 		3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotosViewControllerExtensions.swift; sourceTree = "<group>"; };
@@ -388,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				3D2B01D61AE9DCA900F2BBC8 /* sina@2x.png */,
+				3DB3E26C1AEF610000361C34 /* close.png */,
 				3D9E12BE1AEE081F007FEFCF /* background.png */,
 				3D2B01E51AE9E71B00F2BBC8 /* sina@3x.png */,
 				3D2B01E31AE9E70700F2BBC8 /* logo.png */,
@@ -576,6 +583,8 @@
 			children = (
 				3D95A5A31AE53AC60031DD9F /* TGCameraViewController */,
 				3DB3E2641AEE359900361C34 /* MGPublishStatusViewController.swift */,
+				3DB3E26A1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift */,
+				3DB3E2681AEF3A7400361C34 /* MGPhotoCell.swift */,
 			);
 			name = Publish;
 			sourceTree = "<group>";
@@ -838,6 +847,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DB3E26D1AEF610000361C34 /* close.png in Resources */,
 				F9EFE2541AEE28BB00334C4F /* Main.storyboard in Resources */,
 				3D2B01D71AE9DCA900F2BBC8 /* sina@2x.png in Resources */,
 				3D9E12BF1AEE081F007FEFCF /* background.png in Resources */,
@@ -959,7 +969,9 @@
 				F980816C1AE5F1AB00E217DC /* MGCardDetailController.swift in Sources */,
 				F98A8F7E1AE8FD7A004DED25 /* ArcView.m in Sources */,
 				F98081681AE5F03A00E217DC /* MGCard.swift in Sources */,
+				3DB3E26B1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift in Sources */,
 				F98A8F851AE9E47F004DED25 /* MGCollectionHeaderView.swift in Sources */,
+				3DB3E2691AEF3A7400361C34 /* MGPhotoCell.swift in Sources */,
 				F98A8F811AE9014A004DED25 /* MGButton.swift in Sources */,
 				F980816A1AE5F14F00E217DC /* MGUserViewController.swift in Sources */,
 				3DB3E2671AEE37F500361C34 /* UIColorExt.swift in Sources */,

@@ -10,8 +10,9 @@ import Foundation
 
 extension UIColor {
     class func MGMainColor () -> UIColor {
-        //return UIColor.transformColor("fab5ac", alpha: 1.0)
-        //return UIColor.transformColor("fab5ac", alpha: 1.0)
         return UIColor(red: 243/255.0, green: 54/255.0, blue: 29/255.0, alpha: 0.8)
+    }
+    class func MGGrayColor () -> UIColor {
+        return UIColor(red: 165/255.0, green: 165/255.0, blue: 165/255.0, alpha: 1.0)
     }
 }
