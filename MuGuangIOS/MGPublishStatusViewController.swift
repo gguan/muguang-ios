@@ -17,7 +17,7 @@ class MGPublishStatusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
-        
+        self.tableView.backgroundColor = UIColor.whiteColor()
         images = ["","","",""]
         //self.contentView.backgroundColor = UIColor.clearColor()
 

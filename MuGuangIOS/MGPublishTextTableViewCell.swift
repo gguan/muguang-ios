@@ -11,10 +11,12 @@ import UIKit
 class MGPublishTextTableViewCell: UITableViewCell {
 
     @IBOutlet weak var grayBack: UIView!
+    @IBOutlet weak var textView: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.grayBack.layer.cornerRadius = 8.0
+
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
