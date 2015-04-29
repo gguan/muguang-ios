@@ -18,22 +18,8 @@ class MGPublishStatusViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
         self.tableView.backgroundColor = UIColor.whiteColor()
-        images = ["","","",""]
-        //self.contentView.backgroundColor = UIColor.clearColor()
-
+        images = ["","","","","","",""]
         
-//        self.contentView.frame = CGRectMake(0, 0, self.view.frame.width, 1500)
-
-//        
-//        self.scrollView.contentSize = self.contentView.frame.size
-//        
-//        
-//      
-//        var left: NSLayoutConstraint = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-//        self.view.addConstraint(left)
-//        
-//        var rightConstraint: NSLayoutConstraint = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
-//        self.view.addConstraint(rightConstraint)
     }
 
 

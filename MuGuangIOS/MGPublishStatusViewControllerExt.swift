@@ -21,10 +21,8 @@ extension MGPublishStatusViewController: UITableViewDataSource, UITableViewDeleg
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.textView.backgroundColor = UIColor.MGGrayColor()
             cell.grayBack.backgroundColor = UIColor.MGGrayColor()
-//            cell.contentView.backgroundColor = UIColor.whiteColor()
             return cell
         }
-        
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
@@ -34,7 +32,10 @@ extension MGPublishStatusViewController: UITableViewDataSource, UITableViewDeleg
 //    }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 120.0 * CGFloat(self.images.count+3-1)/3.0
+            let screenHeight    = UIScreen.mainScreen().bounds.size.width - 6
+            let space:Int       = 6
+            let realHeight      = (CGFloat(screenHeight) - 2 * CGFloat(space))/3.0
+            return realHeight * CGFloat(self.images.count+3-1)/3.0
         }else {
             return 203.0
         }

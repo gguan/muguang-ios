@@ -8,21 +8,59 @@
 
 import UIKit
 
-class MGPublishTextTableViewCell: UITableViewCell {
+class MGPublishTextTableViewCell: UITableViewCell, UITextViewDelegate {
 
     @IBOutlet weak var grayBack: UIView!
     @IBOutlet weak var textView: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.textView.delegate           = self
         self.grayBack.layer.cornerRadius = 8.0
-
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
     }
-
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+    }
+    
+    
+    //Might be usefull later
+    
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "keyboardWasShown:",
+            name: UIKeyboardDidShowNotification,
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "keyboardWillBeHidden:",
+            name: UIKeyboardWillHideNotification,
+            object: nil)
+    }
+    
+    func keyboardWasShown(notification: NSNotification) {
+        println("Keyboard was shown");
+        
+    }
+    
+    func keyboardWillBeHidden(notification: NSNotification) {
+        println("Keyboard was dismissed");
+    }
+    
+    func removeKeyboardObserver () {
+        NSNotificationCenter.defaultCenter().removeObserver(self,
+            name: UIKeyboardDidShowNotification,
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self,
+            name: UIKeyboardWillHideNotification,
+            object: nil)
+    }
 }

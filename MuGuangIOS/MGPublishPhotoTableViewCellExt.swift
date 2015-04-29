@@ -21,8 +21,8 @@ extension MGPublishPhotoTableViewCell: UICollectionViewDataSource, UICollectionV
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(
             "MGPhotoCollectionCell", forIndexPath: indexPath) as! MGPhotoCollectionCell
         //cell.image.image = UIImage(named: "close.png")
-        cell.contentView.backgroundColor = UIColor.whiteColor()
-        cell.backgroundColor = UIColor.greenColor()
+        cell.contentView.backgroundColor = UIColor.clearColor()
+//        cell.backgroundColor = UIColor.greenColor()
         return cell
     }
     
@@ -31,20 +31,20 @@ extension MGPublishPhotoTableViewCell: UICollectionViewDataSource, UICollectionV
 //    }
 //    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(10, 10, 10, 10)
+        return UIEdgeInsetsMake(10, 6, 10, 6)
     }
    
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let screenWidth = UIScreen.mainScreen().bounds.size.width
-        let space:Int = 15
-        let realWidth = (CGFloat(screenWidth) - 4 * CGFloat(space))/3.0
-        return CGSize(width: realWidth, height: screenWidth/3.5)
+        let screenWidth = UIScreen.mainScreen().bounds.size.width - 6
+        let space:Int = 6
+        let realWidth = (CGFloat(screenWidth) - 2 * CGFloat(space))/3.0
+        return CGSize(width: realWidth, height: realWidth)
     }
     
     //两行之间
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 5.0
+        return 1.0
     }
     //两个cell之间
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
