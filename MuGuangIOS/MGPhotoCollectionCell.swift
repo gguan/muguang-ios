@@ -10,4 +10,9 @@ import UIKit
 
 class MGPhotoCollectionCell: UICollectionViewCell {
     
+    @IBOutlet weak var image: UIImageView!
+
+    @IBAction func deleteImage (sender: AnyObject) {
+        
+    }
 }

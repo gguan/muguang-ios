@@ -17,7 +17,7 @@ class MGPublishPhotoTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.collectionView.backgroundColor = UIColor.redColor()
+        self.collectionView.backgroundColor = UIColor.clearColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
