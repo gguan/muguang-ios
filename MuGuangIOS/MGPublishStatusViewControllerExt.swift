@@ -44,7 +44,7 @@ extension MGPublishStatusViewController: UITableViewDataSource, UITableViewDeleg
         }else {
             let identifier = "blankCell"
             var cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! UITableViewCell
-            
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         }
     }

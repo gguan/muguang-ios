@@ -406,5 +406,6 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     func cameraDidSelectAlbumPhoto(image: UIImage!) {
         self.dismissViewControllerAnimated(false, completion: nil)
     }
+    
 }
 

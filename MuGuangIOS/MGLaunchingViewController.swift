@@ -70,7 +70,7 @@ class MGLaunchingViewController: UIViewController {
         
         WeiboSDK.sendRequest(wbRequest)
         
-        
+
     }
     /*
     // MARK: - Navigation

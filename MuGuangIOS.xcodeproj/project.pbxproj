@@ -79,6 +79,7 @@
 		3DE672691AF0B78C00A26559 /* wechatOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE672601AF0B78C00A26559 /* wechatOn@2x.png */; };
 		3DE6726A1AF0B78C00A26559 /* weiboOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE672611AF0B78C00A26559 /* weiboOff@2x.png */; };
 		3DE6726B1AF0B78C00A26559 /* weiboOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE672621AF0B78C00A26559 /* weiboOn@2x.png */; };
+		3DE6729F1AF21A9900A26559 /* MGAPIManagerExt+Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6729E1AF21A9900A26559 /* MGAPIManagerExt+Share.swift */; };
 		3DFA1A7C1ADFB389003E3177 /* duckling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA1A7B1ADFB389003E3177 /* duckling.jpg */; };
 		3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */; };
 		B04C9D7C1AE0A49400CD9405 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B04C9D7B1AE0A49400CD9405 /* FXBlurView.m */; };
@@ -262,6 +263,7 @@
 		3DE672601AF0B78C00A26559 /* wechatOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechatOn@2x.png"; sourceTree = "<group>"; };
 		3DE672611AF0B78C00A26559 /* weiboOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weiboOff@2x.png"; sourceTree = "<group>"; };
 		3DE672621AF0B78C00A26559 /* weiboOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weiboOn@2x.png"; sourceTree = "<group>"; };
+		3DE6729E1AF21A9900A26559 /* MGAPIManagerExt+Share.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MGAPIManagerExt+Share.swift"; sourceTree = "<group>"; };
 		3DFA1A7B1ADFB389003E3177 /* duckling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = duckling.jpg; sourceTree = "<group>"; };
 		3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotosViewControllerExtensions.swift; sourceTree = "<group>"; };
 		40C8118B762B513DB0757678 /* Pods-MuGuangIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 			children = (
 				3D879FAF1AEA1480004CBF47 /* MGAPIManager.swift */,
 				3D879FB31AEA2759004CBF47 /* MGAPIManagerExt+User.swift */,
+				3DE6729E1AF21A9900A26559 /* MGAPIManagerExt+Share.swift */,
 			);
 			name = api;
 			sourceTree = "<group>";
@@ -976,6 +979,7 @@
 				3D95A5E81AE53AC60031DD9F /* TGCameraFocus.m in Sources */,
 				3D2B01B31AE79F6900F2BBC8 /* CIFilter+mgFiliters.m in Sources */,
 				3D95A5E91AE53AC60031DD9F /* TGCameraGrid.m in Sources */,
+				3DE6729F1AF21A9900A26559 /* MGAPIManagerExt+Share.swift in Sources */,
 				3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */,
 				3DE672571AF0A9B900A26559 /* MGPublishTextTableViewCell.swift in Sources */,
 				3D0267531AE4E18B004FE669 /* MGConstants.swift in Sources */,

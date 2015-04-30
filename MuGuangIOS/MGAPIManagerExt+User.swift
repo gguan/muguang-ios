@@ -39,12 +39,14 @@ extension MGAPIManager {
     **************************
     *
     *
+    
     "uid":"微博账号id",
     "oauth2_info":{
     "access_token": "必填",
     "token_type":"选填",
     "expires_in":"选填",
     "refresh_token":"选填"
+    "}
     */
     
 
