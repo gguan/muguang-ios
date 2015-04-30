@@ -22,7 +22,10 @@ extension UIColor {
     }
 }
 
-class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, MGCollectionHeaderViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
+let kUserInfoCollectionPadding: CGFloat = 1
+let kUserInfoCollectionItemOfRow: CGFloat = 3
+
+class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, MGCollectionHeaderViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var photoView: UICollectionView!
     // 返回按钮的方法
@@ -60,6 +63,13 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
         } else {
             self.settingButton.setImage(UIImage(named: "set_limits"), forState: .Normal)
         }
+        
+        var flowLayout = self.photoView.collectionViewLayout as! CSStickyHeaderFlowLayout
+        flowLayout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.size.width, 300)
+        flowLayout.parallaxHeaderMinimumReferenceSize = CGSizeMake(self.view.frame.size.width, 64)
+        flowLayout.parallaxHeaderAlwaysOnTop = true
+        
+        self.photoView.registerNib(UINib(nibName: "MGCollectionHeaderView", bundle: NSBundle.mainBundle()), forSupplementaryViewOfKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: CSStickyHeaderParallaxHeader)
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,27 +79,23 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
     
     // MARK: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(5,5,5,5)
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 5
+        return UIEdgeInsetsMake(kUserInfoCollectionPadding, 0, 0, kUserInfoCollectionPadding)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 5
+        return kUserInfoCollectionPadding
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        var width = (CGRectGetWidth(self.view.frame) - 5 * 4) / 3
+        var width = (CGRectGetWidth(self.view.frame) - kUserInfoCollectionPadding * kUserInfoCollectionItemOfRow) / kUserInfoCollectionItemOfRow
         return CGSizeMake(width, width)
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == CSStickyHeaderParallaxHeader {
             // 设置headerView
-            reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "MGCollectionHeaderView", forIndexPath: indexPath) as? MGCollectionHeaderView
-            reusableView!.setCoverImageByCIFilter(UIImage(named: "cover_placeholder"))
+            reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: CSStickyHeaderParallaxHeader, forIndexPath: indexPath) as? MGCollectionHeaderView
+            reusableView!.setCoverImageByBlur(UIImage(named: "cover_placeholder"))
             reusableView!.avatarView.setAvatarImage(UIImage(named: "avatar_placeholder"))
             reusableView!.avatarView.setAvatarTitle("满-江-红")
             reusableView!.delegate = self
@@ -244,7 +250,7 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
             reusableView!.avatarView.setAvatarImage(image)
         } else {
             // 封面
-            reusableView?.setCoverImageByCIFilter(image)
+            reusableView?.setCoverImageByBlur(image)
         }
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -267,206 +273,20 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        
+        var offset = scrollView.contentOffset
+        var alpha = offset.y / 240
+        if offset.y > 0 {
+            self.reusableView?.contentView.alpha = 1 - alpha
+        } else {
+            self.reusableView?.contentView.alpha = 1
+            self.reusableView?.nameLabel.alpha = 0
+            self.reusableView?.blurView.alpha = 1 + alpha * 2
+        }
+        if offset.y > 220 {
+            self.reusableView?.nameLabel.alpha = 1
+        } else {
+            self.reusableView?.nameLabel.alpha = 0
+        }
     }
 
-}
-
-class StickyHeaderCollectionViewFlowLayout: UICollectionViewFlowLayout {
-    
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
-        
-//        var answer: [UICollectionViewLayoutAttributes] = super.layoutAttributesForElementsInRect(rect)! as! [UICollectionViewLayoutAttributes]
-//        let contentOffset = collectionView!.contentOffset
-//        
-//        var missingSections = NSMutableIndexSet()
-//        
-//        for layoutAttributes in answer {
-//            if (layoutAttributes.representedElementCategory == .Cell) {
-//                if let indexPath = layoutAttributes.indexPath {
-//                    missingSections.addIndex(layoutAttributes.indexPath.section)
-//                }
-//            }
-//        }
-//        
-//        for layoutAttributes in answer {
-//            if let representedElementKind = layoutAttributes.representedElementKind {
-//                if representedElementKind == UICollectionElementKindSectionHeader {
-//                    if let indexPath = layoutAttributes.indexPath {
-//                        missingSections.removeIndex(indexPath.section)
-//                    }
-//                }
-//            }
-//        }
-//        
-//        missingSections.enumerateIndexesUsingBlock { idx, stop in
-//            let indexPath = NSIndexPath(forItem: 0, inSection: idx)
-//            if let layoutAttributes = self.layoutAttributesForSupplementaryViewOfKind(UICollectionElementKindSectionHeader, atIndexPath: indexPath) {
-//                answer.append(layoutAttributes)
-//            }
-//        }
-//        
-//        for layoutAttributes in answer {
-//            if let representedElementKind = layoutAttributes.representedElementKind {
-//                if representedElementKind == UICollectionElementKindSectionHeader {
-//                    let section = layoutAttributes.indexPath!.section
-//                    let numberOfItemsInSection = collectionView!.numberOfItemsInSection(section)
-//                    
-//                    let firstCellIndexPath = NSIndexPath(forItem: 0, inSection: section)!
-//                    let lastCellIndexPath = NSIndexPath(forItem: max(0, (numberOfItemsInSection - 1)), inSection: section)!
-//                    
-//                    
-//                    let (firstCellAttributes: UICollectionViewLayoutAttributes, lastCellAttributes: UICollectionViewLayoutAttributes) = {
-//                        if (self.collectionView!.numberOfItemsInSection(section) > 0) {
-//                            return (
-//                                self.layoutAttributesForItemAtIndexPath(firstCellIndexPath),
-//                                self.layoutAttributesForItemAtIndexPath(lastCellIndexPath))
-//                        } else {
-//                            return (
-//                                self.layoutAttributesForSupplementaryViewOfKind(UICollectionElementKindSectionHeader, atIndexPath: firstCellIndexPath),
-//                                self.layoutAttributesForSupplementaryViewOfKind(UICollectionElementKindSectionFooter, atIndexPath: lastCellIndexPath))
-//                        }
-//                        }()
-//                    
-//                    let headerHeight = CGRectGetHeight(layoutAttributes.frame)
-//                    var origin = layoutAttributes.frame.origin
-//                    
-//                    origin.y = min(max(contentOffset.y, (CGRectGetMinY(firstCellAttributes.frame) - headerHeight)), (CGRectGetMaxY(lastCellAttributes.frame) - headerHeight))
-//                    
-//                    layoutAttributes.zIndex = 1024
-//                    layoutAttributes.frame = CGRect(origin: origin, size: layoutAttributes.frame.size)
-//                }
-//            }
-//        }
-//        
-//        return answer
-        
-        
-        // The rect should compensate the header size
-        var parallaxHeaderReferenceSize: CGFloat = 0
-        var adjustedRect = rect;
-        adjustedRect.origin.y -= parallaxHeaderReferenceSize
-    
-        var allItems: [UICollectionViewLayoutAttributes] = super.layoutAttributesForElementsInRect(adjustedRect) as! [UICollectionViewLayoutAttributes]
-        
-        var headers = NSMutableDictionary()
-        var lastCells = NSMutableDictionary()
-        var visibleParallexHeader = false
-        
-        for (index, item) in enumerate(allItems) {
-            var attributes = item as UICollectionViewLayoutAttributes
-            var frame = attributes.frame
-            frame.origin.y += parallaxHeaderReferenceSize
-            attributes.frame = frame
-            
-            var indexPath = attributes.indexPath
-            if let representedElementKind = attributes.representedElementKind {
-                if representedElementKind == UICollectionElementKindSectionHeader {
-                    headers.setObject(attributes, forKey: indexPath.section)
-                } else if representedElementKind == UICollectionElementKindSectionFooter {
-                    
-                } else {
-                    var currentAttribute = lastCells.objectForKey(indexPath.section) as? UICollectionViewLayoutAttributes
-                    if (currentAttribute == nil) || (indexPath.row > currentAttribute?.indexPath.row) {
-                        lastCells.setObject(attributes, forKey: indexPath.section)
-                    }
-                    if indexPath.item == 0 && indexPath.section == 0 {
-                        visibleParallexHeader = true
-                    }
-                }
-            }
-            attributes.zIndex = 1
-        }
-        
-        if (CGRectGetMinY(rect) <= 0) {
-            visibleParallexHeader = true
-        }
-        
-        /*
-        if visibleParallexHeader && !CGSizeEqualToSize(CGSizeZero, CGSizeMake(0, parallaxHeaderReferenceSize)) {
-            var currentAttribute =
-        }
-
-        if (visibleParallexHeader && ! CGSizeEqualToSize(CGSizeZero, self.parallaxHeaderReferenceSize)) {
-            CSStickyHeaderFlowLayoutAttributes *currentAttribute = [CSStickyHeaderFlowLayoutAttributes layoutAttributesForSupplementaryViewOfKind:CSStickyHeaderParallaxHeader withIndexPath:[NSIndexPath indexPathWithIndex:0]];
-            CGRect frame = currentAttribute.frame;
-            frame.size.width = self.parallaxHeaderReferenceSize.width;
-            frame.size.height = self.parallaxHeaderReferenceSize.height;
-            
-            CGRect bounds = self.collectionView.bounds;
-            CGFloat maxY = CGRectGetMaxY(frame);
-            
-            // make sure the frame won't be negative values
-            CGFloat y = MIN(maxY - self.parallaxHeaderMinimumReferenceSize.height, bounds.origin.y + self.collectionView.contentInset.top);
-            CGFloat height = MAX(0, -y + maxY);
-            
-            
-            CGFloat maxHeight = self.parallaxHeaderReferenceSize.height;
-            CGFloat minHeight = self.parallaxHeaderMinimumReferenceSize.height;
-            CGFloat progressiveness = (height - minHeight)/(maxHeight - minHeight);
-            currentAttribute.progressiveness = progressiveness;
-            
-            // if zIndex < 0 would prevents tap from recognized right under navigation bar
-            currentAttribute.zIndex = 0;
-            
-            // When parallaxHeaderAlwaysOnTop is enabled, we will check when we should update the y position
-            if (self.parallaxHeaderAlwaysOnTop && height <= self.parallaxHeaderMinimumReferenceSize.height) {
-                CGFloat insetTop = self.collectionView.contentInset.top;
-                // Always stick to top but under the nav bar
-                y = self.collectionView.contentOffset.y + insetTop;
-                currentAttribute.zIndex = 2000;
-            }
-            
-            currentAttribute.frame = (CGRect){
-                frame.origin.x,
-                y,
-                frame.size.width,
-                height,
-            };
-            
-            
-            [allItems addObject:currentAttribute];
-        }
-        */
-        
-        lastCells.enumerateKeysAndObjectsUsingBlock { (key, obj, stop) -> Void in
-            var indexPath = obj.indexPath as NSIndexPath
-            var indexPathKey = indexPath.section
-            var head = headers[indexPathKey] as? UICollectionViewLayoutAttributes
-            if let header = head {
-                var newHeader = self.layoutAttributesForSupplementaryViewOfKind(UICollectionElementKindSectionHeader, atIndexPath: NSIndexPath(forItem: 0, inSection: indexPath.section))
-                if let h = newHeader {
-                    allItems.append(header)
-                }
-            }
-            var attributes = lastCells[indexPathKey] as! UICollectionViewLayoutAttributes
-            var currentBounds = self.collectionView!.bounds
-            attributes.zIndex = 1024
-            attributes.hidden = false
-            
-            var origin = attributes.frame.origin
-            
-            var sectionMaxY = CGRectGetMaxY(attributes.frame) - attributes.frame.size.height;
-            var y = CGRectGetMaxY(currentBounds) - currentBounds.size.height + self.collectionView!.contentInset.top
-            
-            var maxY = min(max(y, attributes.frame.origin.y), sectionMaxY)
-            
-            
-            origin.y = maxY
-            
-            attributes.frame = CGRectMake(origin.x, origin.y, attributes.frame.size.width, attributes.frame.size.height)
-        
-
-        }
-        
-        return allItems
-    }
-    
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
-        return true
-    }
-    
-    override func prepareLayout() {
-        super.prepareLayout()
-    }
 }

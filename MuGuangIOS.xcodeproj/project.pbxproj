@@ -92,6 +92,7 @@
 		B0E5209D1ADE74C600B8F451 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E5209C1ADE74C600B8F451 /* ImageIO.framework */; };
 		B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */; };
 		D9CC3AA9770E281BE598BCE3 /* libPods-MuGuangIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */; };
+		F91E62711AF20066003D3C24 /* MGCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91E62701AF20066003D3C24 /* MGCollectionHeaderView.xib */; };
 		F93EABA51AEF6804000FB1C7 /* MGUserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93EABA41AEF6804000FB1C7 /* MGUserInfoCell.swift */; };
 		F98081641AE4CD7900E217DC /* MGMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081631AE4CD7900E217DC /* MGMonitorView.swift */; };
 		F98081661AE4CED800E217DC /* MGLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081651AE4CED800E217DC /* MGLocationManager.swift */; };
@@ -268,6 +269,7 @@
 		B0E5209A1ADE74A100B8F451 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B0E5209C1ADE74C600B8F451 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCameraView.swift; sourceTree = "<group>"; };
+		F91E62701AF20066003D3C24 /* MGCollectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MGCollectionHeaderView.xib; sourceTree = "<group>"; };
 		F93EABA41AEF6804000FB1C7 /* MGUserInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGUserInfoCell.swift; sourceTree = "<group>"; };
 		F98081631AE4CD7900E217DC /* MGMonitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGMonitorView.swift; sourceTree = "<group>"; };
 		F98081651AE4CED800E217DC /* MGLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGLocationManager.swift; sourceTree = "<group>"; };
@@ -643,6 +645,7 @@
 				F98A8F7D1AE8FD7A004DED25 /* MGAvatarView.swift */,
 				F98A8F801AE9014A004DED25 /* MGButton.swift */,
 				F98A8F841AE9E47F004DED25 /* MGCollectionHeaderView.swift */,
+				F91E62701AF20066003D3C24 /* MGCollectionHeaderView.xib */,
 				F98A8F881AEA16F2004DED25 /* MGUserButton.swift */,
 				F9EFE2521AEDDEB100334C4F /* MGPhotoCollectionViewCell.swift */,
 				F93EABA41AEF6804000FB1C7 /* MGUserInfoCell.swift */,
@@ -837,6 +840,7 @@
 				B0E520881ADE732100B8F451 /* Resource.bundle in Resources */,
 				3D2B01E61AE9E71B00F2BBC8 /* sina@3x.png in Resources */,
 				B04C9D871AE0AFAC00CD9405 /* bg-addbutton@2x.png in Resources */,
+				F91E62711AF20066003D3C24 /* MGCollectionHeaderView.xib in Resources */,
 				F98A8F831AE9137C004DED25 /* Second.storyboard in Resources */,
 				B0E5208B1ADE732100B8F451 /* WeiboSDK.bundle in Resources */,
 			);

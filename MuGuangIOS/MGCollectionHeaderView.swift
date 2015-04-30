@@ -13,12 +13,17 @@ import CoreImage
 class MGCollectionHeaderView: UICollectionReusableView {
     // 封面
     @IBOutlet weak var coverView: UIImageView!
+    // 模糊背景
+    @IBOutlet weak var blurView: FXBlurView!
+    // 内容的容器
+    @IBOutlet weak var contentView: UIView!
     // 城市
     @IBOutlet weak var cityLabel: UILabel!
     // 头像＋用户名
     @IBOutlet weak var avatarView: MGAvatarView!
     // 个人说明
     @IBOutlet weak var briefLabel: UILabel!
+    // 按钮
     @IBOutlet weak var buttonView: UIView!
     // 照片按钮
     @IBOutlet weak var photoButton: MGUserButton!
@@ -31,12 +36,15 @@ class MGCollectionHeaderView: UICollectionReusableView {
     @IBOutlet weak var sendMessage: UIButton!
     // 关注按钮
     @IBOutlet weak var followButton: UIButton!
-    lazy var separateLine: CALayer = {
-        var line: CALayer = CALayer()
-        line.backgroundColor = UIColor.transformColor(kSeparateLineColorRed, alpha: 1.0).CGColor
-        self.buttonView.layer.addSublayer(line)
-        return line
-    }()
+    // 名字Label
+    @IBOutlet weak var nameLabel: UILabel!
+//    // 分割线
+//    lazy var separateLine: CALayer = {
+//        var line: CALayer = CALayer()
+//        line.backgroundColor = UIColor.transformColor(kSeparateLineColorRed, alpha: 1.0).CGColor
+//        self.buttonView.layer.addSublayer(line)
+//        return line
+//    }()
     
     weak var delegate: MGCollectionHeaderViewDelegate?
     // 照片按钮的方法
@@ -63,9 +71,9 @@ class MGCollectionHeaderView: UICollectionReusableView {
     }
 
     // 封面加红色蒙版
-    func setCoverImageByCIFilter(image: UIImage?) {
+    func setCoverImageByBlur(image: UIImage?) {
         // 模糊滤镜
-        var filterImage = image?.blurredImageWithRadius(2, iterations: 3, tintColor: UIColor.transformColor(kTextColorRed, alpha: 1))
+//        var filterImage = image?.blurredImageWithRadius(2, iterations: 3, tintColor: UIColor.transformColor(kTextColorRed, alpha: 1))
 //        // 蒙版
 //        var targetSize = self.coverView.bounds.size
 //        UIGraphicsBeginImageContext(targetSize)
@@ -85,11 +93,17 @@ class MGCollectionHeaderView: UICollectionReusableView {
 //        filterImage = UIGraphicsGetImageFromCurrentImageContext();
 //        UIGraphicsEndImageContext();
 
-        self.coverView.image = filterImage
+        self.coverView.image = image
     }
     
     override func awakeFromNib() {
-        self.briefLabel.textColor = UIColor.transformColor(kTextColorGray, alpha: 1.0)
+    
+        self.blurView.frame = self.bounds
+        self.blurView.blurRadius = 8
+        self.blurView.tintColor = UIColor.transformColor(kTextColorWhite, alpha: 0.5)
+        self.blurView.dynamic = false
+
+        self.briefLabel.textColor = UIColor.whiteColor()
         self.briefLabel.font = UIFont.systemFontOfSize(12.0)
         
         self.sendMessage.backgroundColor = UIColor.transformColor(kTextColorRed, alpha: 1.0)
@@ -112,10 +126,6 @@ class MGCollectionHeaderView: UICollectionReusableView {
         self.followButton.setImage(UIImage(named: "followed"), forState: .Selected)
         self.followButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         
-        var redLayer = CALayer()
-        redLayer.backgroundColor = UIColor.transformColor(kTextColorRed, alpha: 0.5).CGColor
-        self.coverView.layer.addSublayer(redLayer)
-        
         var tapGR1 = UITapGestureRecognizer(target: self, action: Selector("methodForTapAvatar:"))
         self.avatarView.addGestureRecognizer(tapGR1)
         
@@ -134,9 +144,9 @@ class MGCollectionHeaderView: UICollectionReusableView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.separateLine.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), 0.5)
-        var redLayer = self.coverView.layer.sublayers[0] as? CALayer
-        redLayer?.frame = self.coverView.bounds
+//        self.separateLine.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), 0.5)
+        self.photoButton.countLabel.textColor = UIColor.transformColor(kTextColorRed, alpha: 1.0)
+        self.photoButton.textLabel.textColor = UIColor.transformColor(kTextColorRed, alpha: 1.0)
     }
 }
 
