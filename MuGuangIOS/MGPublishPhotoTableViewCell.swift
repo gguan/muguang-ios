@@ -13,14 +13,16 @@ class MGPublishPhotoTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var images = ["","","","","","","",""]
-
+    
+    var alertClosure:(()->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.backgroundColor = UIColor.clearColor()
         self.collectionView.scrollEnabled   = false
     }
-
+    
+    
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

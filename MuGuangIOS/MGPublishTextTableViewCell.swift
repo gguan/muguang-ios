@@ -13,11 +13,13 @@ class MGPublishTextTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var grayBack: UIView!
     @IBOutlet weak var textView: UITextView!
     
-    var scrollForKeyboard:(()-> Void)?
+    var scrollToShowKeyboard:(()-> Void)?
+    var scrollToHideKeyboard:(()-> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.textView.delegate           = self
+        self.textView.returnKeyType      = UIReturnKeyType.Done
         self.grayBack.layer.cornerRadius = 8.0
         
     }
@@ -28,14 +30,21 @@ class MGPublishTextTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
-        scrollForKeyboard!()
+        scrollToShowKeyboard!()
     }
     func textViewDidEndEditing(textView: UITextView) {
         
     }
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            scrollToHideKeyboard!()
+            textView.resignFirstResponder()
+        }
+        return true
+    }
     
     
-    //Might be usefull later
+    //MARK: Might be usefull later
     
     func registerForKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(

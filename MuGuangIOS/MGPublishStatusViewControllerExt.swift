@@ -11,9 +11,17 @@ import Foundation
 extension MGPublishStatusViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let identifier = "MGPublishPhotoCellIdentifier"
-            var cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! MGPublishPhotoTableViewCell
+            let identifier      = "MGPublishPhotoCellIdentifier"
+            var cell            = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! MGPublishPhotoTableViewCell
             cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.alertClosure   = {()->() in
+                let alertController = UIAlertController(title: "删除", message: "确信删除吗？", preferredStyle: UIAlertControllerStyle.ActionSheet)
+                let action = UIAlertAction(title: "删除", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
+                    
+                })
+                alertController.addAction(action)
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
             return cell
         }else if indexPath.row == 1 {
             let identifier = "MGPublishTextTableViewCell"
@@ -21,9 +29,13 @@ extension MGPublishStatusViewController: UITableViewDataSource, UITableViewDeleg
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.textView.backgroundColor = UIColor.MGGrayColor()
             cell.grayBack.backgroundColor = UIColor.MGGrayColor()
-            cell.scrollForKeyboard = { () -> Void in
+            cell.scrollToShowKeyboard = { () -> Void in
                 
                 self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+            }
+            cell.scrollToHideKeyboard = { () -> Void in
+                
+                self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
             }
             return cell
         }else {

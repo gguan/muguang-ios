@@ -26,7 +26,7 @@ class MGPublishStatusViewController: UIViewController {
     override func viewDidLayoutSubviews() {
 
         super.viewDidLayoutSubviews()
-
+        
     }
     
     override func viewDidAppear(animated: Bool) {

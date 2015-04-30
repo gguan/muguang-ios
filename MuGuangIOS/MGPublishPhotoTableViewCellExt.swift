@@ -22,7 +22,9 @@ extension MGPublishPhotoTableViewCell: UICollectionViewDataSource, UICollectionV
             "MGPhotoCollectionCell", forIndexPath: indexPath) as! MGPhotoCollectionCell
         //cell.image.image = UIImage(named: "close.png")
         cell.contentView.backgroundColor = UIColor.clearColor()
-//        cell.backgroundColor = UIColor.greenColor()
+        cell.deleteImageAlertClosure = { ()-> () in
+            self.alertClosure!()
+        }
         return cell
     }
     
