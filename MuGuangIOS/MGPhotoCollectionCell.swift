@@ -13,7 +13,7 @@ class MGPhotoCollectionCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
 
     //删除图片
-    var deleteImageAlertClosure:(()->())?
+    var deleteImageAlertClosure:(()-> ())?
     
     @IBAction func deleteImage (sender: AnyObject) {
         deleteImageAlertClosure!()

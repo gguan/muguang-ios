@@ -14,10 +14,13 @@ extension MGPublishStatusViewController: UITableViewDataSource, UITableViewDeleg
             let identifier      = "MGPublishPhotoCellIdentifier"
             var cell            = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! MGPublishPhotoTableViewCell
             cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.alertClosure   = {()->() in
+            cell.images         = images
+            cell.alertClosure   = {(indexPath: NSIndexPath)->() in
                 let alertController = UIAlertController(title: "删除", message: "确信删除吗？", preferredStyle: UIAlertControllerStyle.ActionSheet)
                 let action = UIAlertAction(title: "删除", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
-                    
+                    self.images.removeObjectAtIndex(indexPath.row)
+                    cell.collectionView.reloadData()
+                    self.tableView.reloadData()
                 })
                 alertController.addAction(action)
                 self.presentViewController(alertController, animated: true, completion: nil)

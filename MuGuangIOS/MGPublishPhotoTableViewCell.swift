@@ -12,9 +12,9 @@ class MGPublishPhotoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var images = ["","","","","","","",""]
+    var images: NSMutableArray!
     
-    var alertClosure:(()->())?
+    var alertClosure:((indexPath: NSIndexPath)->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()

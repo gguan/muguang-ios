@@ -12,12 +12,13 @@ class MGPublishStatusViewController: UIViewController {
    
     @IBOutlet weak var tableView: UITableView!
 
-    var images: NSArray!
+    var images: NSMutableArray!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
         self.tableView.backgroundColor = UIColor.whiteColor()
+        self.tableView.separatorStyle  = UITableViewCellSeparatorStyle.None
         images = ["","","","","","",""]
         
     }
