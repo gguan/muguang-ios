@@ -12,6 +12,9 @@ class MGPublishTextTableViewCell: UITableViewCell, UITextViewDelegate {
 
     @IBOutlet weak var grayBack: UIView!
     @IBOutlet weak var textView: UITextView!
+    
+    var scrollForKeyboard:(()-> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.textView.delegate           = self
@@ -24,7 +27,10 @@ class MGPublishTextTableViewCell: UITableViewCell, UITextViewDelegate {
         
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textViewDidBeginEditing(textView: UITextView) {
+        scrollForKeyboard!()
+    }
+    func textViewDidEndEditing(textView: UITextView) {
         
     }
     

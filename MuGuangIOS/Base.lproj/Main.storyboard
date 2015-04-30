@@ -577,6 +577,12 @@
                                             <outlet property="textView" destination="Cbo-Qf-EWI" id="aMx-Ex-2st"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blankCell" rowHeight="184" id="Bhc-A3-yJs">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bhc-A3-yJs" id="QS3-Zj-Z8T">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="1B8-yv-Eb2" id="jFh-sa-pOW"/>
