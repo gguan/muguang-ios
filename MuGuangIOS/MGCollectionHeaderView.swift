@@ -98,9 +98,8 @@ class MGCollectionHeaderView: UICollectionReusableView {
     
     override func awakeFromNib() {
     
-        self.blurView.frame = self.bounds
-        self.blurView.blurRadius = 8
-        self.blurView.tintColor = UIColor.transformColor(kTextColorWhite, alpha: 0.5)
+        self.blurView.blurRadius = 10
+        self.blurView.tintColor = UIColor.clearColor()
         self.blurView.dynamic = false
 
         self.briefLabel.textColor = UIColor.whiteColor()
@@ -129,9 +128,8 @@ class MGCollectionHeaderView: UICollectionReusableView {
         var tapGR1 = UITapGestureRecognizer(target: self, action: Selector("methodForTapAvatar:"))
         self.avatarView.addGestureRecognizer(tapGR1)
         
-        self.coverView.userInteractionEnabled = true
         var tapGR2 = UITapGestureRecognizer(target: self, action: Selector("methodForTapCover:"))
-        self.coverView.addGestureRecognizer(tapGR2)
+        self.contentView.addGestureRecognizer(tapGR2)
     }
     
     // 点击的手势
@@ -147,6 +145,7 @@ class MGCollectionHeaderView: UICollectionReusableView {
 //        self.separateLine.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), 0.5)
         self.photoButton.countLabel.textColor = UIColor.transformColor(kTextColorRed, alpha: 1.0)
         self.photoButton.textLabel.textColor = UIColor.transformColor(kTextColorRed, alpha: 1.0)
+
     }
 }
 

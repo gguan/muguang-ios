@@ -117,13 +117,13 @@ class MGLocationManager: NSObject, CLLocationManagerDelegate {
         geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
             if error == nil {
                 for item in placemarks {
-                    var mark: CLPlacemark = item as! CLPlacemark
-                    var city = mark.addressDictionary["State"] as! String
-                    var subLocality = mark.addressDictionary["SubLocality"] as! String
-                    var street = mark.addressDictionary["Street"] as! String
-                    var name = mark.addressDictionary["Name"] as! String
-                    println(city + subLocality + street + name)
-                    complete(address: (city + subLocality + street + name))
+                    var mark: CLPlacemark? = item as? CLPlacemark
+                    var city = mark?.addressDictionary["State"] as? String
+                    var subLocality = mark?.addressDictionary["SubLocality"] as? String
+                    var street = mark?.addressDictionary["Street"] as? String
+                    var name = mark?.addressDictionary["Name"] as? String
+                    println(city! + subLocality! + street! + name!)
+                    complete(address: (city! + subLocality! + street! + name!))
                 }
             } else {
                 println("reverseGeocodeLocation error")

@@ -251,6 +251,8 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
         } else {
             // 封面
             reusableView?.setCoverImageByBlur(image)
+            // 刷新模糊层
+            reusableView?.blurView.updateAsynchronously(true, completion: nil)
         }
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -273,6 +275,7 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.reusableView?.blurView.blurEnabled = false
         var offset = scrollView.contentOffset
         var alpha = offset.y / 240
         if offset.y > 0 {
@@ -280,7 +283,7 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
         } else {
             self.reusableView?.contentView.alpha = 1
             self.reusableView?.nameLabel.alpha = 0
-            self.reusableView?.blurView.alpha = 1 + alpha * 2
+            self.reusableView?.blurView.alpha = 1 + alpha * 4
         }
         if offset.y > 220 {
             self.reusableView?.nameLabel.alpha = 1
