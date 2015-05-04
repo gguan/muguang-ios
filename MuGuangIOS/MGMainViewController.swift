@@ -61,17 +61,9 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         
         super.viewDidLoad()
         
-        
         // 未登录的话 push到登录界面
-        
         if  NSUserDefaults.standardUserDefaults().valueForKey(kAccessToken) == nil {
-            var mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            var launchingVC = mainStoryboard.instantiateViewControllerWithIdentifier("MGLaunchingViewController") as! MGLaunchingViewController
-            launchingVC.testBlcok = {() -> Void in
-                //println("i am block")
-            }
-            
-            self.navigationController?.pushViewController(launchingVC, animated: false)
+            MGTool.sharedInstance.popAuthPage(self.navigationController)
         }
         
         self.view.backgroundColor = UIColor.whiteColor()
