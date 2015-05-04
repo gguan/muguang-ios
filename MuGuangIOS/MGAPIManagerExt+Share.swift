@@ -23,4 +23,6 @@ extension MGAPIManager {
                 self.POST(url, parameters: parameter, success:success , failure: failure)
     
     }
+    
+    
 }
