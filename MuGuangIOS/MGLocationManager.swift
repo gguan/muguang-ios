@@ -122,8 +122,8 @@ class MGLocationManager: NSObject, CLLocationManagerDelegate {
                     var subLocality = mark?.addressDictionary["SubLocality"] as? String
                     var street = mark?.addressDictionary["Street"] as? String
                     var name = mark?.addressDictionary["Name"] as? String
-                    println(city! + subLocality! + street! + name!)
-                    complete(address: (city! + subLocality! + street! + name!))
+                    println("\(city) + \(subLocality) + \(street) + \(name)")
+                    complete(address: ("\(city) + \(subLocality) + \(street) + \(name)"))
                 }
             } else {
                 println("reverseGeocodeLocation error")

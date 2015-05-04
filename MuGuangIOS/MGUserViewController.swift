@@ -22,7 +22,7 @@ extension UIColor {
     }
 }
 
-let kUserInfoCollectionPadding: CGFloat = 1
+let kUserInfoCollectionPadding: CGFloat = 2
 let kUserInfoCollectionItemOfRow: CGFloat = 3
 
 class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, MGCollectionHeaderViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
