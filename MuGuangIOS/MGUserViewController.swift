@@ -287,7 +287,7 @@ class MGUserViewController: MGBaseViewController, UICollectionViewDataSource, UI
         } else {
             self.reusableView?.contentView.alpha = 1
             self.reusableView?.nameLabel.alpha = 0
-            self.reusableView?.blurView.alpha = 1 + alpha * 4
+            self.reusableView?.blurView.alpha = kUserInfoHeaderBlurViewAlpha + alpha * 4
         }
         if offset.y > 220 {
             self.reusableView?.nameLabel.alpha = 1

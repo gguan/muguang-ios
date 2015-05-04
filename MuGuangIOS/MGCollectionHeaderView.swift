@@ -10,6 +10,8 @@ import UIKit
 import QuartzCore
 import CoreImage
 
+let kUserInfoHeaderBlurViewAlpha: CGFloat = 0.66
+
 class MGCollectionHeaderView: UICollectionReusableView {
     // 封面
     @IBOutlet weak var coverView: UIImageView!
@@ -98,9 +100,10 @@ class MGCollectionHeaderView: UICollectionReusableView {
     
     override func awakeFromNib() {
     
-        self.blurView.blurRadius = 10
-        self.blurView.tintColor = UIColor.clearColor()
+        self.blurView.blurRadius = 5
+        self.blurView.tintColor = UIColor.whiteColor()
         self.blurView.dynamic = false
+        self.blurView.alpha = kUserInfoHeaderBlurViewAlpha
 
         self.briefLabel.textColor = UIColor.whiteColor()
         self.briefLabel.font = UIFont.systemFontOfSize(12.0)
