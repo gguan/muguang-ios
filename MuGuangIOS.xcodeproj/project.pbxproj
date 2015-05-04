@@ -62,7 +62,25 @@
 		3DB389041ADE18AB003361A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DB389031ADE18AB003361A6 /* Images.xcassets */; };
 		3DB389131ADE18AB003361A6 /* MuGuangIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB389121ADE18AB003361A6 /* MuGuangIOSTests.swift */; };
 		3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */; };
+		3DB3E2651AEE359900361C34 /* MGPublishStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3E2641AEE359900361C34 /* MGPublishStatusViewController.swift */; };
+		3DB3E2671AEE37F500361C34 /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3E2661AEE37F500361C34 /* UIColorExt.swift */; };
+		3DB3E26B1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3E26A1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift */; };
 		3DB6C6AB1ADF835B00606578 /* MGPublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */; };
+		3DE6724F1AF081A500A26559 /* MGPublishPhotoTableViewCellExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6724E1AF081A500A26559 /* MGPublishPhotoTableViewCellExt.swift */; };
+		3DE672531AF0871500A26559 /* MGPublishPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE672521AF0871500A26559 /* MGPublishPhotoTableViewCell.swift */; };
+		3DE672551AF0894D00A26559 /* MGPhotoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE672541AF0894D00A26559 /* MGPhotoCollectionCell.swift */; };
+		3DE672571AF0A9B900A26559 /* MGPublishTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE672561AF0A9B900A26559 /* MGPublishTextTableViewCell.swift */; };
+		3DE672591AF0B2C900A26559 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE672581AF0B2C900A26559 /* pin@2x.png */; };
+		3DE672631AF0B78C00A26559 /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE6725A1AF0B78C00A26559 /* add@2x.png */; };
+		3DE672641AF0B78C00A26559 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE6725B1AF0B78C00A26559 /* back@2x.png */; };
+		3DE672651AF0B78C00A26559 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE6725C1AF0B78C00A26559 /* close@2x.png */; };
+		3DE672661AF0B78C00A26559 /* emotion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE6725D1AF0B78C00A26559 /* emotion@2x.png */; };
+		3DE672681AF0B78C00A26559 /* wechatOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE6725F1AF0B78C00A26559 /* wechatOff@2x.png */; };
+		3DE672691AF0B78C00A26559 /* wechatOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE672601AF0B78C00A26559 /* wechatOn@2x.png */; };
+		3DE6726A1AF0B78C00A26559 /* weiboOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE672611AF0B78C00A26559 /* weiboOff@2x.png */; };
+		3DE6726B1AF0B78C00A26559 /* weiboOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE672621AF0B78C00A26559 /* weiboOn@2x.png */; };
+		3DE6729F1AF21A9900A26559 /* MGAPIManagerExt+Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6729E1AF21A9900A26559 /* MGAPIManagerExt+Share.swift */; };
+		3DE672A11AF70D2100A26559 /* MGAPIManagerExt+Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE672A01AF70D2100A26559 /* MGAPIManagerExt+Status.swift */; };
 		3DFA1A7C1ADFB389003E3177 /* duckling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA1A7B1ADFB389003E3177 /* duckling.jpg */; };
 		3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */; };
 		B04C9D7C1AE0A49400CD9405 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B04C9D7B1AE0A49400CD9405 /* FXBlurView.m */; };
@@ -233,7 +251,25 @@
 		3DB389111ADE18AB003361A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DB389121ADE18AB003361A6 /* MuGuangIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuGuangIOSTests.swift; sourceTree = "<group>"; };
 		3DB3891C1ADE1BD9003361A6 /* MGLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGLogInViewController.swift; sourceTree = "<group>"; };
+		3DB3E2641AEE359900361C34 /* MGPublishStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishStatusViewController.swift; sourceTree = "<group>"; };
+		3DB3E2661AEE37F500361C34 /* UIColorExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
+		3DB3E26A1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishStatusViewControllerExt.swift; sourceTree = "<group>"; };
 		3DB6C6AA1ADF835B00606578 /* MGPublishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishViewController.swift; sourceTree = "<group>"; };
+		3DE6724E1AF081A500A26559 /* MGPublishPhotoTableViewCellExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishPhotoTableViewCellExt.swift; sourceTree = "<group>"; };
+		3DE672521AF0871500A26559 /* MGPublishPhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishPhotoTableViewCell.swift; sourceTree = "<group>"; };
+		3DE672541AF0894D00A26559 /* MGPhotoCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotoCollectionCell.swift; sourceTree = "<group>"; };
+		3DE672561AF0A9B900A26559 /* MGPublishTextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPublishTextTableViewCell.swift; sourceTree = "<group>"; };
+		3DE672581AF0B2C900A26559 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
+		3DE6725A1AF0B78C00A26559 /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
+		3DE6725B1AF0B78C00A26559 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		3DE6725C1AF0B78C00A26559 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
+		3DE6725D1AF0B78C00A26559 /* emotion@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emotion@2x.png"; sourceTree = "<group>"; };
+		3DE6725F1AF0B78C00A26559 /* wechatOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechatOff@2x.png"; sourceTree = "<group>"; };
+		3DE672601AF0B78C00A26559 /* wechatOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechatOn@2x.png"; sourceTree = "<group>"; };
+		3DE672611AF0B78C00A26559 /* weiboOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weiboOff@2x.png"; sourceTree = "<group>"; };
+		3DE672621AF0B78C00A26559 /* weiboOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weiboOn@2x.png"; sourceTree = "<group>"; };
+		3DE6729E1AF21A9900A26559 /* MGAPIManagerExt+Share.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MGAPIManagerExt+Share.swift"; sourceTree = "<group>"; };
+		3DE672A01AF70D2100A26559 /* MGAPIManagerExt+Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MGAPIManagerExt+Status.swift"; sourceTree = "<group>"; };
 		3DFA1A7B1ADFB389003E3177 /* duckling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = duckling.jpg; sourceTree = "<group>"; };
 		3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotosViewControllerExtensions.swift; sourceTree = "<group>"; };
 		40C8118B762B513DB0757678 /* Pods-MuGuangIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -358,6 +394,7 @@
 		3D2B01A01AE6347D00F2BBC8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				3DB3E2661AEE37F500361C34 /* UIColorExt.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -391,7 +428,16 @@
 			isa = PBXGroup;
 			children = (
 				3D2B01D61AE9DCA900F2BBC8 /* sina@2x.png */,
+				3DE6725A1AF0B78C00A26559 /* add@2x.png */,
+				3DE6725B1AF0B78C00A26559 /* back@2x.png */,
+				3DE6725C1AF0B78C00A26559 /* close@2x.png */,
+				3DE6725D1AF0B78C00A26559 /* emotion@2x.png */,
+				3DE6725F1AF0B78C00A26559 /* wechatOff@2x.png */,
+				3DE672601AF0B78C00A26559 /* wechatOn@2x.png */,
+				3DE672611AF0B78C00A26559 /* weiboOff@2x.png */,
+				3DE672621AF0B78C00A26559 /* weiboOn@2x.png */,
 				3D9E12BE1AEE081F007FEFCF /* background.png */,
+				3DE672581AF0B2C900A26559 /* pin@2x.png */,
 				3D2B01E51AE9E71B00F2BBC8 /* sina@3x.png */,
 				3D2B01E31AE9E70700F2BBC8 /* logo.png */,
 			);
@@ -403,6 +449,8 @@
 			children = (
 				3D879FAF1AEA1480004CBF47 /* MGAPIManager.swift */,
 				3D879FB31AEA2759004CBF47 /* MGAPIManagerExt+User.swift */,
+				3DE6729E1AF21A9900A26559 /* MGAPIManagerExt+Share.swift */,
+				3DE672A01AF70D2100A26559 /* MGAPIManagerExt+Status.swift */,
 			);
 			name = api;
 			sourceTree = "<group>";
@@ -530,7 +578,6 @@
 			isa = PBXGroup;
 			children = (
 				3D879FAE1AEA1111004CBF47 /* api */,
-				3D2B01CD1AE9208600F2BBC8 /* Images */,
 				3D2B01BA1AE9064400F2BBC8 /* no_use */,
 				3D2B01A01AE6347D00F2BBC8 /* Extension */,
 				3DB388FC1ADE18AB003361A6 /* AppDelegate.swift */,
@@ -551,6 +598,7 @@
 		3DB388FA1ADE18AB003361A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3D2B01CD1AE9208600F2BBC8 /* Images */,
 				B063F3DB1ADE46F800E8A1AA /* MuGuangIOS-Bridging-Header.h */,
 				3DB388FB1ADE18AB003361A6 /* Info.plist */,
 			);
@@ -574,11 +622,33 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3DFA1A6D1ADF879A003E3177 /* ViewController */ = {
+		3DB3E2601AEE350F00361C34 /* Publish */ = {
 			isa = PBXGroup;
 			children = (
 				3D95A5A31AE53AC60031DD9F /* TGCameraViewController */,
+				3DB3E2641AEE359900361C34 /* MGPublishStatusViewController.swift */,
+				3DB3E26A1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift */,
+				3DE672521AF0871500A26559 /* MGPublishPhotoTableViewCell.swift */,
+				3DE6724E1AF081A500A26559 /* MGPublishPhotoTableViewCellExt.swift */,
+				3DE672541AF0894D00A26559 /* MGPhotoCollectionCell.swift */,
+				3DE672561AF0A9B900A26559 /* MGPublishTextTableViewCell.swift */,
+			);
+			name = Publish;
+			sourceTree = "<group>";
+		};
+		3DB3E2611AEE352400361C34 /* Login */ = {
+			isa = PBXGroup;
+			children = (
 				3D2B01CA1AE915F300F2BBC8 /* MGLaunchingViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		3DFA1A6D1ADF879A003E3177 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3DB3E2611AEE352400361C34 /* Login */,
+				3DB3E2601AEE350F00361C34 /* Publish */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -828,24 +898,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DE672591AF0B2C900A26559 /* pin@2x.png in Resources */,
 				F9EFE2541AEE28BB00334C4F /* Main.storyboard in Resources */,
 				3D2B01D71AE9DCA900F2BBC8 /* sina@2x.png in Resources */,
+				3DE6726A1AF0B78C00A26559 /* weiboOff@2x.png in Resources */,
 				3D9E12BF1AEE081F007FEFCF /* background.png in Resources */,
+				3DE672681AF0B78C00A26559 /* wechatOff@2x.png in Resources */,
 				3D2B01AF1AE736C000F2BBC8 /* MGFilterPhotoCollectionViewCell.xib in Resources */,
 				B0E5208D1ADE732100B8F451 /* ShareSDKFlatShareViewUI.bundle in Resources */,
+				3DE672661AF0B78C00A26559 /* emotion@2x.png in Resources */,
 				B0E520871ADE732100B8F451 /* ShareSDKLocalizable.strings in Resources */,
 				3DFA1A7C1ADFB389003E3177 /* duckling.jpg in Resources */,
 				3D95A5ED1AE53AC60031DD9F /* TGCameraViewController.xcassets in Resources */,
+				3DE672631AF0B78C00A26559 /* add@2x.png in Resources */,
 				3DB389041ADE18AB003361A6 /* Images.xcassets in Resources */,
 				3D2B01E41AE9E70700F2BBC8 /* logo.png in Resources */,
 				3D9DC8BD1AE11A140022F9C1 /* Shader1.fsh in Resources */,
 				3D2B01B51AE7A60C00F2BBC8 /* test.png in Resources */,
 				B0E520881ADE732100B8F451 /* Resource.bundle in Resources */,
+				3DE672651AF0B78C00A26559 /* close@2x.png in Resources */,
 				3D2B01E61AE9E71B00F2BBC8 /* sina@3x.png in Resources */,
 				B04C9D871AE0AFAC00CD9405 /* bg-addbutton@2x.png in Resources */,
+				3DE672641AF0B78C00A26559 /* back@2x.png in Resources */,
 				F91E62711AF20066003D3C24 /* MGCollectionHeaderView.xib in Resources */,
 				F98A8F831AE9137C004DED25 /* Second.storyboard in Resources */,
+				3DE672691AF0B78C00A26559 /* wechatOn@2x.png in Resources */,
 				B0E5208B1ADE732100B8F451 /* WeiboSDK.bundle in Resources */,
+				3DE6726B1AF0B78C00A26559 /* weiboOn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -904,19 +983,24 @@
 				3D2B01A91AE64F0500F2BBC8 /* MGVideoCamera.m in Sources */,
 				3D95A5E41AE53AC60031DD9F /* TGAssetsLibrary.m in Sources */,
 				3D95A5EA1AE53AC60031DD9F /* TGCameraShot.m in Sources */,
+				3DE672551AF0894D00A26559 /* MGPhotoCollectionCell.swift in Sources */,
 				3D95A5DE1AE53AC60031DD9F /* UIImage+CameraFilters.m in Sources */,
 				3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */,
 				3D2B01C51AE9079D00F2BBC8 /* PhotoFilterCollectionViewCell.swift in Sources */,
 				3D95A5E51AE53AC60031DD9F /* TGCamera.m in Sources */,
 				3D2B01AD1AE7358800F2BBC8 /* MGFilterPhotoCollectionViewCell.m in Sources */,
 				3D2B01C21AE9079D00F2BBC8 /* FilteredImageView.swift in Sources */,
+				3DE6724F1AF081A500A26559 /* MGPublishPhotoTableViewCellExt.swift in Sources */,
 				3D95A5F11AE53AC60031DD9F /* TGCameraSlideDownView.m in Sources */,
 				3D95A5E81AE53AC60031DD9F /* TGCameraFocus.m in Sources */,
 				3D2B01B31AE79F6900F2BBC8 /* CIFilter+mgFiliters.m in Sources */,
 				3D95A5E91AE53AC60031DD9F /* TGCameraGrid.m in Sources */,
+				3DE6729F1AF21A9900A26559 /* MGAPIManagerExt+Share.swift in Sources */,
 				3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */,
+				3DE672571AF0A9B900A26559 /* MGPublishTextTableViewCell.swift in Sources */,
 				3D0267531AE4E18B004FE669 /* MGConstants.swift in Sources */,
 				3D95A5E11AE53AC60031DD9F /* TGCameraViewController.m in Sources */,
+				3DE672A11AF70D2100A26559 /* MGAPIManagerExt+Status.swift in Sources */,
 				3D0267481AE4CF00004FE669 /* MGPublisherViewController.swift in Sources */,
 				3D2B01C71AE9079D00F2BBC8 /* ScalarFilterParameter.swift in Sources */,
 				3D95A5E61AE53AC60031DD9F /* TGCameraColor.m in Sources */,
@@ -944,6 +1028,7 @@
 				F9EFE24F1AEDD1A400334C4F /* MGFoucsViewController.swift in Sources */,
 				3D2B01C41AE9079D00F2BBC8 /* ParameterAdjustmentView.swift in Sources */,
 				3D95A5E21AE53AC60031DD9F /* TGPhotoViewController.m in Sources */,
+				3DB3E2651AEE359900361C34 /* MGPublishStatusViewController.swift in Sources */,
 				3D2B01B91AE8929A00F2BBC8 /* CALayer+Additions.m in Sources */,
 				F98081641AE4CD7900E217DC /* MGMonitorView.swift in Sources */,
 				B04C9D831AE0A67600CD9405 /* AwesomeMenuItem.m in Sources */,
@@ -951,10 +1036,13 @@
 				F980816C1AE5F1AB00E217DC /* MGCardDetailController.swift in Sources */,
 				F98A8F7E1AE8FD7A004DED25 /* ArcView.m in Sources */,
 				F98081681AE5F03A00E217DC /* MGCard.swift in Sources */,
+				3DB3E26B1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift in Sources */,
+				3DE672531AF0871500A26559 /* MGPublishPhotoTableViewCell.swift in Sources */,
 				F98A8F851AE9E47F004DED25 /* MGCollectionHeaderView.swift in Sources */,
 				F98A8F811AE9014A004DED25 /* MGButton.swift in Sources */,
 				F9E2D4391AF74B640036D606 /* MGMessageViewController.swift in Sources */,
 				F980816A1AE5F14F00E217DC /* MGUserViewController.swift in Sources */,
+				3DB3E2671AEE37F500361C34 /* UIColorExt.swift in Sources */,
 				B04C9D7C1AE0A49400CD9405 /* FXBlurView.m in Sources */,
 				B04C9D821AE0A67600CD9405 /* AwesomeMenu.m in Sources */,
 				F98081661AE4CED800E217DC /* MGLocationManager.swift in Sources */,

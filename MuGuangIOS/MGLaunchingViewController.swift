@@ -16,6 +16,7 @@ class MGLaunchingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBarHidden = true
     }
 
     func moveBackgroundImage () {
@@ -25,7 +26,7 @@ class MGLaunchingViewController: UIViewController {
                 self.moveImageView.center.x = -(self.moveImageView.center.x - self.view.frame.size.width)
                 self.moveImageView.updateConstraintsIfNeeded()
             }, completion: nil)
-        testBlcok()
+//        testBlcok()
     }
 
     
@@ -37,17 +38,18 @@ class MGLaunchingViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.moveBackgroundImage()
+        
+        //FIXME: need delete
+        //let any: AnyObject = ""
+        //self.testAction(any)
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         self.moveImageView.layer.removeAllAnimations()
-        
-
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -68,6 +70,8 @@ class MGLaunchingViewController: UIViewController {
             "Other_Info_3": ["key1": "obj1", "key2": "obj2"]]
         
         WeiboSDK.sendRequest(wbRequest)
+        
+
     }
     /*
     // MARK: - Navigation

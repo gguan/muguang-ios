@@ -12,4 +12,8 @@ var d: AnyObject? = dic["key3"]!["kk2"]
 
 
 
+let i = 7
 
+(i + 3 - 1)/3
+
+i%3

@@ -27,9 +27,8 @@ class MGAPIManager: AFHTTPRequestOperationManager {
         
         //Token 设置到头文件中
         if let accessToken: AnyObject = NSUserDefaults.standardUserDefaults().valueForKey(kAccessToken) {
-                self.requestSerializer.setValue(accessToken as! String, forHTTPHeaderField:"access_token" )
+            self.requestSerializer.setValue(accessToken as! String, forHTTPHeaderField:"X-Auth-Token" )
         }
-        
     }
     
     required init(coder aDecoder: NSCoder) {

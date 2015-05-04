@@ -49,6 +49,12 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        /**
+        * 测试
+        */
+        //FIXME: need delete
+        //let btn = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        //self.methodForButton(btn)
     }
     
     override func viewDidLoad() {
@@ -58,7 +64,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         
         // 未登录的话 push到登录界面
         
-        if let lg: AnyObject =  NSUserDefaults.standardUserDefaults().valueForKey(kAccessToken) {
+        if  NSUserDefaults.standardUserDefaults().valueForKey(kAccessToken) == nil {
             var mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
             var launchingVC = mainStoryboard.instantiateViewControllerWithIdentifier("MGLaunchingViewController") as! MGLaunchingViewController
             launchingVC.testBlcok = {() -> Void in
@@ -234,6 +240,7 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
          */
         self.cameraView.startRunning()
         MGLocationManager.shared.startUpdating()
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -248,16 +255,8 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     
     // 拍照按钮的回调
     func methodForButton(btn: UIButton) {
-        
-        
-//        var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-//        var viewController = storyBoard.instantiateViewControllerWithIdentifier("MGPublishViewController") as? UIViewController
-//        if let vc = viewController {
-//            self.presentViewController(vc, animated: true, completion: nil)
-//        }
         var nav = TGCameraNavigationController.newWithCameraDelegate(self)
         self.presentViewController(nav, animated: true, completion: nil)
-        
     }
     
     // 初始化扇形菜单
@@ -426,5 +425,6 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     func cameraDidSelectAlbumPhoto(image: UIImage!) {
         self.dismissViewControllerAnimated(false, completion: nil)
     }
+    
 }
 

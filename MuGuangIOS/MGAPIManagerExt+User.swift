@@ -36,15 +36,17 @@ extension MGAPIManager {
     /**
     *   注册用户
     *
-    **************************
-    *
-    *
+    */
+    
+    /*
+      参数范例
     "uid":"微博账号id",
     "oauth2_info":{
     "access_token": "必填",
     "token_type":"选填",
     "expires_in":"选填",
     "refresh_token":"选填"
+    "}
     */
     
 
@@ -64,6 +66,47 @@ extension MGAPIManager {
                   
             self.POST(path, parameters: parameters, success: success, failure: failure)
     }
+    
+    
+    // TODO:
+    /**
+    *
+    * 获取七牛Token
+    */
+    
+    func qiniuUploadToken(success:((AFHTTPRequestOperation!, AnyObject!) -> Void)!,
+                          failure:((AFHTTPRequestOperation!, NSError!) -> Void)!) {
+        
+            let path = "api/v1/upToken/bucket"
+    
+            self.GET(path, parameters: nil, success: success, failure: failure)
+    }
+
+ 
+    /**
+    *
+    * 更新Token
+    */
+    
+    /**
+    *   参数范例
+        {
+        "user_id":"552fsff1099415239016b432d",
+        "refresh_token":"5gm2q956scjhkrum4400jlr6f9"
+        }
+    */
+    
+    func updateTokenByUserIdentifer(userIdentifer: String,
+                                     refreshToken: String,
+                                          success:((AFHTTPRequestOperation!,AnyObject!) -> Void)!,
+                                          failure:((AFHTTPRequestOperation!, NSError!) -> Void)!) {
+                                        
+            let path       = "/api/v1/renewToken"
+            let parameters = ["user_id":userIdentifer,"refresh_token":refreshToken]
+            self.POST(path, parameters: parameters, success: success, failure: failure)
+                                            
+    }
+    
     
 /*
     func getUserInfo(success: successBlock, failure: failureBlock) {

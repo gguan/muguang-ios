@@ -24,10 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
         WeiboSDK.enableDebugMode(true)
         WeiboSDK.registerApp(SinaAppKey)
         
-        //程序主体颜色
-        //window?.tintColor = UIColor.redColor()
-        
-        
+        self.configureMainUI()
         // Test login
         //NSUserDefaults.standardUserDefaults().removeObjectForKey(kAccessToken)
         
@@ -42,6 +39,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
 //        });
         return true
     }
+    
+    func configureMainUI () {
+        //程序主体颜色
+        //window?.tintColor = UIColor.MGMainColor()
+        
+        //UINavigationBar.appearance().barTintColor = UIColor.MGMainColor()
+        UINavigationBar.appearance().translucent = true
+//        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
+    }
+    
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -100,9 +109,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
                 
                 //注册用户
                 MGAPIManager.sharedInstance.registerUser(uid as! String,
-                    accessToken: accessToken as! String,
+                     accessToken: accessToken as! String,
                     refreshToken: refreshToken as! String,
-                    success: { (operation: AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+                         success: { (operation: AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                         
 //                        response data
                         
@@ -115,29 +124,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
 //                        }
                         
                         
-                        self.rewrite()
+                        self.rewrite(response as! NSDictionary)
                     },
                     failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                         println(operation.response.URL,operation.responseObject,operation.response.statusCode)
-                        
-                        self.rewrite()
+                        self.rewrite(nil)
                 })
             }
         }
     }
     
     
-    func rewrite() {
-        let access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0MzAxMjU4MjgsInN1YiI6IjgzNWJmYmYyMWUzMTRhM2EwN2ZmNjRiNmQwNWUyODI4Mzc5NWVkMDBkNTUwMTQ4MDM3OTFmODEwMWQ4MDAwMjlmNDYwNzc4MGM4MWYxZjg5N2RiYjQxOTY3MmZhNmEzMDczNWNjZGQzMzY0YjI4YTExZTAyNmQ1NTE2YTY3YTk3IiwiaXNzIjoibXVndWFuZyIsImp0aSI6IjRhOTBlY2U4OGExOThiNjg3YzkzODQxMTFkMWZkMjc5ZDRiMzM0N2EzYjNmZDEyMTFmMDIzMDI5MGZmNzMxMjQiLCJpYXQiOjE0MzAxMTg2Mjh9.mUhrJOmXMoMLUYhfcwFjk0pLoFYPgQyWzjy3DCFu6vE"
-        
-        //Rewrite it
-        NSUserDefaults.standardUserDefaults().setObject(access_token,  forKey: kAccessToken)
-        //NSUserDefaults.standardUserDefaults().setObject(refreshToken, forKey: kRefreshToken)
-        
-        if let nav = self.window?.rootViewController as? UINavigationController {
-            nav.popToRootViewControllerAnimated(false)
+    func rewrite(responseData: NSDictionary!) {
+        if responseData != nil {
+            
+            let access_token = responseData["access_token"] as! String
+            let refreshToken = responseData["refresh_token"] as! String
+            println(access_token)
+            println(refreshToken)
+            //Rewrite it
+            NSUserDefaults.standardUserDefaults().setObject(access_token,  forKey: kAccessToken)
+            NSUserDefaults.standardUserDefaults().setObject(refreshToken, forKey: kRefreshToken)
+            
+            if let nav = self.window?.rootViewController as? UINavigationController {
+                nav.popToRootViewControllerAnimated(false)
+            }
         }
-        
     }
 }
 
