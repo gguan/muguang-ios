@@ -14,12 +14,17 @@ class MGPublishStatusViewController: UIViewController {
 
     var images: NSMutableArray!
     
+    
+    var imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.configureUI()
         
         images = ["","","","","","",""]
+        
+        self.imagePicker.delegate = self
         
         MGAPIManager.sharedInstance.qiniuUploadToken({ (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
             println(responseObject)
@@ -28,6 +33,7 @@ class MGPublishStatusViewController: UIViewController {
                 println(operation.responseData)
                 println(operation.responseObject)
         })
+        
     }
 
     
@@ -82,6 +88,7 @@ class MGPublishStatusViewController: UIViewController {
                     }
                 }
         })
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

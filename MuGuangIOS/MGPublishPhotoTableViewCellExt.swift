@@ -14,24 +14,38 @@ extension MGPublishPhotoTableViewCell: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.images.count
+        return self.images.count + 1
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(
             "MGPhotoCollectionCell", forIndexPath: indexPath) as! MGPhotoCollectionCell
-        //cell.image.image = UIImage(named: "close.png")
-        cell.contentView.backgroundColor = UIColor.clearColor()
-        cell.deleteImageAlertClosure = { ()-> () in
-            self.alertClosure!(indexPath: indexPath)
+        
+        if indexPath.row == self.images.count {
+            cell.image.image                 = UIImage(named: "add.png")
+            cell.deleteButton.hidden         = true
+            cell.image.transform             = CGAffineTransformMakeScale(0.5, 0.5)
+
+        }else {
+            //cell.image.image               = UIImage(named: "close.png")
+            cell.contentView.backgroundColor = UIColor.clearColor()
+            cell.deleteButton.hidden         = false
+            
+            cell.deleteImageAlertClosure     = { ()-> () in
+                self.alertClosure!(indexPath: indexPath)
+            }
+            
         }
         return cell
     }
     
-//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        
-//    }
-//    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == self.images.count {
+            //添加图片
+            self.addImageToPublish!()
+        }
+    }
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(10, 6, 10, 6)
     }

@@ -204,6 +204,7 @@
                                                                 </mask>
                                                             </variation>
                                                             <connections>
+                                                                <outlet property="deleteButton" destination="jC1-6y-GGe" id="Agf-d7-Sld"/>
                                                                 <outlet property="image" destination="1js-4n-Jes" id="kaK-Xy-SF8"/>
                                                             </connections>
                                                         </collectionViewCell>
