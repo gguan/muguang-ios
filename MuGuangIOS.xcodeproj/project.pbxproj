@@ -110,6 +110,8 @@
 		B0E5209D1ADE74C600B8F451 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E5209C1ADE74C600B8F451 /* ImageIO.framework */; };
 		B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */; };
 		D9CC3AA9770E281BE598BCE3 /* libPods-MuGuangIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62E436E1149E090D1A4642 /* libPods-MuGuangIOS.a */; };
+		F91E62711AF20066003D3C24 /* MGCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91E62701AF20066003D3C24 /* MGCollectionHeaderView.xib */; };
+		F93EABA51AEF6804000FB1C7 /* MGUserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93EABA41AEF6804000FB1C7 /* MGUserInfoCell.swift */; };
 		F98081641AE4CD7900E217DC /* MGMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081631AE4CD7900E217DC /* MGMonitorView.swift */; };
 		F98081661AE4CED800E217DC /* MGLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081651AE4CED800E217DC /* MGLocationManager.swift */; };
 		F98081681AE5F03A00E217DC /* MGCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081671AE5F03A00E217DC /* MGCard.swift */; };
@@ -122,6 +124,8 @@
 		F98A8F831AE9137C004DED25 /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F98A8F821AE9137C004DED25 /* Second.storyboard */; };
 		F98A8F851AE9E47F004DED25 /* MGCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F841AE9E47F004DED25 /* MGCollectionHeaderView.swift */; };
 		F98A8F891AEA16F2004DED25 /* MGUserButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F881AEA16F2004DED25 /* MGUserButton.swift */; };
+		F9D3EB7B1AEFBC8E002EFE3C /* MGSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D3EB7A1AEFBC8E002EFE3C /* MGSettingCell.swift */; };
+		F9E2D4391AF74B640036D606 /* MGMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E2D4381AF74B640036D606 /* MGMessageViewController.swift */; };
 		F9EFE24D1AEDD07000334C4F /* MGSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFE24C1AEDD07000334C4F /* MGSettingViewController.swift */; };
 		F9EFE24F1AEDD1A400334C4F /* MGFoucsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFE24E1AEDD1A400334C4F /* MGFoucsViewController.swift */; };
 		F9EFE2511AEDD1C900334C4F /* MGFansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFE2501AEDD1C900334C4F /* MGFansViewController.swift */; };
@@ -302,6 +306,8 @@
 		B0E5209A1ADE74A100B8F451 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B0E5209C1ADE74C600B8F451 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		B0E520A01ADE7F9A00B8F451 /* MGCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCameraView.swift; sourceTree = "<group>"; };
+		F91E62701AF20066003D3C24 /* MGCollectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MGCollectionHeaderView.xib; sourceTree = "<group>"; };
+		F93EABA41AEF6804000FB1C7 /* MGUserInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGUserInfoCell.swift; sourceTree = "<group>"; };
 		F98081631AE4CD7900E217DC /* MGMonitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGMonitorView.swift; sourceTree = "<group>"; };
 		F98081651AE4CED800E217DC /* MGLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGLocationManager.swift; sourceTree = "<group>"; };
 		F98081671AE5F03A00E217DC /* MGCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCard.swift; sourceTree = "<group>"; };
@@ -315,6 +321,8 @@
 		F98A8F821AE9137C004DED25 /* Second.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
 		F98A8F841AE9E47F004DED25 /* MGCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCollectionHeaderView.swift; sourceTree = "<group>"; };
 		F98A8F881AEA16F2004DED25 /* MGUserButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGUserButton.swift; sourceTree = "<group>"; };
+		F9D3EB7A1AEFBC8E002EFE3C /* MGSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGSettingCell.swift; sourceTree = "<group>"; };
+		F9E2D4381AF74B640036D606 /* MGMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGMessageViewController.swift; sourceTree = "<group>"; };
 		F9EFE24C1AEDD07000334C4F /* MGSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGSettingViewController.swift; sourceTree = "<group>"; };
 		F9EFE24E1AEDD1A400334C4F /* MGFoucsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGFoucsViewController.swift; sourceTree = "<group>"; };
 		F9EFE2501AEDD1C900334C4F /* MGFansViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGFansViewController.swift; sourceTree = "<group>"; };
@@ -709,8 +717,11 @@
 				F98A8F7D1AE8FD7A004DED25 /* MGAvatarView.swift */,
 				F98A8F801AE9014A004DED25 /* MGButton.swift */,
 				F98A8F841AE9E47F004DED25 /* MGCollectionHeaderView.swift */,
+				F91E62701AF20066003D3C24 /* MGCollectionHeaderView.xib */,
 				F98A8F881AEA16F2004DED25 /* MGUserButton.swift */,
 				F9EFE2521AEDDEB100334C4F /* MGPhotoCollectionViewCell.swift */,
+				F93EABA41AEF6804000FB1C7 /* MGUserInfoCell.swift */,
+				F9D3EB7A1AEFBC8E002EFE3C /* MGSettingCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -726,6 +737,7 @@
 				F9EFE24C1AEDD07000334C4F /* MGSettingViewController.swift */,
 				F9EFE24E1AEDD1A400334C4F /* MGFoucsViewController.swift */,
 				F9EFE2501AEDD1C900334C4F /* MGFansViewController.swift */,
+				F9E2D4381AF74B640036D606 /* MGMessageViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -908,6 +920,7 @@
 				3D2B01E61AE9E71B00F2BBC8 /* sina@3x.png in Resources */,
 				B04C9D871AE0AFAC00CD9405 /* bg-addbutton@2x.png in Resources */,
 				3DE672641AF0B78C00A26559 /* back@2x.png in Resources */,
+				F91E62711AF20066003D3C24 /* MGCollectionHeaderView.xib in Resources */,
 				F98A8F831AE9137C004DED25 /* Second.storyboard in Resources */,
 				3DE672691AF0B78C00A26559 /* wechatOn@2x.png in Resources */,
 				B0E5208B1ADE732100B8F451 /* WeiboSDK.bundle in Resources */,
@@ -1001,6 +1014,7 @@
 				3D95A5F01AE53AC60031DD9F /* TGCameraGridView.m in Sources */,
 				3D95A5F21AE53AC60031DD9F /* TGCameraSlideUpView.m in Sources */,
 				F9EFE2531AEDDEB100334C4F /* MGPhotoCollectionViewCell.swift in Sources */,
+				F93EABA51AEF6804000FB1C7 /* MGUserInfoCell.swift in Sources */,
 				3D95A5DF1AE53AC60031DD9F /* TGCameraAuthorizationViewController.m in Sources */,
 				3DB388FD1ADE18AB003361A6 /* AppDelegate.swift in Sources */,
 				B063F3D71ADE3B3D00E8A1AA /* MGBaseViewController.swift in Sources */,
@@ -1009,6 +1023,7 @@
 				3D95A5E71AE53AC60031DD9F /* TGCameraFlash.m in Sources */,
 				3D95A5F31AE53AC60031DD9F /* TGCameraSlideView.m in Sources */,
 				3D2B01C31AE9079D00F2BBC8 /* LabeledSliderView.swift in Sources */,
+				F9D3EB7B1AEFBC8E002EFE3C /* MGSettingCell.swift in Sources */,
 				B0E520A11ADE7F9A00B8F451 /* MGCameraView.swift in Sources */,
 				F9EFE24F1AEDD1A400334C4F /* MGFoucsViewController.swift in Sources */,
 				3D2B01C41AE9079D00F2BBC8 /* ParameterAdjustmentView.swift in Sources */,
@@ -1025,6 +1040,7 @@
 				3DE672531AF0871500A26559 /* MGPublishPhotoTableViewCell.swift in Sources */,
 				F98A8F851AE9E47F004DED25 /* MGCollectionHeaderView.swift in Sources */,
 				F98A8F811AE9014A004DED25 /* MGButton.swift in Sources */,
+				F9E2D4391AF74B640036D606 /* MGMessageViewController.swift in Sources */,
 				F980816A1AE5F14F00E217DC /* MGUserViewController.swift in Sources */,
 				3DB3E2671AEE37F500361C34 /* UIColorExt.swift in Sources */,
 				B04C9D7C1AE0A49400CD9405 /* FXBlurView.m in Sources */,

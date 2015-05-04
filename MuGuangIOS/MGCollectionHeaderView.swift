@@ -7,16 +7,25 @@
 //
 
 import UIKit
+import QuartzCore
+import CoreImage
+
+let kUserInfoHeaderBlurViewAlpha: CGFloat = 0.66
 
 class MGCollectionHeaderView: UICollectionReusableView {
     // 封面
     @IBOutlet weak var coverView: UIImageView!
+    // 模糊背景
+    @IBOutlet weak var blurView: FXBlurView!
+    // 内容的容器
+    @IBOutlet weak var contentView: UIView!
     // 城市
     @IBOutlet weak var cityLabel: UILabel!
     // 头像＋用户名
     @IBOutlet weak var avatarView: MGAvatarView!
     // 个人说明
     @IBOutlet weak var briefLabel: UILabel!
+    // 按钮
     @IBOutlet weak var buttonView: UIView!
     // 照片按钮
     @IBOutlet weak var photoButton: MGUserButton!
@@ -29,12 +38,15 @@ class MGCollectionHeaderView: UICollectionReusableView {
     @IBOutlet weak var sendMessage: UIButton!
     // 关注按钮
     @IBOutlet weak var followButton: UIButton!
-    lazy var separateLine: CALayer = {
-        var line: CALayer = CALayer()
-        line.backgroundColor = UIColor.transformColor(kSeparateLineColorRed, alpha: 1.0).CGColor
-        self.buttonView.layer.addSublayer(line)
-        return line
-    }()
+    // 名字Label
+    @IBOutlet weak var nameLabel: UILabel!
+//    // 分割线
+//    lazy var separateLine: CALayer = {
+//        var line: CALayer = CALayer()
+//        line.backgroundColor = UIColor.transformColor(kSeparateLineColorRed, alpha: 1.0).CGColor
+//        self.buttonView.layer.addSublayer(line)
+//        return line
+//    }()
     
     weak var delegate: MGCollectionHeaderViewDelegate?
     // 照片按钮的方法
@@ -60,8 +72,40 @@ class MGCollectionHeaderView: UICollectionReusableView {
         self.delegate?.clickedFollow()
     }
 
+    // 封面加红色蒙版
+    func setCoverImageByBlur(image: UIImage?) {
+        // 模糊滤镜
+//        var filterImage = image?.blurredImageWithRadius(2, iterations: 3, tintColor: UIColor.transformColor(kTextColorRed, alpha: 1))
+//        // 蒙版
+//        var targetSize = self.coverView.bounds.size
+//        UIGraphicsBeginImageContext(targetSize)
+//        var context: CGContextRef = UIGraphicsGetCurrentContext();
+//        filterImage?.drawInRect(self.coverView.bounds)
+//        
+////        var color = UIColor.transformColor("d81e04", alpha: 1)
+////        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+////        color.getRed(&r, green: &g, blue: &b, alpha: &a)
+////        // overlay a red rectangle
+////        CGContextSetBlendMode(context, kCGBlendModeOverlay)
+////        CGContextSetRGBFillColor (context, r, g, b, a);
+//        CGContextFillRect(context, self.coverView.bounds)
+//        
+//        // redraw gem
+//        filterImage?.drawInRect(self.coverView.bounds, blendMode: kCGBlendModeDestinationIn, alpha: 1.0)
+//        filterImage = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
+
+        self.coverView.image = image
+    }
+    
     override func awakeFromNib() {
-        self.briefLabel.textColor = UIColor.transformColor(kTextColorGray, alpha: 1.0)
+    
+        self.blurView.blurRadius = 5
+        self.blurView.tintColor = UIColor.whiteColor()
+        self.blurView.dynamic = false
+        self.blurView.alpha = kUserInfoHeaderBlurViewAlpha
+
+        self.briefLabel.textColor = UIColor.whiteColor()
         self.briefLabel.font = UIFont.systemFontOfSize(12.0)
         
         self.sendMessage.backgroundColor = UIColor.transformColor(kTextColorRed, alpha: 1.0)
@@ -83,15 +127,40 @@ class MGCollectionHeaderView: UICollectionReusableView {
         self.followButton.setImage(UIImage(named: "add_follow"), forState: .Normal)
         self.followButton.setImage(UIImage(named: "followed"), forState: .Selected)
         self.followButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        
+        var tapGR1 = UITapGestureRecognizer(target: self, action: Selector("methodForTapAvatar:"))
+        self.avatarView.addGestureRecognizer(tapGR1)
+        
+        var tapGR2 = UITapGestureRecognizer(target: self, action: Selector("methodForTapCover:"))
+        self.contentView.addGestureRecognizer(tapGR2)
+    }
+    
+    // 点击的手势
+    func methodForTapAvatar(tap: UITapGestureRecognizer) {
+        self.delegate?.clickedAvatar()
+    }
+    func methodForTapCover(tap: UITapGestureRecognizer) {
+        self.delegate?.clickedCover()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.separateLine.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), 0.5)
+//        self.separateLine.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), 0.5)
+        self.photoButton.countLabel.textColor = UIColor.transformColor(kTextColorRed, alpha: 1.0)
+        self.photoButton.textLabel.textColor = UIColor.transformColor(kTextColorRed, alpha: 1.0)
+
     }
 }
 
 protocol MGCollectionHeaderViewDelegate: NSObjectProtocol {
+    /**
+    *  点击封面
+    */
+    func clickedCover()
+    /**
+    *  点击头像
+    */
+    func clickedAvatar()
     /**
     *  点击照片
     */

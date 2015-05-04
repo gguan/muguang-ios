@@ -8,16 +8,81 @@
 
 import UIKit
 
+// 带边框的头像
+class MGAvatarImageView: UIView {
+    // 圆形头像
+    let avatarView = UIImageView(frame: CGRectZero)
+    // 圆形头像边框
+    let borderView = UIImageView(frame: CGRectZero)
+    // 边框宽度
+    var borderWidth: CGFloat = 5 {
+        didSet {
+            self.layoutIfNeeded()
+        }
+    }
+    // 边框颜色
+    var borderColor: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5) {
+        didSet {
+            self.layoutIfNeeded()
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = UIColor.clearColor()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func awakeFromNib() {
+        self.backgroundColor = UIColor.clearColor()
+    }
+    
+    func setAvatarImage(image: UIImage?) {
+        self.avatarView.image = image
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if borderView.superview == nil {
+            self.addSubview(borderView)
+        }
+        if avatarView.superview == nil {
+            borderView.addSubview(avatarView)
+        }
+        self.borderView.frame = self.bounds
+        self.avatarView.frame = CGRectInset(self.borderView.bounds, self.borderWidth, self.borderWidth)
+        
+        avatarView.layer.masksToBounds = true
+        avatarView.layer.cornerRadius = avatarView.frame.size.width / 2
+        
+        borderView.layer.masksToBounds = true
+        borderView.layer.cornerRadius = borderView.frame.size.width / 2
+        borderView.layer.borderWidth = self.borderWidth
+        borderView.layer.borderColor = borderColor.CGColor
+    }
+}
+
 class MGAvatarView: UIView {
     // 弧形Label
     let arcView = ArcView(frame: CGRectZero)
     // 圆形头像
-    let avatarView = UIImageView(frame: CGRectZero)
+    let avatar = MGAvatarImageView(frame: CGRectZero)
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    /**
+    设置头像
+    */
+    func setAvatarImage(image: UIImage?) {
+        self.avatar.setAvatarImage(image)
     }
     
     override func awakeFromNib() {
@@ -26,25 +91,25 @@ class MGAvatarView: UIView {
         arcView.backgroundColor = UIColor.clearColor()
         arcView.text = "啊呦，今天天气不错哦"
         arcView.color = UIColor.transformColor(kTextColorWhite, alpha: 1.0)
-        arcView.font = UIFont.systemFontOfSize(18.0)
+        arcView.font = UIFont.systemFontOfSize(15.0)
         arcView.radius = 60
         arcView.shiftV = 30
-        
-        avatarView.layer.masksToBounds = true
-        avatarView.layer.cornerRadius = 55
-        avatarView.layer.borderWidth = 5
-        avatarView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).CGColor
-        avatarView.contentMode = UIViewContentMode.ScaleToFill
-        
+    
         self.addSubview(arcView)
-        self.addSubview(avatarView)
+        self.addSubview(avatar)
+
+    }
+    
+    // 设置文字
+    func setAvatarTitle(string: NSString!) {
+        arcView.text = string as String
+        var width = string.boundingRectWithSize(arcView.frame.size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: arcView.font], context: nil).width
+        arcView.arcDegree = (width * CGFloat(M_PI)) / 180
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.arcView.frame = self.bounds
-        var x = (self.frame.size.width - 110) / 2
-        var y = (self.frame.size.height - 110) / 2
-        self.avatarView.frame = CGRectMake(x, y, 110, 110)
+        self.arcView.frame = self.bounds.rectByInsetting(dx: -20, dy: -20)
+        self.avatar.frame = self.bounds
     }
 }

@@ -31,6 +31,8 @@ highlightedContentImage:(UIImage *)hcimg;
         self.userInteractionEnabled = YES;
         _contentImageView = [[UIImageView alloc] initWithImage:cimg];
         _contentImageView.highlightedImage = hcimg;
+        _contentImageView.contentMode = UIViewContentModeCenter;
+        self.contentMode = UIViewContentModeCenter;
         [self addSubview:_contentImageView];
     }
     return self;
@@ -41,7 +43,7 @@ highlightedContentImage:(UIImage *)hcimg;
 {
     [super layoutSubviews];
     
-    self.bounds = CGRectMake(0, 0, self.image.size.width, self.image.size.height);
+    self.bounds = CGRectMake(0, 0, self.image.size.width + 10, self.image.size.height + 10);
     
     float width = _contentImageView.image.size.width;
     float height = _contentImageView.image.size.height;

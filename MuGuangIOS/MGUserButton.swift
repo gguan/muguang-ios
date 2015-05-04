@@ -19,24 +19,27 @@ class MGUserButton: UIButton {
     // 右侧的分割线
     lazy var rightLine: CALayer = {
         var line: CALayer = CALayer()
-        line.backgroundColor = UIColor.transformColor(kSeparateLineColorRed, alpha: 1.0).CGColor
+        line.backgroundColor = UIColor.transformColor(kTextColorWhite, alpha: 0.5).CGColor
         self.layer.addSublayer(line)
         return line
     }()
 
     override func awakeFromNib() {
+        self.showsTouchWhenHighlighted = true
+            
         countLabel.textAlignment = .Center
         textLabel.textAlignment = .Center
         
         countLabel.font = UIFont.systemFontOfSize(12.0)
         textLabel.font = UIFont.systemFontOfSize(9.0)
         
-        countLabel.textColor = UIColor.transformColor(kTextColorRed, alpha: 1)
-        textLabel.textColor = UIColor.transformColor(kTextColorGray, alpha: 1)
+        countLabel.textColor = UIColor.whiteColor()
+        textLabel.textColor = UIColor.whiteColor()
 
         
         self.addSubview(textLabel)
         self.addSubview(countLabel)
+        
         var height = CGRectGetHeight(self.frame) / 2
         countLabel.mas_makeConstraints { make in
             make.top.equalTo()(self).offset()(3)

@@ -17,10 +17,11 @@ class MGBaseViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.barTintColor = UIColor.transformColor(kTextColorRed, alpha: 1.0)
+        self.navigationController?.navigationBar.barTintColor = UIColor.transformColor(kTextColorRed, alpha: 0.5)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.translucent = true
     }
 
     override func didReceiveMemoryWarning() {

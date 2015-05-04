@@ -12,17 +12,21 @@ class MGVerticalSlider: UISlider {
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.initVerticalSlider()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.initVerticalSlider()
     }
     
     func initVerticalSlider() {
 //        var rect: CGRect = self.frame
 //        self.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
 //        self.frame = rect;
+        self.setThumbImage(self.rotatedImage(UIImage(named: "main_page_slider_icon")), forState: .Normal)
+        var backImage = UIImage(named: "main_page_silder_background")
+        self.setMinimumTrackImage(self.rotatedImage(backImage)?.stretchableImageWithLeftCapWidth(10, topCapHeight: 0), forState: .Normal)
+        self.setMaximumTrackImage(self.rotatedImage(backImage)?.stretchableImageWithLeftCapWidth(10, topCapHeight: 0), forState: .Normal)
     }
     
     func rotatedImage(aImage: UIImage?) -> UIImage? {

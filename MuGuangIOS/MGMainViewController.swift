@@ -126,16 +126,18 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         
         // 发布按钮
         var button = UIButton(frame: CGRectZero)
-        button.setTitle("发布", forState: .Normal)
-        button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        button.setImage(UIImage(named: "main_page_release"), forState: .Normal)
         button.addTarget(self, action: Selector("methodForButton:"), forControlEvents: .TouchUpInside)
         self.view.addSubview(button)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 20
+        button.backgroundColor = UIColor.transformColor("ffffff", alpha: 0.5)
         
         button.mas_makeConstraints { make in
-            make.width.equalTo()(50)
-            make.height.equalTo()(40)
+            make.width.equalTo()(42)
+            make.height.equalTo()(42)
             make.centerX.equalTo()(self.view)
-            make.bottom.equalTo()(self.view).with().offset()(-50)
+            make.bottom.equalTo()(self.view).with().offset()(-5)
         }
         
         // 开启定位
@@ -161,6 +163,11 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         self.makeAwesomeMenu()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("refreshCardFrame:"), name: kLocationNotificationDidUpdateHeading, object: nil)
+        
+        self.view.backgroundColor = UIColor.purpleColor()
+        var card = MGCard(frame: CGRectMake(0, 0, 213, 88))
+        card.center = self.view.center
+        self.view.addSubview(card)
     }
     
     // 刷新卡片
@@ -255,31 +262,42 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     // 初始化扇形菜单
     func makeAwesomeMenu() {
         
-        var itemImage = UIImage(named: "bg-addbutton")
-        var itemImagePressed = UIImage(named: "bg-addbutton")
-        var starImage = UIImage(named: "bg-addbutton")
+        var friendItem = AwesomeMenuItem(image: UIImage(named: "main_page_friend"),
+            highlightedImage: UIImage(named: "main_page_friend"),
+            contentImage: UIImage(named: "main_page_friend"),
+            highlightedContentImage: nil)
+        friendItem.layer.masksToBounds = true
+        friendItem.layer.cornerRadius = 20
+        friendItem.backgroundColor = UIColor.transformColor("ffffff", alpha: 0.5)
         
-        var item1 = AwesomeMenuItem(image: itemImage,
-            highlightedImage: itemImagePressed,
-            contentImage: starImage,
+        var messageItem = AwesomeMenuItem(image: UIImage(named: "main_page_message"),
+            highlightedImage: UIImage(named: "main_page_message"),
+            contentImage: UIImage(named: "main_page_message"),
             highlightedContentImage: nil)
-        var item2 = AwesomeMenuItem(image: itemImage,
-            highlightedImage: itemImagePressed,
-            contentImage: starImage,
-            highlightedContentImage: nil)
-        var item3 = AwesomeMenuItem(image: itemImage,
-            highlightedImage: itemImagePressed,
-            contentImage: starImage,
-            highlightedContentImage: nil)
+        messageItem.layer.masksToBounds = true
+        messageItem.layer.cornerRadius = 20
+        messageItem.backgroundColor = UIColor.transformColor("ffffff", alpha: 0.5)
         
-        var startItem = AwesomeMenuItem(image: itemImage,
-            highlightedImage: itemImagePressed,
-            contentImage: starImage,
+        var userItem = AwesomeMenuItem(image: UIImage(named: "main_page_menu_start"),
+            highlightedImage: UIImage(named: "main_page_menu_start"),
+            contentImage: UIImage(named: "main_page_menu_start"),
             highlightedContentImage: nil)
+        userItem.layer.masksToBounds = true
+        userItem.layer.cornerRadius = 20
+        userItem.backgroundColor = UIColor.transformColor("ffffff", alpha: 0.5)
         
-        var menu: AwesomeMenu = AwesomeMenu(frame: CGRectZero, startItem: startItem, menuItems: [item1, item2, item3])
+        var startItem = AwesomeMenuItem(image: UIImage(named: "main_page_menu_start"),
+            highlightedImage: UIImage(named: "main_page_menu_start"),
+            contentImage: UIImage(named: "main_page_menu_start"),
+            highlightedContentImage: nil)
+        startItem.layer.masksToBounds = true
+        startItem.layer.cornerRadius = 21
+        startItem.backgroundColor = UIColor.transformColor("ffffff", alpha: 0.6)
+        
+        var menu: AwesomeMenu = AwesomeMenu(frame: CGRectZero, startItem: startItem, menuItems: [friendItem, messageItem, userItem])
+        
         menu.delegate = self
-        menu.startPoint     = CGPointMake(50, self.view.frame.size.height - 50);
+        menu.startPoint     = CGPointMake(25, self.view.frame.size.height - 25);
         menu.rotateAngle    = 0.0
         menu.menuWholeAngle = CGFloat(M_PI_2)
         menu.timeOffset     = 0.036
@@ -302,7 +320,6 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
     func makeVerticalSlider() {
         var slider = MGVerticalSlider(frame: CGRectMake(0, 0, 300, 30))
         slider.center = CGPointMake(CGRectGetWidth(self.view.frame) - 50, CGRectGetHeight(self.view.frame) / 2)
-        slider.setThumbImage(UIImage(named: "bg-addbutton"), forState: .Normal)
         slider.minimumValue = 0
         slider.maximumValue = 100
         slider.addTarget(self, action: Selector("methodForSlider:"), forControlEvents: .ValueChanged)
@@ -323,7 +340,10 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
         case 0:
             break
         case 1:
-            break
+            var second: UIStoryboard = UIStoryboard(name: "Second", bundle: NSBundle.mainBundle())
+            var userVC: MGUserViewController = second.instantiateViewControllerWithIdentifier("MGUserViewController") as! MGUserViewController
+            userVC.isMyInfo = true
+            self.navigationController?.pushViewController(userVC, animated: true)
         case 2:
             var second: UIStoryboard = UIStoryboard(name: "Second", bundle: NSBundle.mainBundle())
             var userVC: MGUserViewController = second.instantiateViewControllerWithIdentifier("MGUserViewController") as! MGUserViewController
