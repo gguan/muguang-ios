@@ -10,7 +10,7 @@ import UIKit
 import QuartzCore
 import CoreImage
 
-let kUserInfoHeaderBlurViewAlpha: CGFloat = 0.66
+let kUserInfoHeaderBlurViewAlpha: CGFloat = 1
 
 class MGCollectionHeaderView: UICollectionReusableView {
     // 封面
@@ -100,7 +100,7 @@ class MGCollectionHeaderView: UICollectionReusableView {
     
     override func awakeFromNib() {
     
-        self.blurView.blurRadius = 5
+        self.blurView.blurRadius = 10
         self.blurView.tintColor = UIColor.whiteColor()
         self.blurView.dynamic = false
         self.blurView.alpha = kUserInfoHeaderBlurViewAlpha

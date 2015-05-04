@@ -34,6 +34,7 @@ class MGBaseViewController: UIViewController {
         var backButton = UIButton(frame: CGRectMake(0, 0, 30, 30))
         backButton.setImage(UIImage(named: "backArrow"), forState: .Normal)
         backButton.addTarget(self, action: Selector("methodForBackBarButton:"), forControlEvents: .TouchUpInside)
+        backButton.showsTouchWhenHighlighted = true
         var backItem = UIBarButtonItem(customView: backButton)
         self.navigationItem.leftBarButtonItem = backItem
     }
