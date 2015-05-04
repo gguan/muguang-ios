@@ -219,7 +219,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="centerX" secondItem="gnn-HZ-rri" secondAttribute="centerX" id="Xfa-UP-qEy">
-                                            <variation key="widthClass=compact" constant="40"/>
+                                            <variation key="widthClass=compact" constant="0.0"/>
                                         </constraint>
                                         <constraint firstAttribute="centerY" secondItem="gnn-HZ-rri" secondAttribute="centerY" id="kaY-LM-boo"/>
                                     </constraints>
@@ -427,7 +427,7 @@
                                                 <constraint firstItem="h5y-6V-ztH" firstAttribute="leading" secondItem="RFQ-PF-CuQ" secondAttribute="leading" constant="10" id="7aI-A2-MRr"/>
                                                 <constraint firstAttribute="bottom" secondItem="h5y-6V-ztH" secondAttribute="bottom" id="9mf-hy-eZm"/>
                                                 <constraint firstAttribute="trailing" secondItem="h5y-6V-ztH" secondAttribute="trailing" constant="10" id="IC3-7m-yEZ">
-                                                    <variation key="widthClass=compact" constant="170"/>
+                                                    <variation key="widthClass=compact" constant="10"/>
                                                 </constraint>
                                                 <constraint firstItem="h5y-6V-ztH" firstAttribute="top" secondItem="RFQ-PF-CuQ" secondAttribute="top" id="ZjY-Vt-d0v"/>
                                             </constraints>
@@ -522,7 +522,7 @@
                                                             <variation key="widthClass=compact" constant="15"/>
                                                         </constraint>
                                                         <constraint firstAttribute="trailing" secondItem="KZA-8T-vho" secondAttribute="trailing" constant="5" id="rLJ-J1-YWx">
-                                                            <variation key="widthClass=compact" constant="-75"/>
+                                                            <variation key="widthClass=compact" constant="5"/>
                                                         </constraint>
                                                         <constraint firstAttribute="centerY" secondItem="KZA-8T-vho" secondAttribute="centerY" id="ycm-HR-H1Y"/>
                                                     </constraints>
@@ -557,7 +557,7 @@
                                                     <variation key="widthClass=compact" constant="1"/>
                                                 </constraint>
                                                 <constraint firstAttribute="trailing" secondItem="tbX-eX-bnm" secondAttribute="trailing" constant="10" id="WXW-MX-VDA">
-                                                    <variation key="widthClass=compact" constant="90"/>
+                                                    <variation key="widthClass=compact" constant="10"/>
                                                 </constraint>
                                                 <constraint firstItem="tbX-eX-bnm" firstAttribute="leading" secondItem="zTH-jD-Eds" secondAttribute="leading" constant="10" id="aPZ-GA-mz7"/>
                                                 <constraint firstItem="tbX-eX-bnm" firstAttribute="top" secondItem="zTH-jD-Eds" secondAttribute="top" id="hbk-ZO-cxA">
