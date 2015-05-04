@@ -16,6 +16,7 @@ class MGLaunchingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBarHidden = true
     }
 
     func moveBackgroundImage () {
@@ -25,7 +26,7 @@ class MGLaunchingViewController: UIViewController {
                 self.moveImageView.center.x = -(self.moveImageView.center.x - self.view.frame.size.width)
                 self.moveImageView.updateConstraintsIfNeeded()
             }, completion: nil)
-        testBlcok()
+//        testBlcok()
     }
 
     

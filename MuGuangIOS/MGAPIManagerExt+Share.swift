@@ -11,7 +11,7 @@ import Foundation
 extension MGAPIManager {
     
     /*
-     *  分享到微博 没用啦 改成服务器端发送了
+     *  分享到微博 : 改成服务器端发送了, 此接口暂时保留
      **/
     func weiboShare(Status: String,
                        pic: UIImage,

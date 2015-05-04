@@ -16,14 +16,40 @@ class MGPublishStatusViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.configureUI()
+        
+        images = ["","","","","","",""]
+        
+        MGAPIManager.sharedInstance.qiniuUploadToken({ (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+            println(responseObject)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            println(error.localizedDescription)
+                println(operation.responseData)
+                println(operation.responseObject)
+        })
+    }
+
+    
+    func configureUI () {
         self.navigationController?.navigationBarHidden = false
         self.tableView.backgroundColor = UIColor.whiteColor()
         self.tableView.separatorStyle  = UITableViewCellSeparatorStyle.None
-        images = ["","","","","","",""]
+        self.title = "编辑"
         
+        //右上角button
+        let rightBtn = UIButton(frame: CGRectMake(0, 0, 100, 50))
+        rightBtn.setTitle("发布", forState: UIControlState.Normal)
+        rightBtn.addTarget(self, action: "publishStatus", forControlEvents: UIControlEvents.TouchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
     }
 
-
+    func publishStatus () {
+        // API: need to be done
+//        self.navigationController?.popToRootViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidLayoutSubviews() {
 
         super.viewDidLayoutSubviews()
@@ -32,6 +58,30 @@ class MGPublishStatusViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        MGAPIManager.sharedInstance.publishStatus(["":""], success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+            println(operation.response)
+            println(responseObject)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                //更新token： 403错误就是token 过期 :)， 404呢？
+                
+//                println(operation.response)
+//                println(error.description)
+//                println(operation.responseObject)
+                
+                if let error = operation.responseObject["error"] as? String {
+                    if error == "401 Unauthorized" {
+                        //出现登录页面
+                        
+                        // TODO: need to be tested here, should be in global place
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let launchingVC = storyboard.instantiateViewControllerWithIdentifier("MGLaunchingViewController") as! MGLaunchingViewController
+                        launchingVC.navigationController?.navigationBarHidden = true
+                        //let nav = UINavigationController(rootViewController: launchingVC)
+                        //self.navigationController?.pushViewController(launchingVC, animated: false)
+                    }
+                }
+        })
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

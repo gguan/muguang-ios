@@ -204,7 +204,6 @@
 {
     [super viewDidAppear:animated];
     
-    
     if (!_isFromAlbum) {
         _previewImage.frame = _captureView.frame;
         [self.view addSubview:_previewImage];
