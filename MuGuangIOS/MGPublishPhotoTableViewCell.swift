@@ -14,7 +14,11 @@ class MGPublishPhotoTableViewCell: UITableViewCell {
     
     var images: NSMutableArray!
     
+    //提醒是否删除图片等
     var alertClosure:((indexPath: NSIndexPath)->())?
+    
+    //添加图片
+    var addImageToPublish:(()-> ())?
     
     override func awakeFromNib() {
         super.awakeFromNib()

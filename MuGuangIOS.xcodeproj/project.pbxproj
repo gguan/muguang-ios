@@ -81,6 +81,8 @@
 		3DE6726B1AF0B78C00A26559 /* weiboOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE672621AF0B78C00A26559 /* weiboOn@2x.png */; };
 		3DE6729F1AF21A9900A26559 /* MGAPIManagerExt+Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6729E1AF21A9900A26559 /* MGAPIManagerExt+Share.swift */; };
 		3DE672A11AF70D2100A26559 /* MGAPIManagerExt+Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE672A01AF70D2100A26559 /* MGAPIManagerExt+Status.swift */; };
+		3DF34C151AF7653F008B63B0 /* MGFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF34C141AF7653F008B63B0 /* MGFeedsViewController.swift */; };
+		3DF34C181AF7667C008B63B0 /* MGTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF34C171AF7667C008B63B0 /* MGTool.swift */; };
 		3DFA1A7C1ADFB389003E3177 /* duckling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA1A7B1ADFB389003E3177 /* duckling.jpg */; };
 		3DFA1A811ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */; };
 		B04C9D7C1AE0A49400CD9405 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B04C9D7B1AE0A49400CD9405 /* FXBlurView.m */; };
@@ -271,6 +273,8 @@
 		3DE672621AF0B78C00A26559 /* weiboOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weiboOn@2x.png"; sourceTree = "<group>"; };
 		3DE6729E1AF21A9900A26559 /* MGAPIManagerExt+Share.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MGAPIManagerExt+Share.swift"; sourceTree = "<group>"; };
 		3DE672A01AF70D2100A26559 /* MGAPIManagerExt+Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MGAPIManagerExt+Status.swift"; sourceTree = "<group>"; };
+		3DF34C141AF7653F008B63B0 /* MGFeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGFeedsViewController.swift; sourceTree = "<group>"; };
+		3DF34C171AF7667C008B63B0 /* MGTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGTool.swift; sourceTree = "<group>"; };
 		3DFA1A7B1ADFB389003E3177 /* duckling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = duckling.jpg; sourceTree = "<group>"; };
 		3DFA1A801ADFB943003E3177 /* MGPhotosViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotosViewControllerExtensions.swift; sourceTree = "<group>"; };
 		40C8118B762B513DB0757678 /* Pods-MuGuangIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuGuangIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MuGuangIOS/Pods-MuGuangIOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -397,6 +401,8 @@
 			isa = PBXGroup;
 			children = (
 				3DB3E2661AEE37F500361C34 /* UIColorExt.swift */,
+				3DB3E26A1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift */,
+				3DE6724E1AF081A500A26559 /* MGPublishPhotoTableViewCellExt.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -581,6 +587,7 @@
 			children = (
 				3D879FAE1AEA1111004CBF47 /* api */,
 				3D2B01BA1AE9064400F2BBC8 /* no_use */,
+				3DF34C161AF76637008B63B0 /* Utility */,
 				3D2B01A01AE6347D00F2BBC8 /* Extension */,
 				3DB388FC1ADE18AB003361A6 /* AppDelegate.swift */,
 				3D0267521AE4E18B004FE669 /* MGConstants.swift */,
@@ -629,9 +636,7 @@
 			children = (
 				3D95A5A31AE53AC60031DD9F /* TGCameraViewController */,
 				3DB3E2641AEE359900361C34 /* MGPublishStatusViewController.swift */,
-				3DB3E26A1AEF3C9E00361C34 /* MGPublishStatusViewControllerExt.swift */,
 				3DE672521AF0871500A26559 /* MGPublishPhotoTableViewCell.swift */,
-				3DE6724E1AF081A500A26559 /* MGPublishPhotoTableViewCellExt.swift */,
 				3DE672541AF0894D00A26559 /* MGPhotoCollectionCell.swift */,
 				3DE672561AF0A9B900A26559 /* MGPublishTextTableViewCell.swift */,
 			);
@@ -646,9 +651,26 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		3DF34C131AF76525008B63B0 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				3DF34C141AF7653F008B63B0 /* MGFeedsViewController.swift */,
+			);
+			name = Feed;
+			sourceTree = "<group>";
+		};
+		3DF34C161AF76637008B63B0 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				3DF34C171AF7667C008B63B0 /* MGTool.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		3DFA1A6D1ADF879A003E3177 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3DF34C131AF76525008B63B0 /* Feed */,
 				3DB3E2611AEE352400361C34 /* Login */,
 				3DB3E2601AEE350F00361C34 /* Publish */,
 			);
@@ -1035,6 +1057,7 @@
 				3D2B01B91AE8929A00F2BBC8 /* CALayer+Additions.m in Sources */,
 				F98081641AE4CD7900E217DC /* MGMonitorView.swift in Sources */,
 				B04C9D831AE0A67600CD9405 /* AwesomeMenuItem.m in Sources */,
+				3DF34C181AF7667C008B63B0 /* MGTool.swift in Sources */,
 				F98A8F891AEA16F2004DED25 /* MGUserButton.swift in Sources */,
 				F980816C1AE5F1AB00E217DC /* MGCardDetailController.swift in Sources */,
 				F98A8F7E1AE8FD7A004DED25 /* ArcView.m in Sources */,
@@ -1044,6 +1067,7 @@
 				F98A8F851AE9E47F004DED25 /* MGCollectionHeaderView.swift in Sources */,
 				F98A8F811AE9014A004DED25 /* MGButton.swift in Sources */,
 				F9E2D4391AF74B640036D606 /* MGMessageViewController.swift in Sources */,
+				3DF34C151AF7653F008B63B0 /* MGFeedsViewController.swift in Sources */,
 				F980816A1AE5F14F00E217DC /* MGUserViewController.swift in Sources */,
 				3DB3E2671AEE37F500361C34 /* UIColorExt.swift in Sources */,
 				B04C9D7C1AE0A49400CD9405 /* FXBlurView.m in Sources */,

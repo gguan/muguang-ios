@@ -14,12 +14,17 @@ class MGPublishStatusViewController: UIViewController {
 
     var images: NSMutableArray!
     
+    
+    var imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.configureUI()
         
         images = ["","","","","","",""]
+        
+        self.imagePicker.delegate = self
         
         MGAPIManager.sharedInstance.qiniuUploadToken({ (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
             println(responseObject)
@@ -28,6 +33,7 @@ class MGPublishStatusViewController: UIViewController {
                 println(operation.responseData)
                 println(operation.responseObject)
         })
+        
     }
 
     
@@ -72,16 +78,11 @@ class MGPublishStatusViewController: UIViewController {
                 if let error = operation.responseObject["error"] as? String {
                     if error == "401 Unauthorized" {
                         //出现登录页面
-                        
-                        // TODO: need to be tested here, should be in global place
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let launchingVC = storyboard.instantiateViewControllerWithIdentifier("MGLaunchingViewController") as! MGLaunchingViewController
-                        launchingVC.navigationController?.navigationBarHidden = true
-                        //let nav = UINavigationController(rootViewController: launchingVC)
-                        //self.navigationController?.pushViewController(launchingVC, animated: false)
+                        MGTool.sharedInstance.popAuthPage(self.navigationController)
                     }
                 }
         })
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

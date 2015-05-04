@@ -25,6 +25,9 @@ extension MGPublishStatusViewController: UITableViewDataSource, UITableViewDeleg
                 alertController.addAction(action)
                 self.presentViewController(alertController, animated: true, completion: nil)
             }
+            cell.addImageToPublish = { ()-> () in
+                self.presentViewController(self.imagePicker, animated: true, completion: nil)
+            }
             return cell
         }else if indexPath.row == 1 {
             let identifier = "MGPublishTextTableViewCell"
@@ -66,5 +69,12 @@ extension MGPublishStatusViewController: UITableViewDataSource, UITableViewDeleg
         }else {
             return 223.0
         }
+    }
+}
+
+extension MGPublishStatusViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        println(image)
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
 }
