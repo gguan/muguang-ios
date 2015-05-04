@@ -342,9 +342,8 @@ class MGMainViewController: MGBaseViewController, AwesomeMenuDelegate, MGLocatio
             break
         case 1:
             var second: UIStoryboard = UIStoryboard(name: "Second", bundle: NSBundle.mainBundle())
-            var userVC: MGUserViewController = second.instantiateViewControllerWithIdentifier("MGUserViewController") as! MGUserViewController
-            userVC.isMyInfo = true
-            self.navigationController?.pushViewController(userVC, animated: true)
+            var messageVC: MGMessageViewController = second.instantiateViewControllerWithIdentifier("MGMessageViewController") as! MGMessageViewController
+            self.navigationController?.pushViewController(messageVC, animated: true)
         case 2:
             var second: UIStoryboard = UIStoryboard(name: "Second", bundle: NSBundle.mainBundle())
             var userVC: MGUserViewController = second.instantiateViewControllerWithIdentifier("MGUserViewController") as! MGUserViewController
