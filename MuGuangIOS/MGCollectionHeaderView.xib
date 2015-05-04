@@ -434,10 +434,9 @@
                     <exclude reference="SJo-Qs-oPk"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="HzS-tp-Dyy"/>
-                    <exclude reference="VYP-48-Avl"/>
-                    <exclude reference="eU8-QB-RbA"/>
-                    <exclude reference="vYS-T6-AUv"/>
+                    <exclude reference="BkI-VA-Oug"/>
+                    <exclude reference="E1s-Sl-Ow4"/>
+                    <exclude reference="HH3-Zf-OMx"/>
                     <exclude reference="3bl-95-ZLN"/>
                     <exclude reference="CDH-PI-5FN"/>
                     <exclude reference="Ep2-BL-cJ0"/>
@@ -446,10 +445,11 @@
                     <exclude reference="gcJ-t9-pmi"/>
                     <exclude reference="uW0-T9-A4h"/>
                     <exclude reference="wnK-tm-MfD"/>
+                    <exclude reference="HzS-tp-Dyy"/>
+                    <exclude reference="VYP-48-Avl"/>
+                    <exclude reference="eU8-QB-RbA"/>
+                    <exclude reference="vYS-T6-AUv"/>
                     <exclude reference="1ZV-jX-U9o"/>
-                    <exclude reference="BkI-VA-Oug"/>
-                    <exclude reference="E1s-Sl-Ow4"/>
-                    <exclude reference="HH3-Zf-OMx"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
@@ -459,10 +459,9 @@
                     <include reference="SJo-Qs-oPk"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="HzS-tp-Dyy"/>
-                    <include reference="VYP-48-Avl"/>
-                    <include reference="eU8-QB-RbA"/>
-                    <include reference="vYS-T6-AUv"/>
+                    <include reference="BkI-VA-Oug"/>
+                    <include reference="E1s-Sl-Ow4"/>
+                    <include reference="HH3-Zf-OMx"/>
                     <include reference="3bl-95-ZLN"/>
                     <include reference="CDH-PI-5FN"/>
                     <include reference="Ep2-BL-cJ0"/>
@@ -471,10 +470,11 @@
                     <include reference="gcJ-t9-pmi"/>
                     <include reference="uW0-T9-A4h"/>
                     <include reference="wnK-tm-MfD"/>
+                    <include reference="HzS-tp-Dyy"/>
+                    <include reference="VYP-48-Avl"/>
+                    <include reference="eU8-QB-RbA"/>
+                    <include reference="vYS-T6-AUv"/>
                     <exclude reference="1ZV-jX-U9o"/>
-                    <include reference="BkI-VA-Oug"/>
-                    <include reference="E1s-Sl-Ow4"/>
-                    <include reference="HH3-Zf-OMx"/>
                 </mask>
             </variation>
             <connections>
