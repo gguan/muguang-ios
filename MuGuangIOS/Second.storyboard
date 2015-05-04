@@ -702,7 +702,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4es-Bv-5oF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-264" y="1549"/>
+            <point key="canvasLocation" x="-192" y="1569"/>
         </scene>
         <!--图片详情-->
         <scene sceneID="GIj-AJ-exK">

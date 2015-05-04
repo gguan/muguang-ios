@@ -29,7 +29,19 @@ class MGBaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // 重设返回按钮
+    func resetBackButton() {
+        var backButton = UIButton(frame: CGRectMake(0, 0, 30, 30))
+        backButton.setImage(UIImage(named: "backArrow"), forState: .Normal)
+        backButton.addTarget(self, action: Selector("methodForBackBarButton:"), forControlEvents: .TouchUpInside)
+        var backItem = UIBarButtonItem(customView: backButton)
+        self.navigationItem.leftBarButtonItem = backItem
+    }
 
+    func methodForBackBarButton(button: UIButton) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }

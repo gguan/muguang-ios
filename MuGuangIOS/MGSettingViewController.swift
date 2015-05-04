@@ -19,6 +19,8 @@ class MGSettingViewController: MGBaseViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.resetBackButton()
+        
         // 设置退出按钮的样式
         logoutButton.setTitle("退出登录", forState: .Normal)
         logoutButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
