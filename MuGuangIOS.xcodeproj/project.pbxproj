@@ -126,6 +126,9 @@
 		F98A8F831AE9137C004DED25 /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F98A8F821AE9137C004DED25 /* Second.storyboard */; };
 		F98A8F851AE9E47F004DED25 /* MGCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F841AE9E47F004DED25 /* MGCollectionHeaderView.swift */; };
 		F98A8F891AEA16F2004DED25 /* MGUserButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A8F881AEA16F2004DED25 /* MGUserButton.swift */; };
+		F99022E41AF77F9700AB33C0 /* MGPrivateMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99022E31AF77F9700AB33C0 /* MGPrivateMessageViewCell.swift */; };
+		F99022E61AF78E4D00AB33C0 /* MGYouCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99022E51AF78E4D00AB33C0 /* MGYouCell.swift */; };
+		F99022E81AF86B8200AB33C0 /* MGPraiseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99022E71AF86B8200AB33C0 /* MGPraiseCell.swift */; };
 		F9D3EB7B1AEFBC8E002EFE3C /* MGSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D3EB7A1AEFBC8E002EFE3C /* MGSettingCell.swift */; };
 		F9E2D4391AF74B640036D606 /* MGMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E2D4381AF74B640036D606 /* MGMessageViewController.swift */; };
 		F9E2D43B1AF764F90036D606 /* MGMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E2D43A1AF764F90036D606 /* MGMarkButton.swift */; };
@@ -326,6 +329,9 @@
 		F98A8F821AE9137C004DED25 /* Second.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
 		F98A8F841AE9E47F004DED25 /* MGCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGCollectionHeaderView.swift; sourceTree = "<group>"; };
 		F98A8F881AEA16F2004DED25 /* MGUserButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGUserButton.swift; sourceTree = "<group>"; };
+		F99022E31AF77F9700AB33C0 /* MGPrivateMessageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPrivateMessageViewCell.swift; sourceTree = "<group>"; };
+		F99022E51AF78E4D00AB33C0 /* MGYouCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGYouCell.swift; sourceTree = "<group>"; };
+		F99022E71AF86B8200AB33C0 /* MGPraiseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPraiseCell.swift; sourceTree = "<group>"; };
 		F9D3EB7A1AEFBC8E002EFE3C /* MGSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGSettingCell.swift; sourceTree = "<group>"; };
 		F9E2D4381AF74B640036D606 /* MGMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGMessageViewController.swift; sourceTree = "<group>"; };
 		F9E2D43A1AF764F90036D606 /* MGMarkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGMarkButton.swift; sourceTree = "<group>"; };
@@ -747,6 +753,9 @@
 				F93EABA41AEF6804000FB1C7 /* MGUserInfoCell.swift */,
 				F9D3EB7A1AEFBC8E002EFE3C /* MGSettingCell.swift */,
 				F9E2D43A1AF764F90036D606 /* MGMarkButton.swift */,
+				F99022E31AF77F9700AB33C0 /* MGPrivateMessageViewCell.swift */,
+				F99022E51AF78E4D00AB33C0 /* MGYouCell.swift */,
+				F99022E71AF86B8200AB33C0 /* MGPraiseCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1021,6 +1030,7 @@
 				3D2B01B31AE79F6900F2BBC8 /* CIFilter+mgFiliters.m in Sources */,
 				3D95A5E91AE53AC60031DD9F /* TGCameraGrid.m in Sources */,
 				3DE6729F1AF21A9900A26559 /* MGAPIManagerExt+Share.swift in Sources */,
+				F99022E81AF86B8200AB33C0 /* MGPraiseCell.swift in Sources */,
 				3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */,
 				3DE672571AF0A9B900A26559 /* MGPublishTextTableViewCell.swift in Sources */,
 				3D0267531AE4E18B004FE669 /* MGConstants.swift in Sources */,
@@ -1038,6 +1048,7 @@
 				3D95A5E01AE53AC60031DD9F /* TGCameraNavigationController.m in Sources */,
 				3D95A5F01AE53AC60031DD9F /* TGCameraGridView.m in Sources */,
 				3D95A5F21AE53AC60031DD9F /* TGCameraSlideUpView.m in Sources */,
+				F99022E41AF77F9700AB33C0 /* MGPrivateMessageViewCell.swift in Sources */,
 				F9EFE2531AEDDEB100334C4F /* MGPhotoCollectionViewCell.swift in Sources */,
 				F93EABA51AEF6804000FB1C7 /* MGUserInfoCell.swift in Sources */,
 				3D95A5DF1AE53AC60031DD9F /* TGCameraAuthorizationViewController.m in Sources */,
@@ -1055,6 +1066,7 @@
 				3D95A5E21AE53AC60031DD9F /* TGPhotoViewController.m in Sources */,
 				3DB3E2651AEE359900361C34 /* MGPublishStatusViewController.swift in Sources */,
 				3D2B01B91AE8929A00F2BBC8 /* CALayer+Additions.m in Sources */,
+				F99022E61AF78E4D00AB33C0 /* MGYouCell.swift in Sources */,
 				F98081641AE4CD7900E217DC /* MGMonitorView.swift in Sources */,
 				B04C9D831AE0A67600CD9405 /* AwesomeMenuItem.m in Sources */,
 				3DF34C181AF7667C008B63B0 /* MGTool.swift in Sources */,

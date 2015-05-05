@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MGMessageViewController: MGBaseViewController {
+class MGMessageViewController: MGBaseViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var separateLine: UIView!
     @IBOutlet weak var activityLine: UIView!
@@ -20,6 +20,9 @@ class MGMessageViewController: MGBaseViewController {
     @IBOutlet weak var youButton: UIButton!
     
     var currentButton: UIButton?
+    
+    // 表格视图
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +81,8 @@ class MGMessageViewController: MGBaseViewController {
         currentButton?.selected = false
         sender.selected = true
         currentButton = sender
+        // 刷新页面
+        self.tableView.reloadData()
     }
     
     @IBAction func clickMessageButton(sender: UIButton) {
@@ -92,4 +97,55 @@ class MGMessageViewController: MGBaseViewController {
         self.updateActivityLineFrame(sender)
     }
     
+    // MARK: UITableViewDelegate, UITabelViewDataSource
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 64.0
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        if let button = self.currentButton {
+            switch button.tag {
+            case 100:
+                var cell = tableView.dequeueReusableCellWithIdentifier("MGPrivateMessageViewCell", forIndexPath: indexPath) as! MGPrivateMessageViewCell
+                cell.avatarView.setAvatarImage(UIImage(named: "avatar_placeholder"))
+                cell.nameLabel.text    = "诸葛亮"
+                cell.contentLabel.text = "夫君子之行，静以修身，俭以养德。"
+                cell.timeLabel.text    = "5分钟前"
+                cell.number.text       = "99"
+                return cell
+            case 101:
+                var cell = tableView.dequeueReusableCellWithIdentifier("MGPraiseCell", forIndexPath: indexPath) as! MGPraiseCell
+                cell.avatarView.setAvatarImage(UIImage(named: "avatar_placeholder"))
+                cell.thumbPhoto.image  = UIImage(named: "avatar_placeholder")
+                cell.nameLabel.text    = "关羽"
+                cell.timeLabel.text    = "5分钟前"
+                cell.contentLabel.text = "对你的动态呵呵了一下"
+                
+                return cell
+            case 102:
+                var cell = tableView.dequeueReusableCellWithIdentifier("MGYouCell", forIndexPath: indexPath) as! MGYouCell
+                cell.avatarView.setAvatarImage(UIImage(named: "avatar_placeholder"))
+                cell.thumbPhoto.image         = UIImage(named: "avatar_placeholder")
+
+                // 样式
+                cell.cellStyle                = indexPath.row % 2 == 0 ? .Image : .Button
+
+                var attributedName            = NSAttributedString(string: "诸葛亮", attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
+                var attributedContent         = NSAttributedString(string: " 评论了你的动态", attributes: [NSForegroundColorAttributeName : UIColor.transformColor(kTextColorGray, alpha: 1.0)])
+                var attributedString          = NSMutableAttributedString()
+                attributedString.appendAttributedString(attributedName)
+                attributedString.appendAttributedString(attributedContent)
+
+                cell.nameLabel.attributedText = attributedString
+                cell.timeLabel.text           = "5分钟前"
+                return cell
+            default:
+                break
+            }
+        }
+        return UITableViewCell()
+    }
 }
