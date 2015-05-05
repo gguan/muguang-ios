@@ -54,24 +54,15 @@ class MGMessageViewController: MGBaseViewController, UITableViewDataSource, UITa
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        if self.canHiddenNavigationBar {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: Button Method
     func updateActivityLineFrame(sender: UIButton) {
@@ -115,6 +106,9 @@ class MGMessageViewController: MGBaseViewController, UITableViewDataSource, UITa
                 cell.contentLabel.text = "夫君子之行，静以修身，俭以养德。"
                 cell.timeLabel.text    = "5分钟前"
                 cell.number.text       = "99"
+                cell.clickedAvatar = { () -> Void in
+                    self.performSegueWithIdentifier("showUserInfo", sender: self)
+                }
                 return cell
             case 101:
                 var cell = tableView.dequeueReusableCellWithIdentifier("MGPraiseCell", forIndexPath: indexPath) as! MGPraiseCell
@@ -123,6 +117,10 @@ class MGMessageViewController: MGBaseViewController, UITableViewDataSource, UITa
                 cell.nameLabel.text    = "关羽"
                 cell.timeLabel.text    = "5分钟前"
                 cell.contentLabel.text = "对你的动态呵呵了一下"
+                
+                cell.clickedAvatar = { () -> Void in
+                    self.performSegueWithIdentifier("showUserInfo", sender: self)
+                }
                 
                 return cell
             case 102:
@@ -141,11 +139,50 @@ class MGMessageViewController: MGBaseViewController, UITableViewDataSource, UITa
 
                 cell.nameLabel.attributedText = attributedString
                 cell.timeLabel.text           = "5分钟前"
+                
+                cell.clickedAvatar = { () -> Void in
+                    self.performSegueWithIdentifier("showUserInfo", sender: self)
+                }
+                
                 return cell
             default:
                 break
             }
         }
         return UITableViewCell()
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let button = self.currentButton {
+            switch button.tag {
+            case 100:
+                // 私信聊天
+                self.canHiddenNavigationBar = false
+                self.performSegueWithIdentifier("showIM", sender: self)
+                break
+
+            case 101:
+                // 动态详情
+                break
+
+            case 102:
+                // 动态详情
+                break
+
+            default:
+                break
+            }
+        }
+    }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "showUserInfo" {
+            
+        }
     }
 }

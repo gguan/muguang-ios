@@ -1759,11 +1759,12 @@
                         <outlet property="separateLine" destination="0Ia-IN-3Ti" id="jSU-GS-uzT"/>
                         <outlet property="tableView" destination="hAz-0s-ASH" id="CNt-do-ONE"/>
                         <outlet property="youButton" destination="T08-jQ-wea" id="1ur-sH-225"/>
+                        <segue destination="W0h-q3-waE" kind="show" identifier="showUserInfo" id="vdX-Do-hgJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4es-Bv-5oF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1084.5" y="1443"/>
+            <point key="canvasLocation" x="-601.5" y="1399"/>
         </scene>
         <!--图片详情-->
         <scene sceneID="GIj-AJ-exK">

@@ -23,6 +23,9 @@ class MGYouCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var thumbPhoto: UIImageView!
     @IBOutlet weak var focusButton: UIButton!
+    
+    var clickedAvatar: (() -> Void)?
+
     var cellStyle: MGYouCellStyle {
         didSet {
             if self.cellStyle == .Image {
@@ -61,8 +64,17 @@ class MGYouCell: UITableViewCell {
         self.focusButton.titleLabel?.font = UIFont.systemFontOfSize(12)
         self.focusButton.adjustsImageWhenHighlighted = false
         self.focusButton.addTarget(self, action: Selector("methodForFocusButton:"), forControlEvents: .TouchUpInside)
+        
+        var tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("methodForTouchAvatar:"))
+        self.avatarView.addGestureRecognizer(tapGR)
     }
 
+    func methodForTouchAvatar(tap: UITapGestureRecognizer) {
+        if let clicked = self.clickedAvatar {
+            clicked()
+        }
+    }
+    
     func methodForFocusButton(sender: UIButton) {
         sender.selected = !sender.selected
     }

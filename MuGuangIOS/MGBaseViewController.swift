@@ -12,6 +12,8 @@ import UIKit
  *  自定义UIViewController的基类
  */
 class MGBaseViewController: UIViewController {
+    // 是否可以隐藏导航栏
+    var canHiddenNavigationBar = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,11 @@ class MGBaseViewController: UIViewController {
         self.navigationController?.navigationBar.translucent = true
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.canHiddenNavigationBar = true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -40,6 +47,10 @@ class MGBaseViewController: UIViewController {
     }
 
     func methodForBackBarButton(button: UIButton) {
+        // 即将pop到main控制器是，需要隐藏navigationBar
+        if self.navigationController?.viewControllers.count == 2 {
+            self.canHiddenNavigationBar = true
+        }
         self.navigationController?.popViewControllerAnimated(true)
     }
     

@@ -17,6 +17,8 @@ class MGPrivateMessageViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var number: UILabel!
     
+    var clickedAvatar: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,6 +38,15 @@ class MGPrivateMessageViewCell: UITableViewCell {
         self.number.backgroundColor       = UIColor.transformColor(kTextColorRed, alpha: 1.0)
         self.number.layer.masksToBounds   = true
         self.number.layer.cornerRadius    = 6
+        
+        var tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("methodForTouchAvatar:"))
+        self.avatarView.addGestureRecognizer(tapGR)
+    }
+    
+    func methodForTouchAvatar(tap: UITapGestureRecognizer) {
+        if let clicked = self.clickedAvatar {
+            clicked()
+        }
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

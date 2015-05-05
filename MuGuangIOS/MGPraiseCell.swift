@@ -18,6 +18,8 @@ class MGPraiseCell: UITableViewCell {
     @IBOutlet weak var thumbPhoto: UIImageView!
     @IBOutlet weak var emojiView: UIImageView!
     
+    var clickedAvatar: (() -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,8 +31,17 @@ class MGPraiseCell: UITableViewCell {
         self.nameLabel.font         = UIFont.systemFontOfSize(12)
         self.timeLabel.font         = UIFont.systemFontOfSize(10)
         self.contentLabel.font      = UIFont.systemFontOfSize(12)
+        
+        var tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("methodForTouchAvatar:"))
+        self.avatarView.addGestureRecognizer(tapGR)
     }
 
+    func methodForTouchAvatar(tap: UITapGestureRecognizer) {
+        if let clicked = self.clickedAvatar {
+            clicked()
+        }
+    }
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
