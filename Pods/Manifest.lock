@@ -20,6 +20,11 @@ PODS:
   - AFNetworking/UIKit (2.5.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AVOSCloud (3.1.0)
+  - AVOSCloudIM (3.1.0):
+    - AVOSCloud
+  - AVOSCloudSNS (3.1.0):
+    - AVOSCloud
   - CSStickyHeaderFlowLayout (0.2.5)
   - FastImageCache (1.3)
   - Mantle (2.0):
@@ -30,6 +35,9 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - AVOSCloud
+  - AVOSCloudIM
+  - AVOSCloudSNS
   - CSStickyHeaderFlowLayout (~> 0.2.5)
   - FastImageCache (~> 1.3)
   - Mantle (~> 2.0)
@@ -38,6 +46,9 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
+  AVOSCloud: fadaba350e8f28c371da50e056991ca774db8310
+  AVOSCloudIM: 49fd16c0d203edc1090f58a62aa00e2ae6682be2
+  AVOSCloudSNS: 0b3e7285227634f575b22f0c9c7bddb021ed1c84
   CSStickyHeaderFlowLayout: 75e439a59c23f609091d9a784c7b5db7de583f1f
   FastImageCache: 25f214fd46405daca3d1995d783fb83b9036c62e
   Mantle: 17de73ef929db2234d76fde2aacfb89ab11c61e8

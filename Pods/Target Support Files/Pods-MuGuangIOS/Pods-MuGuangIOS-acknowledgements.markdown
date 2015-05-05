@@ -24,6 +24,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## AVOSCloud
+
+© Copyright 2015 LeanCloud, Inc. See https://leancloud.cn/terms.html
+
+## AVOSCloudIM
+
+© Copyright 2015 LeanCloud, Inc. See https://leancloud.cn/terms.html
+
+## AVOSCloudSNS
+
+© Copyright 2015 LeanCloud, Inc. See https://leancloud.cn/terms.html
+
 ## CSStickyHeaderFlowLayout
 
 Copyright (c) 2014-2015 James Tang <j@jamztang.com>
