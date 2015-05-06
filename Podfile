@@ -8,6 +8,7 @@ target 'MuGuangIOS' do
     pod 'AVOSCloud'
     pod 'AVOSCloudIM'
     pod 'AVOSCloudSNS'
+    pod 'Qiniu', '~> 7.0'
     pod 'FastImageCache', '~> 1.3'
     pod 'TMCache', '~> 1.2.4'
     pod 'Mantle', '~> 2.0'

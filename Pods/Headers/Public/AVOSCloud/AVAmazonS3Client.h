@@ -1,1 +1,1 @@
-../../../AVOSCloud/iOS/release-v3.1.0/AVOSCloud.framework/PrivateHeaders/AVAmazonS3Client.h
+../../../AVOSCloud/iOS/release-v3.1.1.1/AVOSCloud.framework/PrivateHeaders/AVAmazonS3Client.h

@@ -158,7 +158,8 @@ class MGMessageViewController: MGBaseViewController, UITableViewDataSource, UITa
             case 100:
                 // 私信聊天
                 self.canHiddenNavigationBar = false
-                self.performSegueWithIdentifier("showIM", sender: self)
+                var chatVC = MGChatViewController()
+                self.navigationController?.pushViewController(chatVC, animated: true)
                 break
 
             case 101:

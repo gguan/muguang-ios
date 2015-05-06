@@ -50,21 +50,24 @@
 
 // AVOSCloud
 #define COCOAPODS_POD_AVAILABLE_AVOSCloud
-#define COCOAPODS_VERSION_MAJOR_AVOSCloud 3
-#define COCOAPODS_VERSION_MINOR_AVOSCloud 1
-#define COCOAPODS_VERSION_PATCH_AVOSCloud 0
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 3.1.1.1.
 
 // AVOSCloudIM
 #define COCOAPODS_POD_AVAILABLE_AVOSCloudIM
-#define COCOAPODS_VERSION_MAJOR_AVOSCloudIM 3
-#define COCOAPODS_VERSION_MINOR_AVOSCloudIM 1
-#define COCOAPODS_VERSION_PATCH_AVOSCloudIM 0
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 3.1.1.1.
 
 // AVOSCloudSNS
 #define COCOAPODS_POD_AVAILABLE_AVOSCloudSNS
-#define COCOAPODS_VERSION_MAJOR_AVOSCloudSNS 3
-#define COCOAPODS_VERSION_MINOR_AVOSCloudSNS 1
-#define COCOAPODS_VERSION_PATCH_AVOSCloudSNS 0
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 3.1.1.1.
 
 // CSStickyHeaderFlowLayout
 #define COCOAPODS_POD_AVAILABLE_CSStickyHeaderFlowLayout
@@ -95,6 +98,13 @@
 #define COCOAPODS_VERSION_MAJOR_Masonry 0
 #define COCOAPODS_VERSION_MINOR_Masonry 6
 #define COCOAPODS_VERSION_PATCH_Masonry 1
+
+// Qiniu
+#define COCOAPODS_POD_AVAILABLE_Qiniu
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 7.0.9.1.
 
 // TMCache
 #define COCOAPODS_POD_AVAILABLE_TMCache
