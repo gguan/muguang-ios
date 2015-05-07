@@ -159,6 +159,7 @@ class MGMessageViewController: MGBaseViewController, UITableViewDataSource, UITa
                 // 私信聊天
                 self.canHiddenNavigationBar = false
                 var chatVC = MGChatViewController()
+                chatVC.title = "诸葛亮"
                 self.navigationController?.pushViewController(chatVC, animated: true)
                 break
 

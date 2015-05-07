@@ -27,6 +27,11 @@ PODS:
     - AVOSCloud
   - CSStickyHeaderFlowLayout (0.2.5)
   - FastImageCache (1.3)
+  - FMDB (2.5):
+    - FMDB/standard (= 2.5)
+  - FMDB/common (2.5)
+  - FMDB/standard (2.5):
+    - FMDB/common
   - Mantle (2.0):
     - Mantle/extobjc (= 2.0)
   - Mantle/extobjc (2.0)
@@ -42,6 +47,7 @@ DEPENDENCIES:
   - AVOSCloudSNS
   - CSStickyHeaderFlowLayout (~> 0.2.5)
   - FastImageCache (~> 1.3)
+  - FMDB (~> 2.5)
   - Mantle (~> 2.0)
   - Masonry (~> 0.6.1)
   - Qiniu (~> 7.0)
@@ -54,6 +60,7 @@ SPEC CHECKSUMS:
   AVOSCloudSNS: fa177d50fe83b630d684dd27d790358531b365cc
   CSStickyHeaderFlowLayout: 75e439a59c23f609091d9a784c7b5db7de583f1f
   FastImageCache: 25f214fd46405daca3d1995d783fb83b9036c62e
+  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   Mantle: 17de73ef929db2234d76fde2aacfb89ab11c61e8
   Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
   Qiniu: cd281425298a3f30495135ab9a9442bf400dab28

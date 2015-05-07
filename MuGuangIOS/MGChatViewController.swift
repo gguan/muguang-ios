@@ -21,14 +21,27 @@ class MGChatViewController: JSQMessagesViewController {
 
         // Do any additional setup after loading the view.
         
-        
+        // 用户ID
         self.senderId = "A"
+        // 用户昵称
         self.senderDisplayName = "B"
         
         var bubbleFactory: JSQMessagesBubbleImageFactory = JSQMessagesBubbleImageFactory()
-        
+        // 自己消息的气泡样式
         self.outgoingBubbleImageData = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
+        // 受到消息的气泡样式
         self.incomingBubbleImageData = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleGreenColor())
+        
+        // 假数据
+        var message: JSQMessage = JSQMessage(senderId: "诸葛亮", senderDisplayName: "诸葛亮", date: NSDate(), text: "知天易，逆天难。")
+        self.dataSource.append(message)
+        var wozImage: JSQMessagesAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "avatar_placeholder"), diameter: UInt(kJSQMessagesCollectionViewAvatarSizeDefault))
+        self.avatars.append(wozImage)
+        
+        var message1: JSQMessage = JSQMessage(senderId: "诸葛亮", senderDisplayName: "诸葛亮", date: NSDate(timeIntervalSinceNow: 60 * 12), text: "观今夜天象，知天下大事。")
+        self.dataSource.append(message1)
+        var wozImage1: JSQMessagesAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "avatar_placeholder"), diameter: UInt(kJSQMessagesCollectionViewAvatarSizeDefault))
+        self.avatars.append(wozImage1)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,15 +54,16 @@ class MGChatViewController: JSQMessagesViewController {
     */
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
         
+        // 发送的消息
         var message: JSQMessage = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
-
+        // 缓存消息
         self.dataSource.append(message)
+        
+        // 头像
         var wozImage: JSQMessagesAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "avatar_placeholder"), diameter: UInt(kJSQMessagesCollectionViewAvatarSizeDefault))
         self.avatars.append(wozImage)
         
         self.finishSendingMessageAnimated(true)
-        self.collectionView.reloadData()
-        
     }
     
     /**
@@ -110,9 +124,16 @@ class MGChatViewController: JSQMessagesViewController {
     }
     
     /**
-        气泡顶部label的高度
+        姓名label的高度
     */
     override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        return kJSQMessagesCollectionViewCellLabelHeightDefault
+    }
+    
+    /**
+        时间lable的高度
+    */
+    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
         return kJSQMessagesCollectionViewCellLabelHeightDefault
     }
     

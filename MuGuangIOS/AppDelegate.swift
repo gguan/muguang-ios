@@ -25,6 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
         WeiboSDK.registerApp(SinaAppKey)
         
         self.configureMainUI()
+        
+        
+        /**
+            初始化LeanCloud
+        */
+        MGIMClientHelper.setupClient()
+        
+        
         // Test login
         //NSUserDefaults.standardUserDefaults().removeObjectForKey(kAccessToken)
         

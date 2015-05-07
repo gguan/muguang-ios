@@ -23,6 +23,7 @@
 
 // LeanCloud
 #import <AVOSCloud/AVOSCloud.h>
+#import <AVOSCloudIM/AVOSCloudIM.h>
 
 // IM UI
 #import "JSQMessages.h"

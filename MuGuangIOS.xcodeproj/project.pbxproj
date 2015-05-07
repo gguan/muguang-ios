@@ -156,6 +156,7 @@
 		F92016371AF9C35D0062F70D /* JSQMessagesToolbarContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F920160B1AF9C35D0062F70D /* JSQMessagesToolbarContentView.xib */; };
 		F92016381AF9C35D0062F70D /* JSQMessagesTypingIndicatorFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = F920160D1AF9C35D0062F70D /* JSQMessagesTypingIndicatorFooterView.m */; };
 		F92016391AF9C35D0062F70D /* JSQMessagesTypingIndicatorFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F920160E1AF9C35D0062F70D /* JSQMessagesTypingIndicatorFooterView.xib */; };
+		F920163B1AF9E7BC0062F70D /* MGIMClientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F920163A1AF9E7BC0062F70D /* MGIMClientHelper.swift */; };
 		F93EABA51AEF6804000FB1C7 /* MGUserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93EABA41AEF6804000FB1C7 /* MGUserInfoCell.swift */; };
 		F98081641AE4CD7900E217DC /* MGMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081631AE4CD7900E217DC /* MGMonitorView.swift */; };
 		F98081661AE4CED800E217DC /* MGLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98081651AE4CED800E217DC /* MGLocationManager.swift */; };
@@ -445,6 +446,7 @@
 		F920160C1AF9C35D0062F70D /* JSQMessagesTypingIndicatorFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQMessagesTypingIndicatorFooterView.h; sourceTree = "<group>"; };
 		F920160D1AF9C35D0062F70D /* JSQMessagesTypingIndicatorFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQMessagesTypingIndicatorFooterView.m; sourceTree = "<group>"; };
 		F920160E1AF9C35D0062F70D /* JSQMessagesTypingIndicatorFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSQMessagesTypingIndicatorFooterView.xib; sourceTree = "<group>"; };
+		F920163A1AF9E7BC0062F70D /* MGIMClientHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGIMClientHelper.swift; sourceTree = "<group>"; };
 		F93EABA41AEF6804000FB1C7 /* MGUserInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGUserInfoCell.swift; sourceTree = "<group>"; };
 		F98081631AE4CD7900E217DC /* MGMonitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGMonitorView.swift; sourceTree = "<group>"; };
 		F98081651AE4CED800E217DC /* MGLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGLocationManager.swift; sourceTree = "<group>"; };
@@ -914,6 +916,7 @@
 			children = (
 				F98081651AE4CED800E217DC /* MGLocationManager.swift */,
 				F98A8F691AE79634004DED25 /* MGCLLocationHelper.swift */,
+				F920163A1AF9E7BC0062F70D /* MGIMClientHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1332,6 +1335,7 @@
 				F92016231AF9C35D0062F70D /* JSQMediaItem.m in Sources */,
 				F920161A1AF9C35D0062F70D /* JSQMessagesAvatarImageFactory.m in Sources */,
 				F92016241AF9C35D0062F70D /* JSQMessage.m in Sources */,
+				F920163B1AF9E7BC0062F70D /* MGIMClientHelper.swift in Sources */,
 				F99022E81AF86B8200AB33C0 /* MGPraiseCell.swift in Sources */,
 				3DB3891D1ADE1BD9003361A6 /* MGLogInViewController.swift in Sources */,
 				3DE672571AF0A9B900A26559 /* MGPublishTextTableViewCell.swift in Sources */,
